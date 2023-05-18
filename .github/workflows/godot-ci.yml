@@ -28,7 +28,7 @@ jobs:
         ls ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
     - name: Web Build
       run: |
-        mkdir -v -p build/html
+        mkdir -v -p godot/build/html
         godot -v --headless --export-release "Web" godot/build/html/index.html
         godot -v --headless --export-release "Web" godot/build/html/index.html
     - name: Publish to Itch.io
