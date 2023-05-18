@@ -37,4 +37,4 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
         CHANNEL: web
-        PACKAGE: build/html
+        PACKAGE: godot/build/html
