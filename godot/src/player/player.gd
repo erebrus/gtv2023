@@ -37,8 +37,8 @@ var immune := false
 
 
 @onready var timer_fs = $sfx/timer_fs
-#@onready var sfx_hurt := $sfx/hurt
-#@onready var sfx_death := $sfx/death
+@onready var sfx_hurt := $sfx/hurt
+@onready var sfx_death := $sfx/death
 @onready var sfx_run := $sfx/run
 @onready var sfx_jump := $sfx/jump
 @onready var sfx_landing := $sfx/land
@@ -160,13 +160,45 @@ func _on_FootstepTimer_timeout():
 	can_play_footstep=true
 
 
-func on_attacked(dmg):
+func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
 	Logger.debug("player was attacked")
 	lives-=1
 	if not check_for_death():
 		xsm.change_state("hurt")
 	emit_signal("health_changed")
+
+	
+	var tween 
+	if knockback > 0:
+		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
+		var new_position = global_position+Vector2(bounce_delta_x.x,0)
+		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+		var ray_params = PhysicsRayQueryParameters2D.new()
+		var y_delta:Vector2 = Vector2(0,-10)
+		ray_params.from = global_position + y_delta
+		ray_params.to = new_position + y_delta
+		ray_params.exclude=[self]
+		var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
+		
+		if collision:
+			new_position = collision.position 
+
+		in_animation=true
+		tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "global_position",new_position, .5)	
+	
+	if not check_for_death():		
+		xsm.change_state("hurt")
+		
+	emit_signal("health_changed")	
+	if tween:
+		await tween.finished
+	in_animation=false
+
+
+
+
 
 	
 func check_for_death():
@@ -179,13 +211,13 @@ func check_for_death():
 	return false
 
 
-#func set_collision_enabled(val):
-#	disabled = !false
-#	$CollisionShape2D.disabled= !val
-#	if val:
-#		collision_layer=4
-#	else:
-#		collision_layer=0
+func set_collision_enabled(val):
+	disabled = !false
+	$CollisionShape2D.disabled= !val
+	if val:
+		collision_layer=4
+	else:
+		collision_layer=0
 
 
 	

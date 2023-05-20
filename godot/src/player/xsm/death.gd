@@ -10,14 +10,16 @@ extends StateAnimation
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name: String) -> void:
-	Globals.do_game_over()
-	owner.set_collision_enabled(false)
+	Globals.gameover()
+	
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	owner.sfx_death.play()	
+	owner.set_collision_enabled(false)
+#	owner.xsm.disabled = true
 #	yield(owner.sfx_death, "finished")
 
 

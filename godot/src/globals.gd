@@ -14,7 +14,7 @@ var debug_build := false
 
 const MENU_SCREEN = "res://src/menu/menu.tscn"
 const MAIN_SCREEN = "res://src/main.tscn"
-const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
+const GAMEOVER_SCREEN = "res://src/world/example.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
 const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
@@ -59,6 +59,7 @@ func _init_logger():
 
 
 func gameover():
+
 	await get_tree().create_timer(2.5).timeout
 	SceneManager.change_scene(GAMEOVER_SCREEN, default_transition)
 	

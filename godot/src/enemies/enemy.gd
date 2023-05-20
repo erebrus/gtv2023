@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var max_hp:int = 50
 @export var normal_speed:float = 50
 @export var engage_speed:float = 200
-@export var  max_accel:float =10.0
+@export var  max_accel:float = 10.0
 @export var attack_damage:float = 25
-
+@export var knockback:float = 50
 
 
 var desired_velocity:=Vector2()
@@ -157,8 +157,8 @@ func finish_death():
 	set_process(false)
 	call_deferred("queue_free")
 	
-#func is_on_enemy()->bool:
-#	return target and $AttackBox.overlaps_body(target)
+func is_on_enemy()->bool:
+	return target and $attack_box.overlaps_body(target) #TODO proper ref
 
 func handle_run_sfx():
 	if not sfx_run.playing and can_play_footstep:
