@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcvs8tw2naixi"]
+[gd_scene load_steps=5 format=3 uid="uid://dcvs8tw2naixi"]
 
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="1_f13qh"]
+[ext_resource type="PackedScene" uid="uid://b6p1pvfqnrqsx" path="res://src/enemies/enemy_template.tscn" id="1_m6ipq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypta6"]
 size = Vector2(1000, 40)
@@ -10,33 +11,54 @@ size = Vector2(20, 500)
 
 [node name="example" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="long_platform" type="StaticBody2D" parent="."]
 position = Vector2(516, 684)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="long_platform"]
 shape = SubResource("RectangleShape2D_ypta6")
+metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="long_platform"]
 polygon = PackedVector2Array(-498, -20, 505, -19, 504, 18, -501, 17)
+metadata/_edit_lock_ = true
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="long_platform2" type="StaticBody2D" parent="."]
 position = Vector2(1286, 532)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="long_platform2"]
 shape = SubResource("RectangleShape2D_ypta6")
+metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="long_platform2"]
 polygon = PackedVector2Array(-502, -18, 500, -19, 500, 22, 34, 19, -501, 21)
+metadata/_edit_lock_ = true
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="wall" type="StaticBody2D" parent="."]
 position = Vector2(17, 404)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
 shape = SubResource("RectangleShape2D_iwf5d")
+metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="wall"]
 position = Vector2(144, -240)
 polygon = PackedVector2Array(-153, -11, -136, -8, -136, 488, -152, 488)
+metadata/_edit_lock_ = true
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2(1243, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+shape = SubResource("RectangleShape2D_iwf5d")
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="wall2"]
+position = Vector2(144, -240)
+polygon = PackedVector2Array(-153, -11, -136, -8, -136, 488, -152, 488)
+metadata/_edit_lock_ = true
+
+[node name="enemy_template" parent="wall2" instance=ExtResource("1_m6ipq")]
+position = Vector2(-380, 216)
 
 [node name="player" parent="." instance=ExtResource("1_f13qh")]
 position = Vector2(139, 602)

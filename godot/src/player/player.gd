@@ -145,7 +145,7 @@ func _process(delta: float) -> void:
 #		return
 #	lives-=1
 #	if not check_for_death() or not get_parent().last_checkpoint_position:
-#		xsm.change_state("Hurt")
+#		xsm.change_state("hurt")
 #		velocity.x=0
 #		immune=true
 #		await get_tree().create_timer(.5).timeout
@@ -160,13 +160,13 @@ func _on_FootstepTimer_timeout():
 	can_play_footstep=true
 
 
-#func on_attacked(dmg):
-#
-#	Logger.info("player was attacked")
-#	lives-=1
-#	if not check_for_death():
-#		xsm.change_state("Hurt")
-#	emit_signal("health_changed")
+func on_attacked(dmg):
+
+	Logger.debug("player was attacked")
+	lives-=1
+	if not check_for_death():
+		xsm.change_state("hurt")
+	emit_signal("health_changed")
 
 	
 func check_for_death():
@@ -174,7 +174,7 @@ func check_for_death():
 	if lives==0:
 		collision_layer=0
 		dead=true
-		xsm.change_state("Death")
+		xsm.change_state("death")
 		return true
 	return false
 
@@ -199,15 +199,6 @@ func stop_animation():
 
 func start_animation():
 	sprite.playing=true
-
-
-#func set_platform_collision_enabled(val):
-#	if val:
-#		collision_layer=4
-#		collision_mask=3	
-#	else:
-#		collision_layer=0
-#		collision_mask=0	
 
 
 func is_climb_rc_colliding()->bool:

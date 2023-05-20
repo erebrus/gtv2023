@@ -140,13 +140,7 @@ func control(_delta:float) -> void:
 	if Input.is_action_just_released("jump"):
 		jump_available=true
 
-	
-func do_platform_drop():
-	#disabled
-	pass
-#	player.set_platform_collision_enabled(false)
-#	yield(get_tree().create_timer(.25), "timeout")
-#	player.set_platform_collision_enabled(true)
+
 	
 func do_dash()->void:
 	Logger.trace("dash")

@@ -20,7 +20,7 @@ const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
 const TRANSITION_COLOR = Color("#009aff")
 
-const START_DECK = preload("res://src/gui/deck/default_deck.tres")
+
 
 var default_transition = {
 	"pattern":"horizontal", 
@@ -28,11 +28,6 @@ var default_transition = {
 	"color": TRANSITION_COLOR
 }
 
-var deck:
-	get:
-		return level_manager.current_deck
-	
-var player_in_turn:= false
 var game_music_on := false
 @onready var level_manager:LevelManager = $LevelManager
 @onready var music:=$music
@@ -40,15 +35,7 @@ var game_music_on := false
 func _ready():
 	_init_logger()
 	Logger.info("Init complete.")
-	if level_manager.current_deck.is_empty():
-		level_manager.current_deck = START_DECK.generate()
-	
-#	music = AudioStreamPlayer.new()
-#	music.stream = load ("res://assets/music/WGJ Main menu mp3.mp3")
-#	music.volume_db=-10
-#	music.play()
-#	music.bus="Music"
-#	add_child(music)
+
 
 func start_game_music()->void:
 	if not music.playing:
@@ -126,33 +113,6 @@ func choose_piece():
 			"color": TRANSITION_COLOR,
 		})
 	
-
-#
-#func load_data():
-#	var password = OS.get_unique_id() # works only on this computer
-#	config = ConfigFile.new()
-#	if not File.new().file_exists(GameDataPath):
-#		Logger.info("Config file does not exist. A new one will be saved.")
-#		return config
-#
-#
-#	config.load_encrypted_pass(GameDataPath, password)	
-#
-#	return config
-#
-#func save_data():
-#	var password = OS.get_unique_id() # works only on this computer
-#
-#
-#	config.save_encrypted_pass(GameDataPath, password)
-#	config.save("user://SaveFile_unencrypted.cfg") # for testing	
-#
-#	Logger.info("Config saved.")
-#
-#func _exit_tree():
-#	save_data()
-
-
 
 func _on_music_finished():
 	if game_music_on:

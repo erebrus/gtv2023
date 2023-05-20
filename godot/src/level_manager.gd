@@ -3,21 +3,11 @@ class_name LevelManager extends Node
 const START_GAME = 2
 
 var levels:Array[PackedScene] = [
-	preload("res://src/world/levels/tutorial_level_1.tscn"),
-	preload("res://src/world/levels/tutorial_level_2.tscn"),
-#	preload("res://src/world/levels/level_1.tscn"),
-	preload("res://src/world/levels/mato_test_1.tscn"),
-	preload("res://src/world/levels/level_c_1.tscn"),	
-	preload("res://src/world/levels/level_c_2.tscn"),		
-#	preload("res://src/world/levels/level_2.tscn"),
+	preload("res://src/world/example.tscn"),
 	
 	
 ]
-var current_deck:Array[Piece]
 var current_level:int = 0
-var highest_level:int = 0
-var last_discard_size:int = 0
-var level_complete:bool = false
 
 const path="usr://game_conf.tres"
 
@@ -59,28 +49,23 @@ func get_next_level()->PackedScene:
 	
 
 func load_data():
-	if ResourceLoader.exists(path):
-		var conf:GameConfiguration = ResourceLoader.load(path)	as GameConfiguration
-		current_deck = conf.current_deck
-		current_level = clamp(conf.last_level, 0, levels.size()-1)
-		highest_level = clamp(conf.highest_level, 0, levels.size()-1)
-		
+	if ResourceLoader.exists(path):		
 		Logger.info("Config loaded.")
 	else:
 		Logger.info("No configuration found.")
 
 func save_data():
 	return
-	var conf := GameConfiguration.new()
-	conf.current_deck = current_deck
-	conf.last_level = current_level
-	conf.highest_level = highest_level
-	
-	var error = ResourceSaver.save(conf, path)
-	if error != OK:
-		Logger.error("Failure!")
-	else:
-		Logger.info("Config saved.")
+#	var conf := GameConfiguration.new()
+#	conf.current_deck = current_deck
+#	conf.last_level = current_level
+#	conf.highest_level = highest_level
+#
+#	var error = ResourceSaver.save(conf, path)
+#	if error != OK:
+#		Logger.error("Failure!")
+#	else:
+#		Logger.info("Config saved.")
 
 func _exit_tree():
 	save_data()

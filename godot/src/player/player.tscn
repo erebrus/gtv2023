@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=43 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -11,10 +11,12 @@
 [ext_resource type="Script" path="res://src/player/xsm/climb.gd" id="7_ekgay"]
 [ext_resource type="Script" path="res://src/player/xsm/jump.gd" id="8_7ga8y"]
 [ext_resource type="Script" path="res://src/player/xsm/fall.gd" id="9_aqd42"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_5udvk"]
+[ext_resource type="Script" path="res://src/player/xsm/death.gd" id="13_wrndm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cv33"]
-radius = 20.0
-height = 90.0
+radius = 16.0
+height = 128.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8sdhx"]
 atlas = ExtResource("2_8ll7n")
@@ -93,12 +95,22 @@ animations = [{
 "name": &"dash",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_708n2")
 }],
 "loop": false,
 "name": &"falling",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -315,11 +327,69 @@ tracks/1/keys = {
 "values": [&"move"]
 }
 
+[sub_resource type="Animation" id="Animation_ev6vu"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+
+[sub_resource type="Animation" id="Animation_3mvy7"]
+resource_name = "hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q26do"]
 _data = {
 "climb": SubResource("Animation_v7knb"),
 "dash": SubResource("Animation_37s62"),
+"death": SubResource("Animation_ev6vu"),
 "fall": SubResource("Animation_v56j6"),
+"hurt": SubResource("Animation_3mvy7"),
 "idle": SubResource("Animation_na8jo"),
 "jump": SubResource("Animation_l83l0"),
 "move": SubResource("Animation_db474")
@@ -377,7 +447,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-12, 0)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_40f4u"]
@@ -425,6 +495,7 @@ dash_boost = 900.0
 dash_hangtime = 0.4
 h = 400.0
 damping_speed = 250.0
+max_air_jumps = 1
 inertia_factor = 0.4
 air_accel_factor = 0.75
 coyote_time = 0.1
@@ -434,18 +505,18 @@ wall_jump_x = 400.0
 xsm_path = NodePath("../xsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -47)
+position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_4cv33")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.239216, 0.419608, 0.309804, 1)
-polygon = PackedVector2Array(-16, -104, 0, -160, 16, -104, 21, 0, -19, -1)
+polygon = PackedVector2Array(-16, -104, 0, -136, 16, -104, 16, 0, -16, 0)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(6, -32)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"dash"
+animation = &"death"
 
 [node name="xsm" type="Node" parent="."]
 script = ExtResource("3_17k6u")
@@ -478,7 +549,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../climb")
+next_state = NodePath("../dash")
 
 [node name="climb" type="Node" parent="xsm"]
 script = ExtResource("7_ekgay")
@@ -490,7 +561,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_dash")
+next_state = NodePath("../dash")
 
 [node name="can_dash" type="Node" parent="xsm"]
 script = ExtResource("6_bvrt0")
@@ -510,7 +581,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../jump")
+next_state = NodePath("")
 
 [node name="jump" type="Node" parent="xsm/can_dash"]
 script = ExtResource("8_7ga8y")
@@ -522,12 +593,36 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../fall")
+next_state = NodePath("")
 
 [node name="fall" type="Node" parent="xsm/can_dash"]
 script = ExtResource("9_aqd42")
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "fall"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="hurt" type="Node" parent="xsm"]
+script = ExtResource("12_5udvk")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "hurt"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../idle")
+
+[node name="death" type="Node" parent="xsm"]
+script = ExtResource("13_wrndm")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "death"
 anim_times_to_play = 1
 on_anim_finished = 0
 disabled = false
@@ -546,7 +641,7 @@ libraries = {
 "": SubResource("AnimationLibrary_bkyi4")
 }
 
-[node name="sfx" type="Node" parent="."]
+[node name="sfx" type="Node2D" parent="."]
 
 [node name="timer_fs" type="Timer" parent="sfx"]
 wait_time = 0.5
