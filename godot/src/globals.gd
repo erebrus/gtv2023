@@ -1,6 +1,7 @@
 extends Node
 
 enum GameLogLevel {INFO, WARNING, ALERT}
+enum Dimension{NONE, MATERIAL, SPECTRAL, BOTH=4}
 
 var master_volume:float = 100
 var music_volume:float = 100

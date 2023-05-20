@@ -36,9 +36,10 @@ func _on_update(_delta: float) -> void:
 		change_state("fall")
 		return
 	
-	if owner.is_on_wall() and not owner.is_on_floor()  and owner.controller.can_climb:
-		change_state("climb")
-		return
+	if owner.is_on_wall() and not owner.is_on_floor()\
+	 	and owner.controller.can_climb and owner.dimension == Globals.Dimension.MATERIAL:
+			change_state("climb")
+			return
 		
 	owner.play_animation("jump")
 			

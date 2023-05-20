@@ -34,9 +34,10 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	
-	if owner.is_on_wall() and not owner.is_on_floor() and owner.controller.can_climb:
-		change_state("climb")
-		return
+	if owner.is_on_wall() and not owner.is_on_floor()\
+		and owner.dimension == Globals.Dimension.MATERIAL and owner.controller.can_climb:
+			change_state("climb")
+			return
 		
 	if owner.is_on_floor():
 		if abs(owner.velocity.x)<1:

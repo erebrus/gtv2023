@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-
+const multi_state_anims = ["idle", "move", "jump", "fall", "hurt"]
 #const fixed_anims = ["hurt","death"]
 signal health_changed
 signal fired
@@ -47,7 +47,7 @@ var immune := false
 var can_play_footstep:bool = true
 
 var dead:=false
-
+var dimension = Globals.Dimension.SPECTRAL
 
 
 func _ready():
@@ -57,7 +57,7 @@ func _ready():
 	$DirAnimationPlayer.play("right")
 #	setup_debug(true)
 	xsm.change_state("idle")
-	
+	Events.dimension_changed.connect(_on_dimension_changed)
 
 #func setup_debug(val:bool):
 #	if val:
@@ -83,7 +83,10 @@ func update_sprite():
 	
 
 func play_animation(anim:String):
-	if not sprite.is_playing() or sprite.animation!=anim:	
+	if anim in multi_state_anims:
+		if dimension ==Globals.Dimension.SPECTRAL:
+			anim += "_spectral"
+	if not sprite.is_playing() or sprite.animation != anim:
 		sprite.play(anim)
 	
 
@@ -93,9 +96,23 @@ func control(_delta:float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
 	
+	if Input.is_action_just_pressed("shift"):
+		if dimension == Globals.Dimension.MATERIAL:
+			Events.dimension_changed.emit(Globals.Dimension.SPECTRAL)
+		else:
+			Events.dimension_changed.emit(Globals.Dimension.MATERIAL)
 
 
-
+func _on_dimension_changed(_dimension):
+	if _dimension == dimension:
+		return
+	dimension = _dimension
+	if _dimension == Globals.Dimension.MATERIAL:
+		xsm.change_state("materialise")		
+	else:
+		xsm.change_state("decay")
+		
+	
 func on_dash() -> void:
 	pass
 
@@ -244,4 +261,8 @@ func _input(event):
 
 
 func _on_timer_fs_timeout():	
-	pass # Replace with function body.
+	can_play_footstep=true
+
+
+			
+	

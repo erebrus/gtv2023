@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=32 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_17k6u"]
+[ext_resource type="Texture2D" uid="uid://btar4kf142ax7" path="res://assets/gfx/player/mc-ghost.png" id="4_5up47"]
 [ext_resource type="Texture2D" uid="uid://cdo3rimggp0ma" path="res://assets/gfx/player/mc-skeleton.png" id="4_8qvdq"]
 [ext_resource type="Script" path="res://src/player/xsm/idle.gd" id="5_5dat7"]
 [ext_resource type="Script" path="res://src/player/xsm/can_dash.gd" id="6_bvrt0"]
@@ -30,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_8qvdq")
+"texture": ExtResource("4_5up47")
 }],
 "loop": true,
 "name": &"dash",
@@ -38,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_8qvdq")
+"texture": ExtResource("4_5up47")
 }],
 "loop": false,
 "name": &"death",
@@ -47,9 +48,28 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_8qvdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"decay",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8qvdq")
 }],
 "loop": false,
-"name": &"falling",
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"fall_spectral",
 "speed": 5.0
 }, {
 "frames": [{
@@ -62,10 +82,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"hurt_spectral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_8qvdq")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"idle_spectral",
 "speed": 5.0
 }, {
 "frames": [{
@@ -78,67 +114,74 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"jump_spectral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5up47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8qvdq")
+}],
+"loop": true,
+"name": &"materialise",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_8qvdq")
 }],
 "loop": true,
 "name": &"move",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5up47")
+}],
+"loop": true,
+"name": &"move_spectral",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_v7knb"]
 resource_name = "climb"
 length = 0.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"climb"]
+"values": [{
+"args": ["climb"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_37s62"]
 resource_name = "dash"
 length = 0.4
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"dash"]
+"values": [{
+"args": ["dash"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ev6vu"]
@@ -147,178 +190,154 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"death"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_v56j6"]
-resource_name = "fall"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"falling"]
+"values": [{
+"args": ["death"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v56j6"]
+resource_name = "fall"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["fall"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3mvy7"]
 resource_name = "hurt"
 length = 0.4
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
+"values": [{
+"args": ["hurt"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_na8jo"]
 resource_name = "idle"
 length = 0.4
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
+"values": [{
+"args": ["idle"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_l83l0"]
 resource_name = "jump"
 length = 0.25
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"jump"]
+"values": [{
+"args": ["jump"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_db474"]
 resource_name = "move"
 length = 0.75
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["move"],
+"method": &"play_animation"
+}]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_3461l"]
+resource_name = "materialise"
+length = 0.75
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"move"]
+"values": [{
+"args": ["materialise"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_arfpm"]
+resource_name = "decay"
+length = 0.75
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["decay"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q26do"]
@@ -326,10 +345,12 @@ _data = {
 "climb": SubResource("Animation_v7knb"),
 "dash": SubResource("Animation_37s62"),
 "death": SubResource("Animation_ev6vu"),
+"decay": SubResource("Animation_arfpm"),
 "fall": SubResource("Animation_v56j6"),
 "hurt": SubResource("Animation_3mvy7"),
 "idle": SubResource("Animation_na8jo"),
 "jump": SubResource("Animation_l83l0"),
+"materialise": SubResource("Animation_3461l"),
 "move": SubResource("Animation_db474")
 }
 
@@ -428,14 +449,13 @@ collision_layer = 16
 script = ExtResource("1_kqnht")
 
 [node name="platform_controller" parent="." instance=ExtResource("1_gtfn5")]
-max_deccel = 100.0
+max_accel = 80.0
 dash_boost = 900.0
 dash_hangtime = 0.4
 h = 400.0
 damping_speed = 250.0
-max_air_jumps = 1
-inertia_factor = 0.4
-air_accel_factor = 0.75
+inertia_factor = 0.8
+air_accel_factor = 0.1
 coyote_time = 0.1
 jump_buffer = 0.1
 allow_wall_jump = true
@@ -454,13 +474,13 @@ polygon = PackedVector2Array(-16, -104, 0, -136, 16, -104, 16, 0, -16, 0)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -56)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"death"
+animation = &"move"
 
 [node name="xsm" type="Node" parent="."]
 script = ExtResource("3_17k6u")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -567,7 +587,31 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../idle")
+
+[node name="decay" type="Node" parent="xsm"]
+script = ExtResource("12_5udvk")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "decay"
+anim_times_to_play = 1
+on_anim_finished = 4
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../idle")
+
+[node name="materialise" type="Node" parent="xsm"]
+script = ExtResource("12_5udvk")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "materialise"
+anim_times_to_play = 1
+on_anim_finished = 4
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../idle")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
