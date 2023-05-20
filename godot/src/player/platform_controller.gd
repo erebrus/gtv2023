@@ -92,7 +92,6 @@ func temporarily_disable_air_control(time:float=wall_control_timeout):
 func do_wall_impulse(wall_normal:Vector2):
 	Logger.trace("wall jump")
 	player.velocity.x=wall_normal.x*wall_jump_x
-	var x= player.velocity.x
 	temporarily_disable_air_control()
 
 
@@ -199,7 +198,7 @@ func _process(delta: float) -> void:
 
 	var was_on_floor = player.is_on_floor()
 	var y = player.global_position.y
-	var last_vy=player.velocity.y
+#	var last_vy=player.velocity.y
 	
 	Logger.trace("applying velocity %s" % player.velocity)
 	player.move_and_slide()
@@ -213,7 +212,7 @@ func _process(delta: float) -> void:
 
 	#Apply gravity if not on floor and not hanging
 	if !player.is_on_floor() and not hanging:
-		var was_going_up = player.velocity.y <=0
+#		var was_going_up = player.velocity.y <=0
 		player.velocity.y += _get_actual_g() * delta * delta_factor
 	elif player.is_on_floor():
 		air_jump_count = 0

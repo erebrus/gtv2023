@@ -35,11 +35,11 @@ func _on_update(_delta: float) -> void:
 	if abs(input.x) >.1:
 		change_state("move")
 		return
-		
+
 	owner.play_animation("idle")
 	owner.velocity.x=0
 #	Logger.trace("idle x mov")
-	
+
 	if owner.controller.processing_jump:	
 		Logger.debug("Press jump in idle")
 		owner.controller.do_jump()

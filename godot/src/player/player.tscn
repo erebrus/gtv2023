@@ -423,13 +423,14 @@ script = ExtResource("1_kqnht")
 max_deccel = 100.0
 dash_boost = 900.0
 dash_hangtime = 0.4
-h = 300.0
+h = 400.0
 damping_speed = 250.0
-air_accel_factor = 0.5
+inertia_factor = 0.4
+air_accel_factor = 0.75
 coyote_time = 0.1
 jump_buffer = 0.1
 allow_wall_jump = true
-wall_jump_x = 75.0
+wall_jump_x = 400.0
 xsm_path = NodePath("../xsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -438,7 +439,7 @@ shape = SubResource("CapsuleShape2D_4cv33")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.239216, 0.419608, 0.309804, 1)
-polygon = PackedVector2Array(-17, -82, 0, -94, 19, -82, 21, 0, -19, -1)
+polygon = PackedVector2Array(-16, -104, 0, -160, 16, -104, 21, 0, -19, -1)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -465,7 +466,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_dash/move")
+next_state = NodePath("../dash")
 
 [node name="dash" type="Node" parent="xsm"]
 script = ExtResource("6_k6vq6")
@@ -477,7 +478,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../dash")
+next_state = NodePath("../climb")
 
 [node name="climb" type="Node" parent="xsm"]
 script = ExtResource("7_ekgay")
@@ -489,7 +490,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../can_dash")
 
 [node name="can_dash" type="Node" parent="xsm"]
 script = ExtResource("6_bvrt0")
@@ -509,7 +510,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../../idle")
+next_state = NodePath("../jump")
 
 [node name="jump" type="Node" parent="xsm/can_dash"]
 script = ExtResource("8_7ga8y")
@@ -521,7 +522,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../fall")
 
 [node name="fall" type="Node" parent="xsm/can_dash"]
 script = ExtResource("9_aqd42")
@@ -551,9 +552,15 @@ libraries = {
 wait_time = 0.5
 one_shot = true
 
+[node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
+
+[node name="land" type="AudioStreamPlayer2D" parent="sfx"]
+
 [node name="climb_rc" type="RayCast2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -56)
 enabled = false
-target_position = Vector2(-15, 0)
+target_position = Vector2(30, 0)
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]

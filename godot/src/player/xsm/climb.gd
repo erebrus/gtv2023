@@ -24,8 +24,8 @@ func _on_enter(_args) -> void:
 		var collision:KinematicCollision2D = owner.get_last_slide_collision()
 		collision_direction = -collision.get_normal()
 		t = add_timer("climb_hangtime",owner.controller.climb_timeout)
-		var input = Input.get_vector("ui_left", "ui_right", "", "")
-		Logger.debug("Entering climb because direction %2f vs %2f " % [input.x, collision_direction.x])
+		var axis_x:float = Input.get_axis("ui_left", "ui_right")
+		Logger.debug("Entering climb because direction %2f vs %2f " % [axis_x, collision_direction.x])
 
 
 # This function is called just after the state enters
@@ -38,7 +38,7 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	var input = Input.get_vector("ui_left", "ui_right", "", "")
-	if sign(input.x) != sign(collision_direction.x) or not owner.is_climb_rc_colliding():
+	if not owner.is_climb_rc_colliding():# or sign(input.x) != sign(collision_direction.x) or :
 		Logger.debug("Stop Climb because of direction (%2f vs %2f )" % [input.x, collision_direction.x])
 		change_state("fall")
 	else:
