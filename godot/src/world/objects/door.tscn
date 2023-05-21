@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5jubvlo01i7r"]
+
+[ext_resource type="Script" path="res://src/world/objects/door.gd" id="1_51jux"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gc0uv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvghq"]
+size = Vector2(32, 256)
+
+[node name="door" type="StaticBody2D"]
+collision_mask = 49
+script = ExtResource("1_51jux")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gc0uv")
+animation = &"close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_pvghq")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.545098, 0.545098, 0.545098, 1)
+polygon = PackedVector2Array(-16, -256, 16, -256, 16, 0, -16, 0)

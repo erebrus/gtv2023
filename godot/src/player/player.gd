@@ -49,6 +49,9 @@ var can_play_footstep:bool = true
 var dead:=false
 var dimension = Events.Dimension.SPECTRAL
 
+var object
+	
+		
 
 func _ready():
 
@@ -237,11 +240,6 @@ func set_collision_enabled(val):
 		collision_layer=0
 
 
-	
-
-
-
-
 func stop_animation():
 	sprite.playing=false
 
@@ -264,5 +262,13 @@ func _on_timer_fs_timeout():
 	can_play_footstep=true
 
 
-			
+func set_object(_obj):
+	object = _obj
 	
+func unset_object(_obj):
+	if object == _obj:
+		object = null
+
+func on_environment_damage():
+	if dimension == Events.Dimension.MATERIAL:
+		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
