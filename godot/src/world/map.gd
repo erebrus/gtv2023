@@ -19,8 +19,8 @@ func _on_dimension_changed(_dimension):
 		$TileMap.tile_set = SPECTRAL_TS
 	else:
 		$TileMap.tile_set = MATERIAL_TS
-	if dimension == Events.Dimension.MATERIAL:
-		$AnimationPlayer.play("to_material")
-	else:
-		$AnimationPlayer.play("to_spectral")
+#	if dimension == Events.Dimension.MATERIAL:
+#		$AnimationPlayer.play("to_material")
+#	else:
+#		$AnimationPlayer.play("to_spectral")
 #

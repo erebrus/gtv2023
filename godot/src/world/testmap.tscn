@@ -43,13 +43,15 @@ centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="BackgroundHill" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("3_mnlti")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1, 0)
+motion_scale = Vector2(2, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Midground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("4_fs6gn")
@@ -78,6 +80,9 @@ position = Vector2(1052, 169)
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
 position = Vector2(856, 940)
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+
 [node name="spectral_canvas" type="CanvasLayer" parent="."]
 visible = false
 
@@ -103,7 +108,8 @@ metadata/_edit_lock_ = true
 layer = 100
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
-motion_scale = Vector2(1, 0)
+motion_scale = Vector2(3, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="GraveyardFence" type="Sprite2D" parent="Foreground/ParallaxLayer"]
 texture = ExtResource("9_sumg3")

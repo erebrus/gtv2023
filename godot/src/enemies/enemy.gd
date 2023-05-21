@@ -51,7 +51,7 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = true
 			$attack_box.monitoring = true
 			sprite.visible = true
-			if get_node("Polygon2D"):
+			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = true
 			soul_trail.emitting = false
 		else:
@@ -60,7 +60,7 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
 			sprite.visible = false
-			if get_node("Polygon2D"):
+			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = false
 	else:
 		soul_trail.emitting = false
@@ -69,14 +69,14 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
 			sprite.visible = true
-			if get_node("Polygon2D"):
+			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = true
 		else:
 			collision_layer=Globals.Layer.ENEMY
 			$detection_box.monitoring = true
 			$attack_box.monitoring = true
 			sprite.visible = false
-			if get_node("Polygon2D"):
+			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = false
 			
 
