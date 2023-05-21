@@ -465,6 +465,8 @@ next_state = NodePath("../patrol")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("4_wed05")
+step_duration = null
+step_pause = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1

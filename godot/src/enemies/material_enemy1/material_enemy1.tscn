@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=36 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
@@ -11,8 +11,15 @@
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_lu4oo"]
 [ext_resource type="Texture2D" uid="uid://clgm17fqtmk2c" path="res://assets/gfx/enemies/material_enemy1/boneidlenew2.png" id="6_ga2rx"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_k7j68"]
+[ext_resource type="Texture2D" uid="uid://bh5yts4lfceme" path="res://assets/gfx/enemies/material_enemy1/bonesmove1.png" id="7_vga41"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_ynp30"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_tuvnp"]
+[ext_resource type="Texture2D" uid="uid://bx8b7wt0mx0gm" path="res://assets/gfx/enemies/material_enemy1/bonesmove2.png" id="8_uxlxs"]
+[ext_resource type="Texture2D" uid="uid://dg7degtpyq2mx" path="res://assets/gfx/enemies/material_enemy1/bonesmove3.png" id="9_40glm"]
+[ext_resource type="Texture2D" uid="uid://de321mmr1exq5" path="res://assets/gfx/enemies/material_enemy1/bonesmove4.png" id="10_31ovj"]
+[ext_resource type="Texture2D" uid="uid://cu1s6egpoway1" path="res://assets/gfx/enemies/material_enemy1/bonesmove5.png" id="11_o7psq"]
+[ext_resource type="Texture2D" uid="uid://c6lbfdi0u88yk" path="res://assets/gfx/enemies/material_enemy1/bonesmove6.png" id="12_kssaq"]
+[ext_resource type="Texture2D" uid="uid://b3hocfuu8qyog" path="res://assets/gfx/enemies/material_enemy1/bonesmove7.png" id="13_i023c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvqvl"]
 radius = 16.0
@@ -69,25 +76,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_57cod")
+"texture": ExtResource("7_vga41")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ga2rx")
+"texture": ExtResource("8_uxlxs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_qno4h")
+"texture": ExtResource("9_40glm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_anbhd")
+"texture": ExtResource("10_31ovj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_qno4h")
+"texture": ExtResource("11_o7psq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ga2rx")
+"texture": ExtResource("12_kssaq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_57cod")
+"texture": ExtResource("13_i023c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i023c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i023c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i023c")
 }],
 "loop": true,
 "name": &"move",
@@ -219,7 +235,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_bmt4s"]
 resource_name = "move"
-length = 0.5
+length = 1.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -473,8 +489,8 @@ shape = SubResource("CapsuleShape2D_mvqvl")
 position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
-frame_progress = 0.624639
+animation = &"move"
+frame_progress = 0.00858937
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -504,7 +520,6 @@ next_state = NodePath("")
 
 [node name="lookout" type="Node" parent="xsm"]
 script = ExtResource("3_yq5hj")
-look_time = 10.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "idle"
 anim_times_to_play = 1
@@ -517,6 +532,8 @@ next_state = NodePath("../patrol")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("4_u65s2")
+step_duration = 0.875
+step_pause = 0.375
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1
