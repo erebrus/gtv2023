@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_3np8i"]
 [ext_resource type="TileSet" uid="uid://c5bqty4nuyf2h" path="res://src/world/ori_tileset.tres" id="1_ad0xi"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_3fbet"]
-[ext_resource type="PackedScene" uid="uid://b6p1pvfqnrqsx" path="res://src/enemies/enemy_template.tscn" id="3_s4jsy"]
 [ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="4_7oka1"]
+[ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_y11la"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="6_miiar"]
 [ext_resource type="Shader" path="res://src/world/fog.gdshader" id="7_optjq"]
 
@@ -32,17 +32,18 @@ tile_set = ExtResource("1_ad0xi")
 format = 2
 layer_0/tile_data = PackedInt32Array(393217, 196608, 1, 393218, 196608, 1, 393219, 196608, 1, 393220, 196608, 1, 393221, 196608, 1, 393222, 196608, 1, 393223, 196608, 1, 393224, 196608, 1, 393225, 196608, 1, 393226, 196608, 1, 393227, 262144, 1, 327691, 131072, 2, 262155, 131072, 1, 262156, 196608, 1, 262157, 196608, 1, 262158, 262144, 1, 196622, 131072, 1, 196623, 196608, 1, 196624, 196608, 1, 196625, 131072, 65537, 393216, 262144, 65537, 327680, 131072, 65537, 393215, 196608, 1, 393214, 196608, 1, 196609, 65536, 0, 196610, 131072, 0, 196611, 196608, 0, 196612, 262144, 0, 65541, 65536, 0, 65542, 131072, 0, 65543, 196608, 0, 65544, 262144, 0, 262151, 65536, 0, 262152, 131072, 0, 262153, 196608, 0, 262154, 262144, 0)
 
-[node name="enemy_template2" parent="TileMap" instance=ExtResource("3_s4jsy")]
-position = Vector2(1052, 166)
-
 [node name="skull" parent="TileMap" instance=ExtResource("4_7oka1")]
 position = Vector2(320, 460)
 dimension = 1
+
+[node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
+position = Vector2(1052, 169)
 
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
 position = Vector2(856, 940)
 
 [node name="spectral_canvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Tint" type="ColorRect" parent="spectral_canvas"]
 material = SubResource("ShaderMaterial_8vrrl")
