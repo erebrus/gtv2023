@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=29 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
 [ext_resource type="Texture2D" uid="uid://bxwibsw1f65os" path="res://assets/gfx/enemies/material_enemy1/bonesidle1.png" id="2_v7d85"]
-[ext_resource type="Texture2D" uid="uid://co1u34mhcxbs3" path="res://assets/gfx/enemies/material_enemy1/bonesidle2.png" id="3_trn7a"]
+[ext_resource type="Texture2D" uid="uid://cry6hojurp4f7" path="res://assets/gfx/enemies/material_enemy1/boneidlenew1.png" id="3_57cod"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_yq5hj"]
-[ext_resource type="Texture2D" uid="uid://c7y4iakngt2mg" path="res://assets/gfx/enemies/material_enemy1/bonesidle3.png" id="4_kmv6f"]
+[ext_resource type="Texture2D" uid="uid://duns8ori7tqk7" path="res://assets/gfx/enemies/material_enemy1/boneidlenew3.png" id="4_qno4h"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_u65s2"]
+[ext_resource type="Texture2D" uid="uid://7mmdje667ojg" path="res://assets/gfx/enemies/material_enemy1/boneidlenew4.png" id="5_anbhd"]
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_lu4oo"]
+[ext_resource type="Texture2D" uid="uid://clgm17fqtmk2c" path="res://assets/gfx/enemies/material_enemy1/boneidlenew2.png" id="6_ga2rx"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_k7j68"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_ynp30"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_tuvnp"]
@@ -44,19 +46,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v7d85")
+"texture": ExtResource("3_57cod")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_trn7a")
+"texture": ExtResource("4_qno4h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kmv6f")
+"texture": ExtResource("5_anbhd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_trn7a")
+"texture": ExtResource("4_qno4h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v7d85")
+"texture": ExtResource("6_ga2rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_57cod")
 }],
 "loop": true,
 "name": &"idle",
@@ -64,19 +69,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v7d85")
+"texture": ExtResource("3_57cod")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_trn7a")
+"texture": ExtResource("6_ga2rx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kmv6f")
+"texture": ExtResource("4_qno4h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_trn7a")
+"texture": ExtResource("5_anbhd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v7d85")
+"texture": ExtResource("4_qno4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ga2rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_57cod")
 }],
 "loop": true,
 "name": &"move",
@@ -462,8 +473,8 @@ shape = SubResource("CapsuleShape2D_mvqvl")
 position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"idle"
-frame_progress = 0.724466
+animation = &"attack"
+frame_progress = 0.624639
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
