@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const multi_state_anims = ["idle", "move", "jump", "fall", "hurt"]
+const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
 #const fixed_anims = ["hurt","death"]
 signal health_changed
 signal fired
@@ -31,10 +31,10 @@ var immune := false
 @onready var controller = $platform_controller
 @onready var direction_player:AnimationPlayer = $DirAnimationPlayer
 @onready var lives:int = max_lives
-#@onready var reload_timer = $reload_timer
+@onready var reload_timer = $reload_timer
 @onready var climb_rc = $climb_rc
 @onready var xsm = $xsm
-
+@onready var attack_box =$attack_box
 
 @onready var timer_fs = $sfx/timer_fs
 @onready var sfx_hurt := $sfx/hurt
@@ -42,6 +42,7 @@ var immune := false
 @onready var sfx_run := $sfx/run
 @onready var sfx_jump := $sfx/jump
 @onready var sfx_landing := $sfx/land
+@onready var sfx_attack := $sfx/attack
 
 
 var can_play_footstep:bool = true
@@ -272,3 +273,15 @@ func unset_object(_obj):
 func on_environment_damage():
 	if dimension == Events.Dimension.MATERIAL:
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
+	
+func set_attack_box_enabled(val:bool)->void:
+	#attack_box.monitoring = val
+	$attack_box/CollisionShape2D.disabled = not val
+
+func _on_attack_box_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(global_position, attack_damage, attack_knockback)
+
+
+func _on_reload_timer_timeout():
+	can_attack = true

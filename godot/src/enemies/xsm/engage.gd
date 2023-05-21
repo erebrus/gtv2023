@@ -31,9 +31,6 @@ func _on_update(_delta: float) -> void:
 		return
 	
 	owner.handle_run_sfx()
-	var player=owner	
-	var tpos = owner.target.global_position.x 
-	var ppos = owner.global_position
 	var target_direction = Vector2(sign(owner.target.global_position.x - owner.global_position.x),0)
 	#if target_direction != owner.get_facing_direction()
 	

@@ -37,7 +37,7 @@ position = Vector2(320, 460)
 dimension = 1
 
 [node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
-position = Vector2(1052, 169)
+position = Vector2(1212, 969)
 
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
 position = Vector2(856, 940)

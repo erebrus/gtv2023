@@ -1,7 +1,7 @@
 @tool
 extends StateAnimation
 
-
+@export var attack_delay:float=.2
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -19,33 +19,24 @@ func _on_anim_finished(_name: String) -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	if owner.controller:
-		owner.controller.air_jump_count = 0
 
+	owner.velocity.x=0
+	owner.sfx_attack.play()
+	if attack_delay>0:
+		add_timer("attack_timer", attack_delay)
+	else:
+		owner.set_attack_box_enabled(true)
+	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
-	pass
+	owner.get_node("attack_pol").visible=true
 
 
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if owner.disabled:
-		return
-	#player isn't moving
-	if abs(input.x) >.1:
-		change_state("move")
-		return
-
-	owner.play_animation("idle")
-	owner.velocity.x=0
-#	Logger.trace("idle x mov")
-
-	if owner.controller.processing_jump:	
-		Logger.debug("Press jump in idle")
-		owner.controller.do_jump()
+	pass		
 
 
 # This function is called each frame after all the update calls
@@ -63,8 +54,9 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	pass
-
+	owner.set_attack_box_enabled(false)
+	owner.reload_timer.start()
+	owner.get_node("attack_pol").visible=false
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
@@ -73,5 +65,6 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	pass
+	owner.set_attack_box_enabled(true)
 
+	
