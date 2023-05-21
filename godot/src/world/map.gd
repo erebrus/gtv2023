@@ -3,7 +3,7 @@ extends Node2D
 const MATERIAL_TS = preload("res://src/world/cemetery_tileset_material.tres")
 const SPECTRAL_TS = preload("res://src/world/cemetery_tileset_spectral.tres")
 var dimension = Events.Dimension.SPECTRAL
-@onready var spectral_canvas = $spectral_canvas
+@onready var spectral_canvas = $ParallaxBackground/SpectralCanvas
 
 func _ready():
 	Events.dimension_changed.emit(dimension)
