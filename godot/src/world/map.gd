@@ -1,6 +1,6 @@
 extends Node2D
 
-var dimension = Events.Dimension.SPECTRAL
+@export var dimension = Events.Dimension.SPECTRAL
 @onready var spectral_canvas = $spectral_canvas
 
 func _ready():

@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcvs8tw2naixi"]
+[gd_scene load_steps=18 format=3 uid="uid://ctuun04cj8iuy"]
 
-[ext_resource type="Script" path="res://src/world/map.gd" id="1_1ngsp"]
-[ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="1_f13qh"]
-[ext_resource type="PackedScene" uid="uid://b6p1pvfqnrqsx" path="res://src/enemies/enemy_template.tscn" id="1_m6ipq"]
-[ext_resource type="Shader" path="res://src/world/tint.gdshader" id="4_dfqcb"]
-[ext_resource type="Shader" path="res://src/world/fog.gdshader" id="5_haqw1"]
-[ext_resource type="Texture2D" uid="uid://drtvrqvlnva7b" path="res://assets/gfx/world/tiles.png" id="6_o0k6x"]
-[ext_resource type="PackedScene" uid="uid://ctuun04cj8iuy" path="res://src/portal/portal.tscn" id="7_q5dtc"]
+[ext_resource type="Texture2D" uid="uid://drtvrqvlnva7b" path="res://assets/gfx/world/tiles.png" id="2_fvwr5"]
+[ext_resource type="Shader" path="res://src/portal/clip_to_texture.gdshader" id="2_pw67u"]
+[ext_resource type="Texture2D" uid="uid://c1vope0y2evas" path="res://src/portal/mask.png" id="3_5utob"]
+[ext_resource type="PackedScene" uid="uid://b6p1pvfqnrqsx" path="res://src/enemies/enemy_template.tscn" id="3_pnkvk"]
+[ext_resource type="Shader" path="res://src/world/tint.gdshader" id="4_3xgrl"]
+[ext_resource type="Shader" path="res://src/world/fog.gdshader" id="5_p4033"]
+[ext_resource type="Script" path="res://src/portal/Mask.gd" id="7_m545r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frhgn"]
-texture = ExtResource("6_o0k6x")
+texture = ExtResource("2_fvwr5")
 texture_region_size = Vector2i(160, 160)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -78,13 +78,13 @@ texture_region_size = Vector2i(160, 160)
 7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:2/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_2b05c"]
+[sub_resource type="TileSet" id="TileSet_h0qxe"]
 tile_size = Vector2i(160, 160)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_frhgn")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lpy7"]
-shader = ExtResource("4_dfqcb")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rodhj"]
+shader = ExtResource("4_3xgrl")
 shader_parameter/brightness = 0.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
@@ -94,8 +94,8 @@ shader_parameter/blueVal = 1.0
 shader_parameter/tint_color = Color(0.337255, 0.658824, 0.941176, 1)
 shader_parameter/tint_effect_factor = 0.7
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cu8b"]
-shader = ExtResource("5_haqw1")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6cde"]
+shader = ExtResource("5_p4033")
 shader_parameter/ori_color = Color(0, 0, 0, 1)
 shader_parameter/OCTAVES = 7
 
@@ -189,51 +189,63 @@ _data = {
 "to_spectral": SubResource("Animation_t88b3")
 }
 
-[node name="example" type="Node2D"]
-script = ExtResource("1_1ngsp")
+[sub_resource type="ViewportTexture" id="ViewportTexture_skggv"]
+viewport_path = NodePath("Content")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_2b05c")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_siksl"]
+resource_local_to_scene = true
+shader = ExtResource("2_pw67u")
+shader_parameter/image = SubResource("ViewportTexture_skggv")
+
+[node name="Portal" type="Node2D"]
+
+[node name="Content" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+
+[node name="TileMap2" type="TileMap" parent="Content"]
+position = Vector2(0, -1)
+tile_set = SubResource("TileSet_h0qxe")
 format = 2
 layer_0/tile_data = PackedInt32Array(131072, 65536, 0, 131073, 131072, 0, 65540, 65536, 0, 65541, 131072, 0, 65542, 196608, 0, 65543, 262144, 0, 262144, 196608, 1, 262145, 196608, 1, 262146, 196608, 1, 262147, 196608, 1, 262148, 196608, 1, 262149, 196608, 1, 262150, 196608, 1, 262151, 262144, 1, 196615, 131072, 2, 131079, 131072, 1, 196611, 65536, 0, 196612, 131072, 0, 196613, 196608, 0, 196614, 262144, 0, 131074, 262144, 0, 327679, 262144, 65537, 262143, 131072, 65537, 131080, 196608, 1, 131081, 196608, 1, 131082, 196608, 1, 262142, 196608, 1, 262141, 196608, 1)
 
-[node name="player" parent="." instance=ExtResource("1_f13qh")]
-position = Vector2(554, 662)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-enabled = false
-limit_bottom = 760
-
-[node name="enemy_template" parent="." instance=ExtResource("1_m6ipq")]
+[node name="enemy_template3" parent="Content" instance=ExtResource("3_pnkvk")]
 position = Vector2(957, 171)
+dimension = 1
 
-[node name="enemy_template2" parent="." instance=ExtResource("1_m6ipq")]
+[node name="enemy_template4" parent="Content" instance=ExtResource("3_pnkvk")]
 position = Vector2(211, 350)
+dimension = 1
 
-[node name="spectral_canvas" type="CanvasLayer" parent="."]
+[node name="spectral_canvas2" type="CanvasLayer" parent="Content"]
 
-[node name="Tint" type="ColorRect" parent="spectral_canvas"]
-material = SubResource("ShaderMaterial_2lpy7")
+[node name="Tint" type="ColorRect" parent="Content/spectral_canvas2"]
+material = SubResource("ShaderMaterial_rodhj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Fog" type="ColorRect" parent="spectral_canvas"]
-material = SubResource("ShaderMaterial_7cu8b")
+[node name="Fog" type="ColorRect" parent="Content/spectral_canvas2"]
+visible = false
+material = SubResource("ShaderMaterial_q6cde")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Content"]
+root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_16wj7")
 }
 
-[node name="PortalCanvas" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Portal" parent="PortalCanvas" instance=ExtResource("7_q5dtc")]
+[node name="Mask" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_siksl")
+position = Vector2(823, 244)
+texture = ExtResource("3_5utob")
+script = ExtResource("7_m545r")
