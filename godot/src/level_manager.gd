@@ -3,7 +3,7 @@ class_name LevelManager extends Node
 const START_GAME = 2
 
 var levels:Array[PackedScene] = [
-	preload("res://src/world/example.tscn"),
+	preload("res://src/world/testmap.tscn"),
 	
 	
 ]

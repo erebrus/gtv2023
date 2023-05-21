@@ -1,25 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=24 format=3 uid="uid://bh76ivmnj2otd"]
 
-[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
-[ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
-[ext_resource type="Texture2D" uid="uid://bxwibsw1f65os" path="res://assets/gfx/enemies/material_enemy1/bonesidle1.png" id="2_v7d85"]
-[ext_resource type="Texture2D" uid="uid://cry6hojurp4f7" path="res://assets/gfx/enemies/material_enemy1/boneidlenew1.png" id="3_57cod"]
-[ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_yq5hj"]
-[ext_resource type="Texture2D" uid="uid://duns8ori7tqk7" path="res://assets/gfx/enemies/material_enemy1/boneidlenew3.png" id="4_qno4h"]
-[ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_u65s2"]
-[ext_resource type="Texture2D" uid="uid://7mmdje667ojg" path="res://assets/gfx/enemies/material_enemy1/boneidlenew4.png" id="5_anbhd"]
-[ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_lu4oo"]
-[ext_resource type="Texture2D" uid="uid://clgm17fqtmk2c" path="res://assets/gfx/enemies/material_enemy1/boneidlenew2.png" id="6_ga2rx"]
-[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_k7j68"]
-[ext_resource type="Texture2D" uid="uid://bh5yts4lfceme" path="res://assets/gfx/enemies/material_enemy1/bonesmove1.png" id="7_vga41"]
-[ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_ynp30"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_tuvnp"]
-[ext_resource type="Texture2D" uid="uid://bx8b7wt0mx0gm" path="res://assets/gfx/enemies/material_enemy1/bonesmove2.png" id="8_uxlxs"]
-[ext_resource type="Texture2D" uid="uid://dg7degtpyq2mx" path="res://assets/gfx/enemies/material_enemy1/bonesmove3.png" id="9_40glm"]
-[ext_resource type="Texture2D" uid="uid://de321mmr1exq5" path="res://assets/gfx/enemies/material_enemy1/bonesmove4.png" id="10_31ovj"]
-[ext_resource type="Texture2D" uid="uid://cu1s6egpoway1" path="res://assets/gfx/enemies/material_enemy1/bonesmove5.png" id="11_o7psq"]
-[ext_resource type="Texture2D" uid="uid://c6lbfdi0u88yk" path="res://assets/gfx/enemies/material_enemy1/bonesmove6.png" id="12_kssaq"]
-[ext_resource type="Texture2D" uid="uid://b3hocfuu8qyog" path="res://assets/gfx/enemies/material_enemy1/bonesmove7.png" id="13_i023c"]
+[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ykqge"]
+[ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_w7wku"]
+[ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_1fs5o"]
+[ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_6vfad"]
+[ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_4il6j"]
+[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_nrci0"]
+[ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_vwu8k"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_yhxij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvqvl"]
 radius = 16.0
@@ -27,87 +15,30 @@ height = 128.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dok3v"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v7d85")
-}],
+"frames": [],
 "loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v7d85")
-}],
+"frames": [],
 "loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_v7d85")
-}],
+"frames": [],
 "loop": true,
 "name": &"hurt",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_57cod")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_qno4h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_anbhd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_qno4h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ga2rx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_57cod")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_vga41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_uxlxs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_40glm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_31ovj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_o7psq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_kssaq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_i023c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_i023c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_i023c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_i023c")
-}],
+"frames": [],
 "loop": true,
 "name": &"move",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7jm5"]
@@ -235,7 +166,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_bmt4s"]
 resource_name = "move"
-length = 1.25
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -474,23 +405,25 @@ size = Vector2(384, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ib23v"]
 size = Vector2(64, 96)
 
-[node name="skull" type="CharacterBody2D" groups=["enemy"]]
+[node name="enemy_template" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
-script = ExtResource("1_qwmd8")
+script = ExtResource("1_ykqge")
 normal_speed = 70.0
 engage_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_mvqvl")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -96)
-scale = Vector2(0.5, 0.5)
+visible = false
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"move"
-frame_progress = 0.00858937
+animation = &"death"
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0.270588, 0.270588, 1)
+polygon = PackedVector2Array(16, 0, 16, -96, 0, -128, -16, -96, -16, 0)
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -510,7 +443,7 @@ libraries = {
 }
 
 [node name="xsm" type="Node" parent="."]
-script = ExtResource("2_6g1pl")
+script = ExtResource("2_w7wku")
 history_size = 0
 disabled = false
 debug_mode = false
@@ -519,46 +452,37 @@ timed = false
 next_state = NodePath("")
 
 [node name="lookout" type="Node" parent="xsm"]
-script = ExtResource("3_yq5hj")
-look_time = 10.0
+script = ExtResource("3_1fs5o")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "idle"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath(".")
+next_state = NodePath("")
 
 [node name="patrol" type="Node" parent="xsm"]
-script = ExtResource("4_u65s2")
-step_duration = 0.875
-step_pause = 0.375
+script = ExtResource("4_6vfad")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "move"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath(".")
+next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
-script = ExtResource("5_lu4oo")
+script = ExtResource("5_4il6j")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "move"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
-script = ExtResource("6_k7j68")
+script = ExtResource("6_nrci0")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -567,10 +491,10 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
-script = ExtResource("7_ynp30")
+script = ExtResource("7_vwu8k")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "death"
 anim_times_to_play = 1
@@ -579,19 +503,19 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("8_tuvnp")
+script = ExtResource("8_yhxij")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
-on_anim_finished = 4
+on_anim_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="sfx" type="Node2D" parent="."]
 

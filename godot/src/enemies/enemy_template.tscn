@@ -454,40 +454,32 @@ next_state = NodePath("")
 [node name="lookout" type="Node" parent="xsm"]
 script = ExtResource("3_3tunv")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "idle"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("4_wed05")
-step_duration = null
-step_pause = null
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "move"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("5_cevxk")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "move"
-anim_times_to_play = 1
-on_anim_finished = 0
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_543yc")
@@ -499,7 +491,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("8_lnous")
@@ -511,19 +503,19 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("2_1w0tc")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
-on_anim_finished = 4
+on_anim_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="sfx" type="Node2D" parent="."]
 
