@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cypxnmwh6rjeq"]
+[gd_scene load_steps=3 format=3 uid="uid://cyqkaxflkek3u"]
 
 [ext_resource type="Script" path="res://src/globals.gd" id="1_esr3s"]
 [ext_resource type="Script" path="res://src/level_manager.gd" id="2_lpboo"]
@@ -10,6 +10,3 @@ script = ExtResource("1_esr3s")
 script = ExtResource("2_lpboo")
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-volume_db = -15.0
-
-[connection signal="finished" from="music" to="." method="_on_music_finished"]

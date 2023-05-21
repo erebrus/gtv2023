@@ -35,7 +35,7 @@ func _after_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	
 	if owner.is_on_wall() and not owner.is_on_floor()\
-		and owner.dimension == Globals.Dimension.MATERIAL and owner.controller.can_climb:
+		and owner.dimension == Events.Dimension.MATERIAL and owner.controller.can_climb:
 			change_state("climb")
 			return
 		

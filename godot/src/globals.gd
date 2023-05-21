@@ -1,7 +1,8 @@
 extends Node
 
 enum GameLogLevel {INFO, WARNING, ALERT}
-enum Dimension{NONE, MATERIAL, SPECTRAL, BOTH=4}
+
+enum Layer {WORLD = 1, PLAYER = 16, ENEMY = 32}
 
 var master_volume:float = 100
 var music_volume:float = 100
@@ -11,6 +12,7 @@ const GameDataPath = "user://conf.cfg"
 var config:ConfigFile
 
 var debug_build := false
+
 
 
 const MENU_SCREEN = "res://src/menu/menu.tscn"

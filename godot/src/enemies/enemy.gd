@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 
-@export var score := 500
+@export var souls:float = 100
 @export var max_hp:int = 50
 @export var normal_speed:float = 50
 @export var engage_speed:float = 200
 @export var  max_accel:float = 10.0
 @export var attack_damage:float = 25
 @export var knockback:float = 50
+@export var dimension: Events.Dimension = Events.Dimension.SPECTRAL
 
 
 var desired_velocity:=Vector2()
@@ -29,13 +30,51 @@ var can_play_footstep:=true
 @onready var sfx_hurt = $sfx/hurt
 @onready var sfx_death = $sfx/death
 @onready var sfx_attack = $sfx/attack
-
+@onready var soul_trail = $soul_trail
 
 
 @onready var original_position:Vector2 = global_position
 var dead := false
 const G:float = 1000
 var in_animation:bool = false
+
+func _ready()->void:
+	Events.dimension_changed.connect(_on_dimension_changed)
+
+
+func _on_dimension_changed(_dimension)->void:
+	#TODO refactor
+	if dimension == Events.Dimension.MATERIAL:
+		if _dimension == Events.Dimension.MATERIAL:
+			collision_layer=Globals.Layer.ENEMY
+			$detection_box.monitoring = true
+			$attack_box.monitoring = true
+			sprite.visible = true
+			$Polygon2D.visible = true
+			soul_trail.emitting = false
+		else:
+			soul_trail.emitting = true
+			collision_layer=0
+			$detection_box.monitoring = false
+			$attack_box.monitoring = false
+			sprite.visible = false
+			$Polygon2D.visible = false
+	else:
+		soul_trail.emitting = false
+		if _dimension == Events.Dimension.SPECTRAL:
+			collision_layer=0
+			$detection_box.monitoring = false
+			$attack_box.monitoring = false
+			sprite.visible = true
+			$Polygon2D.visible = true
+		else:
+			collision_layer=Globals.Layer.ENEMY
+			$detection_box.monitoring = true
+			$attack_box.monitoring = true
+			sprite.visible = false
+			$Polygon2D.visible = false
+			
+
 
 func get_facing_direction()->Vector2:
 

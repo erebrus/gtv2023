@@ -214,6 +214,24 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_arfpm"]
+resource_name = "decay"
+length = 0.75
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["decay"],
+"method": &"play_animation"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_v56j6"]
 resource_name = "fall"
 length = 0.1
@@ -286,24 +304,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_db474"]
-resource_name = "move"
-length = 0.75
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["move"],
-"method": &"play_animation"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_3461l"]
 resource_name = "materialise"
 length = 0.75
@@ -322,8 +322,8 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_arfpm"]
-resource_name = "decay"
+[sub_resource type="Animation" id="Animation_db474"]
+resource_name = "move"
 length = 0.75
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -335,7 +335,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["decay"],
+"args": ["move"],
 "method": &"play_animation"
 }]
 }
@@ -449,13 +449,15 @@ collision_layer = 16
 script = ExtResource("1_kqnht")
 
 [node name="platform_controller" parent="." instance=ExtResource("1_gtfn5")]
-max_accel = 80.0
-dash_boost = 900.0
+max_speed = 400.0
+max_accel = 100.0
+max_deccel = 100.0
+dash_boost = 1200.0
 dash_hangtime = 0.4
 h = 400.0
-damping_speed = 250.0
-inertia_factor = 0.8
-air_accel_factor = 0.1
+damping_speed = 180.0
+inertia_factor = 0.5
+air_accel_factor = 0.5
 coyote_time = 0.1
 jump_buffer = 0.1
 allow_wall_jump = true
@@ -570,7 +572,7 @@ script = ExtResource("12_5udvk")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
-on_anim_finished = 0
+on_anim_finished = 4
 disabled = false
 debug_mode = false
 target_path = NodePath("")

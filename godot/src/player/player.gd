@@ -47,7 +47,7 @@ var immune := false
 var can_play_footstep:bool = true
 
 var dead:=false
-var dimension = Globals.Dimension.SPECTRAL
+var dimension = Events.Dimension.SPECTRAL
 
 
 func _ready():
@@ -84,7 +84,7 @@ func update_sprite():
 
 func play_animation(anim:String):
 	if anim in multi_state_anims:
-		if dimension ==Globals.Dimension.SPECTRAL:
+		if dimension ==Events.Dimension.SPECTRAL:
 			anim += "_spectral"
 	if not sprite.is_playing() or sprite.animation != anim:
 		sprite.play(anim)
@@ -97,17 +97,17 @@ func control(_delta:float) -> void:
 		Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
 	
 	if Input.is_action_just_pressed("shift"):
-		if dimension == Globals.Dimension.MATERIAL:
-			Events.dimension_changed.emit(Globals.Dimension.SPECTRAL)
+		if dimension == Events.Dimension.MATERIAL:
+			Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
 		else:
-			Events.dimension_changed.emit(Globals.Dimension.MATERIAL)
+			Events.dimension_changed.emit(Events.Dimension.MATERIAL)
 
 
 func _on_dimension_changed(_dimension):
 	if _dimension == dimension:
 		return
 	dimension = _dimension
-	if _dimension == Globals.Dimension.MATERIAL:
+	if _dimension == Events.Dimension.MATERIAL:
 		xsm.change_state("materialise")		
 	else:
 		xsm.change_state("decay")

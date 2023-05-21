@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6p1pvfqnrqsx"]
+[gd_scene load_steps=24 format=3 uid="uid://b6p1pvfqnrqsx"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_2enhi"]
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ry4de"]
@@ -40,6 +40,17 @@ animations = [{
 "name": &"move",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7jm5"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
@@ -405,12 +416,21 @@ position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_mvqvl")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_dok3v")
 animation = &"death"
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(1, 0.270588, 0.270588, 1)
 polygon = PackedVector2Array(16, 0, 16, -96, 0, -128, -16, -96, -16, 0)
+
+[node name="soul_trail" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_y7jm5")
+lifetime = 4.0
+randomness = 0.43
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

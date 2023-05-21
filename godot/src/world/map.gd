@@ -1,6 +1,6 @@
 extends Node2D
 
-var dimension = Globals.Dimension.SPECTRAL
+var dimension = Events.Dimension.SPECTRAL
 @onready var spectral_canvas = $spectral_canvas
 
 func _ready():
@@ -12,8 +12,8 @@ func _on_dimension_changed(_dimension):
 	if dimension == _dimension:
 		return
 	dimension = _dimension
-	spectral_canvas.visible = dimension == Globals.Dimension.SPECTRAL
-#	if dimension == Globals.Dimension.MATERIAL:
+	spectral_canvas.visible = dimension == Events.Dimension.SPECTRAL
+#	if dimension == Events.Dimension.MATERIAL:
 #		$AnimationPlayer.play("to_material")
 #	else:
 #		$AnimationPlayer.play("to_spectral")
