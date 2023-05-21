@@ -10,17 +10,17 @@ func _ready():
 	Events.dimension_changed.connect(_on_dimension_changed)
 	
 
-func _on_dimension_changed(_dimension):	
+func _on_dimension_changed(_dimension):
 	if dimension == _dimension:
 		return
 	dimension = _dimension
 	spectral_canvas.visible = dimension == Events.Dimension.SPECTRAL
-#	if dimension == Events.Dimension.MATERIAL:
-#		$TileMap.tile_set = SPECTRAL_TS
-#	else:
-#		$TileMap.tile_set = MATERIAL_TS
-#	if dimension == Events.Dimension.MATERIAL:
-#		$AnimationPlayer.play("to_material")
-#	else:
-#		$AnimationPlayer.play("to_spectral")
+	if dimension == Events.Dimension.MATERIAL:
+		$TileMap.tile_set = SPECTRAL_TS
+	else:
+		$TileMap.tile_set = MATERIAL_TS
+	if dimension == Events.Dimension.MATERIAL:
+		$AnimationPlayer.play("to_material")
+	else:
+		$AnimationPlayer.play("to_spectral")
 #
