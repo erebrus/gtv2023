@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcvs8tw2naixi"]
+[gd_scene load_steps=18 format=3 uid="uid://dcvs8tw2naixi"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_1ngsp"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="1_f13qh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="4_dfqcb"]
 [ext_resource type="Shader" path="res://src/world/fog.gdshader" id="5_haqw1"]
 [ext_resource type="Texture2D" uid="uid://drtvrqvlnva7b" path="res://assets/gfx/world/tiles.png" id="6_o0k6x"]
+[ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="7_kcvfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypta6"]
 size = Vector2(1000, 40)
@@ -258,10 +259,6 @@ limit_bottom = 760
 [node name="enemy_template" parent="." instance=ExtResource("1_m6ipq")]
 position = Vector2(957, 171)
 
-[node name="enemy_template2" parent="." instance=ExtResource("1_m6ipq")]
-position = Vector2(211, 350)
-dimension = 1
-
 [node name="spectral_canvas" type="CanvasLayer" parent="."]
 
 [node name="Tint" type="ColorRect" parent="spectral_canvas"]
@@ -284,3 +281,6 @@ grow_vertical = 2
 libraries = {
 "": SubResource("AnimationLibrary_16wj7")
 }
+
+[node name="enemy_template2" parent="." instance=ExtResource("7_kcvfq")]
+position = Vector2(262, 357)

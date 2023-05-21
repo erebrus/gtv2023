@@ -40,7 +40,8 @@ var in_animation:bool = false
 
 func _ready()->void:
 	Events.dimension_changed.connect(_on_dimension_changed)
-
+	$sprite.play("idle")
+	
 
 func _on_dimension_changed(_dimension)->void:
 	#TODO refactor
@@ -50,7 +51,8 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = true
 			$attack_box.monitoring = true
 			sprite.visible = true
-			$Polygon2D.visible = true
+			if get_node("Polygon2D"):
+				$Polygon2D.visible = true
 			soul_trail.emitting = false
 		else:
 			soul_trail.emitting = true
@@ -58,7 +60,8 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
 			sprite.visible = false
-			$Polygon2D.visible = false
+			if get_node("Polygon2D"):
+				$Polygon2D.visible = false
 	else:
 		soul_trail.emitting = false
 		if _dimension == Events.Dimension.SPECTRAL:
@@ -66,13 +69,15 @@ func _on_dimension_changed(_dimension)->void:
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
 			sprite.visible = true
-			$Polygon2D.visible = true
+			if get_node("Polygon2D"):
+				$Polygon2D.visible = true
 		else:
 			collision_layer=Globals.Layer.ENEMY
 			$detection_box.monitoring = true
 			$attack_box.monitoring = true
 			sprite.visible = false
-			$Polygon2D.visible = false
+			if get_node("Polygon2D"):
+				$Polygon2D.visible = false
 			
 
 
