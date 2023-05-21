@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://crxdydfi47uq2"]
+[gd_scene load_steps=15 format=3 uid="uid://crxdydfi47uq2"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_3np8i"]
+[ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_oiska"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_3fbet"]
+[ext_resource type="Texture2D" uid="uid://5xa7y7bnecv3" path="res://assets/gfx/world/background-hill.png" id="3_mnlti"]
 [ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="4_7oka1"]
+[ext_resource type="Texture2D" uid="uid://dtvlqd24di6fi" path="res://assets/gfx/world/midground.png" id="4_fs6gn"]
+[ext_resource type="Texture2D" uid="uid://cu8bxbbqr48pb" path="res://assets/gfx/world/midground-bigtree.png" id="4_uak06"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_y11la"]
+[ext_resource type="Texture2D" uid="uid://ct4h45eptll00" path="res://assets/gfx/world/midground-graves.png" id="5_oburg"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="6_miiar"]
 [ext_resource type="Shader" path="res://src/world/fog.gdshader" id="7_optjq"]
+[ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="9_sumg3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vrrl"]
 shader = ExtResource("6_miiar")
@@ -25,6 +31,38 @@ shader_parameter/OCTAVES = 4
 
 [node name="testmap" type="Node2D"]
 script = ExtResource("1_3np8i")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="BackgroundMoon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_oiska")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1, 0)
+
+[node name="BackgroundHill" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_mnlti")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1, 0)
+
+[node name="Midground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("4_fs6gn")
+centered = false
+
+[node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("4_uak06")
+centered = false
+
+[node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1140, 0)
+texture = ExtResource("5_oburg")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
@@ -60,3 +98,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="Foreground" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
+motion_scale = Vector2(1, 0)
+
+[node name="GraveyardFence" type="Sprite2D" parent="Foreground/ParallaxLayer"]
+texture = ExtResource("9_sumg3")
+centered = false
