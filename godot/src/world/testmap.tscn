@@ -99,6 +99,7 @@ texture = ExtResource("12_x6ia7")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 101
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
+const SOUL_SCENE=preload("res://src/enemies/soul.tscn")
 
-@export var souls:float = 100
 @export var max_hp:int = 50
 @export var normal_speed:float = 50
 @export var engage_speed:float = 200
@@ -197,6 +197,10 @@ func attack():
 	
 func finish_death():
 	collision_layer=0
+	if dimension == Events.Dimension.SPECTRAL:
+		var soul = SOUL_SCENE.instantiate()
+		get_parent().add_child(soul)
+		soul.global_position = global_position+Vector2(0,-100)
 	visible=false	
 	set_process(false)
 	call_deferred("queue_free")

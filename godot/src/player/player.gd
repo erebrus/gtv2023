@@ -2,15 +2,14 @@ extends CharacterBody2D
 
 
 const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
-#const fixed_anims = ["hurt","death"]
+
 signal health_changed
 signal fired
 signal jump_fired
 
-@export var max_lives:int = 3:
-	set(new_val):
-		max_lives=new_val
-		lives=new_val
+@export var max_energy:float = 100
+@export var energy_decay:float = 5
+@export var decay_threshold:float = 10
 @export  var disabled:bool = false
 @export var recoil_force:float = 400.0
 @export var attack_damage:float = 25.0
@@ -25,12 +24,19 @@ var last_direction:=Vector2.RIGHT
 
 var can_attack := true
 var immune := false
-
+@onready var energy:float = max_energy:
+	set(_energy):
+		energy = _energy
+		Events.soul_meter_changed.emit(energy/max_energy)
+		if energy <= decay_threshold and dimension==Events.Dimension.MATERIAL:
+			shift()
+			return
+			
+	
 @onready var sprite:AnimatedSprite2D = $sprite
 
 @onready var controller = $platform_controller
 @onready var direction_player:AnimationPlayer = $DirAnimationPlayer
-@onready var lives:int = max_lives
 @onready var reload_timer = $reload_timer
 @onready var climb_rc = $climb_rc
 @onready var xsm = $xsm
@@ -93,6 +99,11 @@ func play_animation(anim:String):
 	if not sprite.is_playing() or sprite.animation != anim:
 		sprite.play(anim)
 	
+func shift():
+	if dimension == Events.Dimension.MATERIAL:
+		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
+	else:
+		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
 
 func control(_delta:float) -> void:
 	if in_animation:
@@ -101,10 +112,7 @@ func control(_delta:float) -> void:
 		Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
 	
 	if Input.is_action_just_pressed("shift"):
-		if dimension == Events.Dimension.MATERIAL:
-			Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-		else:
-			Events.dimension_changed.emit(Events.Dimension.MATERIAL)
+		shift()
 
 
 func _on_dimension_changed(_dimension):
@@ -114,7 +122,8 @@ func _on_dimension_changed(_dimension):
 	if _dimension == Events.Dimension.MATERIAL:
 		xsm.change_state("materialise")		
 	else:
-		xsm.change_state("decay")
+		xsm.change_state("decay")		
+		
 		
 	
 func on_dash() -> void:
@@ -152,13 +161,14 @@ func on_landing(_last_vy:float):
 	sfx_landing.play()
 
 func _process(delta: float) -> void:
-	
+	if dimension == Events.Dimension.MATERIAL:
+		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
+
 	control(delta)
 	
 	if not in_animation: # we need the check in case we got into animation in control
 		update_sprite()
 		
-#
 #func environment_death():
 #
 #	#no longer death
@@ -180,11 +190,10 @@ func _process(delta: float) -> void:
 func _on_FootstepTimer_timeout():
 	can_play_footstep=true
 
-
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
 	Logger.debug("player was attacked")
-	lives-=1
+	self.energy = clamp(energy-dmg, 0, max_energy)
 	if not check_for_death():
 		xsm.change_state("hurt")
 	emit_signal("health_changed")
@@ -223,8 +232,8 @@ func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
 	
 func check_for_death():
-	Logger.info("checking death: lives %d" % lives)
-	if lives==0:
+	Logger.info("checking death: energy %2f" % energy)
+	if energy==0:
 		collision_layer=0
 		dead=true
 		xsm.change_state("death")
@@ -285,3 +294,8 @@ func _on_attack_box_body_entered(body):
 
 func _on_reload_timer_timeout():
 	can_attack = true
+
+func consume(soul):
+	self.energy = clamp(energy+ soul.energy, 0, max_energy)
+
+
