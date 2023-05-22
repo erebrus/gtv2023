@@ -464,7 +464,7 @@ shape = SubResource("CapsuleShape2D_v2xlg")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"hurt"
+animation = &"attack"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -531,6 +531,7 @@ next_state = NodePath("")
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_nrci0")
 attack_delay = 0.3
+lunge_distance = 32.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -597,7 +598,6 @@ position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
 collision_mask = 16
 

@@ -560,7 +560,7 @@ polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
 animation = &"hurt_spectral"
-frame_progress = 0.776716
+frame_progress = 0.223669
 
 [node name="xsm" type="Node" parent="."]
 script = ExtResource("3_17k6u")

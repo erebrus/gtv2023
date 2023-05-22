@@ -2,6 +2,7 @@
 extends StateAnimation
 
 @export var attack_delay:float=.2
+@export var lunge_distance:float = 0
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -16,11 +17,18 @@ func _on_anim_finished(_name: String) -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
+	owner.in_animation = true
 
 	owner.desired_velocity.x=0
 	owner.set_attackbox_enabled(true)
-	start_time=Time.get_ticks_msec()
+	start_time=Time.get_ticks_msec()	
 	owner.sfx_attack.play()
+	if lunge_distance > 0 :
+		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		var origin = owner.global_position
+		var d= owner.get_facing_direction()
+		var dest = owner.global_position+Vector2(lunge_distance,20)*owner.get_facing_direction()
+		tween.tween_property(owner, "global_position", dest, .2)
 	add_timer("attack_timer", attack_delay)
 	
 # This function is called just after the state enters
@@ -50,6 +58,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
+	owner.in_animation = false
 	owner.set_attackbox_enabled(false)
 	owner.reload_timer.start()
 

@@ -12,7 +12,7 @@ const SOUL_SCENE=preload("res://src/enemies/soul.tscn")
 
 
 var desired_velocity:=Vector2()
-var direction:int=0
+
 var target
 var can_play_footstep:=true
 @onready var hp:float =max_hp
