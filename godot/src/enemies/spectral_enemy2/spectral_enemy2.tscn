@@ -1,57 +1,60 @@
-[gd_scene load_steps=43 format=3 uid="uid://bh76ivmnj2otd"]
+[gd_scene load_steps=46 format=3 uid="uid://nq706ehk3bgf"]
 
-[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ykqge"]
-[ext_resource type="Texture2D" uid="uid://c2ogmvece2o4s" path="res://assets/gfx/enemies/spectral_enemy1/idle/1.png" id="2_3jj27"]
-[ext_resource type="Texture2D" uid="uid://4hmqveqyjjw7" path="res://assets/gfx/enemies/spectral_enemy1/attack/1.png" id="2_ocepb"]
-[ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_w7wku"]
-[ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_1fs5o"]
-[ext_resource type="Texture2D" uid="uid://dlqslfbdh52gk" path="res://assets/gfx/enemies/spectral_enemy1/idle/2.png" id="3_37lp2"]
-[ext_resource type="Texture2D" uid="uid://bdoc3eyngld6w" path="res://assets/gfx/enemies/spectral_enemy1/attack/2.png" id="3_r05jm"]
-[ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_6vfad"]
-[ext_resource type="Texture2D" uid="uid://oe5e3wclwgka" path="res://assets/gfx/enemies/spectral_enemy1/attack/3.png" id="4_dxksw"]
-[ext_resource type="Texture2D" uid="uid://dt5jq6jh1joo" path="res://assets/gfx/enemies/spectral_enemy1/idle/3.png" id="4_jf3tn"]
-[ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_4il6j"]
-[ext_resource type="Texture2D" uid="uid://bh4hjjttvlkk5" path="res://assets/gfx/enemies/spectral_enemy1/idle/4.png" id="5_78r8q"]
-[ext_resource type="Texture2D" uid="uid://dtndskven7y4d" path="res://assets/gfx/enemies/spectral_enemy1/attack/4.png" id="5_blp4o"]
-[ext_resource type="Texture2D" uid="uid://ftkqmlvxhj0j" path="res://assets/gfx/enemies/spectral_enemy1/attack/5.png" id="6_amucb"]
-[ext_resource type="Texture2D" uid="uid://ci2rdhc83wbp6" path="res://assets/gfx/enemies/spectral_enemy1/idle/5.png" id="6_f4ckc"]
-[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_nrci0"]
-[ext_resource type="Texture2D" uid="uid://epwayc1urdpv" path="res://assets/gfx/enemies/spectral_enemy1/idle/6.png" id="7_h1g26"]
-[ext_resource type="Texture2D" uid="uid://b1qjlnonj4nxl" path="res://assets/gfx/enemies/spectral_enemy1/death/1.png" id="7_s6dmk"]
-[ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_vwu8k"]
-[ext_resource type="Texture2D" uid="uid://bp3eghn0300bq" path="res://assets/gfx/enemies/spectral_enemy1/move/1.png" id="8_ky7k6"]
-[ext_resource type="Texture2D" uid="uid://ntmnabfcxl77" path="res://assets/gfx/enemies/spectral_enemy1/hurt/0.png" id="8_vedmr"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_yhxij"]
-[ext_resource type="Texture2D" uid="uid://ignksmkahgpr" path="res://assets/gfx/enemies/spectral_enemy1/move/2.png" id="9_8n5yn"]
-[ext_resource type="Texture2D" uid="uid://cmdbdw8nhy5o6" path="res://assets/gfx/enemies/spectral_enemy1/hurt/1.png" id="9_h8nid"]
-[ext_resource type="Texture2D" uid="uid://drns5sojwqgrd" path="res://assets/gfx/enemies/spectral_enemy1/hurt/2.png" id="10_2npat"]
-[ext_resource type="Texture2D" uid="uid://c3jpdkiyx8dtj" path="res://assets/gfx/enemies/spectral_enemy1/move/3.png" id="10_ppoif"]
-[ext_resource type="Texture2D" uid="uid://b8wcgea0jjctx" path="res://assets/gfx/enemies/spectral_enemy1/move/4.png" id="11_lr5m5"]
+[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
+[ext_resource type="Texture2D" uid="uid://cpujjjlir5y1f" path="res://assets/gfx/enemies/spectral_enemy2/attack2/1.png" id="2_e5m42"]
+[ext_resource type="Texture2D" uid="uid://deb2l5kibyw02" path="res://assets/gfx/enemies/spectral_enemy2/attack2/2.png" id="3_nh8fq"]
+[ext_resource type="Texture2D" uid="uid://cokoosinu75s1" path="res://assets/gfx/enemies/spectral_enemy2/attack2/3.png" id="4_7n1jq"]
+[ext_resource type="Texture2D" uid="uid://b3c4mbf1wbni6" path="res://assets/gfx/enemies/spectral_enemy2/attack2/4.png" id="5_c8adp"]
+[ext_resource type="Texture2D" uid="uid://ci5661vmn1saw" path="res://assets/gfx/enemies/spectral_enemy2/death2/1.png" id="6_c520e"]
+[ext_resource type="Texture2D" uid="uid://dka2q704jcte" path="res://assets/gfx/enemies/spectral_enemy2/hurt2/1.png" id="7_6x4oa"]
+[ext_resource type="Texture2D" uid="uid://66jfoxf620jg" path="res://assets/gfx/enemies/spectral_enemy2/hurt2/3.png" id="8_gqpcj"]
+[ext_resource type="Texture2D" uid="uid://cahaoa4ao2xpa" path="res://assets/gfx/enemies/spectral_enemy2/hurt2/2.png" id="9_gr5ci"]
+[ext_resource type="Texture2D" uid="uid://deqmijbo78iic" path="res://assets/gfx/enemies/spectral_enemy2/idle2/1.png" id="10_1lccf"]
+[ext_resource type="Texture2D" uid="uid://iesag0vh35xt" path="res://assets/gfx/enemies/spectral_enemy2/idle2/2.png" id="11_6fa16"]
+[ext_resource type="Texture2D" uid="uid://bebi8m4vysnjv" path="res://assets/gfx/enemies/spectral_enemy2/idle2/3.png" id="12_pek26"]
+[ext_resource type="Texture2D" uid="uid://ctqfsdtimiycm" path="res://assets/gfx/enemies/spectral_enemy2/idle2/4.png" id="13_ed3pf"]
+[ext_resource type="Texture2D" uid="uid://bjehfx7gvmj01" path="res://assets/gfx/enemies/spectral_enemy2/idle2/5.png" id="14_f3y2w"]
+[ext_resource type="Texture2D" uid="uid://bpasa0eeck435" path="res://assets/gfx/enemies/spectral_enemy2/idle2/6.png" id="15_u6a7c"]
+[ext_resource type="Texture2D" uid="uid://ct30iito7pm1l" path="res://assets/gfx/enemies/spectral_enemy2/move2/1.png" id="16_jxvlr"]
+[ext_resource type="Texture2D" uid="uid://c64h5dvdl7i4r" path="res://assets/gfx/enemies/spectral_enemy2/move2/2.png" id="17_rpbxn"]
+[ext_resource type="Texture2D" uid="uid://cxwgh6lkeu5e2" path="res://assets/gfx/enemies/spectral_enemy2/move2/3.png" id="18_jrgbl"]
+[ext_resource type="Texture2D" uid="uid://demwtsfsyfhj3" path="res://assets/gfx/enemies/spectral_enemy2/move2/4.png" id="19_u5ow5"]
+[ext_resource type="Texture2D" uid="uid://c5bnnfv3xdf1q" path="res://assets/gfx/enemies/spectral_enemy2/move2/5.png" id="20_dlu1r"]
+[ext_resource type="Texture2D" uid="uid://rqfo0uoxv31j" path="res://assets/gfx/enemies/spectral_enemy2/move2/6.png" id="21_0wrxp"]
+[ext_resource type="Script" path="res://addons/xsm/state.gd" id="21_2kkqo"]
+[ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="22_l0vqh"]
+[ext_resource type="Texture2D" uid="uid://c8sw8o6rj3cfh" path="res://assets/gfx/enemies/spectral_enemy2/move2/7.png" id="22_w5duf"]
+[ext_resource type="Texture2D" uid="uid://chom4fjaxktbo" path="res://assets/gfx/enemies/spectral_enemy2/move2/8.png" id="23_08fxw"]
+[ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="23_vbmvc"]
+[ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="24_aq1dp"]
+[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="25_y5qfs"]
+[ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="26_qw5hw"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="27_i2scf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
-radius = 32.0
-height = 112.0
+radius = 48.0
+height = 162.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dok3v"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdmx1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ocepb")
+"texture": ExtResource("2_e5m42")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ocepb")
+"texture": ExtResource("3_nh8fq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r05jm")
+"texture": ExtResource("3_nh8fq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dxksw")
+"texture": ExtResource("4_7n1jq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_blp4o")
+"texture": ExtResource("5_c8adp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_amucb")
+"texture": ExtResource("3_nh8fq")
 }],
 "loop": false,
 "name": &"attack",
@@ -59,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_s6dmk")
+"texture": ExtResource("6_c520e")
 }],
 "loop": true,
 "name": &"death",
@@ -67,16 +70,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_vedmr")
+"texture": ExtResource("7_6x4oa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_h8nid")
+"texture": ExtResource("8_gqpcj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_2npat")
+"texture": ExtResource("9_gr5ci")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_vedmr")
+"texture": ExtResource("7_6x4oa")
 }],
 "loop": false,
 "name": &"hurt",
@@ -84,22 +87,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3jj27")
+"texture": ExtResource("10_1lccf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_37lp2")
+"texture": ExtResource("11_6fa16")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jf3tn")
+"texture": ExtResource("12_pek26")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_78r8q")
+"texture": ExtResource("13_ed3pf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_f4ckc")
+"texture": ExtResource("14_f3y2w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_h1g26")
+"texture": ExtResource("15_u6a7c")
 }],
 "loop": true,
 "name": &"idle",
@@ -107,16 +110,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_ky7k6")
+"texture": ExtResource("16_jxvlr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_8n5yn")
+"texture": ExtResource("17_rpbxn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ppoif")
+"texture": ExtResource("18_jrgbl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_lr5m5")
+"texture": ExtResource("19_u5ow5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dlu1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0wrxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_w5duf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_08fxw")
 }],
 "loop": true,
 "name": &"move",
@@ -281,7 +296,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 64)]
+"values": [Vector2(112, 80)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -293,7 +308,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 0)]
+"values": [Vector2(112, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -345,7 +360,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-80, 64)]
+"values": [Vector2(-112, 80)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -357,7 +372,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-80, 0)]
+"values": [Vector2(-112, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -369,7 +384,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-64, 0)]
+"values": [Vector2(-88, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -409,7 +424,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 64)]
+"values": [Vector2(112, 80)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -421,7 +436,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 0)]
+"values": [Vector2(112, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -443,28 +458,26 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf2wy"]
-size = Vector2(384, 122)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0504a"]
+size = Vector2(512, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyrqi"]
-size = Vector2(64, 64)
+size = Vector2(88, 176)
 
-[node name="bone_bug" type="CharacterBody2D" groups=["enemy"]]
+[node name="horned_mouth" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
-script = ExtResource("1_ykqge")
+script = ExtResource("1_2kj2q")
 normal_speed = 70.0
 engage_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
-rotation = 1.5708
+position = Vector2(8, -80)
 shape = SubResource("CapsuleShape2D_v2xlg")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -48)
-sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
-frame = 2
+position = Vector2(40, -128)
+sprite_frames = SubResource("SpriteFrames_wdmx1")
+animation = &"idle"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -484,7 +497,7 @@ libraries = {
 }
 
 [node name="xsm" type="Node" parent="."]
-script = ExtResource("2_w7wku")
+script = ExtResource("21_2kkqo")
 history_size = 0
 disabled = false
 debug_mode = true
@@ -493,7 +506,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="lookout" type="Node" parent="xsm"]
-script = ExtResource("3_1fs5o")
+script = ExtResource("22_l0vqh")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "idle"
 anim_times_to_play = 1
@@ -505,7 +518,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="patrol" type="Node" parent="xsm"]
-script = ExtResource("4_6vfad")
+script = ExtResource("23_vbmvc")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1
@@ -517,7 +530,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
-script = ExtResource("5_4il6j")
+script = ExtResource("24_aq1dp")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1
@@ -529,7 +542,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
-script = ExtResource("6_nrci0")
+script = ExtResource("25_y5qfs")
 attack_delay = 0.3
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
@@ -542,7 +555,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
-script = ExtResource("7_vwu8k")
+script = ExtResource("26_qw5hw")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "death"
 anim_times_to_play = 1
@@ -554,7 +567,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("8_yhxij")
+script = ExtResource("27_i2scf")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
@@ -580,27 +593,28 @@ wait_time = 0.3
 one_shot = true
 
 [node name="floor_rc" type="RayCast2D" parent="."]
-position = Vector2(0, -40)
-target_position = Vector2(80, 64)
+position = Vector2(0, -75)
+target_position = Vector2(112, 80)
 
 [node name="front_rc" type="RayCast2D" parent="."]
-position = Vector2(0, -40)
-target_position = Vector2(80, 0)
+position = Vector2(0, -75)
+target_position = Vector2(112, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
 position = Vector2(0, -67)
-shape = SubResource("RectangleShape2D_kf2wy")
+shape = SubResource("RectangleShape2D_0504a")
 
 [node name="attack_box" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
-position = Vector2(40, -40)
+position = Vector2(44, -96)
 shape = SubResource("RectangleShape2D_fyrqi")
 
 [node name="reload_timer" type="Timer" parent="."]
