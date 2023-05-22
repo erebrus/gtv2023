@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cq0bcbgu3n3kl"]
+
+[ext_resource type="Shader" path="res://src/world/fog.gdshader" id="1_3iv14"]
+
+[resource]
+shader = ExtResource("1_3iv14")
+shader_parameter/ori_color = Color(0, 0, 0, 1)
+shader_parameter/OCTAVES = 4
