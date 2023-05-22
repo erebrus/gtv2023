@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bh76ivmnj2otd"]
+[gd_scene load_steps=43 format=3 uid="uid://bh76ivmnj2otd"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ykqge"]
 [ext_resource type="Texture2D" uid="uid://c2ogmvece2o4s" path="res://assets/gfx/enemies/spectral_enemy1/idle/1.png" id="2_3jj27"]
@@ -17,10 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://ci2rdhc83wbp6" path="res://assets/gfx/enemies/spectral_enemy1/idle/5.png" id="6_f4ckc"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_nrci0"]
 [ext_resource type="Texture2D" uid="uid://epwayc1urdpv" path="res://assets/gfx/enemies/spectral_enemy1/idle/6.png" id="7_h1g26"]
+[ext_resource type="Texture2D" uid="uid://b1qjlnonj4nxl" path="res://assets/gfx/enemies/spectral_enemy1/death/1.png" id="7_s6dmk"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_vwu8k"]
 [ext_resource type="Texture2D" uid="uid://bp3eghn0300bq" path="res://assets/gfx/enemies/spectral_enemy1/move/1.png" id="8_ky7k6"]
+[ext_resource type="Texture2D" uid="uid://ntmnabfcxl77" path="res://assets/gfx/enemies/spectral_enemy1/hurt/0.png" id="8_vedmr"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_yhxij"]
 [ext_resource type="Texture2D" uid="uid://ignksmkahgpr" path="res://assets/gfx/enemies/spectral_enemy1/move/2.png" id="9_8n5yn"]
+[ext_resource type="Texture2D" uid="uid://cmdbdw8nhy5o6" path="res://assets/gfx/enemies/spectral_enemy1/hurt/1.png" id="9_h8nid"]
+[ext_resource type="Texture2D" uid="uid://drns5sojwqgrd" path="res://assets/gfx/enemies/spectral_enemy1/hurt/2.png" id="10_2npat"]
 [ext_resource type="Texture2D" uid="uid://c3jpdkiyx8dtj" path="res://assets/gfx/enemies/spectral_enemy1/move/3.png" id="10_ppoif"]
 [ext_resource type="Texture2D" uid="uid://b8wcgea0jjctx" path="res://assets/gfx/enemies/spectral_enemy1/move/4.png" id="11_lr5m5"]
 
@@ -55,7 +59,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3jj27")
+"texture": ExtResource("7_s6dmk")
 }],
 "loop": true,
 "name": &"death",
@@ -63,11 +67,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3jj27")
+"texture": ExtResource("8_vedmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h8nid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2npat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vedmr")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,141 +137,103 @@ scale_max = 2.0
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
 length = 0.75
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:animation")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["attack"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:animation")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"death"]
+"values": [{
+"args": ["death"],
+"method": &"play_animation"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:frame")
+tracks/1/path = NodePath("sprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_vn40q"]
 resource_name = "hurt"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:animation")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["hurt"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_v7tm0"]
 resource_name = "idle"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:animation")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["idle"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_bmt4s"]
 resource_name = "move"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:animation")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"move"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["move"],
+"method": &"play_animation"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ecdwp"]
@@ -488,8 +463,7 @@ shape = SubResource("CapsuleShape2D_v2xlg")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
-frame = 3
+animation = &"death"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -512,7 +486,7 @@ libraries = {
 script = ExtResource("2_w7wku")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -527,7 +501,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("4_6vfad")
@@ -539,7 +513,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../engage")
+next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("5_4il6j")
@@ -551,7 +525,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../attack")
+next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_nrci0")
@@ -564,7 +538,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../death")
+next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("7_vwu8k")
@@ -576,7 +550,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../hurt")
+next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("8_yhxij")

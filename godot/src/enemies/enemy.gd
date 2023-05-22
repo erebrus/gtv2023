@@ -64,20 +64,20 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = false
 	else:
 		soul_trail.emitting = false
-		if _dimension == Events.Dimension.SPECTRAL:
+		if _dimension == Events.Dimension.MATERIAL:
 			collision_layer=0
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
-			sprite.visible = true
+			sprite.visible = false
 			if get_node_or_null("Polygon2D") != null:
-				$Polygon2D.visible = true
+				$Polygon2D.visible = false
 		else:
 			collision_layer=Globals.Layer.ENEMY
 			$detection_box.monitoring = true
 			$attack_box.monitoring = true
-			sprite.visible = false
+			sprite.visible = true
 			if get_node_or_null("Polygon2D") != null:
-				$Polygon2D.visible = false
+				$Polygon2D.visible = true
 			
 
 
@@ -238,3 +238,7 @@ func set_attackbox_enabled(val):
 
 func _on_reload_timer_timeout():
 	set_attackbox_enabled(true)
+
+func play_animation(anim:String):
+	if not sprite.is_playing() or sprite.animation != anim:
+		sprite.play(anim)
