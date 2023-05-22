@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ipq48tnsrd2"
-path="res://.godot/imported/Idle-ghost-3.png-149c20a074687bc538d59905ad930442.ctex"
+uid="uid://dxr17c3rytua7"
+path="res://.godot/imported/Ghost-walk-6.png-f5bc5456e97f20005ff09da71216226e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-3.png"
-dest_files=["res://.godot/imported/Idle-ghost-3.png-149c20a074687bc538d59905ad930442.ctex"]
+source_file="res://assets/gfx/player/ghost-walk/Ghost-walk-6.png"
+dest_files=["res://.godot/imported/Ghost-walk-6.png-f5bc5456e97f20005ff09da71216226e.ctex"]
 
 [params]
 

@@ -89,6 +89,8 @@ func update_sprite():
 		var desired_direction = "right" if facing_direction.x > 0 else "left"
 		if desired_direction != direction_player.current_animation:
 			direction_player.play(desired_direction)
+	if xsm.is_active("move"):
+		$CollisionShape2D.position.x=24 * facing_direction.x
 			
 	
 
