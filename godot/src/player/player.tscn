@@ -166,6 +166,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_rp65e"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["attack"],
+"method": &"play_animation"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_v7knb"]
 resource_name = "climb"
 length = 0.1
@@ -358,24 +376,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_rp65e"]
-resource_name = "attack"
-length = 0.6
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["attack"],
-"method": &"play_animation"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q26do"]
 _data = {
 "attack": SubResource("Animation_rp65e"),
@@ -495,7 +495,7 @@ max_accel = 100.0
 max_deccel = 100.0
 dash_boost = 1200.0
 dash_hangtime = 0.4
-h = 400.0
+h = 600.0
 damping_speed = 180.0
 inertia_factor = 0.5
 air_accel_factor = 0.5
@@ -660,7 +660,6 @@ next_state = NodePath("../can_attack/idle")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("15_4wcyn")
-attack_delay = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
