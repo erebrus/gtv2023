@@ -169,7 +169,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
-length = 0.5
+length = 10.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -183,18 +183,6 @@ tracks/0/keys = {
 "args": ["death"],
 "method": &"play_animation"
 }]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_vn40q"]
@@ -471,13 +459,16 @@ normal_speed = 70.0
 engage_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(8, -80)
 shape = SubResource("CapsuleShape2D_v2xlg")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, -128)
 sprite_frames = SubResource("SpriteFrames_wdmx1")
-animation = &"idle"
+animation = &"hurt"
+frame = 3
+frame_progress = 1.0
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -610,6 +601,7 @@ position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_0504a")
 
 [node name="attack_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 

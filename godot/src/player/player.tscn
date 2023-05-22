@@ -536,8 +536,9 @@ max_accel = 100.0
 max_deccel = 100.0
 dash_boost = 1200.0
 dash_hangtime = 0.4
+th = 1.7
 h = 600.0
-damping_speed = 180.0
+damping_speed = 50.0
 inertia_factor = 0.5
 air_accel_factor = 0.5
 coyote_time = 0.1
@@ -558,8 +559,8 @@ polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"idle_spectral"
-frame_progress = 0.299909
+animation = &"hurt_spectral"
+frame_progress = 0.776716
 
 [node name="xsm" type="Node" parent="."]
 script = ExtResource("3_17k6u")

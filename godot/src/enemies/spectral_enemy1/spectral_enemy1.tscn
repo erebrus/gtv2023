@@ -154,7 +154,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
-length = 0.5
+length = 10.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -456,6 +456,7 @@ normal_speed = 70.0
 engage_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -32)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v2xlg")
@@ -463,8 +464,7 @@ shape = SubResource("CapsuleShape2D_v2xlg")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
-frame = 2
+animation = &"hurt"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -588,6 +588,7 @@ position = Vector2(0, -40)
 target_position = Vector2(80, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
@@ -596,6 +597,7 @@ position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 

@@ -520,7 +520,6 @@ next_state = NodePath("")
 
 [node name="lookout" type="Node" parent="xsm"]
 script = ExtResource("3_yq5hj")
-look_time = 10.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "idle"
 anim_times_to_play = 1
@@ -616,6 +615,7 @@ position = Vector2(0, -64)
 target_position = Vector2(32, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
@@ -624,6 +624,7 @@ position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
