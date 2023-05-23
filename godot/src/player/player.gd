@@ -95,11 +95,13 @@ func update_sprite():
 			
 	
 
-func play_animation(anim:String):
+func play_animation(anim:String, force:=false):
 	if anim in multi_state_anims:
 		if dimension ==Events.Dimension.SPECTRAL:
 			anim += "_spectral"
-	if not sprite.is_playing() or sprite.animation != anim:
+#	if not sprite.is_playing() or sprite.animation != anim:
+	if sprite.animation != anim or force:		
+		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
 		sprite.play(anim)
 	
 func shift():

@@ -491,7 +491,7 @@ libraries = {
 script = ExtResource("21_2kkqo")
 history_size = 0
 disabled = false
-debug_mode = true
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -535,7 +535,6 @@ next_state = NodePath("")
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("25_y5qfs")
 attack_delay = 0.3
-lunge_distance = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1

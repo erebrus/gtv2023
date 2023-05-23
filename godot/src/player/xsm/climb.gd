@@ -45,6 +45,7 @@ func _on_update(_delta: float) -> void:
 		owner.velocity.y=0
 	if owner.controller.processing_jump and owner.controller.allow_wall_jump:	
 	#if Input.is_action_just_pressed("jump") and owner.controller.allow_wall_jump:		
+		Logger.trace("jump from climb")
 		owner.controller.do_jump(-collision_direction)
 
 # This function is called each frame after all the update calls

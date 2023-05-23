@@ -54,11 +54,12 @@ func stop_game_music()->void:
 	game_music_on = false
 		
 func _init_logger():
-	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)
+
+	Logger.set_logger_level(Logger.LOG_LEVEL_DEBUG)
 	Logger.set_logger_format(Logger.LOG_FORMAT_MORE)
 	var file_appender:Appender = Logger.add_appender(FileAppender.new("res://debug.log"))
 	file_appender.logger_format=Logger.LOG_FORMAT_FULL
-	file_appender.logger_level = Logger.LOG_LEVEL_DEBUG
+	file_appender.logger_level = Logger.LOG_LEVEL_TRACE
 
 
 func gameover():

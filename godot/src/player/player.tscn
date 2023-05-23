@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=65 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgtgdskwaada1" path="res://assets/gfx/player/mc-160px-ghost.png" id="4_55pay"]
 [ext_resource type="Texture2D" uid="uid://ba6s0t6lbo4i3" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-1.png" id="5_4v8hm"]
 [ext_resource type="Script" path="res://src/player/xsm/idle.gd" id="5_5dat7"]
+[ext_resource type="Texture2D" uid="uid://c5v7js285slgr" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-10.png" id="5_ki7w7"]
 [ext_resource type="Texture2D" uid="uid://b530ghfurx6he" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-2.png" id="6_0kwax"]
 [ext_resource type="Script" path="res://src/player/xsm/can_dash.gd" id="6_bvrt0"]
 [ext_resource type="Script" path="res://src/player/xsm/dash.gd" id="6_k6vq6"]
@@ -29,10 +30,15 @@
 [ext_resource type="Script" path="res://src/player/xsm/attack.gd" id="15_4wcyn"]
 [ext_resource type="Texture2D" uid="uid://b3l4a3h5fbb8u" path="res://assets/gfx/player/ghost-walk/Ghost-walk-1.png" id="16_pfa1c"]
 [ext_resource type="Texture2D" uid="uid://0mrlhxnl4gbp" path="res://assets/gfx/player/ghost-walk/Ghost-walk-2.png" id="17_bfkdc"]
+[ext_resource type="Texture2D" uid="uid://bcsoct4dqlhfx" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-2.png" id="17_fshak"]
 [ext_resource type="Texture2D" uid="uid://rq1tpslqidt6" path="res://assets/gfx/player/ghost-walk/Ghost-walk-3.png" id="18_myi25"]
+[ext_resource type="Texture2D" uid="uid://bgbj7ypq12hdq" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-3.png" id="18_t4adc"]
 [ext_resource type="Texture2D" uid="uid://b318sw6qh6ssl" path="res://assets/gfx/player/ghost-walk/Ghost-walk-4.png" id="19_bo6rf"]
+[ext_resource type="Texture2D" uid="uid://b1bw4n6op2vov" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-4.png" id="19_bvuml"]
+[ext_resource type="Texture2D" uid="uid://qfpgk7hypd2g" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-5.png" id="20_82100"]
 [ext_resource type="Texture2D" uid="uid://c2f27jwolatt0" path="res://assets/gfx/player/ghost-walk/Ghost-walk-5.png" id="20_g7h0w"]
 [ext_resource type="Texture2D" uid="uid://dxr17c3rytua7" path="res://assets/gfx/player/ghost-walk/Ghost-walk-6.png" id="21_k7erv"]
+[ext_resource type="Texture2D" uid="uid://5kmy556w7bnl" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-9.png" id="21_thtjs"]
 [ext_resource type="Texture2D" uid="uid://b86bxi4lo02k8" path="res://assets/gfx/player/ghost-walk/Ghost-walk-7.png" id="22_oggoo"]
 [ext_resource type="Texture2D" uid="uid://cdhhcpsslpux2" path="res://assets/gfx/player/ghost-walk/Ghost-walk-8.png" id="23_527j6"]
 [ext_resource type="Texture2D" uid="uid://br41xvjggxaf3" path="res://assets/gfx/player/ghost-walk/Ghost-walk-9.png" id="24_ahvbb"]
@@ -95,15 +101,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("5_ki7w7")
 }],
 "loop": false,
 "name": &"fall",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("5_ki7w7")
 }],
 "loop": true,
 "name": &"fall_spectral",
@@ -181,11 +187,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("17_fshak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_t4adc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_bvuml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_82100")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_thtjs")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_spectral",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -581,9 +599,10 @@ max_accel = 100.0
 max_deccel = 100.0
 dash_boost = 1200.0
 dash_hangtime = 0.4
-th = 1.7
+th = 1.6
 h = 600.0
 damping_speed = 50.0
+max_air_jumps = 1
 inertia_factor = 0.5
 air_accel_factor = 0.5
 coyote_time = 0.1
@@ -600,8 +619,7 @@ polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -88)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"idle_spectral"
-frame_progress = 0.182416
+animation = &"fall_spectral"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -88)
@@ -611,7 +629,7 @@ shape = SubResource("CapsuleShape2D_4cv33")
 script = ExtResource("3_17k6u")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
