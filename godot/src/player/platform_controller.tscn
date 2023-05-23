@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://blj6bor2n7hyd"]
+
+[ext_resource type="Script" path="res://src/player/platform_controller.gd" id="1_p6mqj"]
+
+[node name="platform_controller" type="Node2D"]
+script = ExtResource("1_p6mqj")
+
+[node name="dash_timer" type="Timer" parent="."]
+
+[node name="climb_reload_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="climb_reload_timer" to="." method="_on_climb_reload_timer_timeout"]
