@@ -164,7 +164,8 @@ func on_landing(_last_vy:float):
 	if sfx_landing == null:
 		return
 	sfx_landing.play()
-
+	controller.can_dash = true
+	
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)

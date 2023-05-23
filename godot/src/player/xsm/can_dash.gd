@@ -54,11 +54,14 @@ func _on_update(_delta: float) -> void:
 		owner.velocity.x += owner.accel
 		Logger.trace("apply accel (%s) to speed (%s)  " % [owner.accel, owner.velocity])
 		
-	if Input.is_action_just_pressed("dash") \
+	if Input.is_action_just_pressed("dash")\
 		#FIXME redundant can
-		and owner.controller.dash_boost and input.x != 0 and owner.controller.can_dash \
+		and owner.controller.dash_boost\
+		and input != Vector2.ZERO\
+		and owner.controller.can_dash \
+		and owner.controller.dash_timer.is_stopped()\
 		and owner.dimension == Events.Dimension.SPECTRAL: 
-			change_state("dash")
+				change_state("dash")
 
 
 # This function is called each frame after all the update calls

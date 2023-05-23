@@ -16,9 +16,9 @@ func _on_anim_finished(_name):
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	owner.controller.hanging = true
-	owner.velocity.y = 0
-	owner.controller.do_dash()
+	owner.controller.hanging = true   
+	var input:Vector2 = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	owner.controller.do_dash(input)
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	tween.tween_property(owner, "velocity", Vector2.ZERO, owner.controller.dash_hangtime)
 	await tween.finished
@@ -33,7 +33,8 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	owner.velocity.y = 0
+	pass
+#	owner.velocity.y = 0
 #	var x_input:float = Input.get_axis("ui_left","ui_right")
 #	if abs(owner.velocity.x) < .1: #or sign(owner.velocity.x) != sign(x_input)
 #		change_state("fall")
