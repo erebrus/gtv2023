@@ -178,18 +178,16 @@ func attack():
 	xsm.change_state("attack")
 
 
-
-func finish_death():
-	collision_layer=0
+func spawn_soul():
 	if dimension == Events.Dimension.SPECTRAL:
 		var soul = SOUL_SCENE.instantiate()
 		get_parent().add_child(soul)
-		soul.anchor = global_position+Vector2(0,-50)
+		soul.anchor = global_position+Vector2(0,-50)	
 
-	
+func finish_death():
+	collision_layer=0	
 	set_process(false)
 	await get_tree().create_timer(.2).timeout
-	visible=false	
 	call_deferred("queue_free")
 	
 func is_on_enemy()->bool:
