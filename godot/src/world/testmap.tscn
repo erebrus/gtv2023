@@ -86,6 +86,7 @@ position = Vector2(1209, 451)
 
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
 position = Vector2(681, 745)
+energy_decay = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position_smoothing_enabled = true

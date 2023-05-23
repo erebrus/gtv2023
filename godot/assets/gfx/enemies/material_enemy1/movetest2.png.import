@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjlorvoog5uji"
-path="res://.godot/imported/bonesmovenew7.png-bb244b401e31e9cab3343479ff37a300.ctex"
+uid="uid://clk14ho1a0py7"
+path="res://.godot/imported/movetest2.png-5f2165efd044b5ca6463f7c2f73b339d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/enemies/material_enemy1/bonesmovenew7.png"
-dest_files=["res://.godot/imported/bonesmovenew7.png-bb244b401e31e9cab3343479ff37a300.ctex"]
+source_file="res://assets/gfx/enemies/material_enemy1/movetest2.png"
+dest_files=["res://.godot/imported/movetest2.png-5f2165efd044b5ca6463f7c2f73b339d.ctex"]
 
 [params]
 

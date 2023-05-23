@@ -25,8 +25,8 @@ func _on_enter(_args) -> void:
 
 	owner.desired_velocity=Vector2(owner.normal_speed,0)*direction
 	
-	if step_duration > 0:
-		add_timer("step", step_duration)
+	if step_pause > 0:
+		add_timer("pause", step_pause)
 
 
 # This function is called just after the state enters
