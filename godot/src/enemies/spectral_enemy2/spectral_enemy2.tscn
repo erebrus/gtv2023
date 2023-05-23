@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://nq706ehk3bgf"]
+[gd_scene load_steps=47 format=3 uid="uid://nq706ehk3bgf"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
 [ext_resource type="Texture2D" uid="uid://cpujjjlir5y1f" path="res://assets/gfx/enemies/spectral_enemy2/attack2/1.png" id="2_e5m42"]
@@ -27,9 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://chom4fjaxktbo" path="res://assets/gfx/enemies/spectral_enemy2/move2/8.png" id="23_08fxw"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="23_vbmvc"]
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="24_aq1dp"]
-[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="25_y5qfs"]
+[ext_resource type="PackedScene" uid="uid://2mlxmfj5brav" path="res://src/enemies/death_particles.tscn" id="24_hr2qr"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="26_qw5hw"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="27_i2scf"]
+[ext_resource type="Script" path="res://src/enemies/xsm/suction_attack.gd" id="29_h7wgg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
 radius = 48.0
@@ -513,6 +514,8 @@ process_material = SubResource("ParticleProcessMaterial_y7jm5")
 lifetime = 4.0
 randomness = 0.43
 
+[node name="death_particles" parent="." instance=ExtResource("24_hr2qr")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ecdwp")
@@ -571,9 +574,11 @@ timed = false
 next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
-script = ExtResource("25_y5qfs")
+script = ExtResource("29_h7wgg")
 attack_delay = 0.3
-lunge_distance = 32.0
+suction_duration = 3.0
+suction_strength = 110.0
+min_distance = 16.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
