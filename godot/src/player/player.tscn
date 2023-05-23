@@ -125,7 +125,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("5_4v8hm")
 }],
 "loop": true,
 "name": &"hurt_spectral",
@@ -267,7 +267,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cv33"]
-radius = 24.0
+radius = 22.0
 height = 160.0
 
 [sub_resource type="Animation" id="Animation_rp65e"]
@@ -617,13 +617,13 @@ color = Color(0.239216, 0.419608, 0.309804, 1)
 polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"idle_spectral"
-frame = 3
+animation = &"hurt_spectral"
+frame_progress = 0.646691
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(3, -79)
 shape = SubResource("CapsuleShape2D_4cv33")
 
 [node name="xsm" type="Node" parent="."]
