@@ -1,10 +1,96 @@
-[gd_scene load_steps=4 format=3 uid="uid://nji168cpwlh0"]
+[gd_scene load_steps=14 format=3 uid="uid://nji168cpwlh0"]
 
 [ext_resource type="Script" path="res://src/enemies/soul.gd" id="1_2cfk8"]
-[ext_resource type="Texture2D" uid="uid://ds3fjqs7xsmu0" path="res://assets/gfx/ui/raw/Asset 3@2x.png" id="1_gagow"]
+[ext_resource type="Shader" path="res://src/enemies/soul.gdshader" id="2_5qd4q"]
+[ext_resource type="Texture2D" uid="uid://dbo5dtdgilsfs" path="res://addons/kenney_particle_pack/light_01.png" id="3_be8cb"]
+[ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="4_nwsjj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi47h"]
+shader = ExtResource("2_5qd4q")
+shader_parameter/intensity = 0.5
+shader_parameter/layers = 5.0
+shader_parameter/speed = 4.0
+shader_parameter/color = Color(0.764706, 0.721569, 0.635294, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b70rg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8m4r2"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_b70rg")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
 radius = 34.2345
+
+[sub_resource type="Curve" id="Curve_yx8uq"]
+_data = [Vector2(0.0255315, 0.0248897), 0.0, 0.0, 0, 0, Vector2(0.506044, 0.69644), 0.0, 0.0, 0, 0, Vector2(1, 0.0203214), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pqmyr"]
+curve = SubResource("Curve_yx8uq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pej56"]
+emission_shape = 1
+emission_sphere_radius = 32.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = -44.21
+radial_accel_max = 20.0
+scale_min = 0.01
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_pqmyr")
+
+[sub_resource type="Animation" id="Animation_ducik"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.4),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k60al"]
+_data = {
+"fade": SubResource("Animation_ducik")
+}
 
 [node name="soul" type="Area2D"]
 collision_layer = 4
@@ -12,12 +98,32 @@ collision_mask = 16
 script = ExtResource("1_2cfk8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gagow")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hi47h")
+texture = SubResource("NoiseTexture2D_8m4r2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_0tkkf")
 
 [node name="sfx_consume" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+texture = ExtResource("3_be8cb")
+texture_scale = 0.5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.764706, 0.721569, 0.635294, 1)
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_pej56")
+texture = ExtResource("4_nwsjj")
+lifetime = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k60al")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

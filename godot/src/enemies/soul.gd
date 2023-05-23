@@ -6,8 +6,10 @@ extends Area2D
 
 func _on_body_entered(body):
 	body.consume(self)
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "modulate", Color(1,1,1,0),.3)
-	sfx.play()
-	await tween.finished
+#	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+#	tween.tween_property(self, "modulate", Color(1,1,1,0),.3)
+#	sfx.play()
+	$AnimationPlayer.play("fade")
+#	await tween.finished
+	await $AnimationPlayer.animation_finished
 	call_deferred("queue_free")
