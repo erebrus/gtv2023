@@ -14,6 +14,8 @@ signal jump_fired
 @export var recoil_force:float = 400.0
 @export var attack_damage:float = 25.0
 @export var attack_knockback:float = 50.0
+@export var spectral_th:float = 1.6
+@export var material_th:float = .6
 
 var use_mouse:=true
 var max_x:float = 0
@@ -127,9 +129,13 @@ func _on_dimension_changed(_dimension):
 		return
 	dimension = _dimension
 	if _dimension == Events.Dimension.MATERIAL:
-		xsm.change_state("materialise")		
+		xsm.change_state("materialise")	
+		controller.th = material_th	
+		controller.recompute_gravity()
 	else:
-		xsm.change_state("decay")		
+		xsm.change_state("decay")	
+		controller.th = spectral_th	
+		controller.recompute_gravity()	
 		
 		
 	

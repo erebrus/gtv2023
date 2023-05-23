@@ -603,7 +603,6 @@ th = 1.6
 h = 600.0
 v_limit = 1500.0
 damping_speed = 50.0
-max_air_jumps = 1
 inertia_factor = 0.5
 air_accel_factor = 0.5
 coyote_time = 0.1
@@ -663,7 +662,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../jump")
 
 [node name="jump" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("8_7ga8y")
@@ -675,7 +674,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../fall")
 
 [node name="fall" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("9_aqd42")
