@@ -104,13 +104,6 @@ func check_direction():
 		else:
 			dir_player.play("left")
 
-#TODO check if still needed
-func set_collide_with_platform(val:bool)-> void:
-	if $CollisionShape2D:
-		$CollisionShape2D.disabled = !val
-	$FloorRaycast.enabled = val
-	$FrontRaycast.enabled = val
-
 
 func _process(delta: float) -> void:
 	
@@ -178,14 +171,6 @@ func on_target():
 
 
 
-#func do_death():
-#
-#	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-#	tween.tween_property(sprite,"modulate", Color(1,1,1,0), 1)
-#	yield(tween, "finished")
-#	queue_free()
-	
-
 
 func attack():
 	if not target:
@@ -194,7 +179,6 @@ func attack():
 
 
 
-	
 func finish_death():
 	collision_layer=0
 	if dimension == Events.Dimension.SPECTRAL:
@@ -246,3 +230,6 @@ func _on_reload_timer_timeout():
 func play_animation(anim:String):
 	if not sprite.is_playing() or sprite.animation != anim:
 		sprite.play(anim)
+
+func can_attack():
+	return reload_timer.is_stopped()
