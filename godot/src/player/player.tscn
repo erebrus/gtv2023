@@ -601,7 +601,7 @@ polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 position = Vector2(0, -88)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
 animation = &"idle_spectral"
-frame_progress = 0.665088
+frame_progress = 0.182416
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -88)

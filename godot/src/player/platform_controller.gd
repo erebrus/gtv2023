@@ -174,7 +174,9 @@ func _process(delta: float) -> void:
 				player.velocity.x=0
 			else:
 				player.velocity.x -=5*sign(player.velocity.x)
+		player.velocity += player.extra_impulse
 		player.move_and_slide()
+		player.extra_impulse = Vector2.ZERO
 		Logger.trace("in animation movement")
 		return
 
@@ -195,7 +197,9 @@ func _process(delta: float) -> void:
 #	var last_vy=player.velocity.y
 	
 	Logger.trace("applying velocity %s" % player.velocity)
+	player.velocity += player.extra_impulse
 	player.move_and_slide()
+	player.extra_impulse = Vector2.ZERO
 	Logger.trace("POST applying velocity %s" % player.velocity)
 	
 	if player.is_on_floor():

@@ -56,6 +56,7 @@ var can_play_footstep:bool = true
 var dead:=false
 var dimension = Events.Dimension.SPECTRAL
 
+var extra_impulse := Vector2.ZERO
 var object
 	
 		
@@ -301,3 +302,6 @@ func consume(soul):
 	self.energy = clamp(energy+ soul.energy, 0, max_energy)
 
 
+func apply_impulse(impulse:Vector2):
+	extra_impulse += impulse
+	
