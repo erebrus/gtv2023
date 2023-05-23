@@ -553,6 +553,9 @@ next_state = NodePath(".")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("5_lu4oo")
+min_distance = null
+charge_time = null
+animation_speed_factor = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1

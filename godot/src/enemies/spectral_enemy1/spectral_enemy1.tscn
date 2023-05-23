@@ -307,6 +307,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, -48)]
+}
 
 [sub_resource type="Animation" id="Animation_86cjw"]
 resource_name = "left"
@@ -370,6 +382,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-64, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-192, -48)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -435,6 +459,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, -48)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6j2u"]
 _data = {
@@ -443,8 +479,8 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2klls"]
-size = Vector2(640, 122)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdo18"]
+size = Vector2(640, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyrqi"]
 size = Vector2(64, 64)
@@ -453,7 +489,9 @@ size = Vector2(64, 64)
 collision_layer = 32
 script = ExtResource("1_ykqge")
 normal_speed = 70.0
-engage_speed = 250.0
+engage_speed = 300.0
+max_accel = 25.0
+knockback = 32.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -531,7 +569,7 @@ next_state = NodePath("")
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_nrci0")
 attack_delay = 0.3
-lunge_distance = 32.0
+lunge_distance = 16.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -589,12 +627,12 @@ position = Vector2(0, -40)
 target_position = Vector2(80, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
+position = Vector2(192, -48)
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
-position = Vector2(0, -67)
-shape = SubResource("RectangleShape2D_2klls")
+shape = SubResource("RectangleShape2D_wdo18")
 
 [node name="attack_box" type="Area2D" parent="."]
 collision_layer = 32

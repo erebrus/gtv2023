@@ -3,7 +3,7 @@ extends StateAnimation
 
 @export var min_distance:=20.0
 @export var charge_time:=1.0
-
+@export var animation_speed_factor:=2.0
 var moving:=false
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -18,7 +18,8 @@ func _on_anim_finished(_name: String) -> void:
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
-func _on_enter(_args) -> void:
+func _on_enter(_args) -> void:	
+	owner.sprite.speed_scale=1.0
 	moving = false
 	if owner.can_attack():
 		owner.set_attackbox_enabled(true)
@@ -27,6 +28,7 @@ func _on_enter(_args) -> void:
 	else:
 		moving = true
 		owner.play_animation("move")
+		owner.sprite.speed_scale=animation_speed_factor
 		
 
 # This function is called just after the state enters
@@ -75,6 +77,7 @@ func _before_exit(_args) -> void:
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	owner.sfx_run.stop()
+	owner.sprite.speed_scale=1.0
 	del_timer("charge")
 
 # when StateAutomaticTimer timeout()
@@ -87,3 +90,4 @@ func _on_timeout(_name) -> void:
 	if _name == "charge":
 		owner.play_animation("move")
 		moving = true
+		owner.sprite.speed_scale=animation_speed_factor

@@ -76,10 +76,10 @@ position = Vector2(381, 416)
 dimension = 1
 
 [node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
-position = Vector2(1230, 807)
+position = Vector2(1657, 538)
 
 [node name="horned_mouth" parent="TileMap" instance=ExtResource("10_gu16i")]
-position = Vector2(944, 159)
+position = Vector2(1241, 823)
 
 [node name="soul" parent="TileMap" instance=ExtResource("11_df4pw")]
 position = Vector2(1209, 451)
