@@ -135,7 +135,7 @@ func control(_delta:float) -> void:
 			Logger.debug("dropping climb rc")
 			
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and player.dimension == Events.Dimension.MATERIAL:
 		Logger.debug("Controller handling jump")
 		if jump_available:
 			processing_jump=true

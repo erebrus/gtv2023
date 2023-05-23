@@ -114,7 +114,9 @@ func control(_delta:float) -> void:
 	if in_animation:
 		return
 	if Input.is_action_just_pressed("jump"):
-		Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
+		if dimension == Events.Dimension.MATERIAL:
+			Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
+		
 	
 	if Input.is_action_just_pressed("shift"):
 		shift()
