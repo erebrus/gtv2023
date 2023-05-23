@@ -619,7 +619,8 @@ polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -88)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"fall_spectral"
+animation = &"idle_spectral"
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -88)

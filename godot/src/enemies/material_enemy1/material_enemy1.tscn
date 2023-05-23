@@ -1,24 +1,30 @@
-[gd_scene load_steps=35 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=41 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
 [ext_resource type="Texture2D" uid="uid://bxwibsw1f65os" path="res://assets/gfx/enemies/material_enemy1/old/bonesidle1.png" id="2_8dddy"]
+[ext_resource type="Texture2D" uid="uid://dnrybnceor4eh" path="res://assets/gfx/enemies/material_enemy1/bonesattack1.png" id="2_n58qp"]
 [ext_resource type="Texture2D" uid="uid://cry6hojurp4f7" path="res://assets/gfx/enemies/material_enemy1/boneidle1.png" id="3_0xwfx"]
+[ext_resource type="Texture2D" uid="uid://6onsxe552u27" path="res://assets/gfx/enemies/material_enemy1/bonesattack2.png" id="3_8hynq"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_yq5hj"]
+[ext_resource type="Texture2D" uid="uid://dehfxhlh4uw7k" path="res://assets/gfx/enemies/material_enemy1/bonesattack3.png" id="4_5pqlf"]
 [ext_resource type="Texture2D" uid="uid://duns8ori7tqk7" path="res://assets/gfx/enemies/material_enemy1/boneidle3.png" id="4_i7jfg"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_u65s2"]
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_lu4oo"]
+[ext_resource type="Texture2D" uid="uid://dt57sdm4geu2h" path="res://assets/gfx/enemies/material_enemy1/bonesattack4.png" id="5_oay3f"]
 [ext_resource type="Texture2D" uid="uid://7mmdje667ojg" path="res://assets/gfx/enemies/material_enemy1/boneidle4.png" id="5_phl8d"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="6_k7j68"]
+[ext_resource type="Texture2D" uid="uid://c3mckcxeeyhhk" path="res://assets/gfx/enemies/material_enemy1/bonesattack5.png" id="6_qq03a"]
 [ext_resource type="Texture2D" uid="uid://clgm17fqtmk2c" path="res://assets/gfx/enemies/material_enemy1/boneidle2.png" id="6_vfgy3"]
-[ext_resource type="Texture2D" uid="uid://dkwsfflp7t7y4" path="res://assets/gfx/enemies/material_enemy1/movetest1.png" id="7_gc2a4"]
+[ext_resource type="Texture2D" uid="uid://cx4tvgml16dvh" path="res://assets/gfx/enemies/material_enemy1/bonesattack6.png" id="7_ltjem"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_ynp30"]
-[ext_resource type="Texture2D" uid="uid://clk14ho1a0py7" path="res://assets/gfx/enemies/material_enemy1/movetest2.png" id="8_8h24k"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_tuvnp"]
-[ext_resource type="Texture2D" uid="uid://bxube2l1ss0jv" path="res://assets/gfx/enemies/material_enemy1/movetest3.png" id="9_kieig"]
-[ext_resource type="Texture2D" uid="uid://do35hnkpwrduy" path="res://assets/gfx/enemies/material_enemy1/movetest4.png" id="10_oiu7d"]
-[ext_resource type="Texture2D" uid="uid://fhraokqhrulq" path="res://assets/gfx/enemies/material_enemy1/movetest5.png" id="11_28c84"]
-[ext_resource type="Texture2D" uid="uid://c4rrrcv2gaqjx" path="res://assets/gfx/enemies/material_enemy1/movetest6.png" id="12_set65"]
+[ext_resource type="Texture2D" uid="uid://cufumpnyriiag" path="res://assets/gfx/enemies/material_enemy1/bonesmove1 (1).png" id="13_n43lb"]
+[ext_resource type="Texture2D" uid="uid://344nigbwk6i8" path="res://assets/gfx/enemies/material_enemy1/bonesmove2 (1).png" id="14_3snm7"]
+[ext_resource type="Texture2D" uid="uid://3rgmoxjdaobx" path="res://assets/gfx/enemies/material_enemy1/bonesmove3 (1).png" id="15_stakq"]
+[ext_resource type="Texture2D" uid="uid://dmlii3ss1ibst" path="res://assets/gfx/enemies/material_enemy1/bonesmove4 (1).png" id="16_am2e1"]
+[ext_resource type="Texture2D" uid="uid://iq2tluk118q4" path="res://assets/gfx/enemies/material_enemy1/bonesmove5 (1).png" id="17_t2x2j"]
+[ext_resource type="Texture2D" uid="uid://5wt307gmeh1t" path="res://assets/gfx/enemies/material_enemy1/bonesmove6 (1).png" id="18_iiwrk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvqvl"]
 radius = 16.0
@@ -28,11 +34,26 @@ height = 128.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8dddy")
+"texture": ExtResource("2_n58qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8hynq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5pqlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oay3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qq03a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ltjem")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -75,22 +96,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_gc2a4")
+"texture": ExtResource("13_n43lb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_8h24k")
+"texture": ExtResource("14_3snm7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kieig")
+"texture": ExtResource("15_stakq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_oiu7d")
+"texture": ExtResource("16_am2e1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_28c84")
+"texture": ExtResource("17_t2x2j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_set65")
+"texture": ExtResource("18_iiwrk")
 }],
 "loop": true,
 "name": &"move",
@@ -110,7 +131,7 @@ scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -477,7 +498,6 @@ position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
 animation = &"move"
-frame = 3
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -545,6 +565,7 @@ next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_k7j68")
+lunge_distance = 20.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
