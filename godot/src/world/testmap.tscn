@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crxdydfi47uq2"]
+[gd_scene load_steps=19 format=3 uid="uid://crxdydfi47uq2"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_3np8i"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_oiska"]
@@ -14,6 +14,7 @@
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="9_o5stp"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="9_sumg3"]
 [ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="10_gu16i"]
+[ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="11_df4pw"]
 [ext_resource type="Texture2D" uid="uid://bsf16bfuqoru3" path="res://assets/gfx/world/white_canvas.png" id="12_x6ia7"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="15_mofd2"]
 
@@ -75,10 +76,13 @@ position = Vector2(381, 416)
 dimension = 1
 
 [node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
-position = Vector2(1625, 552)
+position = Vector2(1230, 807)
 
 [node name="horned_mouth" parent="TileMap" instance=ExtResource("10_gu16i")]
-position = Vector2(1044, 828)
+position = Vector2(944, 159)
+
+[node name="soul" parent="TileMap" instance=ExtResource("11_df4pw")]
+position = Vector2(1209, 451)
 
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
 position = Vector2(681, 745)
