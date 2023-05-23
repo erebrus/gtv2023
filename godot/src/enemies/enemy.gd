@@ -184,9 +184,12 @@ func finish_death():
 	if dimension == Events.Dimension.SPECTRAL:
 		var soul = SOUL_SCENE.instantiate()
 		get_parent().add_child(soul)
-		soul.global_position = global_position+Vector2(0,-100)
-	visible=false	
+		soul.anchor = global_position+Vector2(0,-50)
+
+	
 	set_process(false)
+	await get_tree().create_timer(.2).timeout
+	visible=false	
 	call_deferred("queue_free")
 	
 func is_on_enemy()->bool:
