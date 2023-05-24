@@ -21,9 +21,10 @@ func _on_anim_finished(_name: String) -> void:
 func _on_enter(_args) -> void:	
 	owner.sprite.speed_scale=1.0
 	moving = false
+	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
 	if owner.can_attack():
 		owner.set_attackbox_enabled(true)
-	if charge_time > 0:
+	if charge_time > 0 and dist > min_distance:
 		add_timer("charge", charge_time)
 	else:
 		moving = true
@@ -49,7 +50,7 @@ func _on_update(_delta: float) -> void:
 	
 	if moving:
 		owner.handle_run_sfx()		
-		if owner.is_must_turn() or dist < min_distance:
+		if owner.is_must_turn():
 			owner.desired_velocity.x=0
 		else:		
 			owner.desired_velocity.x=owner.engage_speed*target_direction.x

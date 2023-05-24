@@ -172,12 +172,14 @@ func on_landing(_last_vy:float):
 	if sfx_landing == null:
 		return
 	sfx_landing.play()
-	controller.can_dash = true
 	
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
-
+	
+	if is_on_floor() and xsm.is_active("can_dash"):
+		controller.can_dash = true
+		
 	control(delta)
 	
 	if not in_animation: # we need the check in case we got into animation in control
@@ -189,8 +191,12 @@ func check_and_handle_collisions():
 		return
 	
 	if last_collision.get_collider().is_in_group("enemy"):
-		var normal = ($CollisionShape2D.global_position-last_collision.get_position()).normalized()
-		bounce(normal,250)
+#		var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+		#var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+		var bounce_angle:Vector2 = Vector2.RIGHT.rotated(-PI/6)
+		if global_position < last_collision.get_collider().global_position: 
+			bounce_angle.x = -bounce_angle.x
+		bounce(bounce_angle,600)
 
 
 	
@@ -216,32 +222,41 @@ func _on_FootstepTimer_timeout():
 	can_play_footstep=true
 
 func bounce(direction, distance):
-	var tween 
-	if distance <= 0:
-		return
-
-	var old_pos = global_position
-	var new_position = global_position+direction*distance
-
-#		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
-	var ray_params = PhysicsRayQueryParameters2D.new()
-	var y_delta:Vector2 = Vector2(0,-10)
-	ray_params.from = global_position + y_delta
-	ray_params.to = new_position + y_delta
-	ray_params.exclude=[self]
-	var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
-	
-	if collision:
-		new_position = collision.position 
-
+	var tmp_V = velocity
+	velocity+=direction*distance
+	tmp_V = velocity
+	xsm.change_state("hurt")
 	in_animation=true
-	collision_layer -= Globals.Layer.ENEMY
-	tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "global_position",new_position, .5)	
-	
-	await tween.finished
-	collision_layer += Globals.Layer.ENEMY
+	collision_mask -= Globals.Layer.ENEMY
+	await get_tree().create_timer(.5).timeout
 	in_animation=false
+	collision_mask += Globals.Layer.ENEMY
+#	var tween 
+#	if distance <= 0:
+#		return
+#
+#	var old_pos = global_position
+#	var new_position = global_position+direction*distance
+#
+##		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+#	var ray_params = PhysicsRayQueryParameters2D.new()
+#	var y_delta:Vector2 = Vector2(0,-10)
+#	ray_params.from = global_position + y_delta
+#	ray_params.to = new_position + y_delta
+#	ray_params.exclude=[self]
+#	var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
+#
+#	if collision:
+#		new_position = collision.position 
+#
+#	in_animation=true
+#	collision_layer -= Globals.Layer.ENEMY
+#	tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+#	tween.tween_property(self, "global_position",new_position, .5)	
+#
+#	await tween.finished
+#	collision_layer += Globals.Layer.ENEMY
+#	in_animation=false
 		
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
@@ -252,14 +267,32 @@ func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 	emit_signal("health_changed")
 
 
-	if knockback:
+	var tween 
+	if knockback > 0:
 		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
-		bounce(bounce_delta_x, knockback)#		
+		var new_position = global_position+Vector2(bounce_delta_x.x,0)
+		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+		var ray_params = PhysicsRayQueryParameters2D.new()
+		var y_delta:Vector2 = Vector2(0,-10)
+		ray_params.from = global_position + y_delta
+		ray_params.to = new_position + y_delta
+		ray_params.exclude=[self]
+		var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
+		
+		if collision:
+			new_position = collision.position 
+
+		in_animation=true
+		tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "global_position",new_position, .5)	
 	
 	if not check_for_death():		
 		xsm.change_state("hurt")
 		
 	emit_signal("health_changed")	
+	if tween:
+		await tween.finished
+	in_animation=false
 	
 		
 

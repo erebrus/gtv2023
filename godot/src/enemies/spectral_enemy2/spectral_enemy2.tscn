@@ -30,20 +30,13 @@
 [ext_resource type="PackedScene" uid="uid://2mlxmfj5brav" path="res://src/enemies/death_particles.tscn" id="24_hr2qr"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="26_qw5hw"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="27_i2scf"]
-[ext_resource type="Script" path="res://src/enemies/xsm/suction_attack.gd" id="29_h7wgg"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
-radius = 48.0
-height = 162.0
+[ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="29_l5ey4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdmx1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_e5m42")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_nh8fq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_nh8fq")
@@ -138,6 +131,10 @@ animations = [{
 "name": &"move",
 "speed": 8.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
+radius = 32.0
+height = 162.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7jm5"]
 lifetime_randomness = 0.5
@@ -273,7 +270,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-32, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -323,6 +320,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(128, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, -80)]
+}
 
 [sub_resource type="Animation" id="Animation_86cjw"]
 resource_name = "left"
@@ -349,7 +358,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-32, 0)]
+"values": [Vector2(-48, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -398,6 +407,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-192, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -80)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -461,7 +482,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-16, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -474,6 +495,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(128, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -80)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6j2u"]
@@ -494,18 +527,18 @@ collision_layer = 32
 script = ExtResource("1_2kj2q")
 normal_speed = 70.0
 engage_speed = 300.0
-knockback = 16.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(8, -80)
-shape = SubResource("CapsuleShape2D_v2xlg")
+knockback = 80.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, -128)
 sprite_frames = SubResource("SpriteFrames_wdmx1")
 animation = &"attack"
-frame = 4
+frame = 2
+offset = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -80)
+shape = SubResource("CapsuleShape2D_v2xlg")
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -530,7 +563,7 @@ libraries = {
 script = ExtResource("21_2kkqo")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -561,7 +594,6 @@ next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("24_aq1dp")
-min_distance = 0.0
 charge_time = 0.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
@@ -574,11 +606,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
-script = ExtResource("29_h7wgg")
-attack_delay = 0.3
-suction_duration = 3.0
-suction_strength = 110.0
-min_distance = 16.0
+script = ExtResource("29_l5ey4")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -636,7 +664,6 @@ position = Vector2(0, -75)
 target_position = Vector2(112, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
-visible = false
 position = Vector2(128, 0)
 collision_layer = 32
 collision_mask = 16
@@ -655,6 +682,7 @@ position = Vector2(40, -64)
 shape = SubResource("RectangleShape2D_fyrqi")
 
 [node name="reload_timer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]

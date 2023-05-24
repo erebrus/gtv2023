@@ -595,6 +595,7 @@ script = ExtResource("1_kqnht")
 attack_damage = 100.0
 
 [node name="platform_controller" parent="." instance=ExtResource("1_gtfn5")]
+dash_cooldown = 0.5
 max_speed = 400.0
 max_accel = 100.0
 max_deccel = 100.0
@@ -625,7 +626,7 @@ shape = SubResource("CapsuleShape2D_4cv33")
 script = ExtResource("3_17k6u")
 history_size = 0
 disabled = false
-debug_mode = true
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")

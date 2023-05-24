@@ -180,7 +180,7 @@ func _process(delta: float) -> void:
 	#if we are in animation, gravity still works
 	if player.in_animation:
 		player.velocity.y += _get_actual_g() * delta * delta_factor
-		if abs(player.velocity.x) and not xsm.is_active("dash"):
+		if abs(player.velocity.x) and not (xsm.is_active("dash") or xsm.is_active("hurt")):
 			if (abs(player.velocity.x)>5) :
 				player.velocity.x=0
 			else:

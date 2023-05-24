@@ -30,16 +30,13 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
 radius = 32.0
-height = 112.0
+height = 96.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjfvy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dok3v"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ocepb")
-}, {
 "duration": 1.0,
 "texture": ExtResource("2_ocepb")
 }, {
@@ -57,7 +54,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -496,7 +493,6 @@ max_accel = 25.0
 knockback = 32.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -32)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v2xlg")
@@ -506,7 +502,7 @@ material = SubResource("ShaderMaterial_hjfvy")
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_dok3v")
 animation = &"attack"
-frame = 4
+frame = 2
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -560,6 +556,7 @@ next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("5_4il6j")
+min_distance = 64.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "idle"
 anim_times_to_play = 1
@@ -572,7 +569,7 @@ next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_nrci0")
-attack_delay = 0.3
+attack_delay = 0.1
 lunge_distance = 16.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
@@ -648,6 +645,7 @@ position = Vector2(40, -40)
 shape = SubResource("RectangleShape2D_fyrqi")
 
 [node name="reload_timer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]
