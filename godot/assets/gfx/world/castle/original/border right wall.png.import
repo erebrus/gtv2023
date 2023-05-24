@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdbvqg4kfi4ju"
-path="res://.godot/imported/catfoxidle1.png-1c96a16e9294442f3b15484a5f585845.ctex"
+uid="uid://djbgwrtng4p1r"
+path="res://.godot/imported/border right wall.png-abb234116342ff4e31d7ce5f8da43d13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/enemies/material_enemy2/catfoxidle1.png"
-dest_files=["res://.godot/imported/catfoxidle1.png-1c96a16e9294442f3b15484a5f585845.ctex"]
+source_file="res://assets/gfx/world/castle/original/border right wall.png"
+dest_files=["res://.godot/imported/border right wall.png-abb234116342ff4e31d7ce5f8da43d13.ctex"]
 
 [params]
 

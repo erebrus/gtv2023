@@ -74,7 +74,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("16_pfa1c")
 }],
 "loop": true,
 "name": &"dash",
@@ -586,23 +586,25 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43iia"]
-size = Vector2(64, 80)
+size = Vector2(110, 113)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
+collision_mask = 33
 script = ExtResource("1_kqnht")
 attack_damage = 100.0
 
 [node name="platform_controller" parent="." instance=ExtResource("1_gtfn5")]
+dash_cooldown = 0.5
 max_speed = 400.0
 max_accel = 100.0
 max_deccel = 100.0
-dash_boost = 1200.0
+dash_boost = 2000.0
 dash_hangtime = 0.4
 th = 1.6
 h = 600.0
+v_limit = 1500.0
 damping_speed = 50.0
-max_air_jumps = 1
 inertia_factor = 0.5
 air_accel_factor = 0.5
 coyote_time = 0.1
@@ -611,16 +613,10 @@ allow_wall_jump = true
 wall_jump_x = 400.0
 xsm_path = NodePath("../xsm")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-color = Color(0.239216, 0.419608, 0.309804, 1)
-polygon = PackedVector2Array(-16, -104, 0, -192, 16, -104, 16, 0, -16, 0)
-
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"hurt_spectral"
-frame_progress = 0.646691
+animation = &"dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)
@@ -630,25 +626,13 @@ shape = SubResource("CapsuleShape2D_4cv33")
 script = ExtResource("3_17k6u")
 history_size = 0
 disabled = false
-debug_mode = true
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
 [node name="can_attack" type="Node" parent="xsm"]
 script = ExtResource("6_wjfj2")
-
-[node name="idle" type="Node" parent="xsm/can_attack"]
-script = ExtResource("5_5dat7")
-animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = "idle"
-anim_times_to_play = 1
-on_anim_finished = 0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../../dash")
 
 [node name="can_dash" type="Node" parent="xsm/can_attack"]
 script = ExtResource("6_bvrt0")
@@ -657,6 +641,18 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../../dash")
+
+[node name="idle" type="Node" parent="xsm/can_attack/can_dash"]
+script = ExtResource("5_5dat7")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = "idle"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../../../dash")
 
 [node name="move" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("6_lkixy")
@@ -728,7 +724,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_attack/idle")
+next_state = NodePath("../can_attack/can_dash/idle")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("13_wrndm")
@@ -740,7 +736,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_attack/idle")
+next_state = NodePath("../can_attack/can_dash/idle")
 
 [node name="decay" type="Node" parent="xsm"]
 script = ExtResource("12_5udvk")
@@ -752,7 +748,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_attack/idle")
+next_state = NodePath("../can_attack/can_dash/idle")
 
 [node name="materialise" type="Node" parent="xsm"]
 script = ExtResource("12_5udvk")
@@ -764,7 +760,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_attack/idle")
+next_state = NodePath("../can_attack/can_dash/idle")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("15_4wcyn")
@@ -776,7 +772,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../can_attack/idle")
+next_state = NodePath("../can_attack/can_dash/idle")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -816,7 +812,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
-position = Vector2(32, -56)
+position = Vector2(55, -72.5)
 shape = SubResource("RectangleShape2D_43iia")
 disabled = true
 
