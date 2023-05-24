@@ -16,11 +16,11 @@ func _on_dimension_changed(_dimension):
 	dimension = _dimension
 	if dimension == Events.Dimension.MATERIAL:
 		$TileMap.tile_set = MATERIAL_TS
-		$Foreground/ParallaxLayer/Fog.visible = false
+		$CanvasLayer/Fog.visible = false
 		$CanvasLayer/Tint.visible = false
 	else:
 		$TileMap.tile_set = SPECTRAL_TS
-		$Foreground/ParallaxLayer/Fog.visible = true
+		$CanvasLayer/Fog.visible = true
 		$CanvasLayer/Tint.visible = true
 	
 #

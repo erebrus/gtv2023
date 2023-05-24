@@ -109,17 +109,20 @@ position = Vector2(2, 394)
 texture = ExtResource("9_sumg3")
 centered = false
 
-[node name="Fog" type="Sprite2D" parent="Foreground/ParallaxLayer"]
-texture_repeat = 2
-material = ExtResource("7_5c3ag")
-position = Vector2(2, 394)
-centered = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Fog" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("7_5c3ag")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
