@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crxdydfi47uq2"]
+[gd_scene load_steps=19 format=3 uid="uid://crxdydfi47uq2"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_3np8i"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_oiska"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="9_sumg3"]
 [ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="10_gu16i"]
 [ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="11_df4pw"]
+[ext_resource type="Script" path="res://src/world/camera.gd" id="13_h8je0"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="15_mofd2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vrrl"]
@@ -96,6 +97,7 @@ energy_decay = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position_smoothing_enabled = true
+script = ExtResource("13_h8je0")
 
 [node name="Foreground" type="ParallaxBackground" parent="."]
 layer = 100
@@ -109,17 +111,21 @@ position = Vector2(2, 394)
 texture = ExtResource("9_sumg3")
 centered = false
 
-[node name="Fog" type="Sprite2D" parent="Foreground/ParallaxLayer"]
-texture_repeat = 2
-material = ExtResource("7_5c3ag")
-position = Vector2(2, 394)
-centered = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Fog" type="ColorRect" parent="CanvasLayer"]
+texture_repeat = 3
+material = ExtResource("7_5c3ag")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

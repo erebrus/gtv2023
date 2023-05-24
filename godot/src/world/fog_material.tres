@@ -6,3 +6,4 @@
 shader = ExtResource("1_3iv14")
 shader_parameter/ori_color = Color(0, 0, 0, 1)
 shader_parameter/OCTAVES = 4
+shader_parameter/offset = Vector2(0, 0)
