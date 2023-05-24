@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdbvqg4kfi4ju"
-path="res://.godot/imported/catfoxidle1.png-1c96a16e9294442f3b15484a5f585845.ctex"
+uid="uid://2ir3cmuyfp01"
+path="res://.godot/imported/catfoxidle9.png-ebe862d664ab4cb2ee957d7941ce69bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/enemies/material_enemy2/catfoxidle1.png"
-dest_files=["res://.godot/imported/catfoxidle1.png-1c96a16e9294442f3b15484a5f585845.ctex"]
+source_file="res://assets/gfx/enemies/material_enemy2/catfoxidle9.png"
+dest_files=["res://.godot/imported/catfoxidle9.png-ebe862d664ab4cb2ee957d7941ce69bb.ctex"]
 
 [params]
 
