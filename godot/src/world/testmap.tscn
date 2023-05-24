@@ -82,7 +82,7 @@ position = Vector2(381, 416)
 dimension = 1
 
 [node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
-position = Vector2(192, 780)
+position = Vector2(1171, 788)
 
 [node name="horned_mouth" parent="TileMap" instance=ExtResource("10_gu16i")]
 position = Vector2(937, 166)
@@ -91,7 +91,7 @@ position = Vector2(937, 166)
 position = Vector2(1209, 451)
 
 [node name="player" parent="." instance=ExtResource("3_3fbet")]
-position = Vector2(890, 804)
+position = Vector2(761, 804)
 energy_decay = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]

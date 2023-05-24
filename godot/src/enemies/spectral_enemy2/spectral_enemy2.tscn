@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://nq706ehk3bgf"]
+[gd_scene load_steps=49 format=3 uid="uid://nq706ehk3bgf"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
 [ext_resource type="Texture2D" uid="uid://cpujjjlir5y1f" path="res://assets/gfx/enemies/spectral_enemy2/attack2/1.png" id="2_e5m42"]
@@ -136,16 +136,26 @@ animations = [{
 radius = 32.0
 height = 162.0
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7jm5"]
-lifetime_randomness = 0.5
-emission_shape = 3
-emission_box_extents = Vector3(10, 1, 1)
+[sub_resource type="Curve" id="Curve_7iftf"]
+_data = [Vector2(0, 0), 0.0, 3.47875, 0, 1, Vector2(0.276365, 0.961405), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.32858, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vh1xh"]
+curve = SubResource("Curve_7iftf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cg33y"]
+emission_shape = 1
+emission_sphere_radius = 96.0
 particle_flag_disable_z = true
-gravity = Vector3(0, -10, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 2.0
+linear_accel_max = 10.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_vh1xh")
 
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
@@ -167,19 +177,54 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
-length = 10.0
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("death_particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["death"],
-"method": &"play_animation"
+"args": [],
+"method": &"spawn_soul"
 }]
 }
 
@@ -530,6 +575,7 @@ engage_speed = 300.0
 knockback = 80.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(40, -128)
 sprite_frames = SubResource("SpriteFrames_wdmx1")
 animation = &"attack"
@@ -540,14 +586,9 @@ offset = Vector2(-32, 0)
 position = Vector2(24, -80)
 shape = SubResource("CapsuleShape2D_v2xlg")
 
-[node name="soul_trail" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_y7jm5")
-lifetime = 4.0
-randomness = 0.43
-
 [node name="death_particles" parent="." instance=ExtResource("24_hr2qr")]
+position = Vector2(8, -80)
+process_material = SubResource("ParticleProcessMaterial_cg33y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -578,7 +619,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("23_vbmvc")
@@ -590,7 +631,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../engage")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("24_aq1dp")
@@ -603,7 +644,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../attack")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("29_l5ey4")
@@ -615,7 +656,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../death")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("26_qw5hw")
@@ -627,7 +668,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../hurt")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("27_i2scf")

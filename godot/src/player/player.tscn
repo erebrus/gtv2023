@@ -586,7 +586,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43iia"]
-size = Vector2(64, 80)
+size = Vector2(110, 113)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
@@ -664,7 +664,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../jump")
 
 [node name="jump" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("8_7ga8y")
@@ -676,7 +676,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../fall")
 
 [node name="fall" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("9_aqd42")
@@ -812,7 +812,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
-position = Vector2(32, -56)
+position = Vector2(55, -72.5)
 shape = SubResource("RectangleShape2D_43iia")
 disabled = true
 
