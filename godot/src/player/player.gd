@@ -14,6 +14,8 @@ signal jump_fired
 @export var recoil_force:float = 400.0
 @export var attack_damage:float = 25.0
 @export var attack_knockback:float = 50.0
+@export var spectral_th:float = 1.6
+@export var material_th:float = .6
 
 var use_mouse:=true
 var max_x:float = 0
@@ -114,7 +116,9 @@ func control(_delta:float) -> void:
 	if in_animation:
 		return
 	if Input.is_action_just_pressed("jump"):
-		Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
+		if dimension == Events.Dimension.MATERIAL:
+			Logger.debug("Jump was pressed. (global, should be processed by now) . "  )
+		
 	
 	if Input.is_action_just_pressed("shift"):
 		shift()
@@ -125,9 +129,13 @@ func _on_dimension_changed(_dimension):
 		return
 	dimension = _dimension
 	if _dimension == Events.Dimension.MATERIAL:
-		xsm.change_state("materialise")		
+		xsm.change_state("materialise")	
+		controller.th = material_th	
+		controller.recompute_gravity()
 	else:
-		xsm.change_state("decay")		
+		xsm.change_state("decay")	
+		controller.th = spectral_th	
+		controller.recompute_gravity()	
 		
 		
 	
@@ -164,16 +172,34 @@ func on_landing(_last_vy:float):
 	if sfx_landing == null:
 		return
 	sfx_landing.play()
-
+	
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
-
+	
+	if is_on_floor() and xsm.is_active("can_dash"):
+		controller.can_dash = true
+		
 	control(delta)
 	
 	if not in_animation: # we need the check in case we got into animation in control
 		update_sprite()
-		
+
+func check_and_handle_collisions():
+	var last_collision := get_last_slide_collision()
+	if not last_collision:
+		return
+	
+	if last_collision.get_collider().is_in_group("enemy"):
+#		var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+		#var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+		var bounce_angle:Vector2 = Vector2.RIGHT.rotated(-PI/6)
+		if global_position < last_collision.get_collider().global_position: 
+			bounce_angle.x = -bounce_angle.x
+		bounce(bounce_angle,600)
+
+
+	
 #func environment_death():
 #
 #	#no longer death
@@ -195,6 +221,43 @@ func _process(delta: float) -> void:
 func _on_FootstepTimer_timeout():
 	can_play_footstep=true
 
+func bounce(direction, distance):
+	var tmp_V = velocity
+	velocity+=direction*distance
+	tmp_V = velocity
+	xsm.change_state("hurt")
+	in_animation=true
+	collision_mask -= Globals.Layer.ENEMY
+	await get_tree().create_timer(.5).timeout
+	in_animation=false
+	collision_mask += Globals.Layer.ENEMY
+#	var tween 
+#	if distance <= 0:
+#		return
+#
+#	var old_pos = global_position
+#	var new_position = global_position+direction*distance
+#
+##		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+#	var ray_params = PhysicsRayQueryParameters2D.new()
+#	var y_delta:Vector2 = Vector2(0,-10)
+#	ray_params.from = global_position + y_delta
+#	ray_params.to = new_position + y_delta
+#	ray_params.exclude=[self]
+#	var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
+#
+#	if collision:
+#		new_position = collision.position 
+#
+#	in_animation=true
+#	collision_layer -= Globals.Layer.ENEMY
+#	tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+#	tween.tween_property(self, "global_position",new_position, .5)	
+#
+#	await tween.finished
+#	collision_layer += Globals.Layer.ENEMY
+#	in_animation=false
+		
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
 	Logger.debug("player was attacked")
@@ -203,7 +266,7 @@ func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 		xsm.change_state("hurt")
 	emit_signal("health_changed")
 
-	
+
 	var tween 
 	if knockback > 0:
 		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
@@ -230,6 +293,8 @@ func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 	if tween:
 		await tween.finished
 	in_animation=false
+	
+		
 
 
 

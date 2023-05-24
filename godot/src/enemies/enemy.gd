@@ -62,8 +62,7 @@ func _on_dimension_changed(_dimension)->void:
 			sprite.visible = false
 			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = false
-	else:
-		soul_trail.emitting = false
+	else:		
 		if _dimension == Events.Dimension.MATERIAL:
 			collision_layer=0
 			$detection_box.monitoring = false
