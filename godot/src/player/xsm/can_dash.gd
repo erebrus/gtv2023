@@ -57,7 +57,7 @@ func _on_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("dash")\
 		#FIXME redundant can
 		and owner.controller.dash_boost\
-		and input != Vector2.ZERO\
+#		and input != Vector2.ZERO\
 		and owner.controller.can_dash \
 		and owner.controller.dash_timer.is_stopped()\
 		and owner.dimension == Events.Dimension.SPECTRAL: 

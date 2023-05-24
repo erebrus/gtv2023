@@ -151,7 +151,8 @@ func do_dash(direction:Vector2 = Vector2.ZERO)->void:
 	can_dash=false
 	#no direction provided, use facing direction
 	if direction == Vector2.ZERO:
-		player.velocity.x=dash_boost*player.last_direction.x
+#		player.velocity.x=dash_boost*player.last_direction.x
+		player.velocity=dash_boost*Vector2.UP
 	else:
 		player.velocity=dash_boost*direction
 	Logger.info("dash speed %s" % player.velocity)
@@ -213,6 +214,7 @@ func _process(delta: float) -> void:
 	player.velocity += player.extra_impulse
 	tmp_v = player.velocity
 	player.move_and_slide()
+	player.check_and_handle_collisions()
 	tmp_v = player.velocity
 	player.extra_impulse = Vector2.ZERO
 	Logger.trace("POST applying velocity %s" % player.velocity)
