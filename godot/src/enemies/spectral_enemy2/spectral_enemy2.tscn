@@ -1,7 +1,6 @@
 [gd_scene load_steps=49 format=3 uid="uid://nq706ehk3bgf"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
-[ext_resource type="Texture2D" uid="uid://cpujjjlir5y1f" path="res://assets/gfx/enemies/spectral_enemy2/attack2/1.png" id="2_e5m42"]
 [ext_resource type="Texture2D" uid="uid://deb2l5kibyw02" path="res://assets/gfx/enemies/spectral_enemy2/attack2/2.png" id="3_nh8fq"]
 [ext_resource type="Texture2D" uid="uid://cokoosinu75s1" path="res://assets/gfx/enemies/spectral_enemy2/attack2/3.png" id="4_7n1jq"]
 [ext_resource type="Texture2D" uid="uid://b3c4mbf1wbni6" path="res://assets/gfx/enemies/spectral_enemy2/attack2/4.png" id="5_c8adp"]
@@ -35,9 +34,6 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdmx1"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_e5m42")
-}, {
 "duration": 1.0,
 "texture": ExtResource("3_nh8fq")
 }, {
@@ -211,7 +207,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, false]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -282,8 +278,48 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bd3l7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("death_particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ecdwp"]
 _data = {
+"RESET": SubResource("Animation_bd3l7"),
 "attack": SubResource("Animation_ko00o"),
 "death": SubResource("Animation_honj7"),
 "hurt": SubResource("Animation_vn40q"),
@@ -575,7 +611,7 @@ engage_speed = 300.0
 knockback = 80.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+visible = false
 position = Vector2(40, -128)
 sprite_frames = SubResource("SpriteFrames_wdmx1")
 animation = &"attack"
@@ -619,7 +655,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("23_vbmvc")
@@ -631,7 +667,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../engage")
+next_state = NodePath("")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("24_aq1dp")
@@ -644,10 +680,11 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../attack")
+next_state = NodePath("")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("29_l5ey4")
+lunge_distance = 32.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -656,7 +693,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../death")
+next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("26_qw5hw")
@@ -668,7 +705,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../hurt")
+next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("27_i2scf")
