@@ -8,7 +8,7 @@ var dimension = Events.Dimension.SPECTRAL
 func _ready():
 	Events.dimension_changed.emit(dimension)
 	Events.dimension_changed.connect(_on_dimension_changed)
-	
+	$player/Camera2D.moved.connect(_on_camera_moved)
 
 func _on_dimension_changed(_dimension):
 	if dimension == _dimension:
@@ -23,4 +23,6 @@ func _on_dimension_changed(_dimension):
 		$CanvasLayer/Fog.visible = true
 		$CanvasLayer/Tint.visible = true
 	
-#
+
+func _on_camera_moved():
+	$CanvasLayer/Fog.material.set_shader_parameter("offset", $player/Camera2D.global_position)
