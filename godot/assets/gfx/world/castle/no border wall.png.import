@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjcthk002rjb4"
-path="res://.godot/imported/no border wall.png-6e237b4694f99adc562a66f7c6026f4a.ctex"
+uid="uid://bx11sw70dfygu"
+path="res://.godot/imported/no border wall.png-02ce95859323378ac1bd31f6b708eb4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/no border wall.png"
-dest_files=["res://.godot/imported/no border wall.png-6e237b4694f99adc562a66f7c6026f4a.ctex"]
+source_file="res://assets/gfx/world/castle/no border wall.png"
+dest_files=["res://.godot/imported/no border wall.png-02ce95859323378ac1bd31f6b708eb4a.ctex"]
 
 [params]
 

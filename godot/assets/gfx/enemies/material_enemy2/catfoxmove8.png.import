@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dys3ur1njqdrk"
-path="res://.godot/imported/border bottom wall.png-9e4f0bc0e9e619776cfa70c2b309ecee.ctex"
+uid="uid://knsmgeog8w8h"
+path="res://.godot/imported/catfoxmove8.png-c296274ffa3b111e4100287d4c1938da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/border bottom wall.png"
-dest_files=["res://.godot/imported/border bottom wall.png-9e4f0bc0e9e619776cfa70c2b309ecee.ctex"]
+source_file="res://assets/gfx/enemies/material_enemy2/catfoxmove8.png"
+dest_files=["res://.godot/imported/catfoxmove8.png-c296274ffa3b111e4100287d4c1938da.ctex"]
 
 [params]
 

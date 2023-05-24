@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk7mmdw5bjyb1"
-path="res://.godot/imported/border right wall.png-ff1cb885a410f6b234b1e944c1c311c7.ctex"
+uid="uid://760wi1all2pi"
+path="res://.godot/imported/border bottom left wall.png-0b2b1a93ff36c38faf8c9dd474e38e09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/border right wall.png"
-dest_files=["res://.godot/imported/border right wall.png-ff1cb885a410f6b234b1e944c1c311c7.ctex"]
+source_file="res://assets/gfx/world/castle/border bottom left wall.png"
+dest_files=["res://.godot/imported/border bottom left wall.png-0b2b1a93ff36c38faf8c9dd474e38e09.ctex"]
 
 [params]
 
