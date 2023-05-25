@@ -39,7 +39,7 @@ func _on_enter(_args) -> void:
 func lunge():	
 	var new_position = owner.global_position+lunge_distance*owner.last_direction
 	var x=new_position.x
-	for y in range(0,160,10):
+	for y in range(20,160,10):
 		
 		var ray_params = PhysicsRayQueryParameters2D.new()
 		var y_delta:Vector2 = Vector2(0,-y)
@@ -55,7 +55,8 @@ func lunge():
 	new_position.x = x
 	owner.in_animation=true
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(owner, "global_position",new_position, .3)		
+	var t = abs(new_position.x - owner.global_position.x)/owner.controller.max_speed
+	tween.tween_property(owner, "global_position",new_position, t)		
 	await tween.finished	
 	owner.in_animation=false
 # This function is called just after the state enters
