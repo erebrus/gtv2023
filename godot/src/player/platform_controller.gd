@@ -243,5 +243,5 @@ func _process(delta: float) -> void:
 func _on_climb_reload_timer_timeout():
 	can_climb = true
 
-#func _on_dash_timer_timeout():
-#	can_dash = true
+func _on_dash_timer_timeout():
+	can_dash = true
