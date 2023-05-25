@@ -179,11 +179,15 @@ func _process(delta: float) -> void:
 	#if we are in animation, gravity still works
 	if player.in_animation:
 		player.velocity.y += _get_actual_g() * delta * delta_factor
-		if abs(player.velocity.x) and not (xsm.is_active("dash") or xsm.is_active("hurt")):
-			if (abs(player.velocity.x)>5) :
-				player.velocity.x=0
-			else:
-				player.velocity.x -=5*sign(player.velocity.x)
+#		if abs(player.velocity.x) and\
+#			not (xsm.is_active("dash")\
+#					 or xsm.is_active("hurt")\
+#					 or xsm.is_active("death")
+#					):
+#						if (abs(player.velocity.x)>5) :
+#							player.velocity.x=0
+#						else:
+#							player.velocity.x -=5*sign(player.velocity.x)
 		player.velocity += player.extra_impulse
 		player.move_and_slide()
 		player.extra_impulse = Vector2.ZERO

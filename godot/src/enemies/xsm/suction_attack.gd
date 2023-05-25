@@ -26,7 +26,6 @@ func _on_enter(_args) -> void:
 	owner.in_animation = true
 
 	owner.desired_velocity.x=0
-	owner.set_attackbox_enabled(true)	
 	owner.sfx_attack.play()
 	if suction_duration > 0:
 		add_timer("suction_timer", suction_duration)
@@ -67,8 +66,8 @@ func _before_exit(_args) -> void:
 func _on_exit(_args) -> void:
 	do_suction = false
 	owner.in_animation = false
-	owner.set_attackbox_enabled(false)
 	owner.reload_timer.start()
+	owner.set_attackbox_enabled(false)
 	del_timers()
 
 # when StateAutomaticTimer timeout()
@@ -87,5 +86,5 @@ func _on_timeout(_name) -> void:
 				owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
 			else:
 				Logger.warn("%s tried to attack invalid target %s." % [owner.name, owner.target.name])
-			owner.set_attackbox_enabled(false)
+
 
