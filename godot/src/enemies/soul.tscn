@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://nji168cpwlh0"]
+[gd_scene load_steps=16 format=3 uid="uid://nji168cpwlh0"]
 
 [ext_resource type="Script" path="res://src/enemies/soul.gd" id="1_2cfk8"]
 [ext_resource type="Shader" path="res://src/enemies/soul.gdshader" id="2_5qd4q"]
-[ext_resource type="Texture2D" uid="uid://dbo5dtdgilsfs" path="res://addons/kenney_particle_pack/light_01.png" id="3_be8cb"]
-[ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="4_nwsjj"]
+[ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="2_b0ff0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
+radius = 34.2345
 
 [sub_resource type="Curve" id="Curve_yx8uq"]
 _data = [Vector2(0.0255315, 0.0248897), 0.0, 0.0, 0, 0, Vector2(0.506044, 0.69644), 0.0, 0.0, 0, 0, Vector2(1, 0.0203214), 0.0, 0.0, 0, 0]
@@ -43,9 +45,6 @@ height = 64
 seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_b70rg")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
-radius = 34.2345
 
 [sub_resource type="Animation" id="Animation_14yt8"]
 length = 0.001
@@ -203,40 +202,48 @@ _data = {
 "hover": SubResource("Animation_7b2gk")
 }
 
-[node name="soul" type="Area2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_2cfk8")
+
+[node name="soul" type="Area2D" parent="."]
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 16
-script = ExtResource("1_2cfk8")
 
-[node name="particles" type="GPUParticles2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="soul"]
+visible = false
+position = Vector2(0, 0.8)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_0tkkf")
+
+[node name="particles" type="GPUParticles2D" parent="soul"]
 modulate = Color(0.764706, 0.721569, 0.635294, 1)
 emitting = false
 amount = 14
 process_material = SubResource("ParticleProcessMaterial_pej56")
-texture = ExtResource("4_nwsjj")
+texture = ExtResource("2_b0ff0")
 lifetime = 3.0
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="soul"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hi47h")
 texture = SubResource("NoiseTexture2D_8m4r2")
 
-[node name="collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_0tkkf")
+[node name="sfx_consume" type="AudioStreamPlayer2D" parent="soul"]
 
-[node name="sfx_consume" type="AudioStreamPlayer2D" parent="."]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="soul"]
 energy = 0.0
-texture = ExtResource("3_be8cb")
 texture_scale = 0.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="soul"]
 libraries = {
 "": SubResource("AnimationLibrary_k60al")
 }
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.8)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_0tkkf")
+
+[connection signal="body_entered" from="soul" to="." method="_on_soul_body_entered"]
