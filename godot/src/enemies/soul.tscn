@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://nji168cpwlh0"]
+[gd_scene load_steps=16 format=3 uid="uid://nji168cpwlh0"]
 
 [ext_resource type="Script" path="res://src/enemies/soul.gd" id="1_2cfk8"]
 [ext_resource type="Shader" path="res://src/enemies/soul.gdshader" id="2_5qd4q"]
+[ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="2_b0ff0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
 radius = 34.2345
@@ -217,23 +218,20 @@ shape = SubResource("CircleShape2D_0tkkf")
 
 [node name="particles" type="GPUParticles2D" parent="soul"]
 modulate = Color(0.764706, 0.721569, 0.635294, 1)
-scale = Vector2(1, 1)
 emitting = false
 amount = 14
 process_material = SubResource("ParticleProcessMaterial_pej56")
+texture = ExtResource("2_b0ff0")
 lifetime = 3.0
 
 [node name="sprite" type="Sprite2D" parent="soul"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hi47h")
-scale = Vector2(1, 1)
 texture = SubResource("NoiseTexture2D_8m4r2")
 
 [node name="sfx_consume" type="AudioStreamPlayer2D" parent="soul"]
-scale = Vector2(1, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="soul"]
-scale = Vector2(1, 1)
 energy = 0.0
 texture_scale = 0.5
 
