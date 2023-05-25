@@ -46,7 +46,7 @@ func _on_update(_delta: float) -> void:
 		return
 
 	var target_direction = Vector2(sign(owner.target.global_position.x - owner.global_position.x),0)
-	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
+#	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
 	
 	if moving:
 		owner.handle_run_sfx()		

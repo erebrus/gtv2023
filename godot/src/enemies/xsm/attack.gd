@@ -25,8 +25,7 @@ func _on_enter(_args) -> void:
 	owner.sfx_attack.play()
 	if lunge_distance > 0 :
 		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		var origin = owner.global_position
-		var d= owner.get_facing_direction()
+#		var origin = owner.global_position
 		var dest = owner.global_position+Vector2(lunge_distance,20)*owner.get_facing_direction()
 		tween.tween_property(owner, "global_position", dest, .2)
 	add_timer("attack_timer", attack_delay)

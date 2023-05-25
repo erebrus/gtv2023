@@ -104,7 +104,7 @@ func check_direction():
 			dir_player.play("left")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if in_animation or dead:
 		return
@@ -115,21 +115,21 @@ func _process(delta: float) -> void:
 	move_and_slide()
 #	dist_to_enemy=-1 if not target else global_position.distance_to(target.global_position)
 	
-	var dvel = desired_velocity.length()	
+#	var dvel = desired_velocity.length()	
 	
 	#Apply gravity if not on floor and not hanging
 	if !is_on_floor():
 		velocity.y = G 
 	
 	
-func take_damage(source_pos, damage, knockback):
+func take_damage(source_pos, damage, _knockback):
 	Logger.info("%s: take damage %d" % [name, damage])
 	hp = clamp(hp-damage, 0, max_hp)
 	Logger.info("%s: hp %d" % [name, hp])
 	
 	var tween 
-	if knockback > 0:
-		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
+	if _knockback > 0:
+		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*_knockback	
 		var new_position = global_position+Vector2(bounce_delta_x.x,0)
 		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
 		var ray_params = PhysicsRayQueryParameters2D.new()
@@ -207,12 +207,16 @@ func _on_timer_fs_timeout():
 func _on_detection_box_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
+		await get_tree().process_frame
+		#we neet to wait to prevent errors
 		set_attackbox_enabled(true)
 
 
 func _on_detection_box_body_exited(body):
 	if body.is_in_group("player"):
 		target = null
+		await get_tree().process_frame
+		#we neet to wait to prevent errors
 		set_attackbox_enabled(false)
 
 
