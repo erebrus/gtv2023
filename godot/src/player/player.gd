@@ -198,17 +198,19 @@ func _process(delta: float) -> void:
 		update_sprite()
 
 func check_and_handle_collisions():
-	var last_collision := get_last_slide_collision()
-	if not last_collision:
-		return
-	
-	if last_collision.get_collider().is_in_group("enemy"):
-#		var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
-		#var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
-		var bounce_angle:Vector2 = Vector2.RIGHT.rotated(-PI/6)
-		if global_position < last_collision.get_collider().global_position: 
-			bounce_angle.x = -bounce_angle.x
-		bounce(bounce_angle,600)
+	pass
+#
+#	var last_collision := get_last_slide_collision()
+#	if not last_collision:
+#		return
+#
+#	if last_collision.get_collider().is_in_group("enemy"):
+##		var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+#		#var normal = ($CollisionShape2D.global_position-last_collision.get_collider().get_node("CollisionShape2D").global_position).normalized()
+#		var bounce_angle:Vector2 = Vector2.RIGHT.rotated(-PI/6)
+#		if global_position < last_collision.get_collider().global_position: 
+#			bounce_angle.x = -bounce_angle.x
+#		bounce(bounce_angle,600)
 
 
 	
@@ -235,18 +237,13 @@ func _on_FootstepTimer_timeout():
 
 func bounce(direction, distance):
 	var tmp_V = velocity
-	velocity+=direction*distance
+	velocity=direction*distance
 	tmp_V = velocity
-	self.energy = clamp(energy, 0, max_energy)
-	if not check_for_death():
-		xsm.change_state("hurt")
-	emit_signal("health_changed")
 	in_animation=true
-	collision_mask -= Globals.Layer.ENEMY
-	await get_tree().create_timer(.5).timeout
+
+	await get_tree().create_timer(.4).timeout
 	
 	in_animation=false
-	collision_mask += Globals.Layer.ENEMY
 	
 #	var tween 
 #	if distance <= 0:
@@ -278,38 +275,45 @@ func bounce(direction, distance):
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
 
 	Logger.debug("player was attacked")
-	self.energy = clamp(energy-dmg, 0, max_energy)
 	if not check_for_death():
-		xsm.change_state("hurt")
+		xsm.change_state("hurt")	
+	if knockback > 0:
+		var bounce_angle:Vector2 = Vector2.RIGHT.rotated(-PI/6)
+		if global_position.x < source_pos.x: 
+			bounce_angle.x = -bounce_angle.x
+		bounce(bounce_angle,600)	
+	self.energy = clamp(energy-dmg, 0, max_energy)
+	
 	emit_signal("health_changed")
 
 
-	var tween 
-	if knockback > 0:
-		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
-		var new_position = global_position+Vector2(bounce_delta_x.x,0)
-		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
-		var ray_params = PhysicsRayQueryParameters2D.new()
-		var y_delta:Vector2 = Vector2(0,-10)
-		ray_params.from = global_position + y_delta
-		ray_params.to = new_position + y_delta
-		ray_params.exclude=[self]
-		var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
-		
-		if collision:
-			new_position = collision.position 
-
-		in_animation=true
-		tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property(self, "global_position",new_position, .5)	
+#
+#	var tween 
+#	if knockback > 0:
+#		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
+#		var new_position = global_position+Vector2(bounce_delta_x.x,0)
+#		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+#		var ray_params = PhysicsRayQueryParameters2D.new()
+#		var y_delta:Vector2 = Vector2(0,-10)
+#		ray_params.from = global_position + y_delta
+#		ray_params.to = new_position + y_delta
+#		ray_params.exclude=[self]
+#		var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
+#
+#		if collision:
+#			new_position = collision.position 
+#
+#		in_animation=true
+#		tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+#		tween.tween_property(self, "global_position",new_position, .5)	
 	
-	if not check_for_death():		
-		xsm.change_state("hurt")
-		
-	emit_signal("health_changed")	
-	if tween:
-		await tween.finished
-	in_animation=false
+#	if not check_for_death():		
+#		xsm.change_state("hurt")
+#
+#	emit_signal("health_changed")	
+#	if tween:
+#		await tween.finished
+#	in_animation=false
 	
 		
 

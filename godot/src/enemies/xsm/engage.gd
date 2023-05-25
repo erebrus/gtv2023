@@ -22,8 +22,6 @@ func _on_enter(_args) -> void:
 	owner.sprite.speed_scale=1.0
 	moving = false
 	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
-	if owner.can_attack():
-		owner.set_attackbox_enabled(true)
 	if charge_time > 0 and dist > min_distance:
 		add_timer("charge", charge_time)
 	else:

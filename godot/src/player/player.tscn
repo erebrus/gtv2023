@@ -854,7 +854,6 @@ size = Vector2(110, 113)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
-collision_mask = 33
 script = ExtResource("1_kqnht")
 attack_damage = 50.0
 attack_knockback = 100.0

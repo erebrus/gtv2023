@@ -215,17 +215,11 @@ func _on_timer_fs_timeout():
 func _on_detection_box_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
-		await get_tree().process_frame
-		#we neet to wait to prevent errors
-		set_attackbox_enabled(true)
 
 
 func _on_detection_box_body_exited(body):
 	if body.is_in_group("player"):
 		target = null
-		await get_tree().process_frame
-		#we neet to wait to prevent errors
-		set_attackbox_enabled(false)
 
 
 func _on_attack_box_body_entered(body):
