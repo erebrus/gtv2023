@@ -54,8 +54,7 @@ var processing_jump:bool = false
 
 func _ready():
 	player = get_parent()
-	validate_parent()
-	
+	validate_parent()	
 	Logger.debug("Player v0=%f g=%f" % [v0, g])
 	dash_timer.wait_time=dash_cooldown
 	

@@ -37,7 +37,7 @@ var immune := false
 	
 @onready var sprite:AnimatedSprite2D = $sprite
 
-@onready var controller = $platform_controller
+var controller
 @onready var direction_player:AnimationPlayer = $DirAnimationPlayer
 @onready var reload_timer = $reload_timer
 @onready var climb_rc = $climb_rc
@@ -64,7 +64,15 @@ var object
 		
 
 func _ready():
-
+	if dimension == Events.Dimension.MATERIAL:
+		controller = $material_controller
+		$material_controller.set_process(true)
+		$spectral_controller.set_process(false)
+	else:
+		controller = $spectral_controller
+		$material_controller.set_process(false)
+		$spectral_controller.set_process(true)
+		
 	last_y=global_position.y
 	last_direction=Vector2.RIGHT
 	$DirAnimationPlayer.play("right")
@@ -94,6 +102,8 @@ func update_sprite():
 			direction_player.play(desired_direction)
 	if xsm.is_active("move"):
 		$CollisionShape2D.position.x=24 * facing_direction.x
+	else:
+		$CollisionShape2D.position.x=0
 			
 	
 
@@ -130,12 +140,14 @@ func _on_dimension_changed(_dimension):
 	dimension = _dimension
 	if _dimension == Events.Dimension.MATERIAL:
 		xsm.change_state("materialise")	
-		controller.th = material_th	
-		controller.recompute_gravity()
+		controller = $material_controller
+		$material_controller.set_process(true)
+		$spectral_controller.set_process(false)
 	else:
 		xsm.change_state("decay")	
-		controller.th = spectral_th	
-		controller.recompute_gravity()	
+		controller = $spectral_controller
+		$material_controller.set_process(false)
+		$spectral_controller.set_process(true)
 		
 		
 	
