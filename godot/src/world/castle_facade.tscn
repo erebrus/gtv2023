@@ -39,6 +39,7 @@ layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 52429
 
 [node name="bone_bug" parent="." instance=ExtResource("5_ie6hf")]
 position = Vector2(1472, 935)
+max_hp = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -46,3 +47,4 @@ position = Vector2(1472, 935)
 
 [node name="horned_mouth" parent="." instance=ExtResource("4_6sdpr")]
 position = Vector2(168, 973)
+max_hp = 150

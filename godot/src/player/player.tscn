@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=100 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -78,6 +78,7 @@
 [ext_resource type="Texture2D" uid="uid://367uykimt3wo" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-7.png" id="39_6o21l"]
 [ext_resource type="Texture2D" uid="uid://d1xwvnb3jp3pr" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-8.png" id="40_x7exa"]
 [ext_resource type="Texture2D" uid="uid://36udleg20nir" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-9.png" id="41_ukcib"]
+[ext_resource type="Script" path="res://src/player/xsm/hurt.gd" id="76_8vw70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
 animations = [{
@@ -1009,7 +1010,8 @@ timed = false
 next_state = NodePath("../dash")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("12_5udvk")
+script = ExtResource("76_8vw70")
+do_slomo = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
@@ -1104,6 +1106,10 @@ disabled = true
 [node name="reload_timer" type="Timer" parent="."]
 wait_time = 0.02
 one_shot = true
+
+[node name="vfx" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="vfx"]
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]
 [connection signal="body_entered" from="attack_box" to="." method="_on_attack_box_body_entered"]

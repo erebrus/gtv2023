@@ -24,15 +24,40 @@ func _on_enter(_args) -> void:
 	owner.velocity.x=0
 	owner.sfx_attack.play()
 	if lunge_distance > 0 :
-		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-#		var origin = owner.global_position
-		var dest = owner.global_position+Vector2(lunge_distance,0)*owner.last_direction
-		tween.tween_property(owner, "global_position", dest, .3)	
+		lunge()
+#		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+##		var origin = owner.global_position
+#		var dest = owner.global_position+Vector2(lunge_distance,0)*owner.last_direction
+#		tween.tween_property(owner, "global_position", dest, .3)	
 	if attack_delay>0:
 		add_timer("attack_timer", attack_delay)
 	else:
 		owner.set_attack_box_enabled(true)
-	
+
+
+
+func lunge():	
+	var new_position = owner.global_position+lunge_distance*owner.last_direction
+	var x=new_position.x
+	for y in range(0,160,10):
+		
+		var ray_params = PhysicsRayQueryParameters2D.new()
+		var y_delta:Vector2 = Vector2(0,-y)
+		ray_params.from = owner.global_position + y_delta
+		ray_params.to = new_position + y_delta
+		ray_params.exclude=[owner]
+		var collision = owner.get_world_2d().direct_space_state.intersect_ray(ray_params)
+		
+		if collision:
+			if abs(collision.position.x-owner.global_position.x) < (x- owner.global_position.x):
+				x=collision.position.x
+
+	new_position.x = x
+	owner.in_animation=true
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(owner, "global_position",new_position, .3)		
+	await tween.finished	
+	owner.in_animation=false
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
