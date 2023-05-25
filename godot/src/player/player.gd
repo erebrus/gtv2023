@@ -225,12 +225,17 @@ func bounce(direction, distance):
 	var tmp_V = velocity
 	velocity+=direction*distance
 	tmp_V = velocity
-	xsm.change_state("hurt")
+	self.energy = clamp(energy, 0, max_energy)
+	if not check_for_death():
+		xsm.change_state("hurt")
+	emit_signal("health_changed")
 	in_animation=true
 	collision_mask -= Globals.Layer.ENEMY
 	await get_tree().create_timer(.5).timeout
+	
 	in_animation=false
 	collision_mask += Globals.Layer.ENEMY
+	
 #	var tween 
 #	if distance <= 0:
 #		return

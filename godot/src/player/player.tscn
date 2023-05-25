@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=90 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -7,27 +7,42 @@
 [ext_resource type="Texture2D" uid="uid://bgtgdskwaada1" path="res://assets/gfx/player/mc-160px-ghost.png" id="4_55pay"]
 [ext_resource type="Texture2D" uid="uid://ba6s0t6lbo4i3" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-1.png" id="5_4v8hm"]
 [ext_resource type="Script" path="res://src/player/xsm/idle.gd" id="5_5dat7"]
+[ext_resource type="Texture2D" uid="uid://cdcq2twy6bmus" path="res://assets/gfx/player/ghost-dash/Ghost-dash-1.png" id="5_gj2ep"]
 [ext_resource type="Texture2D" uid="uid://c5v7js285slgr" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-10.png" id="5_ki7w7"]
 [ext_resource type="Texture2D" uid="uid://b530ghfurx6he" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-2.png" id="6_0kwax"]
 [ext_resource type="Script" path="res://src/player/xsm/can_dash.gd" id="6_bvrt0"]
+[ext_resource type="Texture2D" uid="uid://dm8h3nifohlsf" path="res://assets/gfx/player/ghost-dash/Ghost-dash-2.png" id="6_cnpfs"]
 [ext_resource type="Script" path="res://src/player/xsm/dash.gd" id="6_k6vq6"]
 [ext_resource type="Script" path="res://src/player/xsm/move.gd" id="6_lkixy"]
+[ext_resource type="Texture2D" uid="uid://bxid7b140xa1q" path="res://assets/gfx/player/ghost-death/Death-ghost-1.png" id="6_wea4h"]
 [ext_resource type="Script" path="res://src/player/xsm/can_attack.gd" id="6_wjfj2"]
+[ext_resource type="Texture2D" uid="uid://ogymsjy1p4qs" path="res://assets/gfx/player/ghost-dash/Ghost-dash-3.png" id="7_34awb"]
 [ext_resource type="Script" path="res://src/player/xsm/climb.gd" id="7_ekgay"]
 [ext_resource type="Texture2D" uid="uid://b1ipq48tnsrd2" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-3.png" id="7_gwse4"]
+[ext_resource type="Texture2D" uid="uid://c5pobgp1wke6u" path="res://assets/gfx/player/ghost-death/Death-ghost-2.png" id="7_y07nw"]
 [ext_resource type="Script" path="res://src/player/xsm/jump.gd" id="8_7ga8y"]
+[ext_resource type="Texture2D" uid="uid://ccvn28vw8mr4c" path="res://assets/gfx/player/ghost-death/Death-ghost-3.png" id="8_26kp6"]
+[ext_resource type="Texture2D" uid="uid://pdgirb7q1vgg" path="res://assets/gfx/player/ghost-dash/Ghost-dash-4.png" id="8_78ev1"]
 [ext_resource type="Texture2D" uid="uid://b5awlgxakwre1" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-4.png" id="8_jxp2y"]
+[ext_resource type="Texture2D" uid="uid://spceixw7c5re" path="res://assets/gfx/player/ghost-death/Death-ghost-4.png" id="9_0kajf"]
+[ext_resource type="Texture2D" uid="uid://jch0mocakyrd" path="res://assets/gfx/player/ghost-dash/Ghost-dash-5.png" id="9_23d08"]
 [ext_resource type="Script" path="res://src/player/xsm/fall.gd" id="9_aqd42"]
 [ext_resource type="Texture2D" uid="uid://blqclbdj65yqi" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-5.png" id="9_c88fl"]
 [ext_resource type="Texture2D" uid="uid://bkbywav7jqpdg" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-7.png" id="10_ubu0e"]
+[ext_resource type="Texture2D" uid="uid://d18xyxy0ner5k" path="res://assets/gfx/player/ghost-death/Death-ghost-5.png" id="10_uje71"]
 [ext_resource type="Texture2D" uid="uid://d2n2dn25p8b3s" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-8.png" id="11_8ouyy"]
+[ext_resource type="Texture2D" uid="uid://dfm3yjlsjlw4j" path="res://assets/gfx/player/ghost-death/Death-ghost-6.png" id="11_uobos"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_5udvk"]
 [ext_resource type="Texture2D" uid="uid://dg01xt80a0vs5" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-9.png" id="12_du33c"]
+[ext_resource type="Texture2D" uid="uid://c70hig25438aa" path="res://assets/gfx/player/ghost-death/Death-ghost-7.png" id="12_xuxpu"]
 [ext_resource type="Texture2D" uid="uid://bunk5qk8rol0n" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-10.png" id="13_5riku"]
+[ext_resource type="Texture2D" uid="uid://bf2yy2tvbsk5d" path="res://assets/gfx/player/ghost-death/Death-ghost-8.png" id="13_cg2fg"]
 [ext_resource type="Script" path="res://src/player/xsm/death.gd" id="13_wrndm"]
 [ext_resource type="Texture2D" uid="uid://c5p8n0hjd3e5c" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-11.png" id="14_wi2nn"]
+[ext_resource type="Texture2D" uid="uid://bnpu8lenvxfc2" path="res://assets/gfx/player/ghost-death/Death-ghost-9.png" id="14_wpk8i"]
 [ext_resource type="Texture2D" uid="uid://cvpb0axhrtoel" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-12.png" id="15_4hqyy"]
 [ext_resource type="Script" path="res://src/player/xsm/attack.gd" id="15_4wcyn"]
+[ext_resource type="Texture2D" uid="uid://drf0c1eqjpl17" path="res://assets/gfx/player/ghost-death/Death-ghost-10.png" id="15_dix7l"]
 [ext_resource type="Texture2D" uid="uid://b3l4a3h5fbb8u" path="res://assets/gfx/player/ghost-walk/Ghost-walk-1.png" id="16_pfa1c"]
 [ext_resource type="Texture2D" uid="uid://0mrlhxnl4gbp" path="res://assets/gfx/player/ghost-walk/Ghost-walk-2.png" id="17_bfkdc"]
 [ext_resource type="Texture2D" uid="uid://bcsoct4dqlhfx" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-2.png" id="17_fshak"]
@@ -45,6 +60,15 @@
 [ext_resource type="Texture2D" uid="uid://brw5ckmka1l73" path="res://assets/gfx/player/ghost-walk/Ghost-walk-10.png" id="25_3tgbb"]
 [ext_resource type="Texture2D" uid="uid://dvb37vu5ewps8" path="res://assets/gfx/player/ghost-walk/Ghost-walk-11.png" id="26_vad4g"]
 [ext_resource type="Texture2D" uid="uid://d2pxiysoww6la" path="res://assets/gfx/player/ghost-walk/Ghost-walk-12.png" id="27_j3far"]
+[ext_resource type="Texture2D" uid="uid://c4q3n2avt4fg" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-1.png" id="33_hwbua"]
+[ext_resource type="Texture2D" uid="uid://bmo3cbkp1kv1x" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-2.png" id="34_q37gv"]
+[ext_resource type="Texture2D" uid="uid://dpixstb2xk8kh" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-3.png" id="35_a4ut3"]
+[ext_resource type="Texture2D" uid="uid://cb1yvak6afagg" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-4.png" id="36_jq3lq"]
+[ext_resource type="Texture2D" uid="uid://bt2k1nmq4idjm" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-5.png" id="37_0bm61"]
+[ext_resource type="Texture2D" uid="uid://bfr7qxfvan6r2" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-6.png" id="38_aicdd"]
+[ext_resource type="Texture2D" uid="uid://367uykimt3wo" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-7.png" id="39_6o21l"]
+[ext_resource type="Texture2D" uid="uid://d1xwvnb3jp3pr" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-8.png" id="40_x7exa"]
+[ext_resource type="Texture2D" uid="uid://36udleg20nir" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-9.png" id="41_ukcib"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
 animations = [{
@@ -74,30 +98,90 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_pfa1c")
+"texture": ExtResource("5_gj2ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cnpfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_34awb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_78ev1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_23d08")
 }],
 "loop": true,
 "name": &"dash",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("6_wea4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y07nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26kp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0kajf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uje71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uobos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xuxpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cg2fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wpk8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dix7l")
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("41_ukcib")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("40_x7exa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6o21l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_aicdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_0bm61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_jq3lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_a4ut3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_q37gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_hwbua")
 }],
 "loop": true,
 "name": &"decay",
-"speed": 5.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -133,7 +217,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("41_ukcib")
 }],
 "loop": true,
 "name": &"idle",
@@ -179,7 +263,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("41_ukcib")
 }],
 "loop": false,
 "name": &"jump",
@@ -207,18 +291,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_55pay")
+"texture": ExtResource("33_hwbua")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("34_q37gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_a4ut3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_jq3lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_0bm61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_aicdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6o21l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_x7exa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ukcib")
 }],
-"loop": true,
+"loop": false,
 "name": &"materialise",
-"speed": 5.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("41_ukcib")
 }],
 "loop": true,
 "name": &"move",
@@ -326,7 +431,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ev6vu"]
 resource_name = "death"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -334,10 +438,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 2.46229, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -356,7 +460,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_arfpm"]
 resource_name = "decay"
-length = 0.75
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -370,6 +474,18 @@ tracks/0/keys = {
 "args": ["decay"],
 "method": &"play_animation"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
 }
 
 [sub_resource type="Animation" id="Animation_v56j6"]
@@ -425,6 +541,18 @@ tracks/0/keys = {
 "method": &"play_animation"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
 
 [sub_resource type="Animation" id="Animation_l83l0"]
 resource_name = "jump"
@@ -443,10 +571,22 @@ tracks/0/keys = {
 "method": &"play_animation"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
 
 [sub_resource type="Animation" id="Animation_3461l"]
 resource_name = "materialise"
-length = 0.75
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -460,6 +600,18 @@ tracks/0/keys = {
 "args": ["materialise"],
 "method": &"play_animation"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
 }
 
 [sub_resource type="Animation" id="Animation_db474"]
@@ -479,9 +631,49 @@ tracks/0/keys = {
 "method": &"play_animation"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_5cn2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q26do"]
 _data = {
+"RESET": SubResource("Animation_5cn2k"),
 "attack": SubResource("Animation_rp65e"),
 "climb": SubResource("Animation_v7knb"),
 "dash": SubResource("Animation_37s62"),
@@ -622,11 +814,21 @@ animation = &"dash"
 position = Vector2(3, -79)
 shape = SubResource("CapsuleShape2D_4cv33")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q26do")
+}
+
+[node name="DirAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bkyi4")
+}
+
 [node name="xsm" type="Node" parent="."]
 script = ExtResource("3_17k6u")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -773,16 +975,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../can_attack/can_dash/idle")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_q26do")
-}
-
-[node name="DirAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_bkyi4")
-}
 
 [node name="sfx" type="Node2D" parent="."]
 
