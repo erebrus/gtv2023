@@ -58,8 +58,7 @@ func _on_update(_delta: float) -> void:
 		#FIXME redundant can
 		and owner.controller.dash_boost\
 #		and input != Vector2.ZERO\
-		and owner.controller.can_dash \
-		and owner.controller.dash_timer.is_stopped()\
+		and owner.controller.can_dash\
 		and owner.dimension == Events.Dimension.SPECTRAL: 
 				change_state("dash")
 

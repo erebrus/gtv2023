@@ -12,4 +12,5 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="climb_reload_timer" to="." method="_on_climb_reload_timer_timeout"]
