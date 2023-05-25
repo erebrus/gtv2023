@@ -376,6 +376,7 @@ func set_attack_box_enabled(val:bool)->void:
 
 func _on_attack_box_body_entered(body):
 	if body.has_method("take_damage"):
+		Logger.info("attack contact at %d" % Time.get_ticks_msec())
 		body.take_damage(global_position, attack_damage, attack_knockback)
 
 

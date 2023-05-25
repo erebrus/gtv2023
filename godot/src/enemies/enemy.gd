@@ -30,7 +30,7 @@ var can_play_footstep:=true
 @onready var sfx_hurt = $sfx/hurt
 @onready var sfx_death = $sfx/death
 @onready var sfx_attack = $sfx/attack
-@onready var soul_trail = $soul_trail
+@onready var soul_trail = get_node_or_null("soul_trail")
 
 
 @onready var original_position:Vector2 = global_position
@@ -148,15 +148,17 @@ func take_damage(source_pos, damage, _knockback):
 	
 	if hp >0:
 		Logger.info("%s hurt" % name)		
+		Logger.info("Time %d" % Time.get_ticks_msec())
 		xsm.change_state("hurt")
 	else:
 		Logger.info("%s dead" % name)
+		Logger.info("Time %d" % Time.get_ticks_msec())
 		dead=true		
 
-		if tween:
-			await tween.finished
 		Logger.info("%s changing to death state" % name)
 		xsm.change_state("death")
+#		if tween:
+#			await tween.finished
 		return
 	if tween:
 		await tween.finished
@@ -172,13 +174,19 @@ func on_target():
 
 
 func attack():
-	if not target:
+	if not target or dead:
 		return
 	xsm.change_state("attack")
 
 
 func spawn_soul():
 	if dimension == Events.Dimension.SPECTRAL:
+#		var soul = $soul
+#		soul.get_parent().remove_child(soul)
+#		get_parent().add_child(soul)
+#		soul.anchor = global_position+Vector2(0,-50)			
+#		soul.visible = true
+#		soul.fade_in()
 		var soul = SOUL_SCENE.instantiate()
 		get_parent().add_child(soul)
 		soul.anchor = global_position+Vector2(0,-50)	

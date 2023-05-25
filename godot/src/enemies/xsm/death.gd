@@ -10,11 +10,13 @@ extends StateAnimation
 # If looping, is called after each loop
 func _on_anim_finished(_name: String) -> void:
 	owner.finish_death()
+	Logger.info("death finish Time %d" % Time.get_ticks_msec())
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
+	Logger.info("Enter death Time %d" % Time.get_ticks_msec())
 	owner.sfx_death.play()
 
 
