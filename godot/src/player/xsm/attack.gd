@@ -49,7 +49,7 @@ func lunge():
 		var collision = owner.get_world_2d().direct_space_state.intersect_ray(ray_params)
 		
 		if collision:
-			if abs(collision.position.x-owner.global_position.x) < (x- owner.global_position.x):
+			if abs(collision.position.x-owner.global_position.x) < abs(x- owner.global_position.x):
 				x=collision.position.x
 
 	new_position.x = x

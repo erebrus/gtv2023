@@ -37,9 +37,9 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	var input = Input.get_vector("ui_left", "ui_right", "", "")
+
 	if not owner.is_climb_rc_colliding():# or sign(input.x) != sign(collision_direction.x) or :
-		Logger.debug("Stop Climb because of direction (%2f vs %2f )" % [input.x, collision_direction.x])
+		Logger.debug("Stop Climb because of direction")
 		change_state("fall")
 	else:
 		owner.velocity.y=0

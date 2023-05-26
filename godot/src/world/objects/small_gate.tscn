@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccfq4evx2ee7x"]
+
+[ext_resource type="PackedScene" uid="uid://bw6eqmwo24u6o" path="res://src/world/objects/passable_gate.tscn" id="1_cecj5"]
+
+[node name="small_gate" instance=ExtResource("1_cecj5")]

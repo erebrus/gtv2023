@@ -370,6 +370,10 @@ func unset_object(_obj):
 	if object == _obj:
 		object = null
 
+func interact():
+	if object:
+		object.interact()
+		
 func on_environment_damage():
 	if dimension == Events.Dimension.MATERIAL:
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
