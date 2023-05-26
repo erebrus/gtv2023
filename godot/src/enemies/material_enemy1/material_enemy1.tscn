@@ -1,10 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=57 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
 [ext_resource type="Texture2D" uid="uid://burvp0gah540x" path="res://assets/gfx/enemies/material_enemy1/bonesattack1.png" id="2_n58qp"]
 [ext_resource type="Texture2D" uid="uid://cry6hojurp4f7" path="res://assets/gfx/enemies/material_enemy1/boneidle1.png" id="3_0xwfx"]
-[ext_resource type="Texture2D" uid="uid://bunk6cmo57a3f" path="res://assets/gfx/enemies/material_enemy1/bonesattack2.png" id="3_8hynq"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_yq5hj"]
 [ext_resource type="Texture2D" uid="uid://duns8ori7tqk7" path="res://assets/gfx/enemies/material_enemy1/boneidle3.png" id="4_i7jfg"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_u65s2"]
@@ -54,10 +53,10 @@ animations = [{
 "texture": ExtResource("2_n58qp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_8hynq")
+"texture": ExtResource("5_oay3f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_oay3f")
+"texture": ExtResource("6_qq03a")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_qq03a")
@@ -199,7 +198,7 @@ scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
-length = 0.25
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -424,6 +423,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(32, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_box/CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.523599]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attack_box/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -70)]
+}
 
 [sub_resource type="Animation" id="Animation_86cjw"]
 resource_name = "left"
@@ -475,6 +498,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-32, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_box/CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.523599]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attack_box/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, -70)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -528,6 +575,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(32, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_box/CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.523599]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attack_box/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -70)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6j2u"]
 _data = {
@@ -537,7 +608,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf2wy"]
-size = Vector2(768, 122)
+size = Vector2(768, 170)
 
 [node name="skull" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
@@ -548,6 +619,7 @@ engage_speed = 180.0
 dimension = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, -70)
 shape = SubResource("CapsuleShape2D_ao7n5")
 
@@ -555,7 +627,8 @@ shape = SubResource("CapsuleShape2D_ao7n5")
 position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
+animation = &"move"
+frame_progress = 0.539292
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -688,7 +761,7 @@ collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
-position = Vector2(0, -67)
+position = Vector2(0, -91)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
@@ -696,7 +769,8 @@ collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
-position = Vector2(1, -70)
+position = Vector2(20, -70)
+rotation = 0.523599
 shape = SubResource("CapsuleShape2D_ao7n5")
 
 [node name="reload_timer" type="Timer" parent="."]
