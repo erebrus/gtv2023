@@ -438,7 +438,7 @@ position = Vector2(-1, -48)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
 animation = &"idle"
-frame_progress = 0.0892536
+frame_progress = 0.00601719
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false

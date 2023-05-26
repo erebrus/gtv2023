@@ -34,6 +34,7 @@ shader_parameter/tint_effect_factor = 0.6
 script = ExtResource("1_h08n7")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0.2)
@@ -116,6 +117,7 @@ script = ExtResource("13_5bvo3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101
+visible = false
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")

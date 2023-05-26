@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=122 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -46,7 +46,9 @@
 [ext_resource type="Texture2D" uid="uid://bunk5qk8rol0n" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-10.png" id="13_5riku"]
 [ext_resource type="Texture2D" uid="uid://chmnwgmiwfd32" path="res://assets/gfx/player/attack-ghost/Attack-ghost-10.png" id="13_53mvk"]
 [ext_resource type="Texture2D" uid="uid://bf2yy2tvbsk5d" path="res://assets/gfx/player/ghost-death/Death-ghost-8.png" id="13_cg2fg"]
+[ext_resource type="Texture2D" uid="uid://r1i5ehgl7c4p" path="res://assets/gfx/player/wall-skelly/Skelly-wall-1.png" id="13_i3yp7"]
 [ext_resource type="Script" path="res://src/player/xsm/death.gd" id="13_wrndm"]
+[ext_resource type="Texture2D" uid="uid://c0lems1ofh1p1" path="res://assets/gfx/player/wall-skelly/Skelly-wall-2.png" id="14_k1ci2"]
 [ext_resource type="Texture2D" uid="uid://c5p8n0hjd3e5c" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-11.png" id="14_wi2nn"]
 [ext_resource type="Texture2D" uid="uid://bnpu8lenvxfc2" path="res://assets/gfx/player/ghost-death/Death-ghost-9.png" id="14_wpk8i"]
 [ext_resource type="Texture2D" uid="uid://cvpb0axhrtoel" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-12.png" id="15_4hqyy"]
@@ -75,9 +77,27 @@
 [ext_resource type="Texture2D" uid="uid://cb1yvak6afagg" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-4.png" id="36_jq3lq"]
 [ext_resource type="Texture2D" uid="uid://bt2k1nmq4idjm" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-5.png" id="37_0bm61"]
 [ext_resource type="Texture2D" uid="uid://bfr7qxfvan6r2" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-6.png" id="38_aicdd"]
+[ext_resource type="Texture2D" uid="uid://ua8yiw8q22w6" path="res://assets/gfx/player/jump-skelly/Skelly-jump-4.png" id="38_ddtcw"]
 [ext_resource type="Texture2D" uid="uid://367uykimt3wo" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-7.png" id="39_6o21l"]
 [ext_resource type="Texture2D" uid="uid://d1xwvnb3jp3pr" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-8.png" id="40_x7exa"]
+[ext_resource type="Texture2D" uid="uid://dplf522h11jvl" path="res://assets/gfx/player/idle-skelly/Skelly-idle-1.png" id="41_4ue7c"]
 [ext_resource type="Texture2D" uid="uid://36udleg20nir" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-9.png" id="41_ukcib"]
+[ext_resource type="Texture2D" uid="uid://bkulwd7214mf7" path="res://assets/gfx/player/idle-skelly/Skelly-idle-2.png" id="42_k81rn"]
+[ext_resource type="Texture2D" uid="uid://bvk667y71iq21" path="res://assets/gfx/player/idle-skelly/Skelly-idle-3.png" id="43_so61o"]
+[ext_resource type="Texture2D" uid="uid://b61ml0sgklr7w" path="res://assets/gfx/player/idle-skelly/Skelly-idle-4.png" id="44_fjx6v"]
+[ext_resource type="Texture2D" uid="uid://dripgus1ydip2" path="res://assets/gfx/player/idle-skelly/Skelly-idle-5.png" id="45_x2wlt"]
+[ext_resource type="Texture2D" uid="uid://d17qs2bt4be6b" path="res://assets/gfx/player/idle-skelly/Skelly-idle-6.png" id="46_v30d7"]
+[ext_resource type="Texture2D" uid="uid://ccwk1w64f7oqn" path="res://assets/gfx/player/idle-skelly/Skelly-idle-7.png" id="47_rtk08"]
+[ext_resource type="Texture2D" uid="uid://du3ocmnl1vojy" path="res://assets/gfx/player/jump-skelly/Skelly-jump-1.png" id="58_b86mu"]
+[ext_resource type="Texture2D" uid="uid://cu00bkbtbpuws" path="res://assets/gfx/player/jump-skelly/Skelly-jump-2.png" id="59_udh4e"]
+[ext_resource type="Texture2D" uid="uid://dqqvr3apn8f4m" path="res://assets/gfx/player/jump-skelly/Skelly-jump-3.png" id="60_grbf1"]
+[ext_resource type="Texture2D" uid="uid://cf21xon8476lk" path="res://assets/gfx/player/run-skelly/Skelly-run-1.png" id="66_mtdgo"]
+[ext_resource type="Texture2D" uid="uid://b4bgs82l1h6h6" path="res://assets/gfx/player/run-skelly/Skelly-run-2.png" id="67_hncrm"]
+[ext_resource type="Texture2D" uid="uid://chy05ugw36leq" path="res://assets/gfx/player/run-skelly/Skelly-run-3.png" id="68_uup0u"]
+[ext_resource type="Texture2D" uid="uid://kpgamigy0w4o" path="res://assets/gfx/player/run-skelly/Skelly-run-4.png" id="69_3mjlp"]
+[ext_resource type="Texture2D" uid="uid://cfmfvgtsvevtn" path="res://assets/gfx/player/run-skelly/Skelly-run-5.png" id="70_nowu0"]
+[ext_resource type="Texture2D" uid="uid://r7qco0yww7eh" path="res://assets/gfx/player/run-skelly/Skelly-run-6.png" id="71_1nl5i"]
+[ext_resource type="Texture2D" uid="uid://dia3rnet61o2c" path="res://assets/gfx/player/run-skelly/Skelly-run-7.png" id="72_o5soa"]
 [ext_resource type="Script" path="res://src/player/xsm/can_cross.gd" id="73_oh8jc"]
 [ext_resource type="Script" path="res://src/player/xsm/hurt.gd" id="76_8vw70"]
 
@@ -155,11 +175,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dq53r")
+"texture": ExtResource("13_i3yp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k1ci2")
 }],
-"loop": true,
+"loop": false,
 "name": &"climb",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -250,7 +273,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ki7w7")
+"texture": ExtResource("38_ddtcw")
 }],
 "loop": false,
 "name": &"fall",
@@ -282,11 +305,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("41_ukcib")
+"texture": ExtResource("41_4ue7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_k81rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_so61o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_fjx6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_x2wlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_v30d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_rtk08")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -328,7 +369,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("41_ukcib")
+"texture": ExtResource("58_b86mu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_udh4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_grbf1")
 }],
 "loop": false,
 "name": &"jump",
@@ -388,11 +435,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("41_ukcib")
+"texture": ExtResource("66_mtdgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_hncrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_uup0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_3mjlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_nowu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_1nl5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_o5soa")
 }],
 "loop": true,
 "name": &"move",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -945,9 +1010,12 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack"
+animation = &"climb"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3, -79)
 shape = SubResource("CapsuleShape2D_4cv33")
 
