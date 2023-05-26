@@ -33,13 +33,14 @@ func interact():
 		Logger.warn("%s tried to interact without player" % name)
 		return
 	player.in_animation=true
+	var tmp_player = player
 	var tween := create_tween().set_ease(Tween.EASE_OUT_IN).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(player, "global_position", get_opposite_exit().global_position,CROSS_DURATION)
 	tween.parallel().tween_property(player, "modulate", Color(1,1,1,.2), CROSS_DURATION/2.0).set_ease(Tween.EASE_OUT)
 	tween.tween_property(player, "modulate", Color(1,1,1,1), CROSS_DURATION/2.0).set_ease(Tween.EASE_IN)
 	player.xsm.change_state("crossing")
 	await tween.finished
-	player.in_animation=false
+	tmp_player.in_animation=false
 
 func get_opposite_exit()->Node2D:
 	var d1 = abs($exit_1.global_position.x-player.global_position.x	)
