@@ -22,7 +22,8 @@ func _on_enter(_args):
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	tween.tween_property(owner, "velocity", Vector2.ZERO, owner.controller.dash_hangtime)
 	await tween.finished
-	change_state("fall")
+	if not is_active("attack"):
+		change_state("fall")
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent

@@ -899,8 +899,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack_spectral"
-frame = 5
+animation = &"move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)
@@ -934,7 +933,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../../dash")
+next_state = NodePath("../dash")
 
 [node name="idle" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("5_5dat7")
@@ -946,7 +945,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../../../dash")
+next_state = NodePath("../../dash")
 
 [node name="move" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("6_lkixy")
@@ -958,7 +957,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../jump")
 
 [node name="jump" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("8_7ga8y")
@@ -970,7 +969,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../fall")
 
 [node name="fall" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("9_aqd42")
@@ -984,9 +983,9 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="dash" type="Node" parent="xsm"]
+[node name="dash" type="Node" parent="xsm/can_attack"]
 script = ExtResource("6_k6vq6")
-animation_player = NodePath("../../AnimationPlayer")
+animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "dash"
 anim_times_to_play = 1
 on_anim_finished = 0
@@ -994,7 +993,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../dash")
+next_state = NodePath(".")
 
 [node name="climb" type="Node" parent="xsm"]
 script = ExtResource("7_ekgay")
@@ -1006,11 +1005,10 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../dash")
+next_state = NodePath("../can_attack/dash")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("76_8vw70")
-do_slomo = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
