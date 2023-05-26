@@ -553,6 +553,7 @@ size = Vector2(640, 90)
 [node name="bone_bug" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_ykqge")
+max_hp = 100
 normal_speed = 70.0
 engage_speed = 300.0
 max_accel = 25.0
@@ -655,7 +656,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../patrol")
+next_state = NodePath("")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("29_yqykr")

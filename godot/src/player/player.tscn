@@ -1179,7 +1179,8 @@ next_state = NodePath("../can_attack/can_dash/can_cross/idle")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("15_4wcyn")
-lunge_distance = 96.0
+attack_delay = 0.1
+lunge_distance = 128.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
