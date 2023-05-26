@@ -1,4 +1,3 @@
-@tool
 extends Area2D
 
 signal switched(value:bool)

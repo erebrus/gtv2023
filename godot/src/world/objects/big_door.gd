@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 signal door_opened
@@ -28,7 +27,7 @@ func open(force:=false):
 	if is_open() and not force:
 		return
 	value=true
-	Logger.debug ("%s opening" % name)
+	Logger.debug("%s opening" % name)
 	$sfx_open.play()
 	$sprites/open_sprite_left.visible = true
 	$sprites/open_sprite_right.visible = true
