@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=18 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_nwdyn"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_5bvo3"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_bmhlu"]
+[ext_resource type="PackedScene" uid="uid://c5jubvlo01i7r" path="res://src/world/objects/door.tscn" id="15_4b6vm"]
 [ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="15_mfutn"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_obhvh"]
 [ext_resource type="Material" uid="uid://cq0bcbgu3n3kl" path="res://src/world/fog_material.tres" id="16_jgxwv"]
@@ -79,14 +80,6 @@ layer_0/tile_data = PackedInt32Array(393217, 327680, 5, 393218, 327680, 5, 39321
 [node name="plate" parent="TileMap" instance=ExtResource("8_84at0")]
 position = Vector2(-129, 704)
 
-[node name="player" parent="." instance=ExtResource("12_nwdyn")]
-position = Vector2(761, 804)
-energy_decay = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position_smoothing_enabled = true
-script = ExtResource("13_5bvo3")
-
 [node name="Foreground" type="ParallaxBackground" parent="."]
 layer = 100
 
@@ -124,6 +117,20 @@ metadata/_edit_lock_ = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("17_kpaca")]
 
+[node name="door" parent="." instance=ExtResource("15_4b6vm")]
+position = Vector2(417, 424)
+
 [node name="lever" parent="." instance=ExtResource("15_mfutn")]
 position = Vector2(1104, 824)
 value = false
+
+[node name="player" parent="." instance=ExtResource("12_nwdyn")]
+position = Vector2(761, 804)
+energy_decay = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+script = ExtResource("13_5bvo3")
+
+[connection signal="switched" from="TileMap/plate" to="door" method="_on_switched"]
+[connection signal="switched" from="lever" to="door" method="_on_switched"]
