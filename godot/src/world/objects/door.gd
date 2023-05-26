@@ -11,7 +11,7 @@ func is_open()->bool:
 func open():
 	if is_open():
 		return
-	Logger.info ("%s opening" % name)
+	Logger.debug ("%s opening" % name)
 	sprite.play("open")
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=true
@@ -21,7 +21,7 @@ func close():
 	if not is_open():
 		return
 	sprite.play("close")	
-	Logger.info ("%s closing" % name)
+	Logger.debug ("%s closing" % name)
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=false
 	door_closed.emit()

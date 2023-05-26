@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=20 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ct4h45eptll00" path="res://assets/gfx/world/midground-graves.png" id="6_mkpvo"]
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="7_shwjx"]
 [ext_resource type="PackedScene" uid="uid://b5t4kdlklyncl" path="res://src/world/objects/plate.tscn" id="8_84at0"]
+[ext_resource type="PackedScene" uid="uid://c4xpdl0iewkid" path="res://src/world/objects/spikes.tscn" id="9_d7ljj"]
+[ext_resource type="PackedScene" uid="uid://cmop5a2h1jss7" path="res://src/world/objects/spikes_2.tscn" id="10_a0cy3"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_nwdyn"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_5bvo3"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_bmhlu"]
@@ -80,6 +82,12 @@ layer_0/tile_data = PackedInt32Array(393217, 327680, 5, 393218, 327680, 5, 39321
 [node name="plate" parent="TileMap" instance=ExtResource("8_84at0")]
 position = Vector2(-129, 704)
 
+[node name="spikes" parent="TileMap/plate" instance=ExtResource("9_d7ljj")]
+position = Vector2(2433, 248)
+
+[node name="spikes2" parent="TileMap/plate/spikes" instance=ExtResource("10_a0cy3")]
+position = Vector2(128, 0)
+
 [node name="Foreground" type="ParallaxBackground" parent="."]
 layer = 100
 
@@ -92,9 +100,22 @@ position = Vector2(2, 394)
 texture = ExtResource("14_bmhlu")
 centered = false
 
+[node name="door" parent="." instance=ExtResource("15_4b6vm")]
+position = Vector2(417, 424)
+
+[node name="lever" parent="." instance=ExtResource("15_mfutn")]
+position = Vector2(1104, 824)
+value = false
+
+[node name="player" parent="." instance=ExtResource("12_nwdyn")]
+position = Vector2(761, 804)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+script = ExtResource("13_5bvo3")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101
-visible = false
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
@@ -116,21 +137,6 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("17_kpaca")]
-
-[node name="door" parent="." instance=ExtResource("15_4b6vm")]
-position = Vector2(417, 424)
-
-[node name="lever" parent="." instance=ExtResource("15_mfutn")]
-position = Vector2(1104, 824)
-value = false
-
-[node name="player" parent="." instance=ExtResource("12_nwdyn")]
-position = Vector2(761, 804)
-energy_decay = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position_smoothing_enabled = true
-script = ExtResource("13_5bvo3")
 
 [connection signal="switched" from="TileMap/plate" to="door" method="_on_switched"]
 [connection signal="switched" from="lever" to="door" method="_on_switched"]

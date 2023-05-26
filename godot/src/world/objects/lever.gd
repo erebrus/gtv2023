@@ -16,7 +16,7 @@ func _ready():
 func interact():
 	
 	value = not value
-	Logger.info("%s switched . new value=%s" % [name, value])
+	Logger.debug("%s switched . new value=%s" % [name, value])
 	switched.emit(value)
 	if value:
 		$sprite.play("on")
@@ -32,13 +32,13 @@ func _on_dimension_changed(dimension):
 
 func _on_body_entered(body):
 	if body.has_method("set_object"):
-		Logger.info("%s player detected " % name)
+		Logger.debug("%s player detected " % name)
 		body.set_object(self)
 		player = body
 
 
 func _on_body_exited(body):
-	Logger.info("%s player lost " % name)
+	Logger.debug("%s player lost " % name)
 	if body.has_method("unset_object"):
 		body.unset_object(self)
 		
