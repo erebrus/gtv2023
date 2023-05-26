@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4xpdl0iewkid"]
 
-[ext_resource type="Texture2D" uid="uid://dw7v4lwr2bgun" path="res://assets/prototype/gfx/environment/spikes.png" id="1_heqev"]
 [ext_resource type="Script" path="res://src/world/objects/spikes.gd" id="1_meww6"]
+[ext_resource type="Texture2D" uid="uid://dlao7ybfooj6p" path="res://assets/gfx/world/objects/spikes 1.png" id="2_thf6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g847"]
-size = Vector2(128, 32)
+size = Vector2(128, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8yw6"]
 size = Vector2(128, 2)
@@ -14,11 +14,11 @@ collision_mask = 49
 script = ExtResource("1_meww6")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_heqev")
+texture = ExtResource("2_thf6c")
 offset = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_0g847")
 
 [node name="floor" type="StaticBody2D" parent="."]

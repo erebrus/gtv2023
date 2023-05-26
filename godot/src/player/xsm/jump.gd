@@ -41,7 +41,7 @@ func _on_update(_delta: float) -> void:
 			change_state("climb")
 			return
 		
-	owner.play_animation("jump")
+#	owner.play_animation("jump")
 			
 	
 
@@ -55,6 +55,7 @@ func _on_update(_delta: float) -> void:
 		Logger.debug("Press jump in jump")
 		if owner.controller.air_jump_count < owner.controller.max_air_jumps :
 			owner.controller.do_jump()	
+			owner.play_animation("jump", true)
 		else:
 			Logger.debug("Rejected air jump. count=%d, max=%d " % [owner.controller.air_jump_count, owner.controller.max_air_jumps])
 		

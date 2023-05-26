@@ -54,11 +54,14 @@ var processing_jump:bool = false
 
 func _ready():
 	player = get_parent()
-	validate_parent()
-	
+	validate_parent()	
 	Logger.debug("Player v0=%f g=%f" % [v0, g])
 	dash_timer.wait_time=dash_cooldown
 	
+func recompute_gravity():
+	g = 2 * h / (th * th) # computed gravity
+	v0 = 2 * h / th # computed initial velocity
+
 
 func _is_can_climb()->bool:	
 	return bool(climb_timeout)
@@ -131,7 +134,7 @@ func control(_delta:float) -> void:
 			Logger.debug("dropping climb rc")
 			
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and player.dimension == Events.Dimension.MATERIAL:
 		Logger.debug("Controller handling jump")
 		if jump_available:
 			processing_jump=true
@@ -142,10 +145,16 @@ func control(_delta:float) -> void:
 
 
 	
-func do_dash()->void:
+func do_dash(direction:Vector2 = Vector2.ZERO)->void:
 	Logger.trace("dash")
 	can_dash=false
-	player.velocity.x=dash_boost*player.last_direction.x
+	#no direction provided, use facing direction
+	if direction == Vector2.ZERO:
+#		player.velocity.x=dash_boost*player.last_direction.x
+		player.velocity=dash_boost*Vector2.UP
+	else:
+		player.velocity=dash_boost*direction
+	Logger.info("dash speed %s" % player.velocity)
 	player.on_dash()
 
 	dash_timer.start()
@@ -164,21 +173,30 @@ func reset_hangtime():
 
 
 func _process(delta: float) -> void:
+	var tmp_v = player.velocity
 	if player.disabled:
 		return
 	#if we are in animation, gravity still works
 	if player.in_animation:
 		player.velocity.y += _get_actual_g() * delta * delta_factor
-		if abs(player.velocity.x) and not xsm.is_active("dash"):
-			if (abs(player.velocity.x)>5) :
-				player.velocity.x=0
-			else:
-				player.velocity.x -=5*sign(player.velocity.x)
+#		if abs(player.velocity.x) and\
+#			not (xsm.is_active("dash")\
+#					 or xsm.is_active("hurt")\
+#					 or xsm.is_active("death")
+#					):
+#						if (abs(player.velocity.x)>5) :
+#							player.velocity.x=0
+#						else:
+#							player.velocity.x -=5*sign(player.velocity.x)
+		player.velocity += player.extra_impulse
 		player.move_and_slide()
+		player.extra_impulse = Vector2.ZERO
 		Logger.trace("in animation movement")
 		return
 
+	
 	control(delta)
+	
 	if abs(player.velocity.x) > max_speed: #friction
 		var f = 1 if owner.is_on_floor() else owner.controller.inertia_factor
 		var tmp_max=min(abs(owner.controller.max_deccel*f),abs(owner.velocity.x-max_speed))
@@ -186,16 +204,22 @@ func _process(delta: float) -> void:
 		player.velocity.x += owner.accel
 		Logger.trace("reduce excess speed")
 
+	tmp_v = player.velocity
 	#player.velocity.x = clamp(player.velocity.x, -max_speed, max_speed)		
 	player.velocity.y = clamp(player.velocity.y, -v0*10, v_limit)
-	
+	tmp_v = player.velocity
 
 	var was_on_floor = player.is_on_floor()
 	var y = player.global_position.y
 #	var last_vy=player.velocity.y
 	
 	Logger.trace("applying velocity %s" % player.velocity)
+	player.velocity += player.extra_impulse
+	tmp_v = player.velocity
 	player.move_and_slide()
+	player.check_and_handle_collisions()
+	tmp_v = player.velocity
+	player.extra_impulse = Vector2.ZERO
 	Logger.trace("POST applying velocity %s" % player.velocity)
 	
 	if player.is_on_floor():
@@ -210,7 +234,7 @@ func _process(delta: float) -> void:
 		player.velocity.y += _get_actual_g() * delta * delta_factor
 	elif player.is_on_floor():
 		air_jump_count = 0
-	
+	tmp_v = player.velocity
 	if not player.in_animation: # we need the check in case we got into animation in control
 		player.update_sprite()
 

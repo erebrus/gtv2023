@@ -24,13 +24,17 @@ func _on_dimension_changed(dimension):
 func _on_body_entered(body):
 	if not timer.is_stopped():
 		timer.stop()
-		value=true
-		$sprite.play("on")
-		switched.emit(true)		
+		Logger.debug("%s stopping timer" % name)
+	Logger.debug("%s pressed" % name)
+	value=true
+	$sprite.play("on")
+	$sfx_on.play()
+	switched.emit(true)		
 
 
 func _on_body_exited(body):
 	if get_overlapping_bodies().is_empty():
+		Logger.debug("%s unpressed. timer triggered" % name)
 		_trigger()
 		
 func _trigger():
@@ -39,6 +43,8 @@ func _trigger():
 
 
 func _on_timer_timeout():
+	Logger.debug("%s is now off" % name)
 	$sprite.play("off")
+	$sfx_off.play()
 	switched.emit(false)	
 	value=false	

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhcrxigf3bn17"]
+
+[ext_resource type="PackedScene" uid="uid://bw6eqmwo24u6o" path="res://src/world/objects/passable_gate.tscn" id="1_x5l30"]
+[ext_resource type="Texture2D" uid="uid://dnnitwn8t5ls" path="res://assets/gfx/world/graveyard-frontgate_fixed.png" id="2_nr58r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46vj3"]
+size = Vector2(104, 614)
+
+[node name="front_gate" instance=ExtResource("1_x5l30")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-4, -301)
+shape = SubResource("RectangleShape2D_46vj3")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-4, -504)
+texture = ExtResource("2_nr58r")
+flip_h = true

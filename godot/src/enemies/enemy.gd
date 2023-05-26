@@ -30,7 +30,7 @@ var can_play_footstep:=true
 @onready var sfx_hurt = $sfx/hurt
 @onready var sfx_death = $sfx/death
 @onready var sfx_attack = $sfx/attack
-@onready var soul_trail = $soul_trail
+@onready var soul_trail = get_node_or_null("soul_trail")
 
 
 @onready var original_position:Vector2 = global_position
@@ -62,8 +62,7 @@ func _on_dimension_changed(_dimension)->void:
 			sprite.visible = false
 			if get_node_or_null("Polygon2D") != null:
 				$Polygon2D.visible = false
-	else:
-		soul_trail.emitting = false
+	else:		
 		if _dimension == Events.Dimension.MATERIAL:
 			collision_layer=0
 			$detection_box.monitoring = false
@@ -104,15 +103,8 @@ func check_direction():
 		else:
 			dir_player.play("left")
 
-#TODO check if still needed
-func set_collide_with_platform(val:bool)-> void:
-	if $CollisionShape2D:
-		$CollisionShape2D.disabled = !val
-	$FloorRaycast.enabled = val
-	$FrontRaycast.enabled = val
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if in_animation or dead:
 		return
@@ -123,21 +115,21 @@ func _process(delta: float) -> void:
 	move_and_slide()
 #	dist_to_enemy=-1 if not target else global_position.distance_to(target.global_position)
 	
-	var dvel = desired_velocity.length()	
+#	var dvel = desired_velocity.length()	
 	
 	#Apply gravity if not on floor and not hanging
 	if !is_on_floor():
-		velocity.y += G * delta 
+		velocity.y = G 
 	
 	
-func take_damage(source_pos, damage, knockback):
+func take_damage(source_pos, damage, _knockback):
 	Logger.info("%s: take damage %d" % [name, damage])
 	hp = clamp(hp-damage, 0, max_hp)
 	Logger.info("%s: hp %d" % [name, hp])
 	
 	var tween 
-	if knockback > 0:
-		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*knockback	
+	if _knockback > 0:
+		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*_knockback	
 		var new_position = global_position+Vector2(bounce_delta_x.x,0)
 		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
 		var ray_params = PhysicsRayQueryParameters2D.new()
@@ -156,15 +148,17 @@ func take_damage(source_pos, damage, knockback):
 	
 	if hp >0:
 		Logger.info("%s hurt" % name)		
+		Logger.info("Time %d" % Time.get_ticks_msec())
 		xsm.change_state("hurt")
 	else:
 		Logger.info("%s dead" % name)
+		Logger.info("Time %d" % Time.get_ticks_msec())
 		dead=true		
 
-		if tween:
-			await tween.finished
 		Logger.info("%s changing to death state" % name)
 		xsm.change_state("death")
+#		if tween:
+#			await tween.finished
 		return
 	if tween:
 		await tween.finished
@@ -178,31 +172,29 @@ func on_target():
 
 
 
-#func do_death():
-#
-#	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-#	tween.tween_property(sprite,"modulate", Color(1,1,1,0), 1)
-#	yield(tween, "finished")
-#	queue_free()
-	
-
 
 func attack():
-	if not target:
+	if not target or dead:
 		return
 	xsm.change_state("attack")
 
 
-
-	
-func finish_death():
-	collision_layer=0
+func spawn_soul():
 	if dimension == Events.Dimension.SPECTRAL:
+#		var soul = $soul
+#		soul.get_parent().remove_child(soul)
+#		get_parent().add_child(soul)
+#		soul.anchor = global_position+Vector2(0,-50)			
+#		soul.visible = true
+#		soul.fade_in()
 		var soul = SOUL_SCENE.instantiate()
 		get_parent().add_child(soul)
-		soul.global_position = global_position+Vector2(0,-100)
-	visible=false	
+		soul.anchor = global_position+Vector2(0,-50)	
+
+func finish_death():
+	collision_layer=0	
 	set_process(false)
+	await get_tree().create_timer(.2).timeout
 	call_deferred("queue_free")
 	
 func is_on_enemy()->bool:
@@ -223,13 +215,11 @@ func _on_timer_fs_timeout():
 func _on_detection_box_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
-		set_attackbox_enabled(true)
 
 
 func _on_detection_box_body_exited(body):
 	if body.is_in_group("player"):
 		target = null
-		set_attackbox_enabled(false)
 
 
 func _on_attack_box_body_entered(body):
@@ -246,3 +236,6 @@ func _on_reload_timer_timeout():
 func play_animation(anim:String):
 	if not sprite.is_playing() or sprite.animation != anim:
 		sprite.play(anim)
+
+func can_attack():
+	return reload_timer.is_stopped()

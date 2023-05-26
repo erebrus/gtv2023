@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq225y4eolron"]
+
+[ext_resource type="Script" path="res://src/world/objects/big_door.gd" id="1_d52ue"]
+[ext_resource type="Texture2D" uid="uid://blm3kfh6kp613" path="res://assets/gfx/world/castle/door.png" id="1_py5fd"]
+[ext_resource type="Texture2D" uid="uid://l13jcmthm20g" path="res://assets/gfx/world/castle/door gap.png" id="2_3om2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_735yr"]
+size = Vector2(151, 295)
+
+[node name="big_door" type="Node2D"]
+script = ExtResource("1_d52ue")
+
+[node name="sprites" type="Node2D" parent="."]
+position = Vector2(-258, -265)
+
+[node name="closed_sprite" type="Sprite2D" parent="sprites"]
+position = Vector2(0, -232)
+texture = ExtResource("1_py5fd")
+centered = false
+
+[node name="open_sprite_left" type="Sprite2D" parent="sprites"]
+visible = false
+position = Vector2(0, -232)
+texture = ExtResource("2_3om2v")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 266.901, 512)
+
+[node name="open_sprite_right" type="Sprite2D" parent="sprites"]
+visible = false
+position = Vector2(267, -237)
+texture = ExtResource("2_3om2v")
+centered = false
+region_enabled = true
+region_rect = Rect2(266.593, -3, 244.966, 512)
+
+[node name="sfx_open" type="AudioStreamPlayer2D" parent="."]
+
+[node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
+
+[node name="end_position" type="Node2D" parent="."]
+position = Vector2(70.8999, -2.6991)
+
+[node name="area" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+position = Vector2(-84.5, -137.5)
+shape = SubResource("RectangleShape2D_735yr")
+
+[connection signal="body_entered" from="area" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_body_exited"]

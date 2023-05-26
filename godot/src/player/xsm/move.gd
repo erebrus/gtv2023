@@ -2,6 +2,7 @@
 extends StateAnimation
 
 
+var checking_fall:=false
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -17,6 +18,7 @@ func _on_anim_finished(_name: String) -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
+	checking_fall = false
 	owner.controller.air_jump_count = 0
 
 
@@ -34,8 +36,8 @@ func _on_update(_delta: float) -> void:
 		Logger.debug("Jump in walk")
 		owner.controller.do_jump()
 		return
-	if not owner.is_on_floor():
-		change_state("fall")
+	if not owner.is_on_floor() and not checking_fall:
+		add_timer("check_fall",.1)
 	if abs(owner.velocity.x) < .1:
 		change_state("idle")
 	owner.on_walk()
@@ -67,4 +69,7 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	pass
+	if _name=="check_fall":
+		if not owner.is_on_floor():
+			change_state("fall")
+		checking_fall = false

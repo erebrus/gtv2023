@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://dafcnb6b7a4pr"]
+
+[ext_resource type="Texture2D" uid="uid://m2psg0uces54" path="res://assets/gfx/world/castle/facade_tileset.png" id="1_pd3ni"]
+[ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
+[ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
+[ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
+[ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="5_qhm3v"]
+[ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="5_vyrmx"]
+[ext_resource type="PackedScene" uid="uid://dpudj0xpknfld" path="res://src/enemies/material_enemy2/material_enemy2.tscn" id="6_s0yx1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnyln"]
+texture = ExtResource("1_pd3ni")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_687xd"]
+tile_size = Vector2i(128, 128)
+sources/18 = SubResource("TileSetAtlasSource_lnyln")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_687xd")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 18, 0, 458753, 131090, 0, 458754, 131090, 0, 458755, 131090, 0, 458756, 131090, 0, 458757, 131090, 0, 458758, 131090, 0, 458759, 131090, 0, 458760, 131090, 0, 458761, 131090, 0, 458762, 131090, 0, 458763, 131090, 0, 458764, 65554, 0, 393217, 131090, 1, 393218, 131090, 1, 393219, 131090, 1, 393220, 131090, 1, 393221, 131090, 1, 393222, 131090, 1, 65537, 131090, 1, 131073, 131090, 1, 196609, 131090, 1, 262145, 131090, 1, 327681, 131090, 1, 65538, 131090, 1, 131074, 131090, 1, 196610, 131090, 1, 262146, 131090, 1, 327682, 131090, 1, 65539, 131090, 1, 131075, 131090, 1, 196611, 131090, 1, 262147, 131090, 1, 327683, 131090, 1, 65540, 131090, 1, 131076, 131090, 1, 196612, 131090, 1, 262148, 131090, 1, 327684, 131090, 1, 65541, 131090, 1, 131077, 131090, 1, 196613, 131090, 1, 262149, 131090, 1, 327685, 131090, 1, 65542, 131090, 1, 131078, 131090, 1, 196614, 131090, 1, 262150, 131090, 1, 327686, 131090, 1, 65543, 131090, 1, 131079, 131090, 1, 196615, 131090, 1, 262151, 131090, 1, 327687, 131090, 1, 393223, 131090, 1, 65544, 131090, 1, 131080, 131090, 1, 196616, 131090, 1, 262152, 131090, 1, 327688, 131090, 1, 393224, 131090, 1, 65545, 131090, 1, 131081, 131090, 1, 196617, 131090, 1, 262153, 131090, 1, 327689, 131090, 1, 393225, 131090, 1, 65546, 131090, 1, 131082, 131090, 1, 196618, 131090, 1, 262154, 131090, 1, 327690, 131090, 1, 393226, 131090, 1, 65547, 131090, 1, 131083, 131090, 1, 196619, 131090, 1, 262155, 131090, 1, 327691, 131090, 1, 393227, 131090, 1, 65536, 18, 1, 131072, 18, 1, 196608, 18, 1, 262144, 18, 1, 327680, 18, 1, 393216, 18, 1, 65548, 65554, 1, 131084, 65554, 1, 196620, 65554, 1, 262156, 65554, 1, 327692, 65554, 1, 393228, 65554, 1)
+
+[node name="skull" parent="TileMap" instance=ExtResource("5_qhm3v")]
+position = Vector2(232, 1030)
+
+[node name="madmax" parent="TileMap" instance=ExtResource("6_s0yx1")]
+position = Vector2(1456, 998)
+
+[node name="player" parent="." instance=ExtResource("3_e3poa")]
+position = Vector2(809, 994)
+max_energy = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+script = ExtResource("4_b2e5o")
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource("4_jg7ap")
+format = 2
+layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 524290, 524288, 5, 524291, 524288, 5, 524292, 524288, 5, 524293, 524288, 5, 524294, 524288, 5, 524295, 524288, 5, 524296, 524288, 5, 524297, 524288, 5, 524298, 524288, 5, 524299, 524288, 5, 524300, 524288, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_vyrmx")]

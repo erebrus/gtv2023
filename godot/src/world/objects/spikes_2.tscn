@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmop5a2h1jss7"]
+
+[ext_resource type="PackedScene" uid="uid://c4xpdl0iewkid" path="res://src/world/objects/spikes.tscn" id="1_kuxmr"]
+[ext_resource type="Texture2D" uid="uid://bex2gcpqpfkgs" path="res://assets/gfx/world/objects/spikes 2.png" id="2_2y0er"]
+
+[node name="spikes2" instance=ExtResource("1_kuxmr")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_2y0er")

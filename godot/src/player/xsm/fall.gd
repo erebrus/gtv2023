@@ -59,13 +59,14 @@ func _on_update(_delta: float) -> void:
 			if owner.controller.air_jump_count < owner.controller.max_air_jumps or owner.controller.is_in_coyote_time():
 				Logger.debug("coyote %s jump count %d" % [owner.controller.is_in_coyote_time(), owner.controller.air_jump_count])
 				owner.controller.do_jump()	
+				owner.play_animation("jump")
 			else:
 				Logger.debug("Rejected air jump. count=%d, max=%d. coyote=%s " % [owner.controller.air_jump_count, owner.controller.max_air_jumps, owner.controller.is_in_coyote_time()])
 				owner.controller.jump_requested=true
 				get_tree().create_timer(owner.controller.jump_buffer).timeout.connect(owner.controller.reset_jump_buffer)	
 				owner.controller.processing_jump = false
 
-	owner.play_animation("jump")
+	
 
 
 

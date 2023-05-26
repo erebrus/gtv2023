@@ -20,16 +20,15 @@ func _on_enter(_args) -> void:
 	owner.in_animation = true
 
 	owner.desired_velocity.x=0
-	owner.set_attackbox_enabled(true)
 	start_time=Time.get_ticks_msec()	
 	owner.sfx_attack.play()
 	if lunge_distance > 0 :
 		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		var origin = owner.global_position
-		var d= owner.get_facing_direction()
+#		var origin = owner.global_position
 		var dest = owner.global_position+Vector2(lunge_distance,20)*owner.get_facing_direction()
 		tween.tween_property(owner, "global_position", dest, .2)
-	add_timer("attack_timer", attack_delay)
+	owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
+#	add_timer("attack_timer", attack_delay)
 	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -59,8 +58,8 @@ func _before_exit(_args) -> void:
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	owner.in_animation = false
-	owner.set_attackbox_enabled(false)
 	owner.reload_timer.start()
+	owner.set_attackbox_enabled(false)
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
@@ -76,5 +75,4 @@ func _on_timeout(_name) -> void:
 			owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
 		else:
 			Logger.warn("%s tried to attack invalid target %s." % [owner.name, owner.target.name])
-		owner.set_attackbox_enabled(false)
 
