@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=58 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cry6hojurp4f7" path="res://assets/gfx/enemies/material_enemy1/boneidle1.png" id="3_0xwfx"]
 [ext_resource type="Texture2D" uid="uid://bunk6cmo57a3f" path="res://assets/gfx/enemies/material_enemy1/bonesattack2.png" id="3_8hynq"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="3_yq5hj"]
-[ext_resource type="Texture2D" uid="uid://dr87p8sreb004" path="res://assets/gfx/enemies/material_enemy1/bonesattack3.png" id="4_5pqlf"]
 [ext_resource type="Texture2D" uid="uid://duns8ori7tqk7" path="res://assets/gfx/enemies/material_enemy1/boneidle3.png" id="4_i7jfg"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="4_u65s2"]
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="5_lu4oo"]
@@ -58,9 +57,6 @@ animations = [{
 "texture": ExtResource("3_8hynq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_5pqlf")
-}, {
-"duration": 1.0,
 "texture": ExtResource("5_oay3f")
 }, {
 "duration": 1.0,
@@ -71,7 +67,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 18.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -203,7 +199,7 @@ scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_ko00o"]
 resource_name = "attack"
-length = 0.4
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -630,7 +626,7 @@ next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_k7j68")
-lunge_distance = 20.0
+attack_delay = 0.1
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
