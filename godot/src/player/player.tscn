@@ -927,6 +927,18 @@ next_state = NodePath("")
 [node name="can_attack" type="Node" parent="xsm"]
 script = ExtResource("6_wjfj2")
 
+[node name="dash" type="Node" parent="xsm/can_attack"]
+script = ExtResource("6_k6vq6")
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "dash"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath(".")
+
 [node name="can_dash" type="Node" parent="xsm/can_attack"]
 script = ExtResource("6_bvrt0")
 disabled = false
@@ -982,18 +994,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-
-[node name="dash" type="Node" parent="xsm/can_attack"]
-script = ExtResource("6_k6vq6")
-animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = "dash"
-anim_times_to_play = 1
-on_anim_finished = 0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath(".")
 
 [node name="climb" type="Node" parent="xsm"]
 script = ExtResource("7_ekgay")
