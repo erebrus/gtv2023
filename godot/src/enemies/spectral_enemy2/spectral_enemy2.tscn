@@ -244,7 +244,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "method"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -693,7 +693,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="patrol" type="Node" parent="xsm"]
 script = ExtResource("23_vbmvc")
@@ -705,7 +705,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("24_aq1dp")
@@ -718,7 +718,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("29_l5ey4")
@@ -732,7 +732,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("26_qw5hw")
@@ -744,7 +744,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../patrol")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("27_i2scf")

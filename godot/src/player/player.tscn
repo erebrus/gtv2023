@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=123 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -100,6 +100,7 @@
 [ext_resource type="Texture2D" uid="uid://dia3rnet61o2c" path="res://assets/gfx/player/run-skelly/Skelly-run-7.png" id="72_o5soa"]
 [ext_resource type="Script" path="res://src/player/xsm/can_cross.gd" id="73_oh8jc"]
 [ext_resource type="Script" path="res://src/player/xsm/hurt.gd" id="76_8vw70"]
+[ext_resource type="Texture2D" uid="uid://3g2yiahsn84v" path="res://addons/kenney_particle_pack/twirl_03.png" id="101_0cxsx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
 animations = [{
@@ -267,7 +268,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("33_hwbua")
 }],
-"loop": true,
+"loop": false,
 "name": &"decay",
 "speed": 18.0
 }, {
@@ -531,6 +532,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twirl03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.47451, 0.827451, 0.701961, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_rp65e"]
 resource_name = "attack"
@@ -548,6 +561,30 @@ tracks/0/keys = {
 "args": ["attack"],
 "method": &"play_animation"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Twirl03:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.47451, 0.827451, 0.701961, 0), Color(0.47451, 0.827451, 0.701961, 1), Color(0.47451, 0.827451, 0.701961, 1), Color(0.47451, 0.827451, 0.701961, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Twirl03:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_v7knb"]
@@ -1010,8 +1047,8 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"climb"
-frame = 1
+animation = &"attack_spectral"
+frame = 9
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1242,6 +1279,14 @@ one_shot = true
 [node name="vfx" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="vfx"]
+
+[node name="Twirl03" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.47451, 0.827451, 0.701961, 0)
+position = Vector2(-19, -159)
+rotation = 0.888373
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("101_0cxsx")
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]
 [connection signal="body_entered" from="attack_box" to="." method="_on_attack_box_body_entered"]

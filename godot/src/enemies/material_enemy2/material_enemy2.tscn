@@ -482,6 +482,8 @@ position = Vector2(-1, -97)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
 animation = &"attack"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -72)
@@ -611,6 +613,7 @@ position = Vector2(0, -15)
 target_position = Vector2(32, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
@@ -619,6 +622,7 @@ position = Vector2(0, -83)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb3c7fosnhqvl"]
+[gd_scene load_steps=16 format=3 uid="uid://bb3c7fosnhqvl"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_5lgg5"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_mvv4w"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://bpdv7xbkxo4if" path="res://src/world/cemetery_tileset_spectral.tres" id="7_86yo5"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_p4ssk"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_anuxj"]
+[ext_resource type="AudioStream" uid="uid://vssx5euyxpkr" path="res://assets/sfx/Ambience_1.wav" id="14_phagy"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_rlyus"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_ux4yk"]
 [ext_resource type="Material" uid="uid://cq0bcbgu3n3kl" path="res://src/world/fog_material.tres" id="16_26mwx"]
@@ -120,3 +121,7 @@ metadata/_edit_lock_ = true
 
 [node name="player_spawn" type="Node2D" parent="."]
 position = Vector2(344, 792)
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_phagy")
+autoplay = true
