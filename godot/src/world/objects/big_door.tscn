@@ -38,6 +38,9 @@ region_rect = Rect2(266.593, -3, 244.966, 512)
 
 [node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
 
+[node name="end_position" type="Node2D" parent="."]
+position = Vector2(70.8999, -2.6991)
+
 [node name="area" type="Area2D" parent="."]
 collision_mask = 16
 

@@ -109,6 +109,10 @@ position = Vector2(417, 424)
 position = Vector2(1104, 824)
 value = false
 
+[node name="big_door" parent="." instance=ExtResource("19_jtuxl")]
+position = Vector2(1752, 816)
+value = true
+
 [node name="player" parent="." instance=ExtResource("12_nwdyn")]
 position = Vector2(761, 804)
 
@@ -140,10 +144,6 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("17_kpaca")]
-
-[node name="big_door" parent="." instance=ExtResource("19_jtuxl")]
-position = Vector2(1752, 816)
-value = true
 
 [connection signal="switched" from="TileMap/plate" to="door" method="_on_switched"]
 [connection signal="switched" from="lever" to="door" method="_on_switched"]

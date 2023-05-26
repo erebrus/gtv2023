@@ -3,6 +3,7 @@ extends Node2D
 
 signal door_opened
 signal door_closed
+signal entered_door
 
 @export var value:=false:
 	set(v):
@@ -52,7 +53,7 @@ func _on_switched(val:bool)->void:
 
 
 func _on_body_entered(body):
-	if body.has_method("set_object"):
+	if value and body.has_method("set_object"):
 		Logger.debug("%s player detected " % name)
 		body.set_object(self)
 		player = body
@@ -64,3 +65,19 @@ func _on_body_exited(body):
 		body.unset_object(self)
 		
 	player = null
+
+func interact():	
+	if not player:
+		return
+	var tmp_player = player
+	player.xsm.change_state("move")
+	player.in_animation=true
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	var end_position = Vector2($end_position.global_position.x, player.global_position.y)	
+	var duration = abs(end_position.x- player.global_position.x)/player.controller.max_speed
+	$sprites/open_sprite_right.z_index+=10
+	tween.tween_property(player, "global_position", end_position, duration)
+	await tween.finished
+	entered_door.emit()	
+	tmp_player.in_animation=false
+
