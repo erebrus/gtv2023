@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://m2psg0uces54" path="res://assets/gfx/world/castle/facade_tileset.png" id="1_pd3ni"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
-[ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="4_6sdpr"]
+[ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
-[ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="5_ie6hf"]
+[ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="5_qhm3v"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="5_vyrmx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnyln"]
@@ -32,18 +32,18 @@ layer_0/tile_data = PackedInt32Array(458752, 18, 0, 458753, 131090, 0, 458754, 1
 position = Vector2(809, 994)
 max_energy = 500.0
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+script = ExtResource("4_b2e5o")
+
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource("4_jg7ap")
 format = 2
 layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 524290, 524288, 5, 524291, 524288, 5, 524292, 524288, 5, 524293, 524288, 5, 524294, 524288, 5, 524295, 524288, 5, 524296, 524288, 5, 524297, 524288, 5, 524298, 524288, 5, 524299, 524288, 5, 524300, 524288, 5)
 
-[node name="bone_bug" parent="." instance=ExtResource("5_ie6hf")]
-position = Vector2(1472, 935)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_vyrmx")]
 
-[node name="horned_mouth" parent="." instance=ExtResource("4_6sdpr")]
-position = Vector2(168, 973)
-max_hp = 150
+[node name="skull" parent="." instance=ExtResource("5_qhm3v")]
+position = Vector2(182, 1011)

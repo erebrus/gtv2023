@@ -1,23 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://dpudj0xpknfld"]
+[gd_scene load_steps=27 format=3 uid="uid://dpudj0xpknfld"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_i5qc2"]
-[ext_resource type="Texture2D" uid="uid://bdbvqg4kfi4ju" path="res://assets/gfx/enemies/material_enemy2/catfoxidle1.png" id="2_jwy4v"]
-[ext_resource type="Texture2D" uid="uid://diwr8tjo7alnm" path="res://assets/gfx/enemies/material_enemy2/catfoxidle2.png" id="3_yij1t"]
-[ext_resource type="Texture2D" uid="uid://dhupltnimenln" path="res://assets/gfx/enemies/material_enemy2/catfoxidle3.png" id="4_dfulm"]
-[ext_resource type="Texture2D" uid="uid://dluoos5c1wbqr" path="res://assets/gfx/enemies/material_enemy2/catfoxidle4.png" id="5_40rcj"]
-[ext_resource type="Texture2D" uid="uid://bormcuhbi5shy" path="res://assets/gfx/enemies/material_enemy2/catfoxidle5.png" id="6_q0dds"]
-[ext_resource type="Texture2D" uid="uid://bsdkjb4we6gl8" path="res://assets/gfx/enemies/material_enemy2/catfoxidle6.png" id="7_x87tw"]
-[ext_resource type="Texture2D" uid="uid://o0dykgcxwwpu" path="res://assets/gfx/enemies/material_enemy2/catfoxidle7.png" id="8_brnty"]
-[ext_resource type="Texture2D" uid="uid://bjdodsef6ejy6" path="res://assets/gfx/enemies/material_enemy2/catfoxidle8.png" id="9_i3pof"]
-[ext_resource type="Texture2D" uid="uid://2ir3cmuyfp01" path="res://assets/gfx/enemies/material_enemy2/catfoxidle9.png" id="10_lu8jn"]
-[ext_resource type="Texture2D" uid="uid://bxsfr2e1p2wfj" path="res://assets/gfx/enemies/material_enemy2/catfoxmove1.png" id="11_f5qpd"]
-[ext_resource type="Texture2D" uid="uid://dd31em2oou6pp" path="res://assets/gfx/enemies/material_enemy2/catfoxmove2.png" id="12_qp3hy"]
-[ext_resource type="Texture2D" uid="uid://dlu2p6b5a8mpb" path="res://assets/gfx/enemies/material_enemy2/catfoxmove3.png" id="13_raf27"]
-[ext_resource type="Texture2D" uid="uid://tnmobfsxex0u" path="res://assets/gfx/enemies/material_enemy2/catfoxmove4.png" id="14_lqj68"]
-[ext_resource type="Texture2D" uid="uid://b2srx0pdu4nl2" path="res://assets/gfx/enemies/material_enemy2/catfoxmove5.png" id="15_lvlmd"]
-[ext_resource type="Texture2D" uid="uid://cig6thi7ln4oe" path="res://assets/gfx/enemies/material_enemy2/catfoxmove6.png" id="16_qetqb"]
-[ext_resource type="Texture2D" uid="uid://knsmgeog8w8h" path="res://assets/gfx/enemies/material_enemy2/catfoxmove8.png" id="17_fsqlt"]
-[ext_resource type="Texture2D" uid="uid://d1w2akvaiehr7" path="res://assets/gfx/enemies/material_enemy2/catfoxmove9.png" id="18_iccty"]
+[ext_resource type="Texture2D" uid="uid://ca7gofx755w50" path="res://assets/gfx/enemies/material_enemy2/madmaxidle1.png" id="2_lxmr4"]
+[ext_resource type="Texture2D" uid="uid://c5ma0fe2yr4ef" path="res://assets/gfx/enemies/material_enemy2/madmaxidle2.png" id="3_7ux87"]
+[ext_resource type="Texture2D" uid="uid://b1myb452fkfud" path="res://assets/gfx/enemies/material_enemy2/madmaxidle3.png" id="4_2lywo"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="19_1bbgf"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="20_77rb0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="21_etvd5"]
@@ -48,61 +34,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jwy4v")
+"texture": ExtResource("2_lxmr4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yij1t")
+"texture": ExtResource("3_7ux87")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dfulm")
+"texture": ExtResource("4_2lywo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_40rcj")
+"texture": ExtResource("3_7ux87")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_q0dds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_x87tw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_brnty")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_i3pof")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_lu8jn")
+"texture": ExtResource("2_lxmr4")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 8.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_f5qpd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_qp3hy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_raf27")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_lqj68")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_lvlmd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_qetqb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_fsqlt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_iccty")
-}],
+"frames": [],
 "loop": true,
 "name": &"move",
 "speed": 10.0
@@ -485,10 +435,10 @@ shape = SubResource("CapsuleShape2D_ao7n5")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -48)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
-animation = &"move"
-frame_progress = 0.148311
+animation = &"idle"
+frame_progress = 0.0892536
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false

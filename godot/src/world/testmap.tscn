@@ -80,7 +80,6 @@ layer_0/tile_data = PackedInt32Array(393217, 327680, 5, 393218, 327680, 5, 39321
 
 [node name="skull" parent="TileMap" instance=ExtResource("4_7oka1")]
 position = Vector2(381, 416)
-dimension = 1
 
 [node name="bone_bug" parent="TileMap" instance=ExtResource("4_y11la")]
 position = Vector2(1598, 536)
