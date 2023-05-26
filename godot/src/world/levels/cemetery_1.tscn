@@ -33,3 +33,6 @@ position = Vector2(3600, 808)
 
 [node name="CanvasLayer" parent="." index="8"]
 visible = false
+
+[node name="DefaultEntryPoint" parent="." index="10"]
+position = Vector2(1032, 192)
