@@ -113,7 +113,7 @@ func play_animation(anim:String, force:=false):
 			anim += "_spectral"
 #	if not sprite.is_playing() or sprite.animation != anim:
 	if sprite.animation != anim or force:		
-		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
+#		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
 		sprite.play(anim)
 	
 func shift():
