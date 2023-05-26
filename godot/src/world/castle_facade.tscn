@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
-[ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="5_qhm3v"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="5_vyrmx"]
+[ext_resource type="PackedScene" uid="uid://dpudj0xpknfld" path="res://src/enemies/material_enemy2/material_enemy2.tscn" id="6_s0yx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnyln"]
 texture = ExtResource("1_pd3ni")
@@ -45,5 +45,5 @@ layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 52429
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_vyrmx")]
 
-[node name="skull" parent="." instance=ExtResource("5_qhm3v")]
-position = Vector2(182, 1011)
+[node name="skull" parent="." instance=ExtResource("6_s0yx1")]
+position = Vector2(252, 991)

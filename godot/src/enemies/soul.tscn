@@ -202,7 +202,8 @@ _data = {
 "hover": SubResource("Animation_7b2gk")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="flying_soul" type="CharacterBody2D"]
+collision_layer = 128
 script = ExtResource("1_2cfk8")
 
 [node name="soul" type="Area2D" parent="."]

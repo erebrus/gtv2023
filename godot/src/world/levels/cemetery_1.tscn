@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4morsvhaxu8k"]
+[gd_scene load_steps=5 format=3 uid="uid://c4morsvhaxu8k"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_v3wsx"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="2_t6tj1"]
 [ext_resource type="PackedScene" uid="uid://ccfq4evx2ee7x" path="res://src/world/objects/small_gate.tscn" id="3_r65ct"]
+[ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="4_tbclh"]
 
 [node name="cemetery_1" instance=ExtResource("1_v3wsx")]
 
@@ -18,5 +19,17 @@ position = Vector2(4064, 528)
 [node name="bone_bug2" parent="TileMap" index="2" instance=ExtResource("2_t6tj1")]
 position = Vector2(4368, 1048)
 
-[node name="CanvasLayer" parent="." index="4"]
+[node name="flying_soul" parent="." index="2" instance=ExtResource("4_tbclh")]
+position = Vector2(5104, 673)
+
+[node name="flying_soul2" parent="." index="3" instance=ExtResource("4_tbclh")]
+position = Vector2(4912, 312)
+
+[node name="flying_soul3" parent="." index="4" instance=ExtResource("4_tbclh")]
+position = Vector2(4256, 256)
+
+[node name="flying_soul4" parent="." index="5" instance=ExtResource("4_tbclh")]
+position = Vector2(3600, 808)
+
+[node name="CanvasLayer" parent="." index="8"]
 visible = false
