@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://bn3r5p03inwby"]
 
-[ext_resource type="Texture2D" uid="uid://4485vutg3b0u" path="res://assets/prototype/gfx/environment/lever_off.png" id="1_6auy7"]
 [ext_resource type="Script" path="res://src/world/objects/lever.gd" id="1_acw76"]
-[ext_resource type="Texture2D" uid="uid://2fwt5bihiivc" path="res://assets/prototype/gfx/environment/lever_on.png" id="2_6own4"]
+[ext_resource type="Texture2D" uid="uid://cxihurx2ungkg" path="res://assets/gfx/world/objects/lever L 1.png" id="2_ho1xq"]
+[ext_resource type="Texture2D" uid="uid://rsbi38uinelp" path="res://assets/gfx/world/objects/lever L 2.png" id="3_cykuc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwjcw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6auy7")
+"texture": ExtResource("2_ho1xq")
 }],
 "loop": true,
 "name": &"off",
@@ -16,7 +16,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6own4")
+"texture": ExtResource("3_cykuc")
 }],
 "loop": true,
 "name": &"on",
@@ -24,19 +24,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3em0b"]
-size = Vector2(72, 64)
+size = Vector2(128, 112)
 
 [node name="lever" type="Area2D"]
 collision_mask = 16
 script = ExtResource("1_acw76")
+value = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_pwjcw")
 animation = &"off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -32)
+position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_3em0b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

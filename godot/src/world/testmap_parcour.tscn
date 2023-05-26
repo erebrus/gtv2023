@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=17 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_nwdyn"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_5bvo3"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_bmhlu"]
+[ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="15_mfutn"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_obhvh"]
 [ext_resource type="Material" uid="uid://cq0bcbgu3n3kl" path="res://src/world/fog_material.tres" id="16_jgxwv"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="17_kpaca"]
@@ -122,3 +123,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("17_kpaca")]
+
+[node name="lever" parent="." instance=ExtResource("15_mfutn")]
+position = Vector2(1104, 824)
+value = false
