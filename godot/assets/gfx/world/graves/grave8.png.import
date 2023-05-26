@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bex2gcpqpfkgs"
-path="res://.godot/imported/spikes 2.png-9eab3e015c2de6573743fdc7bb873abd.ctex"
+uid="uid://w5enrx1nmyu7"
+path="res://.godot/imported/grave8.png-1c0fc276e1c422a3e01e3cb52f0ccc8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/spikes 2.png"
-dest_files=["res://.godot/imported/spikes 2.png-9eab3e015c2de6573743fdc7bb873abd.ctex"]
+source_file="res://assets/gfx/world/graves/grave8.png"
+dest_files=["res://.godot/imported/grave8.png-1c0fc276e1c422a3e01e3cb52f0ccc8c.ctex"]
 
 [params]
 

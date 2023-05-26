@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlao7ybfooj6p"
-path="res://.godot/imported/spikes 1.png-aae2a12f90da73579b5df6769b4a205d.ctex"
+uid="uid://cxihurx2ungkg"
+path="res://.godot/imported/lever L 1.png-dc164b0b7245563965f7b1df11133fbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/spikes 1.png"
-dest_files=["res://.godot/imported/spikes 1.png-aae2a12f90da73579b5df6769b4a205d.ctex"]
+source_file="res://assets/gfx/world/objects/lever L 1.png"
+dest_files=["res://.godot/imported/lever L 1.png-dc164b0b7245563965f7b1df11133fbb.ctex"]
 
 [params]
 

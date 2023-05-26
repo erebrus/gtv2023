@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmng35eeat0pv"
-path="res://.godot/imported/lever S 2.png-3cb357c5589b7e9460d9353cd88d0a59.ctex"
+path="res://.godot/imported/lever S 2.png-c46512cb86fe7b6ab3d452d6293378b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/lever S 2.png"
-dest_files=["res://.godot/imported/lever S 2.png-3cb357c5589b7e9460d9353cd88d0a59.ctex"]
+source_file="res://assets/gfx/world/objects/lever S 2.png"
+dest_files=["res://.godot/imported/lever S 2.png-c46512cb86fe7b6ab3d452d6293378b6.ctex"]
 
 [params]
 

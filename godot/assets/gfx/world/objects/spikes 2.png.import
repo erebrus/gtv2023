@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw15ouk3k6kpc"
-path="res://.godot/imported/button 2.png-59427a151be13acc60fdf1e4c52c40af.ctex"
+uid="uid://bex2gcpqpfkgs"
+path="res://.godot/imported/spikes 2.png-239c044d5b623bed87b97879ccadd599.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/button 2.png"
-dest_files=["res://.godot/imported/button 2.png-59427a151be13acc60fdf1e4c52c40af.ctex"]
+source_file="res://assets/gfx/world/objects/spikes 2.png"
+dest_files=["res://.godot/imported/spikes 2.png-239c044d5b623bed87b97879ccadd599.ctex"]
 
 [params]
 

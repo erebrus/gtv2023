@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mc45wr1ro166"
-path="res://.godot/imported/grave3.png-19e9460589d3143cec47c2677cb7abdd.ctex"
+uid="uid://ie6o2fc5i32i"
+path="res://.godot/imported/button .png-05bdac9e9d7c51e4702a905cf486b639.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/grave3.png"
-dest_files=["res://.godot/imported/grave3.png-19e9460589d3143cec47c2677cb7abdd.ctex"]
+source_file="res://assets/gfx/world/objects/button .png"
+dest_files=["res://.godot/imported/button .png-05bdac9e9d7c51e4702a905cf486b639.ctex"]
 
 [params]
 

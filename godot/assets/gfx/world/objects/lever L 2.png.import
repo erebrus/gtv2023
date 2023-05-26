@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ts1vb8fatix"
-path="res://.godot/imported/grave6.png-8455f808e10f869ab34a8a9576ce94d6.ctex"
+uid="uid://rsbi38uinelp"
+path="res://.godot/imported/lever L 2.png-41d82141b8467c0ff2fd06b29054979f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/grave6.png"
-dest_files=["res://.godot/imported/grave6.png-8455f808e10f869ab34a8a9576ce94d6.ctex"]
+source_file="res://assets/gfx/world/objects/lever L 2.png"
+dest_files=["res://.godot/imported/lever L 2.png-41d82141b8467c0ff2fd06b29054979f.ctex"]
 
 [params]
 

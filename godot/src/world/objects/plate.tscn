@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5t4kdlklyncl"]
 
-[ext_resource type="Texture2D" uid="uid://uiqhrnuaj1b4" path="res://assets/prototype/gfx/environment/plate_unpressed.png" id="1_t7ufi"]
 [ext_resource type="Script" path="res://src/world/objects/plate.gd" id="1_xhgkl"]
-[ext_resource type="Texture2D" uid="uid://luddxjghqfuq" path="res://assets/prototype/gfx/environment/plate_pressed.png" id="2_y06dk"]
+[ext_resource type="Texture2D" uid="uid://ie6o2fc5i32i" path="res://assets/gfx/world/objects/button .png" id="2_rk00n"]
+[ext_resource type="Texture2D" uid="uid://dw15ouk3k6kpc" path="res://assets/gfx/world/objects/button 2.png" id="3_t83iw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sjq0j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t7ufi")
+"texture": ExtResource("2_rk00n")
 }],
 "loop": true,
 "name": &"off",
@@ -16,31 +16,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y06dk")
+"texture": ExtResource("3_t83iw")
 }],
 "loop": true,
 "name": &"on",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d35cl"]
-size = Vector2(96, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eq1y"]
+size = Vector2(128, 16)
 
 [node name="plate" type="Area2D"]
 collision_mask = 49
 script = ExtResource("1_xhgkl")
+time = 2.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_sjq0j")
-animation = &"on"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_d35cl")
+animation = &"off"
 
 [node name="timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="sfx_on" type="AudioStreamPlayer2D" parent="."]
+
+[node name="sfx_off" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 49
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(80, 0, 64, -16, -64, -16, -80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_5eq1y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
