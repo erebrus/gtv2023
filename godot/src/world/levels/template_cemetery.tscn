@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_p4ssk"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_anuxj"]
 [ext_resource type="AudioStream" uid="uid://vssx5euyxpkr" path="res://assets/sfx/Ambience_1.wav" id="14_phagy"]
+[ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="14_pu7eq"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_rlyus"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_ux4yk"]
 [ext_resource type="Material" uid="uid://cq0bcbgu3n3kl" path="res://src/world/fog_material.tres" id="16_26mwx"]
@@ -28,6 +29,7 @@ shader_parameter/tint_effect_factor = 0.6
 
 [node name="cemetery_template" type="Node2D"]
 script = ExtResource("1_5lgg5")
+default_entry = NodePath("DefaultEntryPoint")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -76,7 +78,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6)
 
 [node name="player" parent="." instance=ExtResource("12_p4ssk")]
-position = Vector2(496, 752)
+position = Vector2(-154, 150)
 energy_decay = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -119,9 +121,10 @@ metadata/_edit_lock_ = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("17_ntbg5")]
 
-[node name="player_spawn" type="Node2D" parent="."]
-position = Vector2(344, 792)
+
 
 [node name="ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_phagy")
 autoplay = true
+
+[node name="DefaultEntryPoint" parent="." instance=ExtResource("14_pu7eq")]

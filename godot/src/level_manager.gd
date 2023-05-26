@@ -13,6 +13,7 @@ const path="usr://game_conf.tres"
 
 func _ready():
 	load_data()
+	Events.change_level_requested.connect(change_level)
 
 
 func is_last_level() -> bool:
@@ -46,6 +47,12 @@ func get_next_level()->PackedScene:
 	if current_level >= levels.size():
 		current_level = 0
 	return get_current_level()
+	
+
+func change_level(next_level: String, entry_name: String) -> void:
+	var set_entry_point = func(scene):
+		scene.entry_name = entry_name
+	SceneManager.change_scene(next_level, {"on_tree_enter": set_entry_point})
 	
 
 func load_data():

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://df3iqnrvg8axp"]
+
+[ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_heu8d"]
+[ext_resource type="PackedScene" uid="uid://bu8wshacdok4h" path="res://src/world/objects/entries_exits/exit.tscn" id="2_277xi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6unyg"]
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjxk3"]
+font_size = 40
+
+[node name="cemetery_template" instance=ExtResource("1_heu8d")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6, 262144, 262144, 4, 327680, 262144, 3, 393216, 262144, 4, 458752, 262144, 5, 458753, 327680, 5, 458754, 393216, 5, 458755, 458752, 5, 458756, 524288, 5, 458757, 589824, 5, 458758, 655360, 5, 458759, 720896, 5, 458760, 65536, 5, 327689, 0, 5, 393225, 131072, 4, 458761, 131072, 5, 65550, 131072, 4, 131086, 131072, 3, 196622, 131072, 3, -65522, 131072, 2, 14, 131072, 3, 131072, 262144, 4, 196608, 262144, 3, 0, 262144, 3, 65536, 262144, 4, -65536, 262144, 2, 327690, 65536, 5, 327691, 65536, 5, 327692, 65536, 5, 327693, 65536, 5, 327694, 131072, 5, 262158, 131072, 4)
+
+[node name="DefaultEntryPoint" parent="." index="5"]
+position = Vector2(635, 709)
+
+[node name="Label" type="Label" parent="." index="6"]
+offset_left = 512.0
+offset_top = 518.0
+offset_right = 775.0
+offset_bottom = 620.0
+text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_6unyg")
+
+[node name="Label2" type="Label" parent="." index="7"]
+offset_left = 937.0
+offset_top = 755.0
+offset_right = 1304.0
+offset_bottom = 825.0
+text = "TO LEVEL 2: Left"
+label_settings = SubResource("LabelSettings_rjxk3")
+
+[node name="Label3" type="Label" parent="." index="8"]
+offset_left = 52.0
+offset_top = 738.0
+offset_right = 383.0
+offset_bottom = 808.0
+text = "TO LEVEL 2: Right"
+label_settings = SubResource("LabelSettings_rjxk3")
+
+[node name="Label4" type="Label" parent="." index="9"]
+offset_left = 1456.0
+offset_top = 483.0
+offset_right = 1829.0
+offset_bottom = 553.0
+text = "TO LEVEL 2: Default"
+label_settings = SubResource("LabelSettings_rjxk3")
+
+[node name="Exit" parent="." index="10" instance=ExtResource("2_277xi")]
+position = Vector2(1103, 899)
+next_level = "res://src/world/levels/test_levels/entry_exit/test_2.tscn"
+entry_point = "LeftEntry"
+
+[node name="Exit2" parent="." index="11" instance=ExtResource("2_277xi")]
+position = Vector2(1643, 624)
+next_level = "res://src/world/levels/test_levels/entry_exit/test_2.tscn"
+
+[node name="Exit3" parent="." index="12" instance=ExtResource("2_277xi")]
+position = Vector2(171, 894)
+next_level = "res://src/world/levels/test_levels/entry_exit/test_2.tscn"
+entry_point = "RightEntry"

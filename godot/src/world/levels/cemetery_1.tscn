@@ -31,5 +31,8 @@ position = Vector2(4256, 256)
 [node name="flying_soul4" parent="." index="5" instance=ExtResource("4_tbclh")]
 position = Vector2(3600, 808)
 
-[node name="player" parent="." index="6"]
-energy_decay = 5.0
+[node name="CanvasLayer" parent="." index="8"]
+visible = false
+
+[node name="DefaultEntryPoint" parent="." index="10"]
+position = Vector2(1032, 192)
