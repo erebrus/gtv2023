@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dpudj0xpknfld"]
+[gd_scene load_steps=41 format=3 uid="uid://dpudj0xpknfld"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_i5qc2"]
 [ext_resource type="Texture2D" uid="uid://ca7gofx755w50" path="res://assets/gfx/enemies/material_enemy2/madmaxidle1.png" id="2_lxmr4"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://cl1xfs3mpwl35" path="res://assets/gfx/enemies/material_enemy2/madmaxmove3.png" id="7_62e00"]
 [ext_resource type="Texture2D" uid="uid://bskxm6dmxsb0l" path="res://assets/gfx/enemies/material_enemy2/madmaxattack6.png" id="7_cu2pb"]
 [ext_resource type="Texture2D" uid="uid://be7p6cafsatx3" path="res://assets/gfx/enemies/material_enemy2/madmaxmove4.png" id="8_pb6df"]
+[ext_resource type="Texture2D" uid="uid://cnoxf2u7obcan" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath1.png" id="8_ynr57"]
+[ext_resource type="Texture2D" uid="uid://jitv2rabgsgb" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath2.png" id="9_vpqpd"]
+[ext_resource type="Texture2D" uid="uid://74pkve7vt3ao" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath3.png" id="10_fyv74"]
+[ext_resource type="Texture2D" uid="uid://1ndsss6wmdhs" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath4.png" id="11_afr32"]
+[ext_resource type="Texture2D" uid="uid://c8s37jgahyqpj" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath7.png" id="14_vjpml"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="19_1bbgf"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="20_77rb0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="21_etvd5"]
@@ -59,10 +64,25 @@ animations = [{
 "name": &"attack",
 "speed": 20.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ynr57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vpqpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fyv74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_afr32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vjpml")
+}],
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 16.0
 }, {
 "frames": [],
 "loop": true,
@@ -481,8 +501,8 @@ normal_speed = 120.0
 position = Vector2(-1, -97)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
-animation = &"attack"
-frame = 9
+animation = &"death"
+frame = 4
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
