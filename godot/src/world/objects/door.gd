@@ -15,6 +15,7 @@ func open():
 	sprite.play("open")
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=true
+	collision_layer=0
 	door_opened.emit()
 	
 func close():
@@ -24,12 +25,12 @@ func close():
 	Logger.debug ("%s closing" % name)
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=false
+	collision_layer=1
 	door_closed.emit()
 	
 func _on_switched(val:bool)->void:
-	if val:
+	if val: 
 		open()
 	else:
 		close()
-
 
