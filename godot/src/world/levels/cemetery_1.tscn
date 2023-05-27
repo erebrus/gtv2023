@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4morsvhaxu8k"]
+[gd_scene load_steps=6 format=3 uid="uid://c4morsvhaxu8k"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_v3wsx"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="2_t6tj1"]
 [ext_resource type="PackedScene" uid="uid://ccfq4evx2ee7x" path="res://src/world/objects/small_gate.tscn" id="3_r65ct"]
 [ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="4_tbclh"]
+[ext_resource type="PackedScene" uid="uid://7hbrjsfhdb7d" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="5_sm8hc"]
 
 [node name="cemetery_1" instance=ExtResource("1_v3wsx")]
 
@@ -33,3 +34,13 @@ position = Vector2(3600, 808)
 
 [node name="DefaultEntryPoint" parent="." index="10"]
 position = Vector2(464, 936)
+
+[node name="enemy_spawner" parent="." index="11" node_paths=PackedStringArray("current_enemy") instance=ExtResource("5_sm8hc")]
+position = Vector2(4897.64, 1015.03)
+enemy_scene = ExtResource("2_t6tj1")
+current_enemy = NodePath("../TileMap/bone_bug2")
+
+[node name="enemy_spawner2" parent="." index="12" node_paths=PackedStringArray("current_enemy") instance=ExtResource("5_sm8hc")]
+position = Vector2(4464, 504)
+enemy_scene = ExtResource("2_t6tj1")
+current_enemy = NodePath("../TileMap/bone_bug")
