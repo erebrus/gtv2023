@@ -90,7 +90,11 @@ func _on_dimension_changed(_dimension)->void:
 			
 
 func flip_direction():
-	$sprite.flip_h = not $sprite.flip_h
+	if $sprite.flip_h:
+		dir_player.play("right")
+	else:
+		dir_player.play("left")
+
 	
 func get_facing_direction()->Vector2:
 

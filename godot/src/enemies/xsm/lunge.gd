@@ -21,17 +21,18 @@ func _on_enter(_args):
 	lunging=false
 	owner.velocity.x=0
 	owner.desired_velocity.x=0
-	if owner.target!= null and is_instance_valid(owner.target):
-		ensure_direction()
+
+#	ensure_direction()
 	add_timer("charge",charge_time)
 
 
-func ensure_direction():	
-	var pos = owner.global_position.x
-	var tpos = owner.target.global_position.x
-	var enemy_direction = Vector2(sign(tpos-pos),0)
-	if enemy_direction != owner.get_facing_direction():
-		owner.flip_direction()
+#func ensure_direction():	
+##	var tpos 
+##	var pos = owner.global_position.x
+##	var tpos = owner.target.global_position.x
+#	var enemy_direction = Vector2(sign(tpos-pos),0)
+#	if enemy_direction != owner.get_facing_direction():
+#		owner.flip_direction()
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -42,13 +43,17 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	if lunging and owner.is_on_floor():
+	if owner.target == null:
+		change_state("patrol")
+		return
+	if (lunging and owner.is_on_floor()) :
 		change_state("patrol")
 	elif not lunging:
 		owner.velocity.x=0
-	else:
-		if target != null:
-			ensure_direction()
+		
+#	else:
+#		if target != null:
+#			ensure_direction()
 #	owner.apply_impulse(Vector2(0,-owner.G*.9999))
 
 
@@ -79,6 +84,6 @@ func _state_timeout():
 # Called when any other Timer times out
 func _on_timeout(_name):
 	owner.in_animation = true
-	owner.apply_impulse(Vector2(1000,-owner.v0))
+	owner.apply_impulse(1000*owner.get_facing_direction()+Vector2(0,-owner.v0))
 	lunging=true
 
