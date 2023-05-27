@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc0i0vhkuu53g"
-path="res://.godot/imported/Skelly-attack-1.png-a79e9d969fb25ed51cd44766e5ff51f8.ctex"
+uid="uid://cf1dm3wmrnr4s"
+path="res://.godot/imported/Skelly-attack-5.png-8dff708ad8c81d72159a2cd71cacec30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/player/skelly-attack/Skelly-attack-1.png"
-dest_files=["res://.godot/imported/Skelly-attack-1.png-a79e9d969fb25ed51cd44766e5ff51f8.ctex"]
+source_file="res://assets/gfx/player/skelly-attack/Skelly-attack-5.png"
+dest_files=["res://.godot/imported/Skelly-attack-5.png-8dff708ad8c81d72159a2cd71cacec30.ctex"]
 
 [params]
 

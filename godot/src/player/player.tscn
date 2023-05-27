@@ -1,15 +1,15 @@
-[gd_scene load_steps=135 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=137 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
-[ext_resource type="Texture2D" uid="uid://bh0cpu8i2m5ls" path="res://assets/gfx/player/skelly-attack/Skelly-attack-1.png" id="3_8keg6"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_17k6u"]
 [ext_resource type="Texture2D" uid="uid://crwjmqq5x007e" path="res://assets/gfx/player/mc-160px-skeleton.png" id="3_dq53r"]
-[ext_resource type="Texture2D" uid="uid://ciwrtr26s7ncb" path="res://assets/gfx/player/skelly-attack/Skelly-attack-2.png" id="4_52x43"]
+[ext_resource type="Texture2D" uid="uid://cc0i0vhkuu53g" path="res://assets/gfx/player/skelly-attack/Skelly-attack-1.png" id="3_rxpe4"]
+[ext_resource type="Texture2D" uid="uid://cxyj4nqw4lfvb" path="res://assets/gfx/player/skelly-attack/Skelly-attack-2.png" id="4_e3roi"]
 [ext_resource type="Texture2D" uid="uid://di4lwqnjjlftx" path="res://assets/gfx/player/attack-ghost/Attack-ghost-1.png" id="4_uwx5o"]
 [ext_resource type="Texture2D" uid="uid://ba6s0t6lbo4i3" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-1.png" id="5_4v8hm"]
 [ext_resource type="Script" path="res://src/player/xsm/idle.gd" id="5_5dat7"]
-[ext_resource type="Texture2D" uid="uid://t2nr6phjfnx1" path="res://assets/gfx/player/skelly-attack/Skelly-attack-3.png" id="5_8jj3s"]
+[ext_resource type="Texture2D" uid="uid://baubsym1qi0hg" path="res://assets/gfx/player/skelly-attack/Skelly-attack-3.png" id="5_203co"]
 [ext_resource type="Texture2D" uid="uid://cdcq2twy6bmus" path="res://assets/gfx/player/ghost-dash/Ghost-dash-1.png" id="5_gj2ep"]
 [ext_resource type="Texture2D" uid="uid://c5v7js285slgr" path="res://assets/gfx/player/ghost-bounce/Bouncy-ghost-10.png" id="5_ki7w7"]
 [ext_resource type="Texture2D" uid="uid://cunyhgk705soc" path="res://assets/gfx/player/attack-ghost/Attack-ghost-2.png" id="5_xgoku"]
@@ -19,12 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://dm8h3nifohlsf" path="res://assets/gfx/player/ghost-dash/Ghost-dash-2.png" id="6_cnpfs"]
 [ext_resource type="Script" path="res://src/player/xsm/dash.gd" id="6_k6vq6"]
 [ext_resource type="Script" path="res://src/player/xsm/move.gd" id="6_lkixy"]
+[ext_resource type="Texture2D" uid="uid://jmly7mkmebcq" path="res://assets/gfx/player/skelly-attack/Skelly-attack-4.png" id="6_muro4"]
 [ext_resource type="Texture2D" uid="uid://bxid7b140xa1q" path="res://assets/gfx/player/ghost-death/Death-ghost-1.png" id="6_wea4h"]
 [ext_resource type="Script" path="res://src/player/xsm/can_attack.gd" id="6_wjfj2"]
 [ext_resource type="Texture2D" uid="uid://ogymsjy1p4qs" path="res://assets/gfx/player/ghost-dash/Ghost-dash-3.png" id="7_34awb"]
 [ext_resource type="Texture2D" uid="uid://c2p3mfpd5cojv" path="res://assets/gfx/player/attack-ghost/Attack-ghost-4.png" id="7_c70nk"]
 [ext_resource type="Script" path="res://src/player/xsm/climb.gd" id="7_ekgay"]
 [ext_resource type="Texture2D" uid="uid://b1ipq48tnsrd2" path="res://assets/gfx/player/idle-ghost-animations/Idle-ghost-3.png" id="7_gwse4"]
+[ext_resource type="Texture2D" uid="uid://cf1dm3wmrnr4s" path="res://assets/gfx/player/skelly-attack/Skelly-attack-5.png" id="7_u8b0k"]
 [ext_resource type="Texture2D" uid="uid://c5pobgp1wke6u" path="res://assets/gfx/player/ghost-death/Death-ghost-2.png" id="7_y07nw"]
 [ext_resource type="Script" path="res://src/player/xsm/jump.gd" id="8_7ga8y"]
 [ext_resource type="Texture2D" uid="uid://ccvn28vw8mr4c" path="res://assets/gfx/player/ghost-death/Death-ghost-3.png" id="8_26kp6"]
@@ -119,17 +121,23 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_8keg6")
+"texture": ExtResource("3_rxpe4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_52x43")
+"texture": ExtResource("4_e3roi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8jj3s")
+"texture": ExtResource("5_203co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_muro4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u8b0k")
 }],
 "loop": false,
 "name": &"attack",
-"speed": 6.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
