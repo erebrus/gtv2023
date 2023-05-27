@@ -1259,7 +1259,7 @@ xsm_path = NodePath("../xsm")
 
 [node name="spectral_controller" parent="." instance=ExtResource("1_gtfn5")]
 dash_cooldown = 0.9
-max_speed = 400.0
+max_speed = 450.0
 max_accel = 100.0
 max_deccel = 80.0
 dash_boost = 2000.0
