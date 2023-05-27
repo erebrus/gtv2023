@@ -1287,6 +1287,7 @@ collision_layer = 16
 script = ExtResource("1_kqnht")
 attack_damage = 50.0
 attack_knockback = 250.0
+energy_override = true
 
 [node name="material_controller" parent="." instance=ExtResource("1_gtfn5")]
 dash_cooldown = 0.5
@@ -1329,7 +1330,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"dash_diag"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)

@@ -16,6 +16,7 @@ signal jump_fired
 @export var attack_knockback:float = 50.0
 @export var spectral_th:float = 1.6
 @export var material_th:float = .6
+@export var energy_override := false
 
 var use_mouse:=true
 var max_x:float = 0
@@ -127,7 +128,7 @@ func play_animation(anim:String, force:=false):
 func shift():
 	if dimension == Events.Dimension.MATERIAL:
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-	else:
+	elif energy == max_energy or energy_override:
 		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
 
 func control(_delta:float) -> void:
