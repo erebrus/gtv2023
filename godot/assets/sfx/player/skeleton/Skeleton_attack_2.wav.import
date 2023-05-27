@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://4ceskvcncli4"
-path="res://.godot/imported/Skeleton_attack_2.wav-146b046d1d66f0f78e1fe1eb6d371a99.sample"
+path="res://.godot/imported/Skeleton_attack_2.wav-ed4d54b8473fa11812a56d4d7d003dcd.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_attack_2.wav"
-dest_files=["res://.godot/imported/Skeleton_attack_2.wav-146b046d1d66f0f78e1fe1eb6d371a99.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_attack_2.wav"
+dest_files=["res://.godot/imported/Skeleton_attack_2.wav-ed4d54b8473fa11812a56d4d7d003dcd.sample"]
 
 [params]
 

@@ -18,6 +18,7 @@ func _on_anim_finished(_name: String) -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
+		owner.sfx_climb.play()
 #		Logger.info("Climb collision count=%d" % owner.get_slide_count())
 #		for i in owner.get_slide_count():
 #			Logger.info("Collision %d - %s" % [i, owner.get_slide_collision(i).normal])

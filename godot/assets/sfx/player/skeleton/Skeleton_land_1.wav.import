@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b55lecp16igem"
-path="res://.godot/imported/Skeleton_land_1.wav-7266252454d297f3e9aeabb18a86ae5d.sample"
+path="res://.godot/imported/Skeleton_land_1.wav-32eb7d9cb45f609b71ded42f15ece709.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_land_1.wav"
-dest_files=["res://.godot/imported/Skeleton_land_1.wav-7266252454d297f3e9aeabb18a86ae5d.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_land_1.wav"
+dest_files=["res://.godot/imported/Skeleton_land_1.wav-32eb7d9cb45f609b71ded42f15ece709.sample"]
 
 [params]
 

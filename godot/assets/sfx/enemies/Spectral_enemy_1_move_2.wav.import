@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwhf36gwor8hc"
-path="res://.godot/imported/Spectral_enemy_1_move_2.wav-f92f24067b05e6dc8f1d8bbbf3339556.sample"
+path="res://.godot/imported/Spectral_enemy_1_move_2.wav-9de6a8645243ea5af5a0dd41a087d59d.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Spectral_enemy_1_move_2.wav"
-dest_files=["res://.godot/imported/Spectral_enemy_1_move_2.wav-f92f24067b05e6dc8f1d8bbbf3339556.sample"]
+source_file="res://assets/sfx/enemies/Spectral_enemy_1_move_2.wav"
+dest_files=["res://.godot/imported/Spectral_enemy_1_move_2.wav-9de6a8645243ea5af5a0dd41a087d59d.sample"]
 
 [params]
 

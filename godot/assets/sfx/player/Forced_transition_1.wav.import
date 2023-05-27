@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b2wo8d7gg6nbm"
-path="res://.godot/imported/Forced_transition_1.wav-60eda7675496b7991435cdee754b307b.sample"
+path="res://.godot/imported/Forced_transition_1.wav-3532605789e3ba298873ff3ce534483e.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Forced_transition_1.wav"
-dest_files=["res://.godot/imported/Forced_transition_1.wav-60eda7675496b7991435cdee754b307b.sample"]
+source_file="res://assets/sfx/player/Forced_transition_1.wav"
+dest_files=["res://.godot/imported/Forced_transition_1.wav-3532605789e3ba298873ff3ce534483e.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c5tapbay8qy1b"
-path="res://.godot/imported/Skeleton_hurt_4.wav-e807af3c66c32ad7fa4638e6a516ef2f.sample"
+path="res://.godot/imported/Skeleton_hurt_4.wav-12dfe8f1d14b6fa45c6e9683a459108b.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_hurt_4.wav"
-dest_files=["res://.godot/imported/Skeleton_hurt_4.wav-e807af3c66c32ad7fa4638e6a516ef2f.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_hurt_4.wav"
+dest_files=["res://.godot/imported/Skeleton_hurt_4.wav-12dfe8f1d14b6fa45c6e9683a459108b.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c3yyuo30hai"
-path="res://.godot/imported/Skeleton_grad_loop_rockwall.wav-32fb1873ada25e6a0597936af8b47299.sample"
+path="res://.godot/imported/Skeleton_grad_loop_rockwall.wav-02e8c1ba156ea3b004f4e433d85e5982.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_grad_loop_rockwall.wav"
-dest_files=["res://.godot/imported/Skeleton_grad_loop_rockwall.wav-32fb1873ada25e6a0597936af8b47299.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_grad_loop_rockwall.wav"
+dest_files=["res://.godot/imported/Skeleton_grad_loop_rockwall.wav-02e8c1ba156ea3b004f4e433d85e5982.sample"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=164 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -114,6 +114,28 @@
 [ext_resource type="Script" path="res://src/player/xsm/can_cross.gd" id="73_oh8jc"]
 [ext_resource type="Script" path="res://src/player/xsm/hurt.gd" id="76_8vw70"]
 [ext_resource type="Texture2D" uid="uid://3g2yiahsn84v" path="res://addons/kenney_particle_pack/twirl_03.png" id="101_0cxsx"]
+[ext_resource type="AudioStream" uid="uid://b8bfor0spm2ab" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_1.wav" id="114_p7tnx"]
+[ext_resource type="AudioStream" uid="uid://b10uwwn0u0daq" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_2.wav" id="115_b8nlg"]
+[ext_resource type="AudioStream" uid="uid://bo6an5eimq3yj" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_3.wav" id="116_1iw4f"]
+[ext_resource type="AudioStream" uid="uid://bgp74kaiu23m2" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_4.wav" id="117_oeum0"]
+[ext_resource type="AudioStream" uid="uid://basxj3tyu01yc" path="res://assets/sfx/player/skeleton/Skeleton_jump_1.wav" id="118_20spo"]
+[ext_resource type="AudioStream" uid="uid://btde5o4n1nvpn" path="res://assets/sfx/player/skeleton/Skeleton_jump_2.wav" id="119_fk2fk"]
+[ext_resource type="AudioStream" uid="uid://b310ghials81m" path="res://assets/sfx/player/skeleton/Skeleton_jump_3.wav" id="120_0dkrh"]
+[ext_resource type="AudioStream" uid="uid://bu8x2ipb48opb" path="res://assets/sfx/player/skeleton/Skeleton_jump_4.wav" id="121_q8so1"]
+[ext_resource type="AudioStream" uid="uid://b55lecp16igem" path="res://assets/sfx/player/skeleton/Skeleton_land_1.wav" id="122_1ktg7"]
+[ext_resource type="AudioStream" uid="uid://bi1dihjk2lwww" path="res://assets/sfx/player/skeleton/Skeleton_land_2.wav" id="123_xtapb"]
+[ext_resource type="AudioStream" uid="uid://crejeyhpuw5ps" path="res://assets/sfx/player/skeleton/Skeleton_land_3.wav" id="124_dr1er"]
+[ext_resource type="AudioStream" uid="uid://bpg3dwiojucp3" path="res://assets/sfx/player/skeleton/Skeleton_land_4.wav" id="125_vwyj2"]
+[ext_resource type="AudioStream" uid="uid://cxxrln6lygbe0" path="res://assets/sfx/player/skeleton/Skeleton_attack_1.wav" id="126_16emm"]
+[ext_resource type="AudioStream" uid="uid://4ceskvcncli4" path="res://assets/sfx/player/skeleton/Skeleton_attack_2.wav" id="127_h8ycc"]
+[ext_resource type="AudioStream" uid="uid://uw4a58ne5xpv" path="res://assets/sfx/player/skeleton/Skeleton_attack_3.wav" id="128_k4t7i"]
+[ext_resource type="AudioStream" uid="uid://16uobrgd7mlx" path="res://assets/sfx/player/skeleton/Skeleton_attack_4.wav" id="129_3bch5"]
+[ext_resource type="AudioStream" uid="uid://b2wo8d7gg6nbm" path="res://assets/sfx/player/Forced_transition_1.wav" id="130_ohx2a"]
+[ext_resource type="AudioStream" uid="uid://dmqjavi0xq2cm" path="res://assets/sfx/player/Forced_transition_2.wav" id="131_nxg5c"]
+[ext_resource type="AudioStream" uid="uid://cm3kj8phwh20q" path="res://assets/sfx/player/skeleton/Skeleton_grad_1.wav" id="132_7epwh"]
+[ext_resource type="AudioStream" uid="uid://du6p1lxpgjo63" path="res://assets/sfx/player/skeleton/Skeleton_grad_2.wav" id="133_y6cvw"]
+[ext_resource type="AudioStream" uid="uid://devhwyhlwk0sy" path="res://assets/sfx/player/skeleton/Skeleton_grad_3.wav" id="134_prppj"]
+[ext_resource type="AudioStream" uid="uid://crw7rikf3qp0d" path="res://assets/sfx/player/skeleton/Skeleton_grad_4.wav" id="135_7wq5l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
 animations = [{
@@ -1270,6 +1292,79 @@ _data = {
 "right": SubResource("Animation_40f4u")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s86yt"]
+streams_count = 4
+stream_0/stream = ExtResource("114_p7tnx")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("115_b8nlg")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("116_1iw4f")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("117_oeum0")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_petmv"]
+streams_count = 4
+stream_0/stream = ExtResource("118_20spo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("119_fk2fk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("120_0dkrh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("121_q8so1")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_27s8q"]
+streams_count = 4
+stream_0/stream = ExtResource("122_1ktg7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("123_xtapb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("124_dr1er")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("125_vwyj2")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5lard"]
+streams_count = 4
+stream_0/stream = ExtResource("122_1ktg7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("123_xtapb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("124_dr1er")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("125_vwyj2")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oq2sb"]
+streams_count = 4
+stream_0/stream = ExtResource("126_16emm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("127_h8ycc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("128_k4t7i")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("129_3bch5")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x700v"]
+streams_count = 2
+stream_0/stream = ExtResource("130_ohx2a")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("131_nxg5c")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3233t"]
+streams_count = 4
+stream_0/stream = ExtResource("132_7epwh")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("133_y6cvw")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("134_prppj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("135_7wq5l")
+stream_3/weight = 1.0
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
 script = ExtResource("1_kqnht")
@@ -1318,9 +1413,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack"
-frame = 2
-frame_progress = 1.0
+animation = &"move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)
@@ -1455,7 +1548,7 @@ script = ExtResource("76_8vw70")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
-on_anim_finished = 4
+on_anim_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1513,20 +1606,31 @@ next_state = NodePath("../can_attack/can_dash/can_cross/idle")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="timer_fs" type="Timer" parent="sfx"]
-wait_time = 0.5
+wait_time = 0.7
 one_shot = true
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_s86yt")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_petmv")
 
 [node name="land" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_27s8q")
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_5lard")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_oq2sb")
+
+[node name="decay_forced" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_x700v")
+
+[node name="climb" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_3233t")
 
 [node name="climb_rc" type="RayCast2D" parent="."]
 position = Vector2(0, -56)

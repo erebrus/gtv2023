@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b8bfor0spm2ab"
-path="res://.godot/imported/Skeleton_move_grass_1.wav-ad75382cdea4f113a69be526d659a3b5.sample"
+path="res://.godot/imported/Skeleton_move_grass_1.wav-13804759829e6ab61d942d49de624213.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_move_grass_1.wav"
-dest_files=["res://.godot/imported/Skeleton_move_grass_1.wav-ad75382cdea4f113a69be526d659a3b5.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_move_grass_1.wav"
+dest_files=["res://.godot/imported/Skeleton_move_grass_1.wav-13804759829e6ab61d942d49de624213.sample"]
 
 [params]
 

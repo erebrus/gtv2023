@@ -52,6 +52,7 @@ var controller
 @onready var sfx_jump := $sfx/jump
 @onready var sfx_landing := $sfx/land
 @onready var sfx_attack := $sfx/attack
+@onready var sfx_climb := $sfx/climb
 
 
 var can_play_footstep:bool = true
@@ -125,8 +126,9 @@ func play_animation(anim:String, force:=false):
 #		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
 		sprite.play(anim)
 	
-func shift():
-	if dimension == Events.Dimension.MATERIAL:
+func shift(forced:=false):
+	if dimension == Events.Dimension.MATERIAL:	
+		$sfx/decay_forced.play()	
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
 	elif energy == max_energy or energy_override:
 		Events.dimension_changed.emit(Events.Dimension.MATERIAL)

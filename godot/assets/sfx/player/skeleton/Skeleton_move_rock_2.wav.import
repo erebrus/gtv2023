@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cygyp45rcdf0w"
-path="res://.godot/imported/Skeleton_move_rock_2.wav-47be3a3950e7f8ff040f3772cd49530b.sample"
+path="res://.godot/imported/Skeleton_move_rock_2.wav-333cb93e92c160c8cc7ebcc44e30a6fe.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Skeleton_move_rock_2.wav"
-dest_files=["res://.godot/imported/Skeleton_move_rock_2.wav-47be3a3950e7f8ff040f3772cd49530b.sample"]
+source_file="res://assets/sfx/player/skeleton/Skeleton_move_rock_2.wav"
+dest_files=["res://.godot/imported/Skeleton_move_rock_2.wav-333cb93e92c160c8cc7ebcc44e30a6fe.sample"]
 
 [params]
 
