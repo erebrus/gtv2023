@@ -894,7 +894,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("attack_box/right_collision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -906,7 +906,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("attack_box/left_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -918,7 +918,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("attack_box/right_collision:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -930,7 +930,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("attack_box/left_collision:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -1018,7 +1018,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("attack_box/right_collision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -1030,7 +1030,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("attack_box/left_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -1042,7 +1042,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("attack_box/right_collision:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -1054,7 +1054,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("attack_box/left_collision:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -1142,7 +1142,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("attack_box/right_collision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -1154,7 +1154,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("attack_box/left_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -1166,7 +1166,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("attack_box/right_collision:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -1178,7 +1178,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("attack_box/left_collision:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -1280,7 +1280,7 @@ xsm_path = NodePath("../xsm")
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
 animation = &"attack_spectral"
-frame = 4
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1323,7 +1323,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../can_cross/idle")
 
 [node name="idle" type="Node" parent="xsm/can_attack/can_dash/can_cross"]
 script = ExtResource("5_5dat7")
@@ -1359,7 +1359,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../can_cross/idle")
 
 [node name="fall" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("9_aqd42")
@@ -1371,12 +1371,12 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../can_cross/idle")
 
 [node name="attack" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("15_4wcyn")
 attack_delay = 0.1
-extra_impulse = 96.0
+extra_impulse = 64.0
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -1499,11 +1499,12 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="right_collision" type="CollisionPolygon2D" parent="attack_box"]
-polygon = PackedVector2Array(-16, 0, 104, -8, 152, -120, 128, -176, 56, -152, 0, -112)
+polygon = PackedVector2Array(-16, 0, 88, -24, 136, -104, 128, -176, 56, -152, 0, -112)
+disabled = true
 
 [node name="left_collision" type="CollisionPolygon2D" parent="attack_box"]
 visible = false
-polygon = PackedVector2Array(112, -16, 48, 8, -32, -72, -40, -168, 0, -176, 112, -120, 136, -32)
+polygon = PackedVector2Array(112, -16, 48, 0, -16, -72, -32, -160, 0, -176, 112, -120, 136, -32)
 disabled = true
 
 [node name="reload_timer" type="Timer" parent="."]

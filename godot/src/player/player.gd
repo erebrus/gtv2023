@@ -188,7 +188,6 @@ func on_landing(_last_vy:float):
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
-	
 #	if is_on_floor() and xsm.is_active("can_dash"):
 #		controller.can_dash = true
 		
@@ -384,7 +383,10 @@ func set_attack_box_enabled(val:bool)->void:
 	#attack_box.monitoring = val	
 #	$attack_box/CollisionShape2D.disabled = not val
 	if not val:
-		$attack_box.get_children().all(func(x):x.disabled=true)
+		for x in $attack_box.get_children():
+			x.disabled=true;
+			Logger.trace("%s disabled" % x.name)
+		
 	else:
 		if last_direction==Vector2.RIGHT:
 			$attack_box/left_collision.disabled=true
@@ -392,6 +394,9 @@ func set_attack_box_enabled(val:bool)->void:
 		else:
 			$attack_box/left_collision.disabled=false
 			$attack_box/right_collision.disabled=true
+	for x in $attack_box.get_children():
+		x.visible = not x.disabled
+		Logger.debug("attacbox %s disabled? %s" % [x.name, x.disabled])
 #	if not val:
 #		for cs in $attack_box.get_children():
 #			if cs.disab

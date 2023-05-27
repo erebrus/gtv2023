@@ -2,6 +2,7 @@
 extends StateAnimation
 
 @export var attack_delay:float=.2
+@export var attack_duration:float=.2
 @export var lunge_distance:float=0
 @export var extra_impulse:float = 0
 #
@@ -34,7 +35,7 @@ func _on_enter(_args) -> void:
 #		var dest = owner.global_position+Vector2(lunge_distance,0)*owner.last_direction
 #		tween.tween_property(owner, "global_position", dest, .3)	
 	if attack_delay>0:
-		add_timer("attack_timer", attack_delay)
+		add_timer("attack_delay", attack_delay)
 	else:
 		owner.set_attack_box_enabled(true)
 
@@ -103,6 +104,10 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	owner.set_attack_box_enabled(true)
+	if _name=="attack_delay":
+		owner.set_attack_box_enabled(true)
+		add_timer("attack_duration",attack_duration)
+	if _name=="attack_duration":
+		owner.set_attack_box_enabled(false)	
 
 	
