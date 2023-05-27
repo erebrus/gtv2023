@@ -63,7 +63,7 @@ func _init_logger():
 
 
 func gameover():
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	level_manager.restore_checkpoint()
 	
 
