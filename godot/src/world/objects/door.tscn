@@ -47,7 +47,6 @@ animations = [{
 }]
 
 [node name="door" type="StaticBody2D"]
-collision_mask = 49
 script = ExtResource("1_51jux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
