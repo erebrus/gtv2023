@@ -114,10 +114,10 @@
 [ext_resource type="Script" path="res://src/player/xsm/can_cross.gd" id="73_oh8jc"]
 [ext_resource type="Script" path="res://src/player/xsm/hurt.gd" id="76_8vw70"]
 [ext_resource type="Texture2D" uid="uid://3g2yiahsn84v" path="res://addons/kenney_particle_pack/twirl_03.png" id="101_0cxsx"]
-[ext_resource type="AudioStream" uid="uid://b8bfor0spm2ab" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_1.wav" id="114_p7tnx"]
-[ext_resource type="AudioStream" uid="uid://b10uwwn0u0daq" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_2.wav" id="115_b8nlg"]
-[ext_resource type="AudioStream" uid="uid://bo6an5eimq3yj" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_3.wav" id="116_1iw4f"]
-[ext_resource type="AudioStream" uid="uid://bgp74kaiu23m2" path="res://assets/sfx/player/skeleton/Skeleton_move_grass_4.wav" id="117_oeum0"]
+[ext_resource type="AudioStream" uid="uid://dxecuakk5ld" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_1.wav" id="114_lt51d"]
+[ext_resource type="AudioStream" uid="uid://cygyp45rcdf0w" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_2.wav" id="115_v3022"]
+[ext_resource type="AudioStream" uid="uid://b0kx6hs22gsm2" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_3.wav" id="116_pbu5o"]
+[ext_resource type="AudioStream" uid="uid://b5p1jf85utcvg" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_4.wav" id="117_0tu6y"]
 [ext_resource type="AudioStream" uid="uid://basxj3tyu01yc" path="res://assets/sfx/player/skeleton/Skeleton_jump_1.wav" id="118_20spo"]
 [ext_resource type="AudioStream" uid="uid://btde5o4n1nvpn" path="res://assets/sfx/player/skeleton/Skeleton_jump_2.wav" id="119_fk2fk"]
 [ext_resource type="AudioStream" uid="uid://b310ghials81m" path="res://assets/sfx/player/skeleton/Skeleton_jump_3.wav" id="120_0dkrh"]
@@ -1258,13 +1258,13 @@ _data = {
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s86yt"]
 streams_count = 4
-stream_0/stream = ExtResource("114_p7tnx")
+stream_0/stream = ExtResource("114_lt51d")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("115_b8nlg")
+stream_1/stream = ExtResource("115_v3022")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("116_1iw4f")
+stream_2/stream = ExtResource("116_pbu5o")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("117_oeum0")
+stream_3/stream = ExtResource("117_0tu6y")
 stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_petmv"]
@@ -1576,6 +1576,11 @@ one_shot = true
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_s86yt")
 
+[node name="run_rock" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_s86yt")
+
+[node name="run_spectral" type="AudioStreamPlayer2D" parent="sfx"]
+
 [node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_petmv")
 
@@ -1588,6 +1593,9 @@ stream = SubResource("AudioStreamRandomizer_27s8q")
 stream = SubResource("AudioStreamRandomizer_5lard")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_oq2sb")
+
+[node name="attack_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_oq2sb")
 
 [node name="decay_forced" type="AudioStreamPlayer2D" parent="sfx"]

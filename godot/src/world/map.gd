@@ -1,9 +1,13 @@
 extends Node2D
+class_name Map
+
+enum FloorType{GRASS, ROCK}
 
 const MATERIAL_TS = preload("res://src/world/cemetery_tileset_material.tres")
 const SPECTRAL_TS = preload("res://src/world/cemetery_tileset_spectral.tres")
 var dimension = Events.Dimension.SPECTRAL
 
+@export var floor_type:FloorType = FloorType.GRASS
 @export var level:PackedScene
 @export var default_entry: NodePath
 var entry_name := ""
@@ -25,6 +29,7 @@ func place_player() -> void:
 	assert(entry != null)
 	Events.checkpoint_entered.emit(entry.name)
 	$player.position = entry.position
+	$player.floor_type = floor_type
 	
 
 func find_entry(node: Node) -> EntryPoint:

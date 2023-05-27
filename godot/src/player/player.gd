@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 
 const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
@@ -24,6 +25,7 @@ var accel:float=0
 var in_animation:bool = false
 var last_y:float
 var last_direction:=Vector2.RIGHT
+var floor_type:Map.FloorType = Map.FloorType.GRASS
 
 var can_attack := true
 var immune := false
@@ -49,9 +51,13 @@ var controller
 @onready var sfx_hurt := $sfx/hurt
 @onready var sfx_death := $sfx/death
 @onready var sfx_run := $sfx/run
+@onready var sfx_run_rock := $sfx/run_rock
+@onready var sfx_run_spectral := $sfx/run_rock
 @onready var sfx_jump := $sfx/jump
+@onready var sfx_dash := $sfx/dash
 @onready var sfx_landing := $sfx/land
 @onready var sfx_attack := $sfx/attack
+@onready var sfx_attack_spectral := $sfx/attack_spectral
 @onready var sfx_climb := $sfx/climb
 
 
@@ -90,7 +96,6 @@ func _ready():
 #		HyperLog.log(self).offset(Vector2(32,-50))
 #	else:
 #		HyperLog.remove_log(self)
-
 
 func update_sprite():
 	
@@ -174,7 +179,13 @@ func on_walk() -> void:
 	if sfx_run == null:
 		return
 	if not sfx_run.playing and can_play_footstep:
-		sfx_run.play()
+		if dimension == Events.Dimension.MATERIAL:
+			if floor_type==Map.FloorType.GRASS:
+				sfx_run.play()
+			else:
+				sfx_run_rock.play()
+		else:
+			sfx_run_spectral.play()			
 		if timer_fs.wait_time>0:
 			can_play_footstep = false
 			timer_fs.start()
