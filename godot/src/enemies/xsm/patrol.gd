@@ -37,7 +37,7 @@ func _after_enter(_args) -> void:
 
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
-func _on_update(_delta: float) -> void:
+func _on_update(_delta: float) -> void: 
 	owner.handle_run_sfx()
 	if owner.target:
 		var pos = owner.global_position.x
@@ -50,6 +50,8 @@ func _on_update(_delta: float) -> void:
 		change_state("engage")		
 	elif owner.is_must_turn():
 		change_state("lookout")
+	else:
+		owner.desired_velocity=Vector2(owner.normal_speed,0)*owner.get_facing_direction()
 		
 
 

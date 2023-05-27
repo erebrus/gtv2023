@@ -83,7 +83,11 @@ func _state_timeout():
 
 # Called when any other Timer times out
 func _on_timeout(_name):
+	if not is_active(name):
+		return
 	owner.in_animation = true
-	owner.apply_impulse(1000*owner.get_facing_direction()+Vector2(0,-owner.v0))
+	var impulse:Vector2= 1000*owner.get_facing_direction()+Vector2(0,-owner.v0)
+	Logger.debug("%s lunge vector %s" % [owner.name, impulse])
+	owner.apply_impulse(impulse)
 	lunging=true
 

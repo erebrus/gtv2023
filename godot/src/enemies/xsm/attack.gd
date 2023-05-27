@@ -19,7 +19,7 @@ func _on_anim_finished(_name: String) -> void:
 func _on_enter(_args) -> void:
 	owner.in_animation = true
 #	Logger.info("%s attacking at time %d" % [owner.name, Time.get_ticks_msec()])
-	owner.velocity.x=0
+#	owner.velocity.x=0
 	start_time=Time.get_ticks_msec()	
 	owner.sfx_attack.play()
 	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
