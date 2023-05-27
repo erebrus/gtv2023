@@ -18,7 +18,7 @@ func _on_anim_finished(_name: String) -> void:
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	owner.in_animation = true
-
+#	Logger.info("%s attacking at time %d" % [owner.name, Time.get_ticks_msec()])
 	owner.desired_velocity.x=0
 	start_time=Time.get_ticks_msec()	
 	owner.sfx_attack.play()
@@ -39,7 +39,10 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass		
+	var sprite = owner.get_node("sprite")
+#	Logger.info("anim: %s %d" % [sprite.animation, sprite.frame])
+	
+	
 
 
 # This function is called each frame after all the update calls
@@ -57,6 +60,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
+	Logger.info("%s exiting attack at time %d" % [owner.name, Time.get_ticks_msec()])
 	owner.in_animation = false
 	owner.reload_timer.start()
 	owner.set_attackbox_enabled(false)

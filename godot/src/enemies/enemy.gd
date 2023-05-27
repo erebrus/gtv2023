@@ -33,10 +33,20 @@ var can_play_footstep:=true
 @onready var soul_trail = get_node_or_null("soul_trail")
 
 
+var extra_impulse := Vector2.ZERO
 @onready var original_position:Vector2 = global_position
 var dead := false
-const G:float = 1000
+#const G:float = 1000
 var in_animation:bool = false
+
+@export var th:=1.5
+@export var h:= 300
+
+#@onready var g:float = 2 * h / (th * th) # computed gravity
+#@onready var v0:float = 2 * h / th # computed initial velocity	
+
+var g:float = 2500.0
+var v0:float = 750
 
 func _ready()->void:
 	Events.dimension_changed.connect(_on_dimension_changed)
@@ -79,7 +89,9 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = true
 			
 
-
+func flip_direction():
+	$sprite.flip_h = not $sprite.flip_h
+	
 func get_facing_direction()->Vector2:
 
 	if $sprite.flip_h: #needs to be direct reference because its used before ready
@@ -94,7 +106,8 @@ func is_must_turn()->bool:
 	return not floor_below or wall_in_front
 
 func check_direction():
-	
+	if not is_on_floor():
+		return
 	if velocity.x != 0 and sign(get_facing_direction().x) != sign(velocity.x):
 		front_rc.target_position.x=-front_rc.target_position.x
 		floor_rc.target_position.x=-floor_rc.target_position.x
@@ -105,21 +118,38 @@ func check_direction():
 
 
 func _process(_delta: float) -> void:
-	
-	if in_animation or dead:
+	var was_on_floor = is_on_floor_only()
+	if dead:
+		return
+	if in_animation:
+		velocity += extra_impulse
+		move_and_slide()
+		if not is_on_floor():
+			velocity.y+=g*_delta
+		else:
+			velocity.y=0
+		extra_impulse = Vector2.ZERO
+		if not was_on_floor and is_on_floor():
+			desired_velocity.x=0
+			velocity.x=0
 		return
 	check_direction()
 	
 	var delta_velocity = desired_velocity-velocity
 	velocity += delta_velocity.normalized()*min(max_accel, delta_velocity.length())
 	move_and_slide()
+	if not was_on_floor and is_on_floor():
+		velocity.x=0
+		desired_velocity.x=0
 #	dist_to_enemy=-1 if not target else global_position.distance_to(target.global_position)
 	
 #	var dvel = desired_velocity.length()	
 	
 	#Apply gravity if not on floor and not hanging
 	if !is_on_floor():
-		velocity.y = G 
+		velocity.y += g*_delta
+	else:
+		velocity.y = 0 
 	
 	
 func take_damage(source_pos, damage, _knockback):
@@ -239,3 +269,7 @@ func play_animation(anim:String):
 
 func can_attack():
 	return reload_timer.is_stopped()
+
+
+func apply_impulse(impulse:Vector2):
+	extra_impulse += impulse
