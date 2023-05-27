@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=138 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -75,8 +75,18 @@
 [ext_resource type="Texture2D" uid="uid://cdhhcpsslpux2" path="res://assets/gfx/player/ghost-walk/Ghost-walk-8.png" id="23_527j6"]
 [ext_resource type="Texture2D" uid="uid://br41xvjggxaf3" path="res://assets/gfx/player/ghost-walk/Ghost-walk-9.png" id="24_ahvbb"]
 [ext_resource type="Texture2D" uid="uid://brw5ckmka1l73" path="res://assets/gfx/player/ghost-walk/Ghost-walk-10.png" id="25_3tgbb"]
+[ext_resource type="Texture2D" uid="uid://2y3t1pt4ks4j" path="res://assets/gfx/player/ghost-updash/Up-dash-ghost-1.png" id="26_ptjqk"]
+[ext_resource type="Texture2D" uid="uid://cf84mtyw0llmp" path="res://assets/gfx/player/ghost-dash-diagonal/Ghost-diagonal-dash-1.png" id="26_u6rj1"]
 [ext_resource type="Texture2D" uid="uid://dvb37vu5ewps8" path="res://assets/gfx/player/ghost-walk/Ghost-walk-11.png" id="26_vad4g"]
+[ext_resource type="Texture2D" uid="uid://dl1o54aicbj4d" path="res://assets/gfx/player/ghost-dash-diagonal/Ghost-diagonal-dash-2.png" id="27_5jjd3"]
+[ext_resource type="Texture2D" uid="uid://dfnpabksbklnp" path="res://assets/gfx/player/ghost-updash/Up-dash-ghost-2.png" id="27_20yaf"]
 [ext_resource type="Texture2D" uid="uid://d2pxiysoww6la" path="res://assets/gfx/player/ghost-walk/Ghost-walk-12.png" id="27_j3far"]
+[ext_resource type="Texture2D" uid="uid://hldf6160fccy" path="res://assets/gfx/player/ghost-updash/Up-dash-ghost-3.png" id="28_436k5"]
+[ext_resource type="Texture2D" uid="uid://dfyc8l1s5624q" path="res://assets/gfx/player/ghost-dash-diagonal/Ghost-diagonal-dash-3.png" id="28_mu3p2"]
+[ext_resource type="Texture2D" uid="uid://brxkk5p6ew1qw" path="res://assets/gfx/player/ghost-dash-diagonal/Ghost-diagonal-dash-4.png" id="29_cdgxx"]
+[ext_resource type="Texture2D" uid="uid://cci2qplhcyid" path="res://assets/gfx/player/ghost-updash/Up-dash-ghost-4.png" id="29_xltoi"]
+[ext_resource type="Texture2D" uid="uid://dfs58g0iwl75s" path="res://assets/gfx/player/ghost-updash/Up-dash-ghost-5.png" id="30_31jl5"]
+[ext_resource type="Texture2D" uid="uid://dgekvuylvquvd" path="res://assets/gfx/player/ghost-dash-diagonal/Ghost-diagonal-dash-5.png" id="30_c41sp"]
 [ext_resource type="Texture2D" uid="uid://c4q3n2avt4fg" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-1.png" id="33_hwbua"]
 [ext_resource type="Texture2D" uid="uid://bmo3cbkp1kv1x" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-2.png" id="34_q37gv"]
 [ext_resource type="Texture2D" uid="uid://dpixstb2xk8kh" path="res://assets/gfx/player/ghost-to-skelly-morph/Ghost-to-skelly-3.png" id="35_a4ut3"]
@@ -197,6 +207,46 @@ animations = [{
 }],
 "loop": false,
 "name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_u6rj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5jjd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mu3p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cdgxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_c41sp")
+}],
+"loop": false,
+"name": &"dash_diag",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ptjqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_20yaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_436k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xltoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_31jl5")
+}],
+"loop": false,
+"name": &"dash_up",
 "speed": 10.0
 }, {
 "frames": [{
@@ -606,7 +656,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_37s62"]
 resource_name = "dash"
-length = 0.4
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1279,8 +1329,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack_spectral"
-frame = 6
+animation = &"dash_diag"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)

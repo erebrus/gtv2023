@@ -111,6 +111,14 @@ func play_animation(anim:String, force:=false):
 	if anim in multi_state_anims:
 		if dimension ==Events.Dimension.SPECTRAL:
 			anim += "_spectral"
+	if anim=="dash":
+		var dir:=Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		if  dir.x == 0:
+			anim = "dash_up"
+		elif dir.y < 0:
+			anim = "dash_diag"
+			
+			
 #	if not sprite.is_playing() or sprite.animation != anim:
 	if sprite.animation != anim or force:		
 #		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
