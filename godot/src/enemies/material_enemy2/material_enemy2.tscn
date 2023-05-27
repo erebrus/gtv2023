@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dpudj0xpknfld"]
+[gd_scene load_steps=45 format=3 uid="uid://dpudj0xpknfld"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_i5qc2"]
 [ext_resource type="Texture2D" uid="uid://ca7gofx755w50" path="res://assets/gfx/enemies/material_enemy2/madmaxidle1.png" id="2_lxmr4"]
@@ -18,7 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://jitv2rabgsgb" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath2.png" id="9_vpqpd"]
 [ext_resource type="Texture2D" uid="uid://74pkve7vt3ao" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath3.png" id="10_fyv74"]
 [ext_resource type="Texture2D" uid="uid://1ndsss6wmdhs" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath4.png" id="11_afr32"]
+[ext_resource type="Texture2D" uid="uid://bxwm4yurj7w7k" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt1.png" id="13_is66k"]
 [ext_resource type="Texture2D" uid="uid://c8s37jgahyqpj" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath7.png" id="14_vjpml"]
+[ext_resource type="Texture2D" uid="uid://cfq4xrskhtekb" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt2.png" id="14_wxxj4"]
+[ext_resource type="Texture2D" uid="uid://cgjk1ry4ys3ph" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt3.png" id="15_krnxd"]
+[ext_resource type="Texture2D" uid="uid://ddxuw0miy83dg" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt4.png" id="16_wxt0r"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="19_1bbgf"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="20_77rb0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="21_etvd5"]
@@ -84,10 +88,22 @@ animations = [{
 "name": &"death",
 "speed": 16.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_is66k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wxxj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_krnxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wxt0r")
+}],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -537,7 +553,7 @@ normal_speed = 120.0
 position = Vector2(-1, -97)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
-animation = &"attack"
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
