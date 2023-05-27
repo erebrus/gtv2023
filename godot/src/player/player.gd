@@ -381,8 +381,20 @@ func on_environment_damage(force:=false):
 		self.energy = clamp(energy-energy_decay, 0, max_energy)
 	
 func set_attack_box_enabled(val:bool)->void:
-	#attack_box.monitoring = val
-	$attack_box/CollisionShape2D.disabled = not val
+	#attack_box.monitoring = val	
+#	$attack_box/CollisionShape2D.disabled = not val
+	if not val:
+		$attack_box.get_children().all(func(x):x.disabled=true)
+	else:
+		if last_direction==Vector2.RIGHT:
+			$attack_box/left_collision.disabled=true
+			$attack_box/right_collision.disabled=false
+		else:
+			$attack_box/left_collision.disabled=false
+			$attack_box/right_collision.disabled=true
+#	if not val:
+#		for cs in $attack_box.get_children():
+#			if cs.disab
 
 func _on_attack_box_body_entered(body):
 	if body.has_method("take_damage"):
