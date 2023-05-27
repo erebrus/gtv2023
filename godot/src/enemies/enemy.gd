@@ -13,6 +13,7 @@ const SOUL_SCENE=preload("res://src/enemies/soul.tscn")
 
 var desired_velocity:=Vector2()
 
+var off_dimension:=false
 var target
 var can_play_footstep:=true
 @onready var hp:float =max_hp
@@ -47,6 +48,7 @@ func _ready()->void:
 	
 
 func _on_dimension_changed(_dimension)->void:
+	off_dimension = _dimension != dimension
 	#TODO refactor
 	if dimension == Events.Dimension.MATERIAL:
 		if _dimension == Events.Dimension.MATERIAL:
@@ -115,6 +117,8 @@ func check_direction():
 
 
 func _process(_delta: float) -> void:
+	if off_dimension:
+		return
 	var was_on_floor = is_on_floor_only()
 	if dead:
 		velocity.y+=g*_delta
