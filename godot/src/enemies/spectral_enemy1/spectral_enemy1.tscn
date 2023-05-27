@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bh76ivmnj2otd"]
+[gd_scene load_steps=50 format=3 uid="uid://bh76ivmnj2otd"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ykqge"]
 [ext_resource type="Texture2D" uid="uid://c2ogmvece2o4s" path="res://assets/gfx/enemies/spectral_enemy1/idle/1.png" id="2_3jj27"]
@@ -29,6 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://b8wcgea0jjctx" path="res://assets/gfx/enemies/spectral_enemy1/move/4.png" id="11_lr5m5"]
 [ext_resource type="PackedScene" uid="uid://2mlxmfj5brav" path="res://src/enemies/death_particles.tscn" id="22_tpk4d"]
 [ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="29_yqykr"]
+[ext_resource type="AudioStream" uid="uid://qdce15nk8mjx" path="res://assets/sfx/enemies/Spectral_enemy_1_move_1.wav" id="30_5q0bf"]
+[ext_resource type="AudioStream" uid="uid://dwhf36gwor8hc" path="res://assets/sfx/enemies/Spectral_enemy_1_move_2.wav" id="31_0wcir"]
+[ext_resource type="AudioStream" uid="uid://i20le4j6hnjm" path="res://assets/sfx/enemies/Spectral_enemy_1_move_3.wav" id="32_l1p01"]
+[ext_resource type="AudioStream" uid="uid://dcjn8kdm8enyx" path="res://assets/sfx/enemies/Spectral_enemy_1_move_4.wav" id="33_canfr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2xlg"]
 radius = 32.0
@@ -547,6 +551,17 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_byktt"]
+streams_count = 4
+stream_0/stream = ExtResource("30_5q0bf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("31_0wcir")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("32_l1p01")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("33_canfr")
+stream_3/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdo18"]
 size = Vector2(704, 90)
 
@@ -676,6 +691,7 @@ next_state = NodePath("../patrol")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_byktt")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 
@@ -684,7 +700,7 @@ next_state = NodePath("../patrol")
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
 
 [node name="timer_fs" type="Timer" parent="sfx"]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="floor_rc" type="RayCast2D" parent="."]
