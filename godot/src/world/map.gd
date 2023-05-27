@@ -23,6 +23,7 @@ func place_player() -> void:
 		entry = find_entry(self)
 	
 	assert(entry != null)
+	Events.checkpoint_entered.emit(entry.name)
 	$player.position = entry.position
 	
 
