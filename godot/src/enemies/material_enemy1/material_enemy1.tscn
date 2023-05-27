@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=60 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dtkar5egjuff0" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew3 (1).png" id="33_lwf2n"]
 [ext_resource type="Texture2D" uid="uid://crii4qxmf3l0l" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew4 (1).png" id="34_3q3pk"]
 [ext_resource type="Texture2D" uid="uid://bxgoducu7w6n7" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew5 (1).png" id="35_go4jb"]
+[ext_resource type="Texture2D" uid="uid://dxmfwyosv27l0" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew6_jump.png" id="35_hgovq"]
 [ext_resource type="Texture2D" uid="uid://c6t58btbj5m58" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew6 (1).png" id="36_81335"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lunge.gd" id="38_foqcq"]
 
@@ -197,7 +198,7 @@ animations = [{
 "texture": ExtResource("35_go4jb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_81335")
+"texture": ExtResource("35_hgovq")
 }],
 "loop": false,
 "name": &"lunge",
@@ -674,7 +675,7 @@ shape = SubResource("CapsuleShape2D_ao7n5")
 position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"attack"
+animation = &"move"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
