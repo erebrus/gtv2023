@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Enemy
+
+signal died
 
 const SOUL_SCENE=preload("res://src/enemies/soul.tscn")
 
@@ -228,9 +231,11 @@ func spawn_soul():
 		soul.anchor = global_position+Vector2(0,-50)	
 
 func finish_death():
+	died.emit()
 	collision_layer=0	
 #	set_process(false)
 	await get_tree().create_timer(.2).timeout
+	
 	call_deferred("queue_free")
 	
 func is_on_enemy()->bool:
