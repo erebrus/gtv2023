@@ -146,15 +146,17 @@ func control(_delta:float) -> void:
 
 	
 func do_dash(direction:Vector2 = Vector2.ZERO)->void:
-	Logger.trace("dash")
+	Logger.debug("dash at %d" % Time.get_ticks_msec())
 	can_dash=false
 	#no direction provided, use facing direction
 	if direction == Vector2.ZERO:
-#		player.velocity.x=dash_boost*player.last_direction.x
-		player.velocity=dash_boost*Vector2.UP
-	else:
-		player.velocity=dash_boost*direction
-	Logger.info("dash speed %s" % player.velocity)
+		direction = Vector2.UP
+	if not player.is_on_floor():
+		direction.y = clamp(direction.y,-.4,.4)
+		Logger.debug ("dash speed trimmed.")
+	player.velocity=dash_boost*direction
+		
+	Logger.debug("dash speed %s" % player.velocity)
 	player.on_dash()
 
 	dash_timer.start()

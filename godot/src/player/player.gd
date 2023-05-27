@@ -188,7 +188,6 @@ func on_landing(_last_vy:float):
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
-	
 #	if is_on_floor() and xsm.is_active("can_dash"):
 #		controller.can_dash = true
 		
@@ -273,7 +272,8 @@ func bounce(direction, distance):
 #	in_animation=false
 		
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
-
+	if xsm.is_active("attack"):
+		return
 	Logger.debug("player was attacked")
 	if not check_for_death():
 		xsm.change_state("hurt")	
@@ -380,8 +380,26 @@ func on_environment_damage(force:=false):
 		self.energy = clamp(energy-energy_decay, 0, max_energy)
 	
 func set_attack_box_enabled(val:bool)->void:
-	#attack_box.monitoring = val
-	$attack_box/CollisionShape2D.disabled = not val
+	#attack_box.monitoring = val	
+#	$attack_box/CollisionShape2D.disabled = not val
+	if not val:
+		for x in $attack_box.get_children():
+			x.disabled=true;
+			Logger.trace("%s disabled" % x.name)
+		
+	else:
+		if last_direction==Vector2.RIGHT:
+			$attack_box/left_collision.disabled=true
+			$attack_box/right_collision.disabled=false
+		else:
+			$attack_box/left_collision.disabled=false
+			$attack_box/right_collision.disabled=true
+	for x in $attack_box.get_children():
+		x.visible = not x.disabled
+		Logger.debug("attacbox %s disabled? %s" % [x.name, x.disabled])
+#	if not val:
+#		for cs in $attack_box.get_children():
+#			if cs.disab
 
 func _on_attack_box_body_entered(body):
 	if body.has_method("take_damage"):

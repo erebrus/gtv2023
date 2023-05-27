@@ -2,7 +2,9 @@
 extends StateAnimation
 
 @export var attack_delay:float=.2
+@export var attack_duration:float=.2
 @export var lunge_distance:float=0
+@export var extra_impulse:float = 0
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -12,7 +14,10 @@ extends StateAnimation
 # If looping, is called after each loop
 func _on_anim_finished(_name: String) -> void:
 	if owner.is_on_floor():
-		change_state("Idle")
+		if Input.get_axis("ui_left","ui_right") != 0:
+			change_state("move")
+		else:
+			change_state("Idle")
 	else:
 		change_state("Fall")
 
@@ -30,7 +35,7 @@ func _on_enter(_args) -> void:
 #		var dest = owner.global_position+Vector2(lunge_distance,0)*owner.last_direction
 #		tween.tween_property(owner, "global_position", dest, .3)	
 	if attack_delay>0:
-		add_timer("attack_timer", attack_delay)
+		add_timer("attack_delay", attack_delay)
 	else:
 		owner.set_attack_box_enabled(true)
 
@@ -69,7 +74,8 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass		
+	if extra_impulse:
+		owner.apply_impulse(owner.last_direction*extra_impulse)
 
 
 # This function is called each frame after all the update calls
@@ -98,6 +104,10 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	owner.set_attack_box_enabled(true)
+	if _name=="attack_delay":
+		owner.set_attack_box_enabled(true)
+		add_timer("attack_duration",attack_duration)
+	if _name=="attack_duration":
+		owner.set_attack_box_enabled(false)	
 
 	
