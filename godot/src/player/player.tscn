@@ -1333,7 +1333,7 @@ stream_3/weight = 1.0
 collision_layer = 16
 script = ExtResource("1_kqnht")
 attack_damage = 50.0
-attack_knockback = 250.0
+attack_knockback = 1000.0
 energy_override = true
 
 [node name="material_controller" parent="." instance=ExtResource("1_gtfn5")]

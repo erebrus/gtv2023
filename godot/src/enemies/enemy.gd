@@ -125,11 +125,14 @@ func _process(_delta: float) -> void:
 	var was_on_floor = is_on_floor_only()
 	if dead:
 		velocity.y+=g*_delta
+		var tv=velocity
 		move_and_slide()
 		return
 	if in_animation:
 		velocity += extra_impulse
-		move_and_slide()
+		var tv=velocity
+		Logger.debug("tv %s %s" % [tv, global_position])
+		var col = move_and_slide()
 		if not is_on_floor():
 			velocity.y+=g*_delta
 		else:
@@ -163,28 +166,15 @@ func take_damage(source_pos, damage, _knockback):
 	hp = clamp(hp-damage, 0, max_hp)
 	Logger.info("%s: hp %d" % [name, hp])
 	
-	var tween 
-	if _knockback > 0:
-		
-		var bounce_vector = Vector2(-(source_pos - global_position).x,0).normalized()*_knockback	
-#		var bounce_vector = Vector2(abs(source_pos.x - global_position.x),0).normalized()#.rotated(-PI/12)*_knockback	
-#		bounce_vector.x= -abs(bounce_vector.x)*sign((source_pos.x - global_position.x))
-		var new_position = global_position+bounce_vector
-		Logger.info("knockback %s, ori pos=%s new_pos=%s" % [bounce_vector, global_position, new_position])
-		var ray_params = PhysicsRayQueryParameters2D.new()
-		var y_delta:Vector2 = Vector2(0,-10)
-		ray_params.from = global_position + y_delta
-		ray_params.to = new_position + y_delta
-		ray_params.exclude=[self]
-		var collision = get_world_2d().direct_space_state.intersect_ray(ray_params)
-		
-		if collision:
-			new_position = collision.position 
-
-		in_animation=true
-		tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property(self, "global_position",new_position, .5)	
+	in_animation = true
 	
+	if _knockback != Vector2.ZERO:
+	
+		Logger.debug("%s knockback vector %s" % [name, _knockback])
+		apply_impulse(_knockback)
+		if xsm.is_active("attack"):
+			$xsm/attack.soft_exit=true
+		
 	if hp >0:
 		Logger.info("%s hurt" % name)		
 		Logger.info("Time %d" % Time.get_ticks_msec())
@@ -198,11 +188,7 @@ func take_damage(source_pos, damage, _knockback):
 		xsm.change_state("death")
 #		if tween:
 #			await tween.finished
-		return
-	if tween:
-		await tween.finished
-	Logger.info("final pos %s" % global_position)
-	in_animation=false
+
 
 
 func on_target():
@@ -272,9 +258,10 @@ func set_attackbox_enabled(val):
 	attack_box.disabled=!val
 
 
-func _on_reload_timer_timeout():
-	Logger.debug("reload sets attack box true")
-	set_attackbox_enabled(true)
+func _on_reload_timer_timeout():	
+	if not xsm.is_active("hurt"):
+		Logger.debug("reload sets attack box true")
+		set_attackbox_enabled(true)
 
 func play_animation(anim:String):
 	if not sprite.is_playing() or sprite.animation != anim:
