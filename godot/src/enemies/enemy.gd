@@ -162,9 +162,12 @@ func take_damage(source_pos, damage, _knockback):
 	
 	var tween 
 	if _knockback > 0:
-		var bounce_delta_x = Vector2(-(source_pos - global_position).x,0).normalized()*_knockback	
-		var new_position = global_position+Vector2(bounce_delta_x.x,0)
-		Logger.info("knockback %2f, ori pos=%s new_pos=%s" % [bounce_delta_x.x, global_position, new_position])
+		
+		var bounce_vector = Vector2(-(source_pos - global_position).x,0).normalized()*_knockback	
+#		var bounce_vector = Vector2(abs(source_pos.x - global_position.x),0).normalized()#.rotated(-PI/12)*_knockback	
+#		bounce_vector.x= -abs(bounce_vector.x)*sign((source_pos.x - global_position.x))
+		var new_position = global_position+bounce_vector
+		Logger.info("knockback %s, ori pos=%s new_pos=%s" % [bounce_vector, global_position, new_position])
 		var ray_params = PhysicsRayQueryParameters2D.new()
 		var y_delta:Vector2 = Vector2(0,-10)
 		ray_params.from = global_position + y_delta
