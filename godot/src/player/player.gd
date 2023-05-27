@@ -273,7 +273,8 @@ func bounce(direction, distance):
 #	in_animation=false
 		
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
-
+	if xsm.is_active("attack"):
+		return
 	Logger.debug("player was attacked")
 	if not check_for_death():
 		xsm.change_state("hurt")	
