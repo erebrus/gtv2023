@@ -621,8 +621,9 @@ next_state = NodePath("../patrol")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("5_4il6j")
-min_distance = 96.0
+min_distance = 0.0
 charge_time = 0.5
+direct_attack_distance = 128.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "idle"
 anim_times_to_play = 1
@@ -636,6 +637,7 @@ next_state = NodePath("../patrol")
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("6_nrci0")
 attack_delay = 0.1
+lunge_distance = 96.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1

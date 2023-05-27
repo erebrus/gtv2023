@@ -47,7 +47,6 @@ var in_animation:bool = false
 
 var g:float = 2500.0
 var v0:float = 750
-
 func _ready()->void:
 	Events.dimension_changed.connect(_on_dimension_changed)
 	$sprite.play("idle")
@@ -208,7 +207,7 @@ func on_target():
 
 
 func attack():
-	if not target or dead:
+	if not target or dead or xsm.is_active("attack"):
 		return
 	xsm.change_state("attack")
 
@@ -261,10 +260,12 @@ func _on_attack_box_body_entered(body):
 		attack()
 
 func set_attackbox_enabled(val):
+	Logger.info(" attack box %s" % val)
 	attack_box.disabled=!val
 
 
 func _on_reload_timer_timeout():
+	Logger.debug("reload sets attack box true")
 	set_attackbox_enabled(true)
 
 func play_animation(anim:String):

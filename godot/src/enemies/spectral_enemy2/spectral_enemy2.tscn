@@ -722,7 +722,7 @@ next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("29_l5ey4")
-attack_delay = 0.1
+attack_delay = 0.0
 lunge_distance = 16.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"

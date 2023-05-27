@@ -16,6 +16,7 @@ func _on_anim_finished(_name):
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
+	Logger.debug("hurt sets attack box false")
 	owner.set_attackbox_enabled(false)
 
 
@@ -46,6 +47,7 @@ func _before_exit(_args):
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args):
+	Logger.debug("hurt sets attack box true")
 	owner.set_attackbox_enabled(true)
 
 
