@@ -1071,7 +1071,7 @@ tracks/7/path = NodePath("vfx/Twirl03:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-1.14843]
@@ -1083,7 +1083,7 @@ tracks/8/path = NodePath("vfx/Twirl03:flip_h")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1095,10 +1095,10 @@ tracks/9/path = NodePath("vfx/Twirl03:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-6, -139)]
+"values": [Vector2(6, -139)]
 }
 
 [sub_resource type="Animation" id="Animation_40f4u"]
@@ -1195,7 +1195,7 @@ tracks/7/path = NodePath("vfx/Twirl03:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-6, -139)]
@@ -1207,7 +1207,7 @@ tracks/8/path = NodePath("vfx/Twirl03:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.14843]
@@ -1219,7 +1219,7 @@ tracks/9/path = NodePath("vfx/Twirl03:flip_h")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -1495,16 +1495,15 @@ enabled = false
 target_position = Vector2(40, 0)
 
 [node name="attack_box" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 32
 
 [node name="right_collision" type="CollisionPolygon2D" parent="attack_box"]
-polygon = PackedVector2Array(-16, 0, 88, -48, 128, -128, 128, -176, 56, -152, 0, -112)
+polygon = PackedVector2Array(-16, 0, 104, -8, 152, -120, 128, -176, 56, -152, 0, -112)
 
 [node name="left_collision" type="CollisionPolygon2D" parent="attack_box"]
 visible = false
-polygon = PackedVector2Array(112, -16, 32, -40, 0, -88, -16, -168, 0, -176, 112, -120, 136, -32)
+polygon = PackedVector2Array(112, -16, 48, 8, -32, -72, -40, -168, 0, -176, 112, -120, 136, -32)
 disabled = true
 
 [node name="reload_timer" type="Timer" parent="."]
