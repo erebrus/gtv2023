@@ -4,6 +4,7 @@ extends StateAnimation
 @export var min_distance:=20.0
 @export var charge_time:=1.0
 @export var animation_speed_factor:=2.0
+@export var direct_attack_distance:float = 0
 var moving:=false
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -44,7 +45,10 @@ func _on_update(_delta: float) -> void:
 		return
 
 	var target_direction = Vector2(sign(owner.target.global_position.x - owner.global_position.x),0)
-#	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
+	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
+	if direct_attack_distance and dist<=direct_attack_distance:
+		Logger.debug("%s direct attack at %d" % [owner.name, Time.get_ticks_msec()])
+		change_state("attack")
 	
 	if moving:
 		owner.handle_run_sfx()		

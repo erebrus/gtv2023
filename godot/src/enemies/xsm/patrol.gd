@@ -40,6 +40,13 @@ func _after_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	owner.handle_run_sfx()
 	if owner.target:
+		var pos = owner.global_position.x
+		var tpos = owner.target.global_position.x
+		var enemy_direction = Vector2(sign(tpos-pos),0)
+		if enemy_direction != owner.get_facing_direction():
+			owner.velocity.x=0
+			owner.desired_velocity.x=0
+			owner.flip_direction()
 		change_state("engage")		
 	elif owner.is_must_turn():
 		change_state("lookout")

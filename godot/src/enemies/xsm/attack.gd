@@ -18,18 +18,24 @@ func _on_anim_finished(_name: String) -> void:
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	owner.in_animation = true
-
-	owner.desired_velocity.x=0
+#	Logger.info("%s attacking at time %d" % [owner.name, Time.get_ticks_msec()])
+	owner.velocity.x=0
 	start_time=Time.get_ticks_msec()	
 	owner.sfx_attack.play()
+	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
 	if lunge_distance > 0 :
 		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		var actual_lunge_distance = clamp(lunge_distance, 0 , dist)
 #		var origin = owner.global_position
-		var dest = owner.global_position+Vector2(lunge_distance,20)*owner.get_facing_direction()
-		tween.tween_property(owner, "global_position", dest, .2)
-	owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
-#	add_timer("attack_timer", attack_delay)
-	
+		var dest = owner.global_position+Vector2(actual_lunge_distance,0)*owner.get_facing_direction()
+		var duration = .2 *actual_lunge_distance/lunge_distance
+		tween.tween_property(owner, "global_position", dest, duration)
+#	else:
+#	owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
+	if attack_delay:
+		add_timer("attack_timer", attack_delay)
+	else:
+		try_attack()
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
@@ -39,7 +45,10 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass		
+#	var sprite = owner.get_node("sprite")
+#	Logger.info("anim: %s %d" % [sprite.animation, sprite.frame])
+	pass
+	
 
 
 # This function is called each frame after all the update calls
@@ -57,8 +66,12 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
+	Logger.info("%s exiting attack at time %d" % [owner.name, Time.get_ticks_msec()])
+	owner.velocity.x=0
+	owner.desired_velocity.x=0
 	owner.in_animation = false
 	owner.reload_timer.start()
+	Logger.debug("attack sets attack box false")
 	owner.set_attackbox_enabled(false)
 
 # when StateAutomaticTimer timeout()
@@ -69,10 +82,17 @@ func _state_timeout() -> void:
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
 
+	try_attack()
 
+func try_attack():
 	if owner.is_on_enemy():
+		owner.velocity.x=0
+		owner.desired_velocity.x=0
 		if owner.target.has_method("on_attacked"):
 			owner.target.on_attacked(owner.global_position, owner.attack_damage, owner.knockback)
 		else:
 			Logger.warn("%s tried to attack invalid target %s." % [owner.name, owner.target.name])
+	else:
+		Logger.debug("attack not on target.")
+	
 

@@ -431,6 +431,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(8, -80)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("detection_box/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -95)]
+}
 
 [sub_resource type="Animation" id="Animation_86cjw"]
 resource_name = "left"
@@ -530,6 +542,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-8, -80)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("detection_box/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, -88)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -631,6 +655,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(8, -80)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("detection_box/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -95)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6j2u"]
 _data = {
@@ -640,7 +676,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3a00"]
-size = Vector2(576, 178)
+size = Vector2(640, 178)
 
 [node name="horned_mouth" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
@@ -722,7 +758,7 @@ next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("29_l5ey4")
-attack_delay = 0.1
+attack_delay = 0.0
 lunge_distance = 16.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
@@ -786,9 +822,8 @@ collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
-position = Vector2(32, -95)
+position = Vector2(0, -95)
 shape = SubResource("RectangleShape2D_w3a00")
-metadata/_edit_lock_ = true
 
 [node name="attack_box" type="Area2D" parent="."]
 collision_layer = 32
