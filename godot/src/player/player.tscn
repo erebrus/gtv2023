@@ -1280,7 +1280,7 @@ next_state = NodePath("")
 [node name="attack" type="Node" parent="xsm/can_attack/can_dash"]
 script = ExtResource("15_4wcyn")
 attack_delay = 0.1
-extra_impulse = 128.0
+extra_impulse = 96.0
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
