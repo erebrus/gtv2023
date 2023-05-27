@@ -117,6 +117,8 @@ func check_direction():
 func _process(_delta: float) -> void:
 	var was_on_floor = is_on_floor_only()
 	if dead:
+		velocity.y+=g*_delta
+		move_and_slide()
 		return
 	if in_animation:
 		velocity += extra_impulse
@@ -185,7 +187,7 @@ func take_damage(source_pos, damage, _knockback):
 		Logger.info("Time %d" % Time.get_ticks_msec())
 		dead=true		
 
-		Logger.info("%s changing to death state" % name)
+		Logger.debug("%s changing to death state" % name)
 		xsm.change_state("death")
 #		if tween:
 #			await tween.finished
@@ -223,7 +225,7 @@ func spawn_soul():
 
 func finish_death():
 	collision_layer=0	
-	set_process(false)
+#	set_process(false)
 	await get_tree().create_timer(.2).timeout
 	call_deferred("queue_free")
 	
