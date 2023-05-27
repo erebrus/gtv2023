@@ -8,13 +8,14 @@ var levels:Array[PackedScene] = [
 	
 ]
 var current_level:int = 0
+var last_checkpoint: String
 
 const path="usr://game_conf.tres"
 
 func _ready():
 	load_data()
 	Events.change_level_requested.connect(change_level)
-
+	Events.checkpoint_entered.connect(save_checkpoint)
 
 func is_last_level() -> bool:
 	return current_level >= levels.size() - 1
@@ -47,6 +48,20 @@ func get_next_level()->PackedScene:
 	if current_level >= levels.size():
 		current_level = 0
 	return get_current_level()
+	
+
+func save_checkpoint(checkpoint_name: String) -> void:
+	last_checkpoint = checkpoint_name
+	
+
+func restore_checkpoint() -> void:
+	if last_checkpoint == null:
+		SceneManager.reload_scene()
+	else:
+		var set_entry_point = func(scene):
+			scene.entry_name = last_checkpoint
+		
+		SceneManager.reload_scene({"on_tree_enter": set_entry_point})
 	
 
 func change_level(next_level: String, entry_name: String) -> void:
