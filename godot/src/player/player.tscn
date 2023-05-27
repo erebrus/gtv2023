@@ -1236,7 +1236,7 @@ _data = {
 collision_layer = 16
 script = ExtResource("1_kqnht")
 attack_damage = 50.0
-attack_knockback = 100.0
+attack_knockback = 250.0
 
 [node name="material_controller" parent="." instance=ExtResource("1_gtfn5")]
 dash_cooldown = 0.5
