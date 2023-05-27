@@ -36,17 +36,11 @@ var can_play_footstep:=true
 var extra_impulse := Vector2.ZERO
 @onready var original_position:Vector2 = global_position
 var dead := false
-#const G:float = 1000
 var in_animation:bool = false
 
-@export var th:=1.5
-@export var h:= 300
 
-#@onready var g:float = 2 * h / (th * th) # computed gravity
-#@onready var v0:float = 2 * h / th # computed initial velocity	
-
-var g:float = 2500.0
-var v0:float = 750
+@export var g:float = 2500.0
+@export var v0:float = 750
 func _ready()->void:
 	Events.dimension_changed.connect(_on_dimension_changed)
 	$sprite.play("idle")

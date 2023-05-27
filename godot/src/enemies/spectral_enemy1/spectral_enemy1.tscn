@@ -558,6 +558,7 @@ normal_speed = 70.0
 engage_speed = 300.0
 max_accel = 25.0
 knockback = 32.0
+g = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
