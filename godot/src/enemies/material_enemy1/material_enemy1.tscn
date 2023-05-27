@@ -337,24 +337,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bmt4s"]
-resource_name = "move"
-length = 1.25
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["move"],
-"method": &"play_animation"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_1bdsa"]
 resource_name = "lunge"
 length = 1.2
@@ -369,6 +351,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["lunge"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bmt4s"]
+resource_name = "move"
+length = 1.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["move"],
 "method": &"play_animation"
 }]
 }
@@ -730,7 +730,6 @@ next_state = NodePath(".")
 
 [node name="engage" type="Node" parent="xsm"]
 script = ExtResource("38_foqcq")
-charge_time = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "lunge"
 anim_times_to_play = 1
