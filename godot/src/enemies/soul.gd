@@ -61,7 +61,7 @@ func _on_soul_body_entered(body: Node2D) -> void:
 	body.consume(self)
 #	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 #	tween.tween_property(self, "modulate", Color(1,1,1,0),.3)
-#	sfx.play()
+	$soul/sfx_consume.play()
 	player.play("fade_out")
 #	await tween.finished
 	await player.animation_finished
