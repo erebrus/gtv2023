@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=25 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_nwdyn"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_5bvo3"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_bmhlu"]
+[ext_resource type="PackedScene" uid="uid://begnodro4vnqi" path="res://src/world/objects/dimension_platform.tscn" id="14_kwfys"]
 [ext_resource type="PackedScene" uid="uid://c5jubvlo01i7r" path="res://src/world/objects/door.tscn" id="15_4b6vm"]
 [ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="15_mfutn"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_obhvh"]
@@ -113,6 +114,13 @@ position = Vector2(417, 424)
 [node name="lever" parent="." instance=ExtResource("15_mfutn")]
 position = Vector2(1104, 824)
 value = false
+
+[node name="dimension_platform" parent="lever" instance=ExtResource("14_kwfys")]
+position = Vector2(-1074.6, -878.6)
+
+[node name="dimension_platform2" parent="lever" instance=ExtResource("14_kwfys")]
+position = Vector2(-232, -896)
+dimension = 2
 
 [node name="big_door" parent="." instance=ExtResource("19_jtuxl")]
 position = Vector2(1752, 816)
