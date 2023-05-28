@@ -3,20 +3,30 @@ extends StateAnimation
 
 @export var attack_delay:float=.2
 @export var lunge_distance:float = 0
+
+var soft_exit:=false:
+	set(val):
+		soft_exit = val
+		if tween and val:
+			tween.stop()
+	
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 var start_time=-1
+var tween
 # This additionnal callback allows you to act at the endxRX
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name: String) -> void:
-	change_state("patrol")
+	if is_active(name):
+		change_state("patrol")
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
+	soft_exit=false
 	owner.in_animation = true
 #	Logger.info("%s attacking at time %d" % [owner.name, Time.get_ticks_msec()])
 #	owner.velocity.x=0
@@ -24,7 +34,7 @@ func _on_enter(_args) -> void:
 	owner.sfx_attack.play()
 	var dist = abs ( owner.target.global_position.x - owner.global_position.x)
 	if lunge_distance > 0 :
-		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		var actual_lunge_distance = clamp(lunge_distance, 0 , dist)
 #		var origin = owner.global_position
 		var dest = owner.global_position+Vector2(actual_lunge_distance,0)*owner.get_facing_direction()
@@ -67,12 +77,15 @@ func _before_exit(_args) -> void:
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	Logger.info("%s exiting attack at time %d" % [owner.name, Time.get_ticks_msec()])
-	owner.velocity.x=0
-	owner.desired_velocity.x=0
-	owner.in_animation = false
+	if soft_exit:
+		Logger.debug("attack soft exit")
+		owner.velocity.x=0
+		owner.desired_velocity.x=0
+		owner.in_animation = false
 	owner.reload_timer.start()
 	Logger.debug("attack sets attack box false")
 	owner.set_attackbox_enabled(false)
+	soft_exit=false
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
@@ -81,8 +94,8 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-
-	try_attack()
+	if is_active(name):
+		try_attack()
 
 func try_attack():
 	if owner.is_on_enemy():

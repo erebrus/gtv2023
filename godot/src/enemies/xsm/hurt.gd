@@ -10,7 +10,7 @@ extends StateAnimation
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name):
-	pass
+	Logger.debug("finished hurt animation")
 
 
 # This function is called when the state enters
@@ -18,6 +18,7 @@ func _on_anim_finished(_name):
 func _on_enter(_args):
 	Logger.debug("hurt sets attack box false")
 	owner.set_attackbox_enabled(false)
+	owner.in_animation=true
 	owner.sfx_hurt.play()
 
 
@@ -49,7 +50,8 @@ func _before_exit(_args):
 # XSM before_exits the children first, then the root
 func _on_exit(_args):
 	Logger.debug("hurt sets attack box true")
-	owner.set_attackbox_enabled(true)
+	owner.in_animation=false
+	owner.reload_timer.start()
 
 
 # when StateAutomaticTimer timeout()

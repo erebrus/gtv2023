@@ -131,7 +131,7 @@ func control(_delta:float) -> void:
 		
 	if not (xsm.is_active("climb")) and input.x!=0 and sign(player.climb_rc.target_position.x) != sign(input.x):
 			player.climb_rc.target_position.x *= -1
-			Logger.debug("dropping climb rc")
+			Logger.trace("dropping climb rc")
 			
 
 	if Input.is_action_just_pressed("jump") and player.dimension == Events.Dimension.MATERIAL:

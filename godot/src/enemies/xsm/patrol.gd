@@ -18,6 +18,7 @@ func _on_anim_finished(_name: String) -> void:
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	var direction = owner.get_facing_direction()	
+	owner.in_animation=false
 	if owner.is_must_turn():
 		direction = -owner.get_facing_direction()	
 		owner.velocity.x=direction.x
