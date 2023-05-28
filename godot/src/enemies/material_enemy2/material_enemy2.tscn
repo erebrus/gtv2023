@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dpudj0xpknfld"]
+[gd_scene load_steps=68 format=3 uid="uid://dpudj0xpknfld"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_i5qc2"]
 [ext_resource type="Texture2D" uid="uid://ca7gofx755w50" path="res://assets/gfx/enemies/material_enemy2/madmaxidle1.png" id="2_lxmr4"]
@@ -30,6 +30,24 @@
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="23_ee3ye"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="24_mqhwt"]
 [ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="30_3o3qi"]
+[ext_resource type="AudioStream" uid="uid://bqg8ywyrcuvcn" path="res://assets/sfx/enemies/Madmax_move_1.wav" id="31_r4x63"]
+[ext_resource type="AudioStream" uid="uid://ms6gb7kray4y" path="res://assets/sfx/enemies/Madmax_move_2.wav" id="32_47grf"]
+[ext_resource type="AudioStream" uid="uid://d0ol77gnugibp" path="res://assets/sfx/enemies/Madmax_move_3.wav" id="33_6lpaj"]
+[ext_resource type="AudioStream" uid="uid://cqg58ob6muc0b" path="res://assets/sfx/enemies/Madmax_move_4.wav" id="34_uw3c0"]
+[ext_resource type="AudioStream" uid="uid://6pqhcocxebqf" path="res://assets/sfx/enemies/Madmax_attack_1.wav" id="35_lr5ob"]
+[ext_resource type="AudioStream" uid="uid://bkrdeknsh05ry" path="res://assets/sfx/enemies/Madmax_move_1_faster.wav" id="35_yccrw"]
+[ext_resource type="AudioStream" uid="uid://c5354hskt61co" path="res://assets/sfx/enemies/Madmax_attack_2.wav" id="36_l1hm0"]
+[ext_resource type="AudioStream" uid="uid://h65jh76l4we8" path="res://assets/sfx/enemies/Madmax_move_2_faster.wav" id="36_un24k"]
+[ext_resource type="AudioStream" uid="uid://b6onl6f0wv5sm" path="res://assets/sfx/enemies/Madmax_move_3_faster.wav" id="37_0bbsu"]
+[ext_resource type="AudioStream" uid="uid://cq2v6htg4x7hb" path="res://assets/sfx/enemies/Madmax_attack_3.wav" id="37_ufchx"]
+[ext_resource type="AudioStream" uid="uid://bcerprbhuaemj" path="res://assets/sfx/enemies/Madmax_attack_4.wav" id="38_37iin"]
+[ext_resource type="AudioStream" uid="uid://nou0xejr0mb8" path="res://assets/sfx/enemies/Madmax_move_4_faster.wav" id="38_ns8gd"]
+[ext_resource type="AudioStream" uid="uid://clugl0rl47qm8" path="res://assets/sfx/enemies/Madmax_hurt_1.wav" id="39_jmsxm"]
+[ext_resource type="AudioStream" uid="uid://dtmrduolatijy" path="res://assets/sfx/enemies/Madmax_hurt_2.wav" id="40_mvccb"]
+[ext_resource type="AudioStream" uid="uid://cabd6765mun83" path="res://assets/sfx/enemies/Madmax_hurt_3.wav" id="41_f8nw0"]
+[ext_resource type="AudioStream" uid="uid://dvoxqgkdui2lr" path="res://assets/sfx/enemies/Madmax_hurt_4.wav" id="42_2d5y0"]
+[ext_resource type="AudioStream" uid="uid://cr25u8j5bovab" path="res://assets/sfx/enemies/Madmax_death_1.wav" id="43_6knoq"]
+[ext_resource type="AudioStream" uid="uid://cdlmsenxxp684" path="res://assets/sfx/enemies/Madmax_death_2.wav" id="44_n3oe8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb0o4"]
 animations = [{
@@ -188,7 +206,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
-length = 0.5
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -212,6 +230,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vn40q"]
@@ -541,6 +571,57 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iw44h"]
+streams_count = 4
+stream_0/stream = ExtResource("31_r4x63")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("32_47grf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("33_6lpaj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("34_uw3c0")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ourgf"]
+streams_count = 4
+stream_0/stream = ExtResource("35_yccrw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_un24k")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("37_0bbsu")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("38_ns8gd")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qxqgm"]
+streams_count = 4
+stream_0/stream = ExtResource("35_lr5ob")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_l1hm0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("37_ufchx")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("38_37iin")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ok6i2"]
+streams_count = 4
+stream_0/stream = ExtResource("39_jmsxm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("40_mvccb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("41_f8nw0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("42_2d5y0")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pg1qx"]
+streams_count = 2
+stream_0/stream = ExtResource("43_6knoq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("44_n3oe8")
+stream_1/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf2wy"]
 size = Vector2(704, 154)
 
@@ -554,7 +635,7 @@ attack_damage = 35.0
 position = Vector2(-1, -97)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
-animation = &"hurt"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -667,12 +748,19 @@ next_state = NodePath("../patrol")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_iw44h")
+
+[node name="run_fast" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_ourgf")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_qxqgm")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_ok6i2")
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_pg1qx")
 
 [node name="timer_fs" type="Timer" parent="sfx"]
 wait_time = 0.3
