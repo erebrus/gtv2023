@@ -630,6 +630,7 @@ collision_layer = 32
 script = ExtResource("1_i5qc2")
 normal_speed = 150.0
 attack_damage = 35.0
+dimension = 1
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -97)

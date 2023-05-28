@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=26 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="20_iexcp"]
 [ext_resource type="PackedScene" uid="uid://63bjkocof0r7" path="res://src/world/objects/soul_spawner.tscn" id="21_gd7m3"]
 [ext_resource type="PackedScene" uid="uid://bx4w0kkvkxi1h" path="res://src/world/objects/vanishing_platform.tscn" id="22_l8ps7"]
+[ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="24_1yq51"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vrrl"]
 shader = ExtResource("15_obhvh")
@@ -135,7 +136,6 @@ script = ExtResource("13_5bvo3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101
-visible = false
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
@@ -170,6 +170,9 @@ max_period = 5.0
 
 [node name="vanishing_platform" parent="." instance=ExtResource("22_l8ps7")]
 position = Vector2(888, 312)
+
+[node name="skull" parent="." instance=ExtResource("24_1yq51")]
+position = Vector2(16, 160)
 
 [connection signal="switched" from="TileMap/plate" to="big_door" method="_on_switched"]
 [connection signal="switched" from="lever" to="vanishing_platform" method="_on_switched"]

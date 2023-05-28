@@ -64,6 +64,7 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = true
 			soul_trail.emitting = false
 		else:
+			stop_all_sounds()
 			soul_trail.emitting = true
 			collision_layer=0
 			$detection_box.monitoring = false
@@ -73,6 +74,7 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = false
 	else:		
 		if _dimension == Events.Dimension.MATERIAL:
+			stop_all_sounds()
 			collision_layer=0
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
@@ -280,3 +282,8 @@ func can_attack():
 
 func apply_impulse(impulse:Vector2):
 	extra_impulse += impulse
+
+func stop_all_sounds():
+	for sfx in $sfx.get_children():
+		if sfx.has_method("stop"):
+			sfx.stop()
