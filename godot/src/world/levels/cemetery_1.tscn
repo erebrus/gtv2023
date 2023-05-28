@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4morsvhaxu8k"]
+[gd_scene load_steps=8 format=3 uid="uid://c4morsvhaxu8k"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_v3wsx"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="2_t6tj1"]
 [ext_resource type="PackedScene" uid="uid://ccfq4evx2ee7x" path="res://src/world/objects/small_gate.tscn" id="3_r65ct"]
 [ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="4_tbclh"]
+[ext_resource type="PackedScene" uid="uid://clprbj8wniwr3" path="res://src/world/objects/cemetery_lamp.tscn" id="5_ebdks"]
 [ext_resource type="PackedScene" uid="uid://7hbrjsfhdb7d" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="5_sm8hc"]
 [ext_resource type="PackedScene" uid="uid://bu8wshacdok4h" path="res://src/world/objects/entries_exits/exit.tscn" id="6_5xxg2"]
 
@@ -21,6 +22,30 @@ position = Vector2(4064, 528)
 [node name="bone_bug2" parent="TileMap" index="2" instance=ExtResource("2_t6tj1")]
 position = Vector2(4368, 1048)
 
+[node name="cemetery_lamp" parent="TileMap" index="3" instance=ExtResource("5_ebdks")]
+position = Vector2(296, 809)
+
+[node name="cemetery_lamp2" parent="TileMap" index="4" instance=ExtResource("5_ebdks")]
+position = Vector2(1424, 160)
+
+[node name="cemetery_lamp3" parent="TileMap" index="5" instance=ExtResource("5_ebdks")]
+position = Vector2(2320, 288)
+
+[node name="cemetery_lamp4" parent="TileMap" index="6" instance=ExtResource("5_ebdks")]
+position = Vector2(3504, 800)
+
+[node name="cemetery_lamp5" parent="TileMap" index="7" instance=ExtResource("5_ebdks")]
+position = Vector2(4984, 670)
+
+[node name="cemetery_lamp6" parent="TileMap" index="8" instance=ExtResource("5_ebdks")]
+position = Vector2(5632, 800)
+
+[node name="cemetery_lamp7" parent="TileMap" index="9" instance=ExtResource("5_ebdks")]
+position = Vector2(6400, -96)
+
+[node name="cemetery_lamp8" parent="TileMap" index="10" instance=ExtResource("5_ebdks")]
+position = Vector2(7576, 544)
+
 [node name="flying_soul" parent="." index="2" instance=ExtResource("4_tbclh")]
 position = Vector2(5104, 673)
 
@@ -35,9 +60,6 @@ position = Vector2(3600, 808)
 
 [node name="Camera2D" parent="player" index="12"]
 limit_right = 8960
-
-[node name="DefaultEntryPoint" parent="." index="10"]
-position = Vector2(568, 960)
 
 [node name="enemy_spawner" parent="." index="11" node_paths=PackedStringArray("current_enemy") instance=ExtResource("5_sm8hc")]
 position = Vector2(4897.64, 1015.03)
@@ -54,3 +76,6 @@ position = Vector2(9016, 456)
 next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
+
+[node name="DefaultEntryPoint" parent="." index="14"]
+position = Vector2(568, 960)

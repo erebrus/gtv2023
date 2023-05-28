@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bb3c7fosnhqvl"]
+[gd_scene load_steps=18 format=3 uid="uid://bb3c7fosnhqvl"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_5lgg5"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_mvv4w"]
@@ -26,6 +26,9 @@ shader_parameter/greenVal = 1.0
 shader_parameter/blueVal = 1.0
 shader_parameter/tint_color = Color(0.34902, 0.478431, 0.94902, 1)
 shader_parameter/tint_effect_factor = 0.6
+
+[sub_resource type="Environment" id="Environment_co0p4"]
+glow_enabled = true
 
 [node name="cemetery_template" type="Node2D"]
 script = ExtResource("1_5lgg5")
@@ -77,6 +80,10 @@ tile_set = ExtResource("7_86yo5")
 format = 2
 layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.666667, 0.666667, 0.666667, 1)
+metadata/_edit_lock_ = true
+
 [node name="player" parent="." instance=ExtResource("12_p4ssk")]
 position = Vector2(-154, 150)
 energy_decay = 0.0
@@ -127,3 +134,6 @@ volume_db = -20.0
 autoplay = true
 
 [node name="DefaultEntryPoint" parent="." instance=ExtResource("14_pu7eq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_co0p4")

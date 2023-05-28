@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://nji168cpwlh0"]
+[gd_scene load_steps=17 format=3 uid="uid://nji168cpwlh0"]
 
 [ext_resource type="Script" path="res://src/enemies/soul.gd" id="1_2cfk8"]
 [ext_resource type="Shader" path="res://src/enemies/soul.gdshader" id="2_5qd4q"]
 [ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="2_b0ff0"]
+[ext_resource type="Texture2D" uid="uid://dbo5dtdgilsfs" path="res://addons/kenney_particle_pack/light_01.png" id="4_38f0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
 radius = 34.2345
@@ -233,7 +234,9 @@ texture = SubResource("NoiseTexture2D_8m4r2")
 [node name="sfx_consume" type="AudioStreamPlayer2D" parent="soul"]
 
 [node name="PointLight2D" type="PointLight2D" parent="soul"]
+color = Color(0.764706, 0.721569, 0.635294, 1)
 energy = 0.0
+texture = ExtResource("4_38f0j")
 texture_scale = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="soul"]
