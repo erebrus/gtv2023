@@ -9,9 +9,11 @@ func _ready():
 
 func appear():
 	$AnimationPlayer.play("fade_in")
+	$sfx_spawn.play()
 
-func disappear():
+func disappear():	
 	$AnimationPlayer.play("fade_out")
+	$sfx_despawn.play()
 
 func _on_switched(val:bool)->void:
 	if val: 

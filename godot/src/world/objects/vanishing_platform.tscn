@@ -1,11 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx4w0kkvkxi1h"]
+[gd_scene load_steps=14 format=3 uid="uid://bx4w0kkvkxi1h"]
 
 [ext_resource type="Script" path="res://src/world/objects/vanishing_platform.gd" id="1_6hnk0"]
 [ext_resource type="Texture2D" uid="uid://bfxx8pm0c4erx" path="res://assets/gfx/world/tilesheet-grass.png" id="1_d7rfo"]
+[ext_resource type="AudioStream" uid="uid://c8wgcd02g2ia1" path="res://assets/sfx/Platform_spawn_1.wav" id="3_id8h8"]
+[ext_resource type="AudioStream" uid="uid://bkd75uumrsdmj" path="res://assets/sfx/Platform_spawn_2.wav" id="4_5b617"]
+[ext_resource type="AudioStream" uid="uid://cigdrr0q8vep2" path="res://assets/sfx/Platform_despawn_1.wav" id="5_l6e27"]
+[ext_resource type="AudioStream" uid="uid://d3mf7ual0k5bg" path="res://assets/sfx/Platform_despawn_2.wav" id="6_chf2b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2025q"]
 radius = 24.0
 height = 544.0
+
+[sub_resource type="Animation" id="Animation_gpmd5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_1ufhs"]
 resource_name = "fade_in"
@@ -32,21 +51,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_gpmd5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qa82b"]
@@ -83,6 +87,20 @@ _data = {
 "fade_out": SubResource("Animation_qa82b")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1c4e7"]
+streams_count = 2
+stream_0/stream = ExtResource("3_id8h8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_5b617")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cqgo1"]
+streams_count = 2
+stream_0/stream = ExtResource("5_l6e27")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_chf2b")
+stream_1/weight = 1.0
+
 [node name="vanishing_platform" type="StaticBody2D"]
 script = ExtResource("1_6hnk0")
 
@@ -101,3 +119,9 @@ shape = SubResource("CapsuleShape2D_2025q")
 libraries = {
 "": SubResource("AnimationLibrary_62jpf")
 }
+
+[node name="sfx_spawn" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_1c4e7")
+
+[node name="sfx_despawn" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cqgo1")

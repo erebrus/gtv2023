@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://nji168cpwlh0"]
+[gd_scene load_steps=22 format=3 uid="uid://nji168cpwlh0"]
 
 [ext_resource type="Script" path="res://src/enemies/soul.gd" id="1_2cfk8"]
 [ext_resource type="Shader" path="res://src/enemies/soul.gdshader" id="2_5qd4q"]
 [ext_resource type="Texture2D" uid="uid://edyt8no35jpo" path="res://addons/kenney_particle_pack/magic_05.png" id="2_b0ff0"]
 [ext_resource type="Texture2D" uid="uid://dbo5dtdgilsfs" path="res://addons/kenney_particle_pack/light_01.png" id="4_38f0j"]
+[ext_resource type="AudioStream" uid="uid://b8o8mce3dy1ub" path="res://assets/sfx/Soul_loot_1.wav" id="4_tlsfr"]
+[ext_resource type="AudioStream" uid="uid://cgd2h1j8eten1" path="res://assets/sfx/Soul_loot_2.wav" id="5_fihfy"]
+[ext_resource type="AudioStream" uid="uid://c68dwx0bfpcf7" path="res://assets/sfx/Soul_loot_3.wav" id="6_qji4a"]
+[ext_resource type="AudioStream" uid="uid://ciifretuh55tp" path="res://assets/sfx/Soul_loot_4.wav" id="7_2dgaf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tkkf"]
 radius = 34.2345
@@ -46,6 +50,17 @@ height = 64
 seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_b70rg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0a5eg"]
+streams_count = 4
+stream_0/stream = ExtResource("4_tlsfr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_fihfy")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_qji4a")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_2dgaf")
+stream_3/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_14yt8"]
 length = 0.001
@@ -233,6 +248,7 @@ material = SubResource("ShaderMaterial_hi47h")
 texture = SubResource("NoiseTexture2D_8m4r2")
 
 [node name="sfx_consume" type="AudioStreamPlayer2D" parent="soul"]
+stream = SubResource("AudioStreamRandomizer_0a5eg")
 
 [node name="PointLight2D" type="PointLight2D" parent="soul"]
 color = Color(0.764706, 0.721569, 0.635294, 1)
@@ -244,6 +260,8 @@ texture_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_k60al")
 }
+
+[node name="sfx_spawn" type="AudioStreamPlayer2D" parent="soul"]
 
 [node name="collision" type="CollisionShape2D" parent="."]
 visible = false

@@ -225,6 +225,8 @@ func on_landing(_last_vy:float):
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
+		if not $sfx/energy_tick.playing:
+			$sfx/energy_tick.play()
 #	if is_on_floor() and xsm.is_active("can_dash"):
 #		controller.can_dash = true
 		

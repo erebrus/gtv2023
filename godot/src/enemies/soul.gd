@@ -23,7 +23,7 @@ var target: Vector2
 
 func _ready():
 	Events.dimension_changed.connect(_on_dimension_changed)
-	fade_in()
+	fade_in(false)
 	set_target()
 
 func _on_dimension_changed(_dimension):
@@ -49,8 +49,10 @@ func _process(delta):
 #	x_speed = sin(period)* .5 * direction
 #	position.x += x_speed
 
-func fade_in():
+func fade_in(mute:=false):
 	player.play("fade_in")
+	if not mute:
+		$soul/sfx_spawn.play()
 	await player.animation_finished
 	player.play("hover")
 
