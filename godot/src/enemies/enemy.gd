@@ -131,7 +131,7 @@ func _process(_delta: float) -> void:
 	if in_animation:
 		velocity += extra_impulse
 		var tv=velocity
-		Logger.debug("tv %s %s" % [tv, global_position])
+#		Logger.debug("tv %s %s" % [tv, global_position])
 		var col = move_and_slide()
 		if not is_on_floor():
 			velocity.y+=g*_delta
@@ -143,7 +143,7 @@ func _process(_delta: float) -> void:
 			velocity.x=0
 		return
 	check_direction()
-	
+	var tv= velocity
 	var delta_velocity = desired_velocity-velocity
 	velocity += delta_velocity.normalized()*min(max_accel, delta_velocity.length())
 	move_and_slide()
@@ -258,7 +258,8 @@ func set_attackbox_enabled(val):
 	attack_box.disabled=!val
 
 
-func _on_reload_timer_timeout():	
+func _on_reload_timer_timeout():
+
 	if not xsm.is_active("hurt"):
 		Logger.debug("reload sets attack box true")
 		set_attackbox_enabled(true)

@@ -30,7 +30,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	owner.in_animation=true
+	pass
 
 
 # This function is called each frame after all the update calls
@@ -49,8 +49,8 @@ func _before_exit(_args):
 # XSM before_exits the children first, then the root
 func _on_exit(_args):
 	Logger.debug("hurt sets attack box true")
-	owner.set_attackbox_enabled(true)
 	owner.in_animation=false
+	owner.reload_timer.start()
 
 
 # when StateAutomaticTimer timeout()
