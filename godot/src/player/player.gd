@@ -171,11 +171,13 @@ func _on_dimension_changed(_dimension):
 		controller = $material_controller
 		$material_controller.set_process(true)
 		$spectral_controller.set_process(false)
+		$vfx/Twirl03.visible = false
 	else:
 		xsm.change_state("decay")	
 		controller = $spectral_controller
 		$material_controller.set_process(false)
 		$spectral_controller.set_process(true)
+		$vfx/Twirl03.visible = true
 		
 		
 	
