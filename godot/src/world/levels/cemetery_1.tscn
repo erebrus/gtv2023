@@ -77,5 +77,5 @@ next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
 
-[node name="DefaultEntryPoint" parent="." index="14"]
+[node name="DefaultEntryPoint" parent="." index="15"]
 position = Vector2(568, 960)

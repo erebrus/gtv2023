@@ -1,9 +1,7 @@
-
 [gd_scene load_steps=12 format=3 uid="uid://dafcnb6b7a4pr"]
 
 [ext_resource type="Texture2D" uid="uid://m2psg0uces54" path="res://assets/gfx/world/castle/facade_tileset.png" id="1_pd3ni"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
-[ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="3_kegpf"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_b61sh"]
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
@@ -37,7 +35,6 @@ layer_0/tile_data = PackedInt32Array(458752, 18, 0, 458753, 131090, 0, 458754, 1
 position = Vector2(864, 528)
 max_hp = 300
 
-
 [node name="player" parent="." instance=ExtResource("3_e3poa")]
 position = Vector2(840, 994)
 max_energy = 500.0
@@ -66,4 +63,3 @@ max_hp = 200
 [node name="skull" parent="." instance=ExtResource("9_aqeae")]
 position = Vector2(128, 984)
 max_hp = 200
-

@@ -22,6 +22,9 @@ func _ready():
 	
 	
 func fade_in_audio(audio, period):
+	if not audio:
+		Logger.warn("can't find audio")
+		return
 	var ori_volume = audio.volume_db
 	audio.volume_db = -80
 	audio.play()
