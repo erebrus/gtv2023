@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb3c7fosnhqvl"]
+[gd_scene load_steps=20 format=3 uid="uid://bb3c7fosnhqvl"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_5lgg5"]
-[ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_mvv4w"]
+[ext_resource type="Texture2D" uid="uid://dicelc367x7mo" path="res://assets/gfx/world/background-sky.png" id="2_6psdx"]
+[ext_resource type="Texture2D" uid="uid://dq128lfllhqpo" path="res://assets/gfx/world/moon.png" id="3_5kk2p"]
 [ext_resource type="Texture2D" uid="uid://5xa7y7bnecv3" path="res://assets/gfx/world/background-hill.png" id="3_xeoqh"]
 [ext_resource type="Texture2D" uid="uid://dtvlqd24di6fi" path="res://assets/gfx/world/midground.png" id="4_qvkpf"]
 [ext_resource type="Texture2D" uid="uid://cu8bxbbqr48pb" path="res://assets/gfx/world/midground-bigtree.png" id="5_i028y"]
@@ -41,44 +42,59 @@ default_entry = NodePath("DefaultEntryPoint")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0.2)
+motion_mirroring = Vector2(1920, 2160)
 
-[node name="BackgroundMoon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("2_mvv4w")
+[node name="LowerSky" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+texture = ExtResource("2_6psdx")
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="UpperSky" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+position = Vector2(0, -1080)
+texture = ExtResource("2_6psdx")
+centered = false
+flip_v = true
+
+[node name="MoonLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0.2)
+
+[node name="Moon" type="Sprite2D" parent="ParallaxBackground/MoonLayer"]
+position = Vector2(1546, 182)
+texture = ExtResource("3_5kk2p")
+centered = false
+
+[node name="HillsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(3840, 0)
 
-[node name="BackgroundHill" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="BackgroundHill" type="Sprite2D" parent="ParallaxBackground/HillsLayer"]
 texture = ExtResource("3_xeoqh")
 centered = false
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2"]
-custom_minimum_size = Vector2(3840, 500)
-offset_top = 1079.0
-offset_right = 3840.0
-offset_bottom = 1579.0
-color = Color(0.184314, 0.113725, 0.133333, 1)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="TreeLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.95, 0.95)
 motion_mirroring = Vector2(3840, 0)
 
-[node name="Midground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+[node name="Midground" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
 texture = ExtResource("4_qvkpf")
 centered = false
 
-[node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+[node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
 texture = ExtResource("5_i028y")
 centered = false
 
-[node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+[node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
 position = Vector2(1140, 0)
 texture = ExtResource("6_b86ba")
 centered = false
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/TreeLayer"]
+custom_minimum_size = Vector2(3840, 500)
+offset_top = 1079.0
+offset_right = 3840.0
+offset_bottom = 3233.0
+color = Color(0.254902, 0.141176, 0.156863, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("7_86yo5")
@@ -97,14 +113,29 @@ energy_decay = 0.0
 position_smoothing_enabled = true
 script = ExtResource("13_anuxj")
 
+[node name="Fog" type="ColorRect" parent="."]
+texture_repeat = 3
+material = ExtResource("16_26mwx")
+custom_minimum_size = Vector2(10240, 5000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -2906.0
+offset_right = 9724.0
+offset_bottom = 2094.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
 [node name="Foreground" type="ParallaxBackground" parent="."]
 layer = 100
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
+[node name="FenceLayer" type="ParallaxLayer" parent="Foreground"]
 motion_scale = Vector2(1.2, 0.8)
 motion_mirroring = Vector2(3840, 0)
 
-[node name="GraveyardFence" type="Sprite2D" parent="Foreground/ParallaxLayer"]
+[node name="GraveyardFence" type="Sprite2D" parent="Foreground/FenceLayer"]
 position = Vector2(2, 394)
 texture = ExtResource("14_rlyus")
 centered = false
@@ -114,16 +145,6 @@ layer = 101
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="Fog" type="ColorRect" parent="CanvasLayer"]
-texture_repeat = 3
-material = ExtResource("16_26mwx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://crxdydfi47uq2"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_3np8i"]
-[ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_oiska"]
+[ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-sky.png" id="2_oiska"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_3fbet"]
 [ext_resource type="Texture2D" uid="uid://5xa7y7bnecv3" path="res://assets/gfx/world/background-hill.png" id="3_mnlti"]
 [ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="4_7oka1"]

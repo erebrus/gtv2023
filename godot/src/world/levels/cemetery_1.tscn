@@ -86,6 +86,8 @@ extents = Vector2(256, 256)
 
 [node name="DefaultEntryPoint" parent="." index="16"]
 position = Vector2(386, 973)
+[node name="music" parent="." index="16"]
+volume_db = -80.0
 
 [node name="TutorialHints" type="CanvasLayer" parent="." index="17"]
 layer = 128
@@ -165,5 +167,8 @@ hint = "You use energy while you are in the material plane. Shift again so you d
 position = Vector2(8476, 225)
 action = "interact"
 hint = "While in the spectre dimension, you can go through gates."
+
+[node name="DefaultEntryPoint" parent="." index="18"]
+position = Vector2(386, 973)
 
 [editable path="TutorialHints/DiagonalDashHint"]
