@@ -599,7 +599,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_spectral",
-"speed": 17.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cv33"]
@@ -1653,8 +1653,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack"
-frame = 3
+animation = &"move_spectral"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)
