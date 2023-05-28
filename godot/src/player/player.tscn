@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=209 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -119,8 +119,10 @@
 [ext_resource type="Texture2D" uid="uid://3g2yiahsn84v" path="res://addons/kenney_particle_pack/twirl_03.png" id="101_0cxsx"]
 [ext_resource type="AudioStream" uid="uid://dxecuakk5ld" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_1.wav" id="114_lt51d"]
 [ext_resource type="AudioStream" uid="uid://cygyp45rcdf0w" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_2.wav" id="115_v3022"]
+[ext_resource type="Script" path="res://src/player/xsm/decay.gd" id="116_4xm8v"]
 [ext_resource type="AudioStream" uid="uid://b0kx6hs22gsm2" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_3.wav" id="116_pbu5o"]
 [ext_resource type="AudioStream" uid="uid://b5p1jf85utcvg" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_4.wav" id="117_0tu6y"]
+[ext_resource type="Script" path="res://src/player/xsm/materialise.gd" id="117_vrq4i"]
 [ext_resource type="AudioStream" uid="uid://basxj3tyu01yc" path="res://assets/sfx/player/skeleton/Skeleton_jump_1.wav" id="118_20spo"]
 [ext_resource type="AudioStream" uid="uid://b565p30athert" path="res://assets/sfx/player/ghost/Ghost_move_1.wav" id="118_gdmqi"]
 [ext_resource type="AudioStream" uid="uid://ba5g03gcjgu7l" path="res://assets/sfx/player/ghost/Ghost_move_2.wav" id="119_3neyg"]
@@ -1807,7 +1809,7 @@ timed = false
 next_state = NodePath("../can_attack/can_dash/can_cross/idle")
 
 [node name="decay" type="Node" parent="xsm"]
-script = ExtResource("12_5udvk")
+script = ExtResource("116_4xm8v")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "decay"
 anim_times_to_play = 1
@@ -1819,7 +1821,7 @@ timed = false
 next_state = NodePath("../can_attack/can_dash/can_cross/idle")
 
 [node name="materialise" type="Node" parent="xsm"]
-script = ExtResource("12_5udvk")
+script = ExtResource("117_vrq4i")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "materialise"
 anim_times_to_play = 1
