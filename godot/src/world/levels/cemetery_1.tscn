@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="2_t6tj1"]
 [ext_resource type="PackedScene" uid="uid://ccfq4evx2ee7x" path="res://src/world/objects/small_gate.tscn" id="3_r65ct"]
 [ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="4_tbclh"]
-[ext_resource type="PackedScene" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="5_sm8hc"]
+[ext_resource type="PackedScene" uid="uid://7hbrjsfhdb7d" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="5_sm8hc"]
 [ext_resource type="PackedScene" uid="uid://bu8wshacdok4h" path="res://src/world/objects/entries_exits/exit.tscn" id="6_5xxg2"]
 
 [node name="cemetery_1" instance=ExtResource("1_v3wsx")]

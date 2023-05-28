@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dafcnb6b7a4pr"]
+[gd_scene load_steps=10 format=3 uid="uid://dafcnb6b7a4pr"]
 
 [ext_resource type="Texture2D" uid="uid://m2psg0uces54" path="res://assets/gfx/world/castle/facade_tileset.png" id="1_pd3ni"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_b61sh"]
 [ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="5_vyrmx"]
+[ext_resource type="PackedScene" uid="uid://dpudj0xpknfld" path="res://src/enemies/material_enemy2/material_enemy2.tscn" id="7_pubk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnyln"]
 texture = ExtResource("1_pd3ni")
@@ -47,3 +48,7 @@ layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 52429
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_vyrmx")]
+
+[node name="madmax" parent="." instance=ExtResource("7_pubk1")]
+position = Vector2(208, 994)
+dimension = 1

@@ -20,7 +20,10 @@ func _on_anim_finished(_name):
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	owner.sfx_hurt.play()	
+	if owner.dimension == Events.Dimension.MATERIAL:
+		owner.sfx_hurt.play()	
+	else:
+		owner.sfx_hurt_spectral.play()	
 	if do_slomo:
 		tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(Engine, "time_scale", .5,.1)
