@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_b61sh"]
-[ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="4_jg7ap"]
+[ext_resource type="TileSet" uid="uid://cmmb0t7ubh2jc" path="res://src/world/castle_tileset.tres" id="5_kygse"]
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="5_vyrmx"]
 [ext_resource type="PackedScene" uid="uid://dpudj0xpknfld" path="res://src/enemies/material_enemy2/material_enemy2.tscn" id="7_gou82"]
 [ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="8_r77le"]
@@ -30,9 +30,9 @@ position_smoothing_enabled = true
 script = ExtResource("4_b2e5o")
 
 [node name="TileMap2" type="TileMap" parent="."]
-tile_set = ExtResource("4_jg7ap")
+tile_set = ExtResource("5_kygse")
 format = 2
-layer_0/tile_data = PackedInt32Array(524288, 524288, 5, 524289, 524288, 5, 524290, 524288, 5, 524291, 524288, 5, 524292, 524288, 5, 524293, 524288, 5, 524294, 524288, 5, 524295, 524288, 5, 524296, 524288, 5, 524297, 524288, 5, 524298, 524288, 5, 524299, 524288, 5, 524300, 524288, 5, 262148, 131072, 0, 262149, 196608, 0, 262150, 262144, 0, 262151, 327680, 0, 262152, 393216, 0, 393214, 131072, 0, 393215, 196608, 0, 327680, 262144, 0, 327681, 327680, 0, 327682, 393216, 0)
+layer_0/tile_data = PackedInt32Array(262144, 0, 5, 327680, 0, 6, 262145, 65536, 5, 262146, 196608, 2, 262147, 327680, 5, 262148, 131072, 5, 196612, 131072, 4, 131076, 131072, 2, 131077, 131072, 5, 65541, 131072, 2, 65542, 262144, 2, 131078, 262144, 5, 131079, 262144, 2, 196615, 262144, 4, 262151, 262144, 3, 327687, 262144, 5, 327688, 327680, 5, 327689, 65536, 5, 196613, 196608, 3, 327686, 196608, 5, 393218, 196608, 5, 393225, 196608, 5, 327690, 393216, 5, 393226, 393216, 6, 393216, 0, 6, 196614, 196608, 6, 262150, 196608, 6, 262149, 196608, 6, 327685, 196608, 6, 327684, 196608, 6, 327683, 196608, 6, 327682, 196608, 6, 327681, 196608, 6, 393217, 196608, 6, 393219, 196608, 6, 393220, 196608, 6, 393221, 196608, 6, 393222, 196608, 6, 393223, 196608, 6, 393224, 196608, 6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
