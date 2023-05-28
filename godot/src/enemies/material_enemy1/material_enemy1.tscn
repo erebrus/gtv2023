@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b76wv31ay5tel" path="res://assets/gfx/enemies/material_enemy1/bonesattack6.png" id="7_ltjem"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="7_ynp30"]
 [ext_resource type="Texture2D" uid="uid://driil7k2it87b" path="res://assets/gfx/enemies/material_enemy1/bonesdeath1.png" id="8_oj040"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="8_tuvnp"]
 [ext_resource type="Texture2D" uid="uid://dvqqybdgdpc85" path="res://assets/gfx/enemies/material_enemy1/bonesdeath2.png" id="9_4hmse"]
 [ext_resource type="Texture2D" uid="uid://bmx6pnlf3jlxg" path="res://assets/gfx/enemies/material_enemy1/bonesdeath3.png" id="10_btn2u"]
 [ext_resource type="Texture2D" uid="uid://2noogcvk05xv" path="res://assets/gfx/enemies/material_enemy1/bonesdeath4.png" id="11_7wg25"]
@@ -43,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://dxmfwyosv27l0" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew6_jump.png" id="35_hgovq"]
 [ext_resource type="Texture2D" uid="uid://c6t58btbj5m58" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew6 (1).png" id="36_81335"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lunge.gd" id="38_foqcq"]
+[ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="43_kl3tf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao7n5"]
 radius = 39.0
@@ -661,9 +661,10 @@ size = Vector2(1024, 170)
 [node name="skull" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_qwmd8")
-max_hp = 150
+max_hp = 250
 normal_speed = 120.0
 engage_speed = 180.0
+attack_damage = 60.0
 dimension = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -767,7 +768,7 @@ timed = false
 next_state = NodePath("../patrol")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("8_tuvnp")
+script = ExtResource("43_kl3tf")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1

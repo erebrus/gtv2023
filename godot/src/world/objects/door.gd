@@ -13,6 +13,7 @@ func open():
 		return
 	Logger.debug ("%s opening" % name)
 	sprite.play("open")
+	$sfx_open.play()
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=true
 	collision_layer=0
@@ -22,6 +23,7 @@ func close():
 	if not is_open():
 		return
 	sprite.play("close")	
+	$sfx_close.play()
 	Logger.debug ("%s closing" % name)
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=false

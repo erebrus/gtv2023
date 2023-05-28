@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5t4kdlklyncl"]
+[gd_scene load_steps=9 format=3 uid="uid://b5t4kdlklyncl"]
 
 [ext_resource type="Script" path="res://src/world/objects/plate.gd" id="1_xhgkl"]
 [ext_resource type="Texture2D" uid="uid://ie6o2fc5i32i" path="res://assets/gfx/world/objects/button .png" id="2_rk00n"]
 [ext_resource type="Texture2D" uid="uid://dw15ouk3k6kpc" path="res://assets/gfx/world/objects/button 2.png" id="3_t83iw"]
+[ext_resource type="AudioStream" uid="uid://b84se1fwvpyti" path="res://assets/sfx/Button_press_1.wav" id="4_acu63"]
+[ext_resource type="AudioStream" uid="uid://bn2tg07wduf3f" path="res://assets/sfx/Button_press_2.wav" id="5_v8f7v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sjq0j"]
 animations = [{
@@ -23,6 +25,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_av6x1"]
+streams_count = 2
+stream_0/stream = ExtResource("4_acu63")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_v8f7v")
+stream_1/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5eq1y"]
 size = Vector2(128, 16)
 
@@ -40,6 +49,7 @@ animation = &"off"
 one_shot = true
 
 [node name="sfx_on" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_av6x1")
 
 [node name="sfx_off" type="AudioStreamPlayer2D" parent="."]
 

@@ -48,17 +48,25 @@ var controller
 @onready var attack_box =$attack_box
 
 @onready var timer_fs = $sfx/timer_fs
+
 @onready var sfx_hurt := $sfx/hurt
+@onready var sfx_hurt_spectral := $sfx/hurt_spectral
 @onready var sfx_death := $sfx/death
+
 @onready var sfx_run := $sfx/run
 @onready var sfx_run_rock := $sfx/run_rock
-@onready var sfx_run_spectral := $sfx/run_rock
+@onready var sfx_run_spectral := $sfx/run_spectral
+
 @onready var sfx_jump := $sfx/jump
 @onready var sfx_dash := $sfx/dash
 @onready var sfx_landing := $sfx/land
+
 @onready var sfx_attack := $sfx/attack
 @onready var sfx_attack_spectral := $sfx/attack_spectral
 @onready var sfx_climb := $sfx/climb
+
+@onready var sfx_climb_slide := $sfx/climb_slide
+@onready var sfx_climb_slide_rock := $sfx/climb_slide_rock
 
 
 var can_play_footstep:bool = true
@@ -133,10 +141,14 @@ func play_animation(anim:String, force:=false):
 	
 func shift(forced:=false):
 	if dimension == Events.Dimension.MATERIAL:	
-		$sfx/decay_forced.play()	
+		if forced:
+			$sfx/decay_forced.play()	
+		else:
+			$sfx/decay.play()
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
 	elif energy == max_energy or energy_override:
 		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
+		$sfx/materialise.play()
 
 func control(_delta:float) -> void:
 	if in_animation:
@@ -159,16 +171,18 @@ func _on_dimension_changed(_dimension):
 		controller = $material_controller
 		$material_controller.set_process(true)
 		$spectral_controller.set_process(false)
+		$vfx/Twirl03.visible = false
 	else:
 		xsm.change_state("decay")	
 		controller = $spectral_controller
 		$material_controller.set_process(false)
 		$spectral_controller.set_process(true)
+		$vfx/Twirl03.visible = true
 		
 		
 	
 func on_dash() -> void:
-	pass
+	sfx_dash.play()
 
 	
 func on_walk_stop() -> void:
@@ -205,7 +219,8 @@ func on_jump() -> void:
 func on_landing(_last_vy:float):
 	if sfx_landing == null:
 		return
-	sfx_landing.play()
+	if dimension == Events.Dimension.MATERIAL:
+		sfx_landing.play()
 	
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:

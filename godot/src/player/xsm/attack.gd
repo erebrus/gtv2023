@@ -27,7 +27,10 @@ func _on_anim_finished(_name: String) -> void:
 func _on_enter(_args) -> void:
 
 	owner.velocity.x=0
-	owner.sfx_attack.play()
+	if owner.dimension == Events.Dimension.MATERIAL:
+		owner.sfx_attack.play()
+	else:
+		owner.sfx_attack_spectral.play()
 	if lunge_distance > 0 :
 		lunge()
 #		var tween = owner.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)

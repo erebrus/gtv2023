@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn3r5p03inwby"]
+[gd_scene load_steps=12 format=3 uid="uid://bn3r5p03inwby"]
 
 [ext_resource type="Script" path="res://src/world/objects/lever.gd" id="1_acw76"]
 [ext_resource type="Texture2D" uid="uid://cxihurx2ungkg" path="res://assets/gfx/world/objects/lever L 1.png" id="2_ho1xq"]
 [ext_resource type="Texture2D" uid="uid://rsbi38uinelp" path="res://assets/gfx/world/objects/lever L 2.png" id="3_cykuc"]
+[ext_resource type="AudioStream" uid="uid://bv7co6sws2gcs" path="res://assets/sfx/Lever_down_1.wav" id="4_hnncg"]
+[ext_resource type="AudioStream" uid="uid://cjmp6v46mnkyr" path="res://assets/sfx/Lever_down_2.wav" id="5_gyo23"]
+[ext_resource type="AudioStream" uid="uid://dqu2nvq76rah5" path="res://assets/sfx/Lever_up_1.wav" id="6_tv8md"]
+[ext_resource type="AudioStream" uid="uid://bunkcsfpn1iif" path="res://assets/sfx/Lever_up_2.wav" id="7_mhbn2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwjcw"]
 animations = [{
@@ -26,6 +30,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3em0b"]
 size = Vector2(128, 112)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jgq8h"]
+streams_count = 2
+stream_0/stream = ExtResource("4_hnncg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_gyo23")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yt57w"]
+streams_count = 2
+stream_0/stream = ExtResource("6_tv8md")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_mhbn2")
+stream_1/weight = 1.0
+
 [node name="lever" type="Area2D"]
 collision_mask = 16
 script = ExtResource("1_acw76")
@@ -39,6 +57,12 @@ animation = &"off"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_3em0b")
+
+[node name="sfx_on" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_jgq8h")
+
+[node name="sfx_off" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yt57w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
