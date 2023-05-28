@@ -19,6 +19,7 @@ var desired_velocity:=Vector2()
 var off_dimension:=false
 var target
 var can_play_footstep:=true
+@onready var ori_footstep_time:float = $sfx/timer_fs.wait_time
 @onready var hp:float =max_hp
 
 @onready var timer_fs:Timer = $sfx/timer_fs
@@ -63,6 +64,7 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = true
 			soul_trail.emitting = false
 		else:
+			stop_all_sounds()
 			soul_trail.emitting = true
 			collision_layer=0
 			$detection_box.monitoring = false
@@ -72,6 +74,7 @@ func _on_dimension_changed(_dimension)->void:
 				$Polygon2D.visible = false
 	else:		
 		if _dimension == Events.Dimension.MATERIAL:
+			stop_all_sounds()
 			collision_layer=0
 			$detection_box.monitoring = false
 			$attack_box.monitoring = false
@@ -229,7 +232,12 @@ func is_on_enemy()->bool:
 
 func handle_run_sfx():
 	if not sfx_run.playing and can_play_footstep:
-		sfx_run.play()
+		if sprite.speed_scale==1 or get_node_or_null("sfx/run_fast")==null:
+			sfx_run.play()
+			timer_fs.wait_time=ori_footstep_time
+		else:			
+			get_node("sfx/run_fast").play()
+			timer_fs.wait_time=ori_footstep_time/2.0
 		if timer_fs.wait_time>0:
 			can_play_footstep = false
 			timer_fs.start()
@@ -274,3 +282,8 @@ func can_attack():
 
 func apply_impulse(impulse:Vector2):
 	extra_impulse += impulse
+
+func stop_all_sounds():
+	for sfx in $sfx.get_children():
+		if sfx.has_method("stop"):
+			sfx.stop()

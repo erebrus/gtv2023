@@ -79,10 +79,13 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	owner.sfx_run.stop()
+	var sfx_run = owner.get_node_or_null("sfx/run_fast")
+	if sfx_run==null:
+		sfx_run = owner.sfx_run
+	sfx_run.stop()
 	owner.sprite.speed_scale=1.0
 	del_timer("charge")
-
+			
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
 	pass

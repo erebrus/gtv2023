@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://nq706ehk3bgf"]
+[gd_scene load_steps=73 format=3 uid="uid://nq706ehk3bgf"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
 [ext_resource type="Shader" path="res://src/enemies/flash_hit.gdshader" id="2_wip3f"]
@@ -40,7 +40,11 @@
 [ext_resource type="AudioStream" uid="uid://clk5nmx8x86h0" path="res://assets/sfx/enemies/Big_mouth_attack_4.wav" id="35_1ds1t"]
 [ext_resource type="AudioStream" uid="uid://dspds1pcske1o" path="res://assets/sfx/enemies/Big_mouth_move_4.wav" id="35_4iadn"]
 [ext_resource type="AudioStream" uid="uid://8f1ren4ol7ct" path="res://assets/sfx/enemies/Big_mouth_death_1.wav" id="36_e0a55"]
+[ext_resource type="AudioStream" uid="uid://u7ky87s8pgru" path="res://assets/sfx/enemies/Big_mouth_move_1_faster.wav" id="36_yv1cp"]
 [ext_resource type="AudioStream" uid="uid://dy7iohwjvox4p" path="res://assets/sfx/enemies/Big_mouth_death_2.wav" id="37_1l6bs"]
+[ext_resource type="AudioStream" uid="uid://coc2eractxeyv" path="res://assets/sfx/enemies/Big_mouth_move_2_faster.wav" id="37_d5kyh"]
+[ext_resource type="AudioStream" uid="uid://qifkfj0gqlve" path="res://assets/sfx/enemies/Big_mouth_move_3_faster.wav" id="38_gdfn4"]
+[ext_resource type="AudioStream" uid="uid://dlw3tp0dxc8gk" path="res://assets/sfx/enemies/Big_mouth_move_4_faster.wav" id="39_28uh0"]
 [ext_resource type="AudioStream" uid="uid://cnn1s8k011u5p" path="res://assets/sfx/enemies/Big_mouth_hurt_1.wav" id="40_obg0k"]
 [ext_resource type="AudioStream" uid="uid://bea26fts1s1yn" path="res://assets/sfx/enemies/Big_mouth_hurt_2.wav" id="41_7gn3y"]
 [ext_resource type="AudioStream" uid="uid://bloh66j7mn6i7" path="res://assets/sfx/enemies/Big_mouth_hurt_3.wav" id="42_q2pxq"]
@@ -700,6 +704,17 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("35_4iadn")
 stream_3/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rk2lu"]
+streams_count = 4
+stream_0/stream = ExtResource("36_yv1cp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("37_d5kyh")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("38_gdfn4")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("39_28uh0")
+stream_3/weight = 1.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5t2vu"]
 streams_count = 4
 stream_0/stream = ExtResource("32_j1quw")
@@ -854,6 +869,9 @@ next_state = NodePath("../patrol")
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_enr8l")
+
+[node name="run_fast" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_rk2lu")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_5t2vu")

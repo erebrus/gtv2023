@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://35nhdqwdy2oo"]
+[gd_scene load_steps=83 format=3 uid="uid://35nhdqwdy2oo"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_qwmd8"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_6g1pl"]
@@ -43,6 +43,24 @@
 [ext_resource type="Texture2D" uid="uid://c6t58btbj5m58" path="res://assets/gfx/enemies/material_enemy1/bonesmovenew6 (1).png" id="36_81335"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lunge.gd" id="38_foqcq"]
 [ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="43_kl3tf"]
+[ext_resource type="AudioStream" uid="uid://c5yufq1l2wkfp" path="res://assets/sfx/enemies/Skull_move_1.wav" id="44_5ccjs"]
+[ext_resource type="AudioStream" uid="uid://dtn5e2fadpqn3" path="res://assets/sfx/enemies/Skull_move_2.wav" id="45_hm53d"]
+[ext_resource type="AudioStream" uid="uid://bt4npy48ydqwo" path="res://assets/sfx/enemies/Skull_move_3.wav" id="46_215bp"]
+[ext_resource type="AudioStream" uid="uid://0q641pgfmiwr" path="res://assets/sfx/enemies/Skull_move_4.wav" id="47_lbo3e"]
+[ext_resource type="AudioStream" uid="uid://dgmxtlqoqah6s" path="res://assets/sfx/enemies/Skull_attack_1.wav" id="48_ora5l"]
+[ext_resource type="AudioStream" uid="uid://dl8cooqflnb3m" path="res://assets/sfx/enemies/Skull_attack_2.wav" id="49_f81eb"]
+[ext_resource type="AudioStream" uid="uid://cs1o0fi7wv4t0" path="res://assets/sfx/enemies/Skull_attack_3.wav" id="50_bua03"]
+[ext_resource type="AudioStream" uid="uid://bkc8ljwc5jmwm" path="res://assets/sfx/enemies/Skull_attack_4.wav" id="51_d4vwy"]
+[ext_resource type="AudioStream" uid="uid://c0gvtrccrs5fw" path="res://assets/sfx/enemies/Skull_hurt_1.wav" id="52_w40f8"]
+[ext_resource type="AudioStream" uid="uid://d17nr5rcm88xm" path="res://assets/sfx/enemies/Skull_hurt_2.wav" id="53_y18ee"]
+[ext_resource type="AudioStream" uid="uid://7j4v0ywkrpwo" path="res://assets/sfx/enemies/Skull_hurt_3.wav" id="54_g5qkr"]
+[ext_resource type="AudioStream" uid="uid://ck5ayvd7hefr5" path="res://assets/sfx/enemies/Skull_hurt_4.wav" id="55_icjb8"]
+[ext_resource type="AudioStream" uid="uid://ch50pas1rlkbr" path="res://assets/sfx/enemies/Skull_death_1.wav" id="56_ix2ue"]
+[ext_resource type="AudioStream" uid="uid://c18gm43xvpoob" path="res://assets/sfx/enemies/Skull_death_2.wav" id="57_5yako"]
+[ext_resource type="AudioStream" uid="uid://bfm3i4poh837v" path="res://assets/sfx/enemies/Skull_jump_1.wav" id="58_jnsk3"]
+[ext_resource type="AudioStream" uid="uid://cjmtc30djuxhd" path="res://assets/sfx/enemies/Skull_jump_2.wav" id="59_4f1ox"]
+[ext_resource type="AudioStream" uid="uid://83cyp2xkcj0h" path="res://assets/sfx/enemies/Skull_jump_3.wav" id="60_gogsk"]
+[ext_resource type="AudioStream" uid="uid://domgk8tbhgli0" path="res://assets/sfx/enemies/Skull_jump_4.wav" id="61_625mq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao7n5"]
 radius = 39.0
@@ -655,6 +673,57 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_67nys"]
+streams_count = 4
+stream_0/stream = ExtResource("44_5ccjs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("45_hm53d")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("46_215bp")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("47_lbo3e")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_argak"]
+streams_count = 4
+stream_0/stream = ExtResource("48_ora5l")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("49_f81eb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("50_bua03")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("51_d4vwy")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l2wvi"]
+streams_count = 4
+stream_0/stream = ExtResource("52_w40f8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("53_y18ee")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("54_g5qkr")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("55_icjb8")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8dw8j"]
+streams_count = 2
+stream_0/stream = ExtResource("56_ix2ue")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("57_5yako")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rxyi5"]
+streams_count = 4
+stream_0/stream = ExtResource("58_jnsk3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("59_4f1ox")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("60_gogsk")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("61_625mq")
+stream_3/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf2wy"]
 size = Vector2(1024, 170)
 
@@ -676,7 +745,7 @@ shape = SubResource("CapsuleShape2D_ao7n5")
 position = Vector2(0, -96)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dok3v")
-animation = &"move"
+animation = &"death"
 
 [node name="soul_trail" type="GPUParticles2D" parent="."]
 emitting = false
@@ -782,12 +851,19 @@ next_state = NodePath("../patrol")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_67nys")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_argak")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_l2wvi")
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_8dw8j")
+
+[node name="lunge" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_rxyi5")
 
 [node name="timer_fs" type="Timer" parent="sfx"]
 wait_time = 0.3

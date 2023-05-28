@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://begnodro4vnqi"]
+
+[ext_resource type="Script" path="res://src/world/objects/dimension_platform.gd" id="1_tugd1"]
+[ext_resource type="Texture2D" uid="uid://bfxx8pm0c4erx" path="res://assets/gfx/world/tilesheet-grass.png" id="2_mxn6n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2025q"]
+radius = 24.0
+height = 544.0
+
+[node name="dimension_platform" type="StaticBody2D"]
+script = ExtResource("1_tugd1")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_mxn6n")
+region_enabled = true
+region_rect = Rect2(256, 0, 640, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2025q")

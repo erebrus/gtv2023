@@ -84,9 +84,6 @@ next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
 
-[node name="DefaultEntryPoint" parent="." index="16"]
-position = Vector2(5107, 754)
-
 [node name="TutorialHints" type="CanvasLayer" parent="." index="18"]
 layer = 128
 follow_viewport_enabled = true
@@ -167,3 +164,11 @@ action = "interact"
 hint = "While in the spectre dimension, you can go through gates."
 
 [editable path="TutorialHints/DiagonalDashHint"]
+
+
+[node name="music" parent="." index="14"]
+volume_db = -80.0
+
+[node name="DefaultEntryPoint" parent="." index="15"]
+position = Vector2(568, 960)
+
