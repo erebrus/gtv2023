@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://63bjkocof0r7"]
+
+[ext_resource type="Script" path="res://src/world/objects/soul_spawner.gd" id="1_2lsvy"]
+
+[node name="soul_spawner" type="Node2D"]
+script = ExtResource("1_2lsvy")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

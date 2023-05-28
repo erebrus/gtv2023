@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=25 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_nwdyn"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_5bvo3"]
 [ext_resource type="Texture2D" uid="uid://cacwyx1lmormn" path="res://assets/gfx/world/graveyard-fence-foreground-start.png" id="14_bmhlu"]
+[ext_resource type="PackedScene" uid="uid://begnodro4vnqi" path="res://src/world/objects/dimension_platform.tscn" id="14_kwfys"]
 [ext_resource type="PackedScene" uid="uid://c5jubvlo01i7r" path="res://src/world/objects/door.tscn" id="15_4b6vm"]
 [ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="15_mfutn"]
 [ext_resource type="Shader" path="res://src/world/tint.gdshader" id="15_obhvh"]
@@ -20,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="17_kpaca"]
 [ext_resource type="PackedScene" uid="uid://dq225y4eolron" path="res://src/world/objects/big_door.tscn" id="19_jtuxl"]
 [ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="20_iexcp"]
+[ext_resource type="PackedScene" uid="uid://63bjkocof0r7" path="res://src/world/objects/soul_spawner.tscn" id="21_gd7m3"]
+[ext_resource type="PackedScene" uid="uid://bx4w0kkvkxi1h" path="res://src/world/objects/vanishing_platform.tscn" id="22_l8ps7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vrrl"]
 shader = ExtResource("15_obhvh")
@@ -112,6 +115,13 @@ position = Vector2(417, 424)
 position = Vector2(1104, 824)
 value = false
 
+[node name="dimension_platform" parent="lever" instance=ExtResource("14_kwfys")]
+position = Vector2(-1074.6, -878.6)
+
+[node name="dimension_platform2" parent="lever" instance=ExtResource("14_kwfys")]
+position = Vector2(-232, -896)
+dimension = 2
+
 [node name="big_door" parent="." instance=ExtResource("19_jtuxl")]
 position = Vector2(1752, 816)
 value = true
@@ -153,5 +163,13 @@ position = Vector2(399.7, 653.8)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
+[node name="soul_spawner" parent="." instance=ExtResource("21_gd7m3")]
+position = Vector2(241.8, 540.6)
+min_period = 2.0
+max_period = 5.0
+
+[node name="vanishing_platform" parent="." instance=ExtResource("22_l8ps7")]
+position = Vector2(888, 312)
+
 [connection signal="switched" from="TileMap/plate" to="big_door" method="_on_switched"]
-[connection signal="switched" from="lever" to="door" method="_on_switched"]
+[connection signal="switched" from="lever" to="vanishing_platform" method="_on_switched"]
