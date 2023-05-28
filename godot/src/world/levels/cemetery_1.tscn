@@ -84,9 +84,6 @@ next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
 
-[node name="music" parent="." index="15"]
-volume_db = -80.0
-
 [node name="DefaultEntryPoint" parent="." index="16"]
 position = Vector2(386, 973)
 

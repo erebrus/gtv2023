@@ -750,18 +750,38 @@ next_state = NodePath("../patrol")
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_iw44h")
+volume_db = -15.0
+max_distance = 1000.0
+attenuation = 1.2
+bus = &"sfx"
 
 [node name="run_fast" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_ourgf")
+volume_db = -15.0
+max_distance = 1000.0
+attenuation = 1.2
+bus = &"sfx"
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_qxqgm")
+volume_db = -10.0
+max_distance = 1000.0
+attenuation = 1.2
+bus = &"sfx"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_ok6i2")
+volume_db = -10.0
+max_distance = 1000.0
+attenuation = 1.2
+bus = &"sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_pg1qx")
+volume_db = -10.0
+max_distance = 1000.0
+attenuation = 1.2
+bus = &"sfx"
 
 [node name="timer_fs" type="Timer" parent="sfx"]
 wait_time = 0.3

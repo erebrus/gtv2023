@@ -1866,60 +1866,99 @@ one_shot = true
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_s86yt")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="run_rock" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_s86yt")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="run_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_t6c03")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="dash" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_n08ck")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_petmv")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="land" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_27s8q")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_ec4pi")
+volume_db = -5.0
+bus = &"sfx"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_5lard")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="hurt_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_1iyut")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_1eaww")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="attack_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_oq2sb")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="climb" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_3233t")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="crossing" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_6c0fq")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="materialise" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_asp7c")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="decay_forced" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_x700v")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="decay" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_0oswf")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="climb_slide" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("159_ta5ph")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="climb_slide_rock" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("160_tdcwc")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="energy_tick" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_jkgrs")
+volume_db = -30.0
+pitch_scale = 0.5
+bus = &"sfx"
 
 [node name="climb_rc" type="RayCast2D" parent="."]
 position = Vector2(0, -56)
