@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwmay15n30yep"]
+[gd_scene load_steps=23 format=3 uid="uid://dwmay15n30yep"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_h08n7"]
 [ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_4ogw3"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c4827inxhplxi" path="res://src/ui/hud.tscn" id="17_kpaca"]
 [ext_resource type="PackedScene" uid="uid://dq225y4eolron" path="res://src/world/objects/big_door.tscn" id="19_jtuxl"]
 [ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="20_iexcp"]
+[ext_resource type="PackedScene" uid="uid://63bjkocof0r7" path="res://src/world/objects/soul_spawner.tscn" id="21_gd7m3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vrrl"]
 shader = ExtResource("15_obhvh")
@@ -152,6 +153,11 @@ metadata/_edit_lock_ = true
 position = Vector2(399.7, 653.8)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="soul_spawner" parent="." instance=ExtResource("21_gd7m3")]
+position = Vector2(241.8, 540.6)
+min_period = 2.0
+max_period = 5.0
 
 [connection signal="switched" from="TileMap/plate" to="big_door" method="_on_switched"]
 [connection signal="switched" from="lever" to="door" method="_on_switched"]

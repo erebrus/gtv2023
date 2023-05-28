@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal died
  
 @export var energy:=20.0
 @onready var sfx := $soul/sfx_consume
@@ -21,10 +22,18 @@ var target: Vector2
 
 
 func _ready():
+	Events.dimension_changed.connect(_on_dimension_changed)
 	fade_in()
 	set_target()
 
-
+func _on_dimension_changed(_dimension):
+	if _dimension == Events.Dimension.MATERIAL:
+		visible = false
+		$soul.monitoring = false
+	else:
+		visible = true
+		$soul.monitoring = true
+		
 func set_target() -> void:
 	target = Vector2(RngUtils.float_range(anchor.x - travel_distance.x / 2, anchor.x + travel_distance.x / 2), RngUtils.float_range(anchor.y - travel_distance.y / 2, anchor.y + travel_distance.y / 2))
 	
@@ -54,5 +63,6 @@ func _on_soul_body_entered(body: Node2D) -> void:
 	player.play("fade_out")
 #	await tween.finished
 	await player.animation_finished
+	died.emit()
 	call_deferred("queue_free")
 
