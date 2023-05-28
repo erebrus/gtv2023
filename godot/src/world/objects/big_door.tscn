@@ -1,8 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq225y4eolron"]
+[gd_scene load_steps=11 format=3 uid="uid://dq225y4eolron"]
 
 [ext_resource type="Script" path="res://src/world/objects/big_door.gd" id="1_d52ue"]
 [ext_resource type="Texture2D" uid="uid://blm3kfh6kp613" path="res://assets/gfx/world/castle/door.png" id="1_py5fd"]
 [ext_resource type="Texture2D" uid="uid://l13jcmthm20g" path="res://assets/gfx/world/castle/door gap.png" id="2_3om2v"]
+[ext_resource type="AudioStream" uid="uid://b47jqjbmthwfd" path="res://assets/sfx/Big_Door_open_1.wav" id="4_em4xe"]
+[ext_resource type="AudioStream" uid="uid://bswkw0dvv6o74" path="res://assets/sfx/Big_Door_open_2.wav" id="5_v4p46"]
+[ext_resource type="AudioStream" uid="uid://dnsda265gblmj" path="res://assets/sfx/Big_Door_close_1.wav" id="6_eyko6"]
+[ext_resource type="AudioStream" uid="uid://ib5v1qexhh3m" path="res://assets/sfx/Big_Door_close_2.wav" id="7_lmgui"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hay8u"]
+streams_count = 2
+stream_0/stream = ExtResource("4_em4xe")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_v4p46")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8gde"]
+streams_count = 2
+stream_0/stream = ExtResource("6_eyko6")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_lmgui")
+stream_1/weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_735yr"]
 size = Vector2(151, 295)
@@ -35,8 +53,10 @@ region_enabled = true
 region_rect = Rect2(266.593, -3, 244.966, 512)
 
 [node name="sfx_open" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hay8u")
 
 [node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_k8gde")
 
 [node name="end_position" type="Node2D" parent="."]
 position = Vector2(70.8999, -2.6991)

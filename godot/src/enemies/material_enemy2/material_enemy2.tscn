@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dpudj0xpknfld"]
+[gd_scene load_steps=68 format=3 uid="uid://dpudj0xpknfld"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_i5qc2"]
 [ext_resource type="Texture2D" uid="uid://ca7gofx755w50" path="res://assets/gfx/enemies/material_enemy2/madmaxidle1.png" id="2_lxmr4"]
@@ -14,13 +14,40 @@
 [ext_resource type="Texture2D" uid="uid://cl1xfs3mpwl35" path="res://assets/gfx/enemies/material_enemy2/madmaxmove3.png" id="7_62e00"]
 [ext_resource type="Texture2D" uid="uid://bskxm6dmxsb0l" path="res://assets/gfx/enemies/material_enemy2/madmaxattack6.png" id="7_cu2pb"]
 [ext_resource type="Texture2D" uid="uid://be7p6cafsatx3" path="res://assets/gfx/enemies/material_enemy2/madmaxmove4.png" id="8_pb6df"]
+[ext_resource type="Texture2D" uid="uid://cnoxf2u7obcan" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath1.png" id="8_ynr57"]
+[ext_resource type="Texture2D" uid="uid://jitv2rabgsgb" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath2.png" id="9_vpqpd"]
+[ext_resource type="Texture2D" uid="uid://74pkve7vt3ao" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath3.png" id="10_fyv74"]
+[ext_resource type="Texture2D" uid="uid://1ndsss6wmdhs" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath4.png" id="11_afr32"]
+[ext_resource type="Texture2D" uid="uid://bxwm4yurj7w7k" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt1.png" id="13_is66k"]
+[ext_resource type="Texture2D" uid="uid://c8s37jgahyqpj" path="res://assets/gfx/enemies/material_enemy2/madmaxdeath7.png" id="14_vjpml"]
+[ext_resource type="Texture2D" uid="uid://cfq4xrskhtekb" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt2.png" id="14_wxxj4"]
+[ext_resource type="Texture2D" uid="uid://cgjk1ry4ys3ph" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt3.png" id="15_krnxd"]
+[ext_resource type="Texture2D" uid="uid://ddxuw0miy83dg" path="res://assets/gfx/enemies/material_enemy2/madmaxhurt4.png" id="16_wxt0r"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="19_1bbgf"]
 [ext_resource type="Script" path="res://src/enemies/xsm/lookout.gd" id="20_77rb0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/patrol.gd" id="21_etvd5"]
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="22_3s3p0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="23_ee3ye"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="24_mqhwt"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="25_1ddj7"]
+[ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="30_3o3qi"]
+[ext_resource type="AudioStream" uid="uid://bqg8ywyrcuvcn" path="res://assets/sfx/enemies/Madmax_move_1.wav" id="31_r4x63"]
+[ext_resource type="AudioStream" uid="uid://ms6gb7kray4y" path="res://assets/sfx/enemies/Madmax_move_2.wav" id="32_47grf"]
+[ext_resource type="AudioStream" uid="uid://d0ol77gnugibp" path="res://assets/sfx/enemies/Madmax_move_3.wav" id="33_6lpaj"]
+[ext_resource type="AudioStream" uid="uid://cqg58ob6muc0b" path="res://assets/sfx/enemies/Madmax_move_4.wav" id="34_uw3c0"]
+[ext_resource type="AudioStream" uid="uid://6pqhcocxebqf" path="res://assets/sfx/enemies/Madmax_attack_1.wav" id="35_lr5ob"]
+[ext_resource type="AudioStream" uid="uid://bkrdeknsh05ry" path="res://assets/sfx/enemies/Madmax_move_1_faster.wav" id="35_yccrw"]
+[ext_resource type="AudioStream" uid="uid://c5354hskt61co" path="res://assets/sfx/enemies/Madmax_attack_2.wav" id="36_l1hm0"]
+[ext_resource type="AudioStream" uid="uid://h65jh76l4we8" path="res://assets/sfx/enemies/Madmax_move_2_faster.wav" id="36_un24k"]
+[ext_resource type="AudioStream" uid="uid://b6onl6f0wv5sm" path="res://assets/sfx/enemies/Madmax_move_3_faster.wav" id="37_0bbsu"]
+[ext_resource type="AudioStream" uid="uid://cq2v6htg4x7hb" path="res://assets/sfx/enemies/Madmax_attack_3.wav" id="37_ufchx"]
+[ext_resource type="AudioStream" uid="uid://bcerprbhuaemj" path="res://assets/sfx/enemies/Madmax_attack_4.wav" id="38_37iin"]
+[ext_resource type="AudioStream" uid="uid://nou0xejr0mb8" path="res://assets/sfx/enemies/Madmax_move_4_faster.wav" id="38_ns8gd"]
+[ext_resource type="AudioStream" uid="uid://clugl0rl47qm8" path="res://assets/sfx/enemies/Madmax_hurt_1.wav" id="39_jmsxm"]
+[ext_resource type="AudioStream" uid="uid://dtmrduolatijy" path="res://assets/sfx/enemies/Madmax_hurt_2.wav" id="40_mvccb"]
+[ext_resource type="AudioStream" uid="uid://cabd6765mun83" path="res://assets/sfx/enemies/Madmax_hurt_3.wav" id="41_f8nw0"]
+[ext_resource type="AudioStream" uid="uid://dvoxqgkdui2lr" path="res://assets/sfx/enemies/Madmax_hurt_4.wav" id="42_2d5y0"]
+[ext_resource type="AudioStream" uid="uid://cr25u8j5bovab" path="res://assets/sfx/enemies/Madmax_death_1.wav" id="43_6knoq"]
+[ext_resource type="AudioStream" uid="uid://cdlmsenxxp684" path="res://assets/sfx/enemies/Madmax_death_2.wav" id="44_n3oe8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb0o4"]
 animations = [{
@@ -57,17 +84,44 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 20.0
+"speed": 30.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ynr57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vpqpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fyv74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_afr32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vjpml")
+}],
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 16.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_is66k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wxxj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_krnxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wxt0r")
+}],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +162,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao7n5"]
-radius = 24.0
+radius = 32.0
 height = 130.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7jm5"]
@@ -152,7 +206,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_honj7"]
 resource_name = "death"
-length = 0.5
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -176,6 +230,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vn40q"]
@@ -333,6 +399,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_86cjw"]
 resource_name = "left"
@@ -395,7 +473,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-108, -2)]
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-192, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6jy6f"]
@@ -461,6 +551,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection_box:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6j2u"]
 _data = {
@@ -469,23 +571,75 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iw44h"]
+streams_count = 4
+stream_0/stream = ExtResource("31_r4x63")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("32_47grf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("33_6lpaj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("34_uw3c0")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ourgf"]
+streams_count = 4
+stream_0/stream = ExtResource("35_yccrw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_un24k")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("37_0bbsu")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("38_ns8gd")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qxqgm"]
+streams_count = 4
+stream_0/stream = ExtResource("35_lr5ob")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_l1hm0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("37_ufchx")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("38_37iin")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ok6i2"]
+streams_count = 4
+stream_0/stream = ExtResource("39_jmsxm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("40_mvccb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("41_f8nw0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("42_2d5y0")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pg1qx"]
+streams_count = 2
+stream_0/stream = ExtResource("43_6knoq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("44_n3oe8")
+stream_1/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf2wy"]
-size = Vector2(512, 154)
+size = Vector2(704, 154)
 
 [node name="madmax" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_i5qc2")
-normal_speed = 120.0
+normal_speed = 150.0
+attack_damage = 35.0
+dimension = 1
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -97)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_hb0o4")
-animation = &"attack"
-frame = 9
-frame_progress = 1.0
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -72)
 shape = SubResource("CapsuleShape2D_ao7n5")
 
@@ -543,6 +697,7 @@ next_state = NodePath(".")
 script = ExtResource("22_3s3p0")
 min_distance = 0.0
 animation_speed_factor = 1.0
+direct_attack_distance = 64.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "move"
 anim_times_to_play = 1
@@ -555,7 +710,8 @@ next_state = NodePath("../patrol")
 
 [node name="attack" type="Node" parent="xsm"]
 script = ExtResource("23_ee3ye")
-lunge_distance = 20.0
+attack_delay = 0.1
+lunge_distance = 48.0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "attack"
 anim_times_to_play = 1
@@ -579,7 +735,7 @@ timed = false
 next_state = NodePath("../patrol")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("25_1ddj7")
+script = ExtResource("30_3o3qi")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
@@ -593,12 +749,19 @@ next_state = NodePath("../patrol")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_iw44h")
+
+[node name="run_fast" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_ourgf")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_qxqgm")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_ok6i2")
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_pg1qx")
 
 [node name="timer_fs" type="Timer" parent="sfx"]
 wait_time = 0.3
@@ -613,16 +776,14 @@ position = Vector2(0, -15)
 target_position = Vector2(32, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
-position = Vector2(0, -83)
+position = Vector2(96, -83)
 shape = SubResource("RectangleShape2D_kf2wy")
 
 [node name="attack_box" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
 collision_mask = 16
 
@@ -631,6 +792,7 @@ position = Vector2(0, -72)
 shape = SubResource("CapsuleShape2D_ao7n5")
 
 [node name="reload_timer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="sfx/timer_fs" to="." method="_on_timer_fs_timeout"]

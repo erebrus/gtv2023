@@ -19,8 +19,10 @@ func interact():
 	switched.emit(value)
 	if value:
 		$sprite.play("on")
+		$sfx_on.play()
 	else:
 		$sprite.play("off")
+		$sfx_off.play()
 		
 func _on_dimension_changed(dimension):	
 	if dimension == Events.Dimension.SPECTRAL and player:

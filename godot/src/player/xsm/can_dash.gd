@@ -55,6 +55,7 @@ func _on_update(_delta: float) -> void:
 		Logger.trace("apply accel (%s) to speed (%s)  " % [owner.accel, owner.velocity])
 		
 	if Input.is_action_just_pressed("dash")\
+		and not is_active("attack")\
 		#FIXME redundant can
 		and owner.controller.dash_boost\
 #		and input != Vector2.ZERO\

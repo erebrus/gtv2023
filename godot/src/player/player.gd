@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 
 const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
@@ -16,6 +17,7 @@ signal jump_fired
 @export var attack_knockback:float = 50.0
 @export var spectral_th:float = 1.6
 @export var material_th:float = .6
+@export var energy_override := false
 
 var use_mouse:=true
 var max_x:float = 0
@@ -23,6 +25,7 @@ var accel:float=0
 var in_animation:bool = false
 var last_y:float
 var last_direction:=Vector2.RIGHT
+var floor_type:Map.FloorType = Map.FloorType.GRASS
 
 var can_attack := true
 var immune := false
@@ -45,12 +48,25 @@ var controller
 @onready var attack_box =$attack_box
 
 @onready var timer_fs = $sfx/timer_fs
+
 @onready var sfx_hurt := $sfx/hurt
+@onready var sfx_hurt_spectral := $sfx/hurt_spectral
 @onready var sfx_death := $sfx/death
+
 @onready var sfx_run := $sfx/run
+@onready var sfx_run_rock := $sfx/run_rock
+@onready var sfx_run_spectral := $sfx/run_spectral
+
 @onready var sfx_jump := $sfx/jump
+@onready var sfx_dash := $sfx/dash
 @onready var sfx_landing := $sfx/land
+
 @onready var sfx_attack := $sfx/attack
+@onready var sfx_attack_spectral := $sfx/attack_spectral
+@onready var sfx_climb := $sfx/climb
+
+@onready var sfx_climb_slide := $sfx/climb_slide
+@onready var sfx_climb_slide_rock := $sfx/climb_slide_rock
 
 
 var can_play_footstep:bool = true
@@ -89,7 +105,6 @@ func _ready():
 #	else:
 #		HyperLog.remove_log(self)
 
-
 func update_sprite():
 	
 	var facing_direction = Vector2(sign(Input.get_axis("ui_left", "ui_right")),0)
@@ -111,16 +126,29 @@ func play_animation(anim:String, force:=false):
 	if anim in multi_state_anims:
 		if dimension ==Events.Dimension.SPECTRAL:
 			anim += "_spectral"
+	if anim=="dash":
+		var dir:=Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		if  dir.x == 0:
+			anim = "dash_up"
+		elif dir.y < 0:
+			anim = "dash_diag"
+			
+			
 #	if not sprite.is_playing() or sprite.animation != anim:
 	if sprite.animation != anim or force:		
 #		Logger.info("playing %s (before playing=%s, current anim %s)" % [anim, sprite.is_playing(), sprite.animation])
 		sprite.play(anim)
 	
-func shift():
-	if dimension == Events.Dimension.MATERIAL:
+func shift(forced:=false):
+	if dimension == Events.Dimension.MATERIAL:	
+		if forced:
+			$sfx/decay_forced.play()	
+		else:
+			$sfx/decay.play()
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-	else:
+	elif energy == max_energy or energy_override:
 		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
+		$sfx/materialise.play()
 
 func control(_delta:float) -> void:
 	if in_animation:
@@ -143,16 +171,18 @@ func _on_dimension_changed(_dimension):
 		controller = $material_controller
 		$material_controller.set_process(true)
 		$spectral_controller.set_process(false)
+		$vfx/Twirl03.visible = false
 	else:
 		xsm.change_state("decay")	
 		controller = $spectral_controller
 		$material_controller.set_process(false)
 		$spectral_controller.set_process(true)
+		$vfx/Twirl03.visible = true
 		
 		
 	
 func on_dash() -> void:
-	pass
+	sfx_dash.play()
 
 	
 func on_walk_stop() -> void:
@@ -163,7 +193,13 @@ func on_walk() -> void:
 	if sfx_run == null:
 		return
 	if not sfx_run.playing and can_play_footstep:
-		sfx_run.play()
+		if dimension == Events.Dimension.MATERIAL:
+			if floor_type==Map.FloorType.GRASS:
+				sfx_run.play()
+			else:
+				sfx_run_rock.play()
+		else:
+			sfx_run_spectral.play()			
 		if timer_fs.wait_time>0:
 			can_play_footstep = false
 			timer_fs.start()
@@ -183,12 +219,12 @@ func on_jump() -> void:
 func on_landing(_last_vy:float):
 	if sfx_landing == null:
 		return
-	sfx_landing.play()
+	if dimension == Events.Dimension.MATERIAL:
+		sfx_landing.play()
 	
 func _process(delta: float) -> void:
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
-	
 #	if is_on_floor() and xsm.is_active("can_dash"):
 #		controller.can_dash = true
 		
@@ -273,7 +309,9 @@ func bounce(direction, distance):
 #	in_animation=false
 		
 func on_attacked(source_pos:Vector2, dmg:float, knockback:float = 0):
-
+	if xsm.is_active("attack"):
+		Logger.debug("ignored attack on player, because player is attacking")
+		return
 	Logger.debug("player was attacked")
 	if not check_for_death():
 		xsm.change_state("hurt")	
@@ -380,13 +418,32 @@ func on_environment_damage(force:=false):
 		self.energy = clamp(energy-energy_decay, 0, max_energy)
 	
 func set_attack_box_enabled(val:bool)->void:
-	#attack_box.monitoring = val
-	$attack_box/CollisionShape2D.disabled = not val
+	#attack_box.monitoring = val	
+#	$attack_box/CollisionShape2D.disabled = not val
+	if not val:
+		for x in $attack_box.get_children():
+			x.disabled=true;
+			Logger.trace("%s disabled" % x.name)
+		
+	else:
+		if last_direction==Vector2.RIGHT:
+			$attack_box/left_collision.disabled=true
+			$attack_box/right_collision.disabled=false
+		else:
+			$attack_box/left_collision.disabled=false
+			$attack_box/right_collision.disabled=true
+	for x in $attack_box.get_children():
+		x.visible = not x.disabled
+		Logger.debug("attacbox %s disabled? %s" % [x.name, x.disabled])
+#	if not val:
+#		for cs in $attack_box.get_children():
+#			if cs.disab
 
 func _on_attack_box_body_entered(body):
 	if body.has_method("take_damage"):
-		Logger.info("attack contact at %d" % Time.get_ticks_msec())
-		body.take_damage(global_position, attack_damage, attack_knockback)
+		Logger.debug("attack contact at %d" % Time.get_ticks_msec())
+		var knockback_vector = Vector2(attack_knockback*last_direction.x,-250)
+		body.take_damage(global_position, attack_damage, knockback_vector)
 
 
 func _on_reload_timer_timeout():

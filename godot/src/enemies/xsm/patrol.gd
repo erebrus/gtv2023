@@ -18,6 +18,7 @@ func _on_anim_finished(_name: String) -> void:
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	var direction = owner.get_facing_direction()	
+	owner.in_animation=false
 	if owner.is_must_turn():
 		direction = -owner.get_facing_direction()	
 		owner.velocity.x=direction.x
@@ -37,12 +38,21 @@ func _after_enter(_args) -> void:
 
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
-func _on_update(_delta: float) -> void:
+func _on_update(_delta: float) -> void: 
 	owner.handle_run_sfx()
 	if owner.target:
+		var pos = owner.global_position.x
+		var tpos = owner.target.global_position.x
+		var enemy_direction = Vector2(sign(tpos-pos),0)
+		if enemy_direction != owner.get_facing_direction():
+			owner.velocity.x=0
+			owner.desired_velocity.x=0
+			owner.flip_direction()
 		change_state("engage")		
 	elif owner.is_must_turn():
 		change_state("lookout")
+	else:
+		owner.desired_velocity=Vector2(owner.normal_speed,0)*owner.get_facing_direction()
 		
 
 

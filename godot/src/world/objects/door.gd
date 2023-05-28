@@ -13,23 +13,26 @@ func open():
 		return
 	Logger.debug ("%s opening" % name)
 	sprite.play("open")
+	$sfx_open.play()
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=true
+	collision_layer=0
 	door_opened.emit()
 	
 func close():
 	if not is_open():
 		return
 	sprite.play("close")	
+	$sfx_close.play()
 	Logger.debug ("%s closing" % name)
 #	await sprite.animation_finished
 	$CollisionShape2D.disabled=false
+	collision_layer=1
 	door_closed.emit()
 	
 func _on_switched(val:bool)->void:
-	if val:
+	if val: 
 		open()
 	else:
 		close()
-
 

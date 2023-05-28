@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4rp8kon01pxp"]
+
+[ext_resource type="Script" path="res://src/world/objects/elevator.gd" id="1_mkv23"]
+[ext_resource type="Texture2D" uid="uid://bfxx8pm0c4erx" path="res://assets/gfx/world/tilesheet-grass.png" id="2_fegjv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2025q"]
+radius = 24.0
+height = 544.0
+
+[node name="elevator" type="CharacterBody2D"]
+script = ExtResource("1_mkv23")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_fegjv")
+region_enabled = true
+region_rect = Rect2(256, 0, 640, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2025q")

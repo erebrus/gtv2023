@@ -61,5 +61,5 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	if _name == LOOKOUT_TIMER:		
+	if _name == LOOKOUT_TIMER and is_active(name):		
 		change_state("patrol")

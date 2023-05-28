@@ -11,12 +11,19 @@ var tween
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name):
-	pass
+	if owner.dimension == Events.Dimension.MATERIAL:
+		owner.shift(true)
+	else:
+		change_state("idle")
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
+	if owner.dimension == Events.Dimension.MATERIAL:
+		owner.sfx_hurt.play()	
+	else:
+		owner.sfx_hurt_spectral.play()	
 	if do_slomo:
 		tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(Engine, "time_scale", .5,.1)
@@ -38,7 +45,6 @@ func _on_update(_delta):
 # XSM after_updates the children first, then the root
 func _after_update(_delta):
 	pass
-
 
 # This function is called before the State exits
 # XSM before_exits the root first, then the children
