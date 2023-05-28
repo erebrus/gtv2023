@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bh76ivmnj2otd"]
+[gd_scene load_steps=68 format=3 uid="uid://bh76ivmnj2otd"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_ykqge"]
 [ext_resource type="Texture2D" uid="uid://c2ogmvece2o4s" path="res://assets/gfx/enemies/spectral_enemy1/idle/1.png" id="2_3jj27"]
@@ -33,10 +33,14 @@
 [ext_resource type="AudioStream" uid="uid://dwhf36gwor8hc" path="res://assets/sfx/enemies/Spectral_enemy_1_move_2.wav" id="31_0wcir"]
 [ext_resource type="AudioStream" uid="uid://i20le4j6hnjm" path="res://assets/sfx/enemies/Spectral_enemy_1_move_3.wav" id="32_l1p01"]
 [ext_resource type="AudioStream" uid="uid://dcjn8kdm8enyx" path="res://assets/sfx/enemies/Spectral_enemy_1_move_4.wav" id="33_canfr"]
+[ext_resource type="AudioStream" uid="uid://4ayce4itfsj" path="res://assets/sfx/enemies/Spectral_enemy_1_move_1_faster.wav" id="34_0hsq0"]
 [ext_resource type="AudioStream" uid="uid://bchn44oehx501" path="res://assets/sfx/enemies/Spectral_enemy_1_attack_1.wav" id="34_nuhgq"]
+[ext_resource type="AudioStream" uid="uid://cqmc6jkyj5h4h" path="res://assets/sfx/enemies/Spectral_enemy_1_move_2_faster.wav" id="35_3t3cc"]
 [ext_resource type="AudioStream" uid="uid://d4lybfa4rwvyn" path="res://assets/sfx/enemies/Spectral_enemy_1_attack_2.wav" id="35_18te1"]
+[ext_resource type="AudioStream" uid="uid://cdxe427jdfwua" path="res://assets/sfx/enemies/Spectral_enemy_1_move_3_faster.wav" id="36_ee285"]
 [ext_resource type="AudioStream" uid="uid://q23b5m8bjda6" path="res://assets/sfx/enemies/Spectral_enemy_1_attack_3.wav" id="36_ofgia"]
 [ext_resource type="AudioStream" uid="uid://cjiup3g6btwod" path="res://assets/sfx/enemies/Spectral_enemy_1_attack_4.wav" id="37_6oobd"]
+[ext_resource type="AudioStream" uid="uid://ycwwr6pl4w6y" path="res://assets/sfx/enemies/Spectral_enemy_1_move_4_faster.wav" id="37_rmjkh"]
 [ext_resource type="AudioStream" uid="uid://bas3nstdrewrc" path="res://assets/sfx/enemies/Spectral_enemy_1_hurt_1.wav" id="38_ynixv"]
 [ext_resource type="AudioStream" uid="uid://dl5won1s7152" path="res://assets/sfx/enemies/Spectral_enemy_1_hurt_2.wav" id="39_7e5ut"]
 [ext_resource type="AudioStream" uid="uid://cdkras52pvagb" path="res://assets/sfx/enemies/Spectral_enemy_1_hurt_3.wav" id="40_icidq"]
@@ -572,6 +576,17 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("33_canfr")
 stream_3/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jmxuj"]
+streams_count = 4
+stream_0/stream = ExtResource("34_0hsq0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("35_3t3cc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("36_ee285")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("37_rmjkh")
+stream_3/weight = 1.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mq8tu"]
 streams_count = 4
 stream_0/stream = ExtResource("34_nuhgq")
@@ -732,6 +747,9 @@ next_state = NodePath("../patrol")
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_byktt")
+
+[node name="run_fast" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_jmxuj")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_mq8tu")
