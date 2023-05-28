@@ -69,7 +69,7 @@ position = Vector2(3600, 808)
 limit_right = 8960
 
 [node name="enemy_spawner" parent="." index="12" node_paths=PackedStringArray("current_enemy") instance=ExtResource("5_sm8hc")]
-position = Vector2(4897.64, 1015.03)
+position = Vector2(4856, 1016)
 enemy_scene = ExtResource("2_t6tj1")
 current_enemy = NodePath("../TileMap/bone_bug2")
 
@@ -84,8 +84,6 @@ next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
 
-[node name="DefaultEntryPoint" parent="." index="16"]
-position = Vector2(386, 973)
 [node name="music" parent="." index="16"]
 volume_db = -80.0
 
