@@ -67,7 +67,6 @@ position = Vector2(3600, 808)
 
 [node name="player" parent="." index="8"]
 energy_decay = 5.0
-energy_override = false
 energy = 50.0
 
 [node name="Camera2D" parent="player" index="12"]
@@ -84,7 +83,7 @@ enemy_scene = ExtResource("2_t6tj1")
 current_enemy = NodePath("../TileMap/bone_bug")
 
 [node name="Exit" parent="." index="14" instance=ExtResource("6_5xxg2")]
-position = Vector2(9016, 456)
+position = Vector2(8968, 443)
 next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)

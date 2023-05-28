@@ -148,9 +148,10 @@ func shift(forced:=false):
 		else:
 			$sfx/decay.play()
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-	elif energy == max_energy or energy_override:
-		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
-		$sfx/materialise.play()
+	elif energy == max_energy or energy_override or\
+		Globals.level_manager.current_dimension==Events.Dimension.MATERIAL:
+			Events.dimension_changed.emit(Events.Dimension.MATERIAL)
+			$sfx/materialise.play()
 
 func control(_delta:float) -> void:
 	if in_animation:

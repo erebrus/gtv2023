@@ -10,6 +10,8 @@ var levels:Array[PackedScene] = [
 var current_level:int = 0
 var current_level_path: String
 var last_checkpoint: String
+var current_dimension:Events.Dimension = Events.Dimension.SPECTRAL
+var player_energy:=50
 
 const path="usr://game_conf.tres"
 
@@ -58,10 +60,12 @@ func save_checkpoint(checkpoint_name: String) -> void:
 	
 
 func restore_checkpoint() -> void:
-	change_level(current_level_path, last_checkpoint)
+	change_level(current_level_path, last_checkpoint, current_dimension, 50)
 	
 
-func change_level(next_level: String, entry_name: String) -> void:
+func change_level(next_level: String, entry_name: String, dimension:Events.Dimension, _player_energy:float) -> void:
+	current_dimension = dimension
+	player_energy = _player_energy
 	current_level_path = next_level
 	var set_entry_point = func(scene):
 		scene.entry_name = entry_name

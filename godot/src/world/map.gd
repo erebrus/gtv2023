@@ -42,6 +42,11 @@ func place_player() -> void:
 	Events.checkpoint_entered.emit(entry.name)
 	$player.position = entry.position
 	$player.floor_type = floor_type
+	var a = Globals.level_manager.current_dimension 
+	var b = $player.dimension
+	if Globals.level_manager.current_dimension != $player.dimension:
+		$player.shift()
+	$player.energy = Globals.level_manager.player_energy
 	
 
 func find_entry(node: Node) -> EntryPoint:
