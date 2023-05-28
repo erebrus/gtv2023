@@ -15,7 +15,6 @@ var entry_name := ""
 func _ready():
 	Events.dimension_changed.emit(dimension)
 	Events.dimension_changed.connect(_on_dimension_changed)
-	$player/Camera2D.moved.connect(_on_camera_moved)
 	place_player()
 	fade_in_audio($music,2)
 	fade_in_audio($ambience,.5)
@@ -62,15 +61,13 @@ func _on_dimension_changed(_dimension):
 	dimension = _dimension
 	if dimension == Events.Dimension.MATERIAL:
 		$TileMap.tile_set = MATERIAL_TS
-		$CanvasLayer/Fog.visible = false
+		$Fog.visible = false
 		$CanvasLayer/Tint.visible = false
 		$CanvasModulate.color=Color("777777")
 	else:
 		$TileMap.tile_set = SPECTRAL_TS
-		$CanvasLayer/Fog.visible = true
+		$Fog.visible = true
 		$CanvasLayer/Tint.visible = true
 		$CanvasModulate.color=Color("aaaaaa")
 	
 
-func _on_camera_moved():
-	$CanvasLayer/Fog.material.set_shader_parameter("offset", $player/Camera2D.global_position)
