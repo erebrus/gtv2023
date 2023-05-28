@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb3c7fosnhqvl"]
+[gd_scene load_steps=20 format=3 uid="uid://bb3c7fosnhqvl"]
 
 [ext_resource type="Script" path="res://src/world/map.gd" id="1_5lgg5"]
-[ext_resource type="Texture2D" uid="uid://db8j6t7matswk" path="res://assets/gfx/world/background-moon.png" id="2_mvv4w"]
+[ext_resource type="Texture2D" uid="uid://dicelc367x7mo" path="res://assets/gfx/world/background-sky.png" id="2_6psdx"]
+[ext_resource type="Texture2D" uid="uid://dq128lfllhqpo" path="res://assets/gfx/world/moon.png" id="3_5kk2p"]
 [ext_resource type="Texture2D" uid="uid://5xa7y7bnecv3" path="res://assets/gfx/world/background-hill.png" id="3_xeoqh"]
 [ext_resource type="Texture2D" uid="uid://dtvlqd24di6fi" path="res://assets/gfx/world/midground.png" id="4_qvkpf"]
 [ext_resource type="Texture2D" uid="uid://cu8bxbbqr48pb" path="res://assets/gfx/world/midground-bigtree.png" id="5_i028y"]
@@ -41,11 +42,26 @@ default_entry = NodePath("DefaultEntryPoint")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0.2)
+motion_mirroring = Vector2(1920, 2160)
+
+[node name="LowerSky" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+texture = ExtResource("2_6psdx")
+centered = false
+
+[node name="UpperSky" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+position = Vector2(0, -1080)
+texture = ExtResource("2_6psdx")
+centered = false
+flip_v = true
+
+[node name="MoonLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0.2)
 
-[node name="BackgroundMoon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("2_mvv4w")
+[node name="Moon" type="Sprite2D" parent="ParallaxBackground/MoonLayer"]
+position = Vector2(1546, 182)
+texture = ExtResource("3_5kk2p")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
