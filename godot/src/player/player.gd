@@ -65,7 +65,8 @@ var controller
 @onready var sfx_attack_spectral := $sfx/attack_spectral
 @onready var sfx_climb := $sfx/climb
 
-
+@onready var sfx_climb_slide := $sfx/climb_slide
+@onready var sfx_climb_slide_rock := $sfx/climb_slide_rock
 
 
 var can_play_footstep:bool = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=196 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -157,7 +157,9 @@
 [ext_resource type="AudioStream" uid="uid://cwhmsvf44g7li" path="res://assets/sfx/player/Transition_material_to_spectral_4.wav" id="155_dg3gs"]
 [ext_resource type="AudioStream" uid="uid://b3v3a82gxo2jt" path="res://assets/sfx/player/Transition_spectral_to_material_1.wav" id="158_3c718"]
 [ext_resource type="AudioStream" uid="uid://bvwir6jdap7to" path="res://assets/sfx/player/Transition_spectral_to_material_2.wav" id="159_dgory"]
+[ext_resource type="AudioStream" uid="uid://2jy2uid0us1s" path="res://assets/sfx/player/skeleton/Skeleton_grad_loop_grasswall.wav" id="159_ta5ph"]
 [ext_resource type="AudioStream" uid="uid://dgxvmiiko0o6h" path="res://assets/sfx/player/Transition_spectral_to_material_3.wav" id="160_g6e3w"]
+[ext_resource type="AudioStream" uid="uid://c3yyuo30hai" path="res://assets/sfx/player/skeleton/Skeleton_grad_loop_rockwall.wav" id="160_tdcwc"]
 [ext_resource type="AudioStream" uid="uid://e1nlklmd1qq7" path="res://assets/sfx/player/Transition_spectral_to_material_4.wav" id="161_pl3q0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
@@ -1751,6 +1753,12 @@ stream = SubResource("AudioStreamRandomizer_x700v")
 
 [node name="decay" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_0oswf")
+
+[node name="climb_slide" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("159_ta5ph")
+
+[node name="climb_slide_rock" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("160_tdcwc")
 
 [node name="climb_rc" type="RayCast2D" parent="."]
 position = Vector2(0, -56)
