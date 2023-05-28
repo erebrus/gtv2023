@@ -205,6 +205,7 @@ _data = {
 
 [node name="flying_soul" type="CharacterBody2D"]
 collision_layer = 128
+collision_mask = 64
 script = ExtResource("1_2cfk8")
 
 [node name="soul" type="Area2D" parent="."]
