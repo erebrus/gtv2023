@@ -57,9 +57,9 @@ position = Vector2(-888, 1544)
 max_hp = 200
 
 [node name="horned_mouth" parent="." instance=ExtResource("8_r77le")]
-position = Vector2(240, 1008)
+position = Vector2(-256, 1688)
 max_hp = 200
 
 [node name="skull" parent="." instance=ExtResource("9_aqeae")]
-position = Vector2(-656, 1280)
+position = Vector2(64, 1016)
 max_hp = 200

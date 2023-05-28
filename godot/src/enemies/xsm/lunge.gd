@@ -86,6 +86,9 @@ func _on_timeout(_name):
 	if not is_active(name):
 		return
 	owner.in_animation = true
+	var sfx = owner.get_node_or_null("sfx/lunge")
+	if sfx:
+		sfx.play()
 	var impulse:Vector2= 1000*owner.get_facing_direction()+Vector2(0,-owner.v0)
 	Logger.debug("%s lunge vector %s" % [owner.name, impulse])
 	owner.apply_impulse(impulse)
