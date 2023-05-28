@@ -18,6 +18,7 @@ func _on_anim_finished(_name):
 func _on_enter(_args):
 	Logger.debug("hurt sets attack box false")
 	owner.set_attackbox_enabled(false)
+	owner.sfx_hurt.play()
 
 
 # This function is called just after the state enters

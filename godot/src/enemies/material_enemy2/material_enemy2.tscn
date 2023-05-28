@@ -29,7 +29,7 @@
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="22_3s3p0"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="23_ee3ye"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="24_mqhwt"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="25_1ddj7"]
+[ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="30_3o3qi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb0o4"]
 animations = [{
@@ -547,7 +547,8 @@ size = Vector2(704, 154)
 [node name="madmax" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_i5qc2")
-normal_speed = 120.0
+normal_speed = 150.0
+attack_damage = 35.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -97)
@@ -652,7 +653,7 @@ timed = false
 next_state = NodePath("../patrol")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("25_1ddj7")
+script = ExtResource("30_3o3qi")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1

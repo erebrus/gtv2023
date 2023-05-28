@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://nq706ehk3bgf"]
+[gd_scene load_steps=68 format=3 uid="uid://nq706ehk3bgf"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_2kj2q"]
 [ext_resource type="Shader" path="res://src/enemies/flash_hit.gdshader" id="2_wip3f"]
@@ -29,8 +29,22 @@
 [ext_resource type="Script" path="res://src/enemies/xsm/engage.gd" id="24_aq1dp"]
 [ext_resource type="PackedScene" uid="uid://2mlxmfj5brav" path="res://src/enemies/death_particles.tscn" id="24_hr2qr"]
 [ext_resource type="Script" path="res://src/enemies/xsm/death.gd" id="26_qw5hw"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="27_i2scf"]
 [ext_resource type="Script" path="res://src/enemies/xsm/attack.gd" id="29_l5ey4"]
+[ext_resource type="Script" path="res://src/enemies/xsm/hurt.gd" id="31_5budp"]
+[ext_resource type="AudioStream" uid="uid://dqxvt1wkp3a14" path="res://assets/sfx/enemies/Big_mouth_move_1.wav" id="32_7y0gy"]
+[ext_resource type="AudioStream" uid="uid://cvufqkkhwnojy" path="res://assets/sfx/enemies/Big_mouth_attack_1.wav" id="32_j1quw"]
+[ext_resource type="AudioStream" uid="uid://betp56lsyp1vh" path="res://assets/sfx/enemies/Big_mouth_move_2.wav" id="33_118mm"]
+[ext_resource type="AudioStream" uid="uid://bh8u0vb103sdo" path="res://assets/sfx/enemies/Big_mouth_attack_2.wav" id="33_hywoc"]
+[ext_resource type="AudioStream" uid="uid://bgcem51ouabgy" path="res://assets/sfx/enemies/Big_mouth_attack_3.wav" id="34_qdumx"]
+[ext_resource type="AudioStream" uid="uid://7myt7xnsuw6q" path="res://assets/sfx/enemies/Big_mouth_move_3.wav" id="34_vrr14"]
+[ext_resource type="AudioStream" uid="uid://clk5nmx8x86h0" path="res://assets/sfx/enemies/Big_mouth_attack_4.wav" id="35_1ds1t"]
+[ext_resource type="AudioStream" uid="uid://dspds1pcske1o" path="res://assets/sfx/enemies/Big_mouth_move_4.wav" id="35_4iadn"]
+[ext_resource type="AudioStream" uid="uid://8f1ren4ol7ct" path="res://assets/sfx/enemies/Big_mouth_death_1.wav" id="36_e0a55"]
+[ext_resource type="AudioStream" uid="uid://dy7iohwjvox4p" path="res://assets/sfx/enemies/Big_mouth_death_2.wav" id="37_1l6bs"]
+[ext_resource type="AudioStream" uid="uid://cnn1s8k011u5p" path="res://assets/sfx/enemies/Big_mouth_hurt_1.wav" id="40_obg0k"]
+[ext_resource type="AudioStream" uid="uid://bea26fts1s1yn" path="res://assets/sfx/enemies/Big_mouth_hurt_2.wav" id="41_7gn3y"]
+[ext_resource type="AudioStream" uid="uid://bloh66j7mn6i7" path="res://assets/sfx/enemies/Big_mouth_hurt_3.wav" id="42_q2pxq"]
+[ext_resource type="AudioStream" uid="uid://cexddi677bbam" path="res://assets/sfx/enemies/Big_mouth_hurt_4.wav" id="43_sin4n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0sq4v"]
 shader = ExtResource("2_wip3f")
@@ -675,14 +689,56 @@ _data = {
 "right": SubResource("Animation_6jy6f")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_enr8l"]
+streams_count = 4
+stream_0/stream = ExtResource("32_7y0gy")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("33_118mm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("34_vrr14")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("35_4iadn")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5t2vu"]
+streams_count = 4
+stream_0/stream = ExtResource("32_j1quw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("33_hywoc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("34_qdumx")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("35_1ds1t")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rtio4"]
+streams_count = 4
+stream_0/stream = ExtResource("40_obg0k")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("41_7gn3y")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("42_q2pxq")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("43_sin4n")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6i4ed"]
+streams_count = 2
+stream_0/stream = ExtResource("36_e0a55")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("37_1l6bs")
+stream_1/weight = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3a00"]
 size = Vector2(640, 178)
 
 [node name="horned_mouth" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_2kj2q")
+max_hp = 250
 normal_speed = 70.0
 engage_speed = 300.0
+attack_damage = 40.0
 knockback = 80.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -783,7 +839,7 @@ timed = false
 next_state = NodePath("../patrol")
 
 [node name="hurt" type="Node" parent="xsm"]
-script = ExtResource("27_i2scf")
+script = ExtResource("31_5budp")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
 anim_times_to_play = 1
@@ -797,15 +853,18 @@ next_state = NodePath("../patrol")
 [node name="sfx" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_enr8l")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_5t2vu")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_rtio4")
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_6i4ed")
 
 [node name="timer_fs" type="Timer" parent="sfx"]
-wait_time = 0.3
 one_shot = true
 
 [node name="floor_rc" type="RayCast2D" parent="."]
