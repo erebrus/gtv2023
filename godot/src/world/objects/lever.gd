@@ -1,6 +1,6 @@
 extends Area2D
 
-signal switched(value:bool)
+signal switched(value:bool, muted:bool)
 
 @export var value := false
 
@@ -8,21 +8,23 @@ var player
 
 func _ready():
 	if value:
-		interact()
+		interact(true)
 	Events.dimension_changed.connect(_on_dimension_changed)		
 
 
-func interact():
+func interact(mute:=false):
 	
 	value = not value
 	Logger.debug("%s switched . new value=%s" % [name, value])
-	switched.emit(value)
+	switched.emit(value, mute)
 	if value:
 		$sprite.play("on")
-		$sfx_on.play()
+		if not mute:
+			$sfx_on.play()
 	else:
 		$sprite.play("off")
-		$sfx_off.play()
+		if not mute:
+			$sfx_off.play()
 		
 func _on_dimension_changed(dimension):	
 	if dimension == Events.Dimension.SPECTRAL and player:

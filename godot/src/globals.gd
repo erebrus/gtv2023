@@ -40,17 +40,31 @@ func _ready():
 	Logger.info("Init complete.")
 
 
-func start_game_music()->void:
-	if not music.playing:
-		music.volume_db=-80
-		music.play()
-		var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
-		tween.tween_property(music, "volume_db",-15.0, 1)
-		game_music_on = true
+	
+	
+func fade_in_audio(audio, period):
+	if not audio:
+		Logger.warn("can't find audio")
+		return
+	var ori_volume = audio.volume_db
+	audio.volume_db = -80
+	audio.play()
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).\
+		tween_property(audio, "volume_db", ori_volume, period)
 
+func start_game_music()->void:
+	if not $music.playing:
+		fade_in_audio($music, 2)
+
+func start_ambience()->void:
+	if not $ambience.playing:
+		fade_in_audio($ambience, .5)
+
+func stop_ambience():
+	$ambience.stop()		
 
 func stop_game_music()->void:
-	music.stop()
+	$music.stop()
 	game_music_on = false
 		
 func _init_logger():

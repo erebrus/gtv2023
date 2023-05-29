@@ -15,21 +15,10 @@ var entry_name := ""
 func _ready():
 	Events.dimension_changed.emit(dimension)
 	Events.dimension_changed.connect(_on_dimension_changed)
-	$player/Camera2D.moved.connect(_on_camera_moved)
 	place_player()
-	fade_in_audio($music,2)
-	fade_in_audio($ambience,.5)
+	Globals.start_ambience()
+	Globals.start_game_music()
 	
-	
-func fade_in_audio(audio, period):
-	if not audio:
-		Logger.warn("can't find audio")
-		return
-	var ori_volume = audio.volume_db
-	audio.volume_db = -80
-	audio.play()
-	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).\
-		tween_property(audio, "volume_db", ori_volume, period)
 		
 		
 func place_player() -> void:
@@ -41,8 +30,16 @@ func place_player() -> void:
 	
 	assert(entry != null)
 	Events.checkpoint_entered.emit(entry.name)
-	$player.position = entry.position
+	$player.global_position = entry.global_position
+	$player.velocity = entry.initial_velocity
+	if entry.initial_velocity.x<0:
+		$player/DirAnimationPlayer.play("left")
 	$player.floor_type = floor_type
+	var a = Globals.level_manager.current_dimension 
+	var b = $player.dimension
+	if Globals.level_manager.current_dimension != $player.dimension:
+		$player.shift()
+	$player.energy = Globals.level_manager.player_energy
 	
 
 func find_entry(node: Node) -> EntryPoint:
@@ -62,15 +59,13 @@ func _on_dimension_changed(_dimension):
 	dimension = _dimension
 	if dimension == Events.Dimension.MATERIAL:
 		$TileMap.tile_set = MATERIAL_TS
-		$CanvasLayer/Fog.visible = false
+		$Fog.visible = false
 		$CanvasLayer/Tint.visible = false
 		$CanvasModulate.color=Color("777777")
 	else:
 		$TileMap.tile_set = SPECTRAL_TS
-		$CanvasLayer/Fog.visible = true
+		$Fog.visible = true
 		$CanvasLayer/Tint.visible = true
 		$CanvasModulate.color=Color("aaaaaa")
 	
 
-func _on_camera_moved():
-	$CanvasLayer/Fog.material.set_shader_parameter("offset", $player/Camera2D.global_position)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gtv 2023"
-run/main_scene="res://src/world/levels/cemetery_1b.tscn"
+run/main_scene="res://src/world/levels/cemetery_1.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,7 +37,7 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/ActionIcon/plugin.cfg")
 
 [input]
 

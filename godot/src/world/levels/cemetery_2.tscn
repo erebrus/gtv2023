@@ -1,0 +1,233 @@
+[gd_scene load_steps=17 format=3 uid="uid://ck5f5sbotbvnr"]
+
+[ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_w7wvu"]
+[ext_resource type="PackedScene" uid="uid://bu8wshacdok4h" path="res://src/world/objects/entries_exits/exit.tscn" id="2_1tvjm"]
+[ext_resource type="PackedScene" uid="uid://clprbj8wniwr3" path="res://src/world/objects/cemetery_lamp.tscn" id="2_b43mo"]
+[ext_resource type="PackedScene" uid="uid://bx4w0kkvkxi1h" path="res://src/world/objects/vanishing_platform.tscn" id="3_26dmk"]
+[ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="4_g7t4p"]
+[ext_resource type="PackedScene" uid="uid://dhfxt5rljo6ym" path="res://src/world/objects/void.tscn" id="5_fe7fw"]
+[ext_resource type="PackedScene" uid="uid://begnodro4vnqi" path="res://src/world/objects/dimension_platform.tscn" id="6_5ohjn"]
+[ext_resource type="PackedScene" uid="uid://b5t4kdlklyncl" path="res://src/world/objects/plate.tscn" id="7_ksiab"]
+[ext_resource type="PackedScene" uid="uid://dpudj0xpknfld" path="res://src/enemies/material_enemy2/material_enemy2.tscn" id="8_0fkuf"]
+[ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="9_au7l8"]
+[ext_resource type="PackedScene" uid="uid://7hbrjsfhdb7d" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="10_ynllm"]
+[ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="11_towms"]
+[ext_resource type="PackedScene" uid="uid://63bjkocof0r7" path="res://src/world/objects/soul_spawner.tscn" id="12_evmyq"]
+[ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="13_5ylh5"]
+[ext_resource type="PackedScene" uid="uid://bwvsijmudr5kj" path="res://src/world/objects/checkpoint/checkpoint.tscn" id="14_brsmk"]
+[ext_resource type="PackedScene" uid="uid://mlduv3a8ecdl" path="res://src/world/objects/soul_anchor.tscn" id="15_d3nn6"]
+
+[node name="cemetery_2" instance=ExtResource("1_w7wvu")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6, 589826, 65536, 5, 589825, 65536, 5, 589824, 65536, 5, 589827, 65536, 5, 589828, 65536, 5, 589829, 65536, 5, 655359, 65536, 5, 655358, 65536, 5, 655357, 65536, 5, 655356, 65536, 5, 458749, 131072, 65538, 393216, 262144, 65538, 458750, 65536, 65541, 458751, 65536, 65541, 327680, 262144, 4, 262144, 262144, 4, 196608, 262144, 4, 131072, 262144, 4, 65536, 262144, 4, 0, 262144, 4, -65536, 262144, 4, 393213, 131072, 4, 327677, 131072, 4, 262141, 131072, 4, 196605, 131072, 4, 131069, 131072, 4, 65533, 131072, 4, -3, 131072, 4, -196611, 131072, 4, -131075, 131072, 4, -65539, 131072, 4, -262144, 262144, 4, -196608, 262144, 4, -131072, 262144, 4, 393215, 524288, 6, 327679, 524288, 6, 262143, 524288, 6, 196607, 524288, 6, -196610, 524288, 6, -131074, 524288, 6, -65538, 524288, 6, -65537, 524288, 6, -131073, 524288, 6, -196609, 524288, 6, -1, 524288, 6, 65535, 524288, 6, 131071, 524288, 6, 65534, 524288, 6, -2, 524288, 6, 131070, 524288, 6, 196606, 524288, 6, 262142, 524288, 6, 327678, 524288, 6, 393214, 524288, 6, 589830, 131072, 5, 524294, 131072, 2, 524295, 196608, 2, 524296, 196608, 2, 524297, 262144, 2, 589833, 262144, 5, 589834, 327680, 5, 589835, 327680, 5, 589836, 327680, 5, 589837, 327680, 5, 589838, 327680, 5, 589839, 327680, 5, 589840, 262144, 2, 327692, 131072, 0, 327693, 196608, 0, 327694, 262144, 0, 327695, 393216, 0, 393217, 131072, 0, 393218, 196608, 0, 393219, 262144, 0, 393220, 393216, 0, 655376, 262144, 3, 720912, 262144, 3, 786448, 262144, 3, 851984, 262144, 3, 589845, 131072, 2, 589846, 196608, 2, 589847, 196608, 2, 589848, 196608, 2, 589849, 196608, 2, 655381, 131072, 3, 720917, 131072, 3, 786453, 131072, 3, 589850, 131072, 5, 524314, 131072, 3, 458778, 131072, 2, 458779, 196608, 2, 458780, 196608, 2, 458781, 196608, 2, 458782, 196608, 2, 655393, 262144, 3, 458783, 262144, 2, 524319, 262144, 3, 589855, 262144, 3, 196630, 131072, 0, 196631, 196608, 0, 196632, 393216, 0, 327703, 131072, 0, 327704, 196608, 0, 327705, 393216, 0, 65553, 262144, 0, 65554, 196608, 0, 65555, 262144, 0, 65556, 327680, 0, 65557, 393216, 0, 65552, 196608, 0, 65551, 131072, 0, 196649, 131072, 2, 196650, 196608, 2, 196651, 196608, 2, 196652, 196608, 2, 196653, 196608, 2, 196654, 196608, 2, 262185, 131072, 3, 327721, 131072, 3, 393257, 131072, 3, 196655, 196608, 2, 458793, 131072, 4, 524329, 131072, 4, 589865, 131072, 4, 655401, 131072, 4, 720937, 131072, 4, 720892, 327680, 6, 720893, 327680, 6, 720894, 327680, 6, 720895, 327680, 6, 655360, 327680, 6, 655361, 327680, 6, 655362, 327680, 6, 655363, 327680, 6, 655364, 327680, 6, 655365, 327680, 6, 655366, 327680, 6, 655369, 327680, 6, 655370, 327680, 6, 655371, 327680, 6, 655372, 327680, 6, 655373, 327680, 6, 655374, 327680, 6, 655382, 327680, 6, 655383, 327680, 6, 655384, 327680, 6, 655385, 327680, 6, 524316, 327680, 6, 524317, 327680, 6, 262187, 327680, 6, 262188, 327680, 6, 262189, 327680, 6, 262190, 327680, 6, 262191, 327680, 6, 589831, 65536, 6, 589832, 720896, 6, 655375, 720896, 6, 524318, 720896, 6, 524315, 65536, 6, 655386, 131072, 6, 327723, 524288, 6, 393259, 524288, 6, 458795, 524288, 6, 524331, 524288, 6, 327724, 524288, 6, 393260, 524288, 6, 458796, 524288, 6, 524332, 524288, 6, 327725, 524288, 6, 393261, 524288, 6, 458797, 524288, 6, 524333, 524288, 6, 327726, 524288, 6, 393262, 524288, 6, 458798, 524288, 6, 524334, 524288, 6, 327727, 524288, 6, 393263, 524288, 6, 458799, 524288, 6, 524335, 524288, 6, 589867, 524288, 6, 655403, 524288, 6, 720939, 524288, 6, 786475, 524288, 6, 589868, 524288, 6, 655404, 524288, 6, 720940, 524288, 6, 786476, 524288, 6, 589869, 524288, 6, 655405, 524288, 6, 720941, 524288, 6, 786477, 524288, 6, 589870, 524288, 6, 655406, 524288, 6, 720942, 524288, 6, 786478, 524288, 6, 589871, 524288, 6, 655407, 524288, 6, 720943, 524288, 6, 786479, 524288, 6, 589872, 524288, 6, 655408, 524288, 6, 720944, 524288, 6, 786480, 524288, 6, 589852, 524288, 6, 655388, 524288, 6, 589853, 524288, 6, 655389, 524288, 6, 720919, 524288, 6, 786455, 524288, 6, 720920, 524288, 6, 786456, 524288, 6, 720921, 524288, 6, 786457, 524288, 6, 720922, 524288, 6, 786458, 524288, 6, 720923, 524288, 6, 786459, 524288, 6, 720924, 524288, 6, 786460, 524288, 6, 720925, 524288, 6, 786461, 524288, 6, 720906, 524288, 6, 786442, 524288, 6, 851978, 524288, 6, 720907, 524288, 6, 786443, 524288, 6, 851979, 524288, 6, 720908, 524288, 6, 786444, 524288, 6, 851980, 524288, 6, 720909, 524288, 6, 786445, 524288, 6, 851981, 524288, 6, 720910, 524288, 6, 786446, 524288, 6, 851982, 524288, 6, 720899, 524288, 6, 786435, 524288, 6, 851971, 524288, 6, 720900, 524288, 6, 786436, 524288, 6, 851972, 524288, 6, 720901, 524288, 6, 786437, 524288, 6, 851973, 524288, 6, 720902, 524288, 6, 786438, 524288, 6, 851974, 524288, 6, 720903, 524288, 6, 786439, 524288, 6, 851975, 524288, 6, 720904, 524288, 6, 786440, 524288, 6, 851976, 524288, 6, 720905, 524288, 6, 786441, 524288, 6, 851977, 524288, 6, 720896, 524288, 6, 851970, 524288, 6, 786434, 524288, 6, 720898, 524288, 6, 720897, 524288, 6, 786432, 524288, 6, 851968, 524288, 6, 851969, 524288, 6, 786433, 524288, 6, 786428, 524288, 6, 851965, 524288, 6, 851966, 524288, 6, 917503, 524288, 6, 851964, 524288, 6, 917500, 524288, 6, 786429, 524288, 6, 917501, 524288, 6, 786430, 524288, 6, 917502, 524288, 6, 786431, 524288, 6, 851967, 524288, 6, 655391, 262144, 3, 720927, 262144, 3, 786463, 262144, 3, 720911, 458752, 2, 786447, 458752, 2, 851983, 458752, 2, 589854, 458752, 2, 655390, 458752, 2, 720926, 458752, 2, 786462, 458752, 2, 720918, 393216, 2, 786454, 393216, 2, 655367, 458752, 6, 655368, 655360, 6, 655387, 458752, 6, 589851, 393216, 3, 327722, 393216, 3, 393258, 393216, 3, 458794, 393216, 3, 524330, 393216, 3, 589866, 393216, 3, 655402, 393216, 3, 720938, 393216, 3, 262186, 65536, 6)
+metadata/_edit_lock_ = true
+
+[node name="cemetery_lamp" parent="TileMap" index="0" instance=ExtResource("2_b43mo")]
+position = Vector2(676, 931)
+
+[node name="cemetery_lamp2" parent="TileMap" index="1" instance=ExtResource("2_b43mo")]
+position = Vector2(1829, 400)
+
+[node name="cemetery_lamp3" parent="TileMap" index="2" instance=ExtResource("2_b43mo")]
+position = Vector2(2945, 150)
+
+[node name="cemetery_lamp4" parent="TileMap" index="3" instance=ExtResource("2_b43mo")]
+position = Vector2(3880, 669)
+
+[node name="cemetery_lamp6" parent="TileMap" index="4" instance=ExtResource("2_b43mo")]
+position = Vector2(5369, 154)
+
+[node name="cemetery_lamp5" parent="TileMap" index="5" instance=ExtResource("2_b43mo")]
+position = Vector2(2817, 931)
+
+[node name="player" parent="." index="3"]
+energy_decay = 2.0
+energy_override = false
+
+[node name="Camera2D" parent="player" index="12"]
+limit_right = 5568
+
+[node name="DefaultEntryPoint" parent="." index="7"]
+position = Vector2(136, 1208)
+
+[node name="Exit" parent="." index="9" instance=ExtResource("2_1tvjm")]
+position = Vector2(-136, 1016)
+next_level = "res://src/world/levels/cemetery_1.tscn"
+entry_point = "EntryC2"
+extents = Vector2(128, 128)
+
+[node name="vanishing_platform" parent="." index="10" instance=ExtResource("3_26dmk")]
+position = Vector2(1088, 688)
+
+[node name="lever" parent="." index="11" instance=ExtResource("4_g7t4p")]
+position = Vector2(1784, 1216)
+
+[node name="void" parent="." index="12" instance=ExtResource("5_fe7fw")]
+position = Vector2(2202, 1423.66)
+
+[node name="void2" parent="." index="13" instance=ExtResource("5_fe7fw")]
+position = Vector2(2391.68, 1416)
+
+[node name="void3" parent="." index="14" instance=ExtResource("5_fe7fw")]
+position = Vector2(2591.68, 1416)
+
+[node name="void4" parent="." index="15" instance=ExtResource("5_fe7fw")]
+position = Vector2(4144, 1415.66)
+
+[node name="void5" parent="." index="16" instance=ExtResource("5_fe7fw")]
+position = Vector2(4333.68, 1408)
+
+[node name="void6" parent="." index="17" instance=ExtResource("5_fe7fw")]
+position = Vector2(4533.68, 1408)
+
+[node name="void7" parent="." index="18" instance=ExtResource("5_fe7fw")]
+position = Vector2(4720, 1407.66)
+
+[node name="void8" parent="." index="19" instance=ExtResource("5_fe7fw")]
+position = Vector2(4909.68, 1400)
+
+[node name="void9" parent="." index="20" instance=ExtResource("5_fe7fw")]
+position = Vector2(5109.68, 1400)
+
+[node name="vanishing_platform2" parent="." index="21" instance=ExtResource("3_26dmk")]
+position = Vector2(4784, 464)
+
+[node name="dimension_platform" parent="." index="22" instance=ExtResource("6_5ohjn")]
+position = Vector2(4248, 704)
+dimension = 2
+
+[node name="plate" parent="." index="23" instance=ExtResource("7_ksiab")]
+position = Vector2(2416, 174)
+time = 5.0
+
+[node name="madmax" parent="." index="24" instance=ExtResource("8_0fkuf")]
+position = Vector2(2192, 154)
+
+[node name="Exit2" parent="." index="25" instance=ExtResource("2_1tvjm")]
+position = Vector2(5728, 320)
+next_level = "res://src/world/levels/cemetery_1.tscn"
+extents = Vector2(64, 376)
+
+[node name="madmax2" parent="." index="26" instance=ExtResource("8_0fkuf")]
+position = Vector2(1504, 1200)
+
+[node name="EntryC3" parent="." index="27" instance=ExtResource("9_au7l8")]
+position = Vector2(5456, 328)
+
+[node name="enemy_spawner2" parent="." index="28" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(2599.49, 96.6011)
+enemy_scene = ExtResource("8_0fkuf")
+current_enemy = NodePath("../madmax")
+
+[node name="enemy_spawner3" parent="." index="29" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(3280, 1144)
+enemy_scene = ExtResource("11_towms")
+current_enemy = NodePath("../bone_bug")
+
+[node name="enemy_spawner4" parent="." index="30" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(3536, 888)
+enemy_scene = ExtResource("11_towms")
+current_enemy = NodePath("bone_bug")
+
+[node name="bone_bug" parent="enemy_spawner4" index="1" instance=ExtResource("11_towms")]
+position = Vector2(203.488, 28.6011)
+
+[node name="enemy_spawner" parent="." index="31" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(1341.49, 1086.6)
+enemy_scene = ExtResource("8_0fkuf")
+current_enemy = NodePath("../madmax2")
+
+[node name="bone_bug" parent="." index="32" instance=ExtResource("11_towms")]
+position = Vector2(3096, 1200)
+
+[node name="flying_soul" parent="." index="33" instance=ExtResource("13_5ylh5")]
+position = Vector2(808, 437)
+
+[node name="flying_soul2" parent="." index="34" instance=ExtResource("13_5ylh5")]
+position = Vector2(1368, 480)
+
+[node name="flying_soul3" parent="." index="35" instance=ExtResource("13_5ylh5")]
+position = Vector2(3048, 944)
+
+[node name="flying_soul4" parent="." index="36" instance=ExtResource("13_5ylh5")]
+position = Vector2(3672, 504)
+
+[node name="Checkpoint" parent="." index="37" instance=ExtResource("14_brsmk")]
+position = Vector2(1713.29, 584.601)
+
+[node name="Checkpoint2" parent="." index="38" instance=ExtResource("14_brsmk")]
+position = Vector2(3216, 584)
+
+[node name="soul_anchors" type="Node2D" parent="." index="39"]
+
+[node name="soul_spawner" parent="soul_anchors" index="0" instance=ExtResource("12_evmyq")]
+position = Vector2(568, 664)
+
+[node name="soul_spawner2" parent="soul_anchors" index="1" instance=ExtResource("12_evmyq")]
+position = Vector2(1360, 448)
+max_period = 15.0
+
+[node name="soul_spawner3" parent="soul_anchors" index="2" instance=ExtResource("12_evmyq")]
+position = Vector2(1864, 608)
+max_period = 15.0
+
+[node name="soul_spawner4" parent="soul_anchors" index="3" instance=ExtResource("12_evmyq")]
+position = Vector2(3608, 712)
+max_period = 15.0
+
+[node name="soul_spawner5" parent="soul_anchors" index="4" instance=ExtResource("12_evmyq")]
+position = Vector2(2992, 957)
+max_period = 15.0
+
+[node name="soul_spawner6" parent="soul_anchors" index="5" instance=ExtResource("12_evmyq")]
+position = Vector2(4720, 392)
+max_period = 15.0
+
+[node name="soul_anchor" parent="soul_anchors" index="6" instance=ExtResource("15_d3nn6")]
+position = Vector2(401.29, 668.6)
+
+[node name="soul_anchor2" parent="soul_anchors" index="7" instance=ExtResource("15_d3nn6")]
+position = Vector2(976, 560)
+
+[node name="soul_anchor3" parent="soul_anchors" index="8" instance=ExtResource("15_d3nn6")]
+position = Vector2(1248, 552)
+
+[node name="soul_anchor4" parent="soul_anchors" index="9" instance=ExtResource("15_d3nn6")]
+position = Vector2(1696, 560)
+
+[node name="soul_anchor5" parent="soul_anchors" index="10" instance=ExtResource("15_d3nn6")]
+position = Vector2(2064, 56)
+
+[node name="soul_anchor6" parent="soul_anchors" index="11" instance=ExtResource("15_d3nn6")]
+position = Vector2(3008, 312)
+
+[node name="soul_anchor7" parent="soul_anchors" index="12" instance=ExtResource("15_d3nn6")]
+position = Vector2(3048, 1008)
+
+[node name="soul_anchor8" parent="soul_anchors" index="13" instance=ExtResource("15_d3nn6")]
+position = Vector2(1912, 992)
+
+[node name="soul_anchor9" parent="soul_anchors" index="14" instance=ExtResource("15_d3nn6")]
+position = Vector2(1504, 1087)
+
+[node name="soul_anchor10" parent="soul_anchors" index="15" instance=ExtResource("15_d3nn6")]
+position = Vector2(1008, 960)
+
+[node name="soul_anchor11" parent="soul_anchors" index="16" instance=ExtResource("15_d3nn6")]
+position = Vector2(2928, 1064)
+
+[node name="soul_anchor12" parent="soul_anchors" index="17" instance=ExtResource("15_d3nn6")]
+position = Vector2(3280, 904)
+
+[node name="soul_anchor13" parent="soul_anchors" index="18" instance=ExtResource("15_d3nn6")]
+position = Vector2(3752, 656)
+
+[node name="soul_anchor14" parent="soul_anchors" index="19" instance=ExtResource("15_d3nn6")]
+position = Vector2(4256, 480)
+
+[node name="soul_anchor15" parent="soul_anchors" index="20" instance=ExtResource("15_d3nn6")]
+position = Vector2(4008, 832)
+
+[connection signal="switched" from="lever" to="vanishing_platform" method="_on_switched"]
+[connection signal="switched" from="plate" to="vanishing_platform2" method="_on_switched"]

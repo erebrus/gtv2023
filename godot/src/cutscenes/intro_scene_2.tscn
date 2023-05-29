@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4x4c7j3msdyl"]
+
+[ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_uuxtc"]
+[ext_resource type="PackedScene" uid="uid://cf8c0ted5b18f" path="res://src/cutscenes/intro_scene_3.tscn" id="2_vyecs"]
+[ext_resource type="Texture2D" uid="uid://douyvffci3g3y" path="res://assets/gfx/cutscenes/cutscenematerial2.png" id="2_w2vla"]
+
+[node name="intro_scene2" instance=ExtResource("1_uuxtc")]
+next_scene = ExtResource("2_vyecs")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_w2vla")
+
+[node name="Label" parent="CanvasLayer/MarginContainer" index="0"]
+text = "The necromancer, in his hubris, summoned a power he could not tame and so he retreated back to his castle unaware of the consequences of his failure."
