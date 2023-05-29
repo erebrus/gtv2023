@@ -628,6 +628,7 @@ size = Vector2(704, 154)
 [node name="madmax" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 32
 script = ExtResource("1_i5qc2")
+max_hp = 150
 normal_speed = 150.0
 attack_damage = 35.0
 dimension = 1

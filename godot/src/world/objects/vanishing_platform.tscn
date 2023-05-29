@@ -122,6 +122,8 @@ libraries = {
 
 [node name="sfx_spawn" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_1c4e7")
+max_distance = 2500.0
 
 [node name="sfx_despawn" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_cqgo1")
+max_distance = 2500.0

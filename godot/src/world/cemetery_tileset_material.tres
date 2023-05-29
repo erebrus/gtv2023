@@ -1,6 +1,8 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://5oxe38prtvdv"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://5oxe38prtvdv"]
 
 [ext_resource type="Texture2D" uid="uid://bfxx8pm0c4erx" path="res://assets/gfx/world/tilesheet-grass.png" id="1_fxoub"]
+[ext_resource type="PackedScene" uid="uid://c4xpdl0iewkid" path="res://src/world/objects/spikes.tscn" id="2_pd57g"]
+[ext_resource type="PackedScene" uid="uid://cmop5a2h1jss7" path="res://src/world/objects/spikes_2.tscn" id="3_yf6dm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r8nww"]
 texture = ExtResource("1_fxoub")
@@ -200,8 +202,13 @@ texture_region_size = Vector2i(128, 128)
 6:3/0/physics_layer_0/angular_velocity = 0.0
 6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1yklf"]
+scenes/1/scene = ExtResource("2_pd57g")
+scenes/2/scene = ExtResource("3_yf6dm")
+
 [resource]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 49
 sources/0 = SubResource("TileSetAtlasSource_r8nww")
+sources/1 = SubResource("TileSetScenesCollectionSource_1yklf")
