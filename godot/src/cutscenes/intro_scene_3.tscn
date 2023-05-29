@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf8c0ted5b18f"]
+[gd_scene load_steps=6 format=3 uid="uid://cf8c0ted5b18f"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_wqd7q"]
 [ext_resource type="Texture2D" uid="uid://cowu1uxp2eq5g" path="res://assets/gfx/cutscenes/cutscenespectral1.png" id="2_la738"]
 [ext_resource type="PackedScene" uid="uid://pfxt7dy0gd5" path="res://src/cutscenes/intro_scene_4.tscn" id="2_xmqha"]
 [ext_resource type="Texture2D" uid="uid://bh582yla3ptmr" path="res://assets/gfx/cutscenes/cutscene-text/text-3.png" id="4_eae7c"]
+[ext_resource type="AudioStream" uid="uid://myrmswpntim3" path="res://assets/sfx/Voice_text_3.wav" id="5_snski"]
 
 [node name="intro_scene3" instance=ExtResource("1_wqd7q")]
 next_scene = ExtResource("2_xmqha")
@@ -17,5 +18,8 @@ text = "I am but a remnant of the past, trapped between realms, summoned against
 [node name="TextOverlay" parent="CanvasLayer" index="2"]
 texture = ExtResource("4_eae7c")
 
-[node name="FadeRect" parent="CanvasLayer" index="4"]
-visible = true
+[node name="Timer" parent="." index="3"]
+wait_time = 7.0
+
+[node name="voice" parent="." index="4"]
+stream = ExtResource("5_snski")

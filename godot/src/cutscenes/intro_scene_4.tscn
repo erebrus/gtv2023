@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://pfxt7dy0gd5"]
+[gd_scene load_steps=8 format=3 uid="uid://pfxt7dy0gd5"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_exewi"]
 [ext_resource type="PackedScene" uid="uid://c5hhvyp4tivlc" path="res://src/menu/menu.tscn" id="2_1e1mh"]
 [ext_resource type="Texture2D" uid="uid://beqk6fgr8gtm6" path="res://assets/gfx/cutscenes/cutscenespectral2.png" id="2_khhh0"]
 [ext_resource type="Texture2D" uid="uid://brixpe4boqq3n" path="res://assets/gfx/cutscenes/cutscene-text/text-4.png" id="4_1jhdw"]
 [ext_resource type="Texture2D" uid="uid://d0vmv12nn48uh" path="res://assets/gfx/cutscenes/cutscene-text/text-5.png" id="4_lqww1"]
+[ext_resource type="AudioStream" uid="uid://cn7xjkof125qp" path="res://assets/sfx/Voice_text_4.wav" id="6_uevjd"]
+[ext_resource type="AudioStream" uid="uid://dbdlxcynu8c12" path="res://assets/sfx/Voice_text_5.wav" id="7_g8ymn"]
 
 [node name="intro_scene4" instance=ExtResource("1_exewi")]
 next_scene = ExtResource("2_1e1mh")
@@ -22,4 +24,10 @@ texture = ExtResource("4_1jhdw")
 texture = ExtResource("4_lqww1")
 
 [node name="Timer" parent="." index="3"]
-wait_time = 4.0
+wait_time = 8.0
+
+[node name="voice" parent="." index="4"]
+stream = ExtResource("6_uevjd")
+
+[node name="voice2" parent="." index="5"]
+stream = ExtResource("7_g8ymn")

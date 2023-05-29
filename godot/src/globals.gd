@@ -65,7 +65,7 @@ func start_menu_music()->void:
 	if $music.playing:
 		await fade_out_audio($music,.5)
 	if not $menu_music.playing:
-		fade_in_audio($menu_music, 2)
+		fade_in_audio($menu_music, 1)
 			
 func start_game_music()->void:
 	if $menu_music.playing:

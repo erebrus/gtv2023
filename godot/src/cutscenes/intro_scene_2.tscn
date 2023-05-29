@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4x4c7j3msdyl"]
+[gd_scene load_steps=6 format=3 uid="uid://c4x4c7j3msdyl"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_uuxtc"]
 [ext_resource type="PackedScene" uid="uid://cf8c0ted5b18f" path="res://src/cutscenes/intro_scene_3.tscn" id="2_vyecs"]
 [ext_resource type="Texture2D" uid="uid://douyvffci3g3y" path="res://assets/gfx/cutscenes/cutscenematerial2.png" id="2_w2vla"]
 [ext_resource type="Texture2D" uid="uid://cwdjosodrqmut" path="res://assets/gfx/cutscenes/cutscene-text/text-2.png" id="4_0i86i"]
+[ext_resource type="AudioStream" uid="uid://dpbj35rf2mb4i" path="res://assets/sfx/Voice_text_2.wav" id="5_3ks85"]
 
 [node name="intro_scene2" instance=ExtResource("1_uuxtc")]
 next_scene = ExtResource("2_vyecs")
@@ -16,3 +17,9 @@ text = "The necromancer, in his hubris, summoned a power he could not tame and s
 
 [node name="TextOverlay" parent="CanvasLayer" index="2"]
 texture = ExtResource("4_0i86i")
+
+[node name="Timer" parent="." index="3"]
+wait_time = 6.0
+
+[node name="voice" parent="." index="4"]
+stream = ExtResource("5_3ks85")

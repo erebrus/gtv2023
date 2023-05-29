@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqaeh7u8ydda8"]
+[gd_scene load_steps=4 format=3 uid="uid://bqaeh7u8ydda8"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_dxu3i"]
 [ext_resource type="PackedScene" uid="uid://caed7b11qplxa" path="res://src/cutscenes/end_scene_3.tscn" id="2_ja2re"]
+[ext_resource type="AudioStream" uid="uid://c8dm2g5wlqlcm" path="res://assets/sfx/Voice_endtext_2.wav" id="3_f1oin"]
 
 [node name="end_scene_2" instance=ExtResource("1_dxu3i")]
 next_scene = ExtResource("2_ja2re")
+
+[node name="voice" parent="." index="4"]
+stream = ExtResource("3_f1oin")

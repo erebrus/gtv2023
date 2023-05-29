@@ -20,7 +20,9 @@ autoplay = true
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_lir0i")
 volume_db = -20.0
+bus = &"music"
 
 [node name="menu_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yfj3i")
-volume_db = -30.0
+volume_db = -10.0
+bus = &"music"
