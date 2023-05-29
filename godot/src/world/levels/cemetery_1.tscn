@@ -89,8 +89,8 @@ next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "DefaultEntryPoint"
 extents = Vector2(256, 256)
 
-[node name="music" parent="." index="16"]
-volume_db = -80.0
+[node name="DefaultEntryPoint" parent="." index="15"]
+position = Vector2(168, 970)
 
 [node name="TutorialHints" type="CanvasLayer" parent="." index="17"]
 layer = 128
@@ -171,10 +171,7 @@ position = Vector2(8476, 225)
 action = "interact"
 hint = "While in the spectre dimension, you can go through gates."
 
-[node name="DefaultEntryPoint" parent="." index="18"]
-position = Vector2(168, 970)
-
-[node name="EntryC2" parent="." index="20" instance=ExtResource("11_m7vn1")]
+[node name="EntryC2" parent="." index="18" instance=ExtResource("11_m7vn1")]
 position = Vector2(8888, 443)
 initial_velocity = Vector2(-1, 0)
 

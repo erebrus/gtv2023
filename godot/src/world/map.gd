@@ -16,19 +16,9 @@ func _ready():
 	Events.dimension_changed.emit(dimension)
 	Events.dimension_changed.connect(_on_dimension_changed)
 	place_player()
-	fade_in_audio($music,2)
-	fade_in_audio($ambience,.5)
+	Globals.start_ambience()
+	Globals.start_game_music()
 	
-	
-func fade_in_audio(audio, period):
-	if not audio:
-		Logger.warn("can't find audio")
-		return
-	var ori_volume = audio.volume_db
-	audio.volume_db = -80
-	audio.play()
-	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).\
-		tween_property(audio, "volume_db", ori_volume, period)
 		
 		
 func place_player() -> void:
