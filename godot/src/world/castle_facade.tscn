@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dafcnb6b7a4pr"]
 
-[ext_resource type="TileSet" uid="uid://dth6pdweh3v1t" path="res://src/world/castle_wall_tileset.tres" id="1_ald2j"]
+[ext_resource type="TileSet" uid="uid://c6xvjlpepp3w1" path="res://src/world/castle_wall.tres" id="1_88l0c"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="3_e3poa"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="4_b2e5o"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="4_b61sh"]
@@ -13,7 +13,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_ald2j")
+tile_set = ExtResource("1_88l0c")
 format = 2
 layer_0/tile_data = PackedInt32Array(458752, 18, 0, 458753, 131090, 0, 458754, 131090, 0, 458755, 131090, 0, 458756, 131090, 0, 458757, 131090, 0, 458758, 131090, 0, 458759, 131090, 0, 458760, 131090, 0, 458761, 131090, 0, 458762, 131090, 0, 458763, 131090, 0, 458764, 65554, 0, 393217, 131090, 1, 393218, 131090, 1, 393219, 131090, 1, 393220, 131090, 1, 393221, 131090, 1, 393222, 131090, 1, 65537, 131090, 1, 131073, 131090, 1, 196609, 131090, 1, 262145, 131090, 1, 327681, 131090, 1, 65538, 131090, 1, 131074, 131090, 1, 196610, 131090, 1, 262146, 131090, 1, 327682, 131090, 1, 65539, 131090, 1, 131075, 131090, 1, 196611, 131090, 1, 262147, 131090, 1, 327683, 131090, 1, 65540, 131090, 1, 131076, 131090, 1, 196612, 131090, 1, 262148, 131090, 1, 327684, 131090, 1, 65541, 131090, 1, 131077, 131090, 1, 196613, 131090, 1, 262149, 131090, 1, 327685, 131090, 1, 65542, 131090, 1, 131078, 131090, 1, 196614, 131090, 1, 262150, 131090, 1, 327686, 131090, 1, 65543, 131090, 1, 131079, 131090, 1, 196615, 131090, 1, 262151, 131090, 1, 327687, 131090, 1, 393223, 131090, 1, 65544, 131090, 1, 131080, 131090, 1, 196616, 131090, 1, 262152, 131090, 1, 327688, 131090, 1, 393224, 131090, 1, 65545, 131090, 1, 131081, 131090, 1, 196617, 131090, 1, 262153, 131090, 1, 327689, 131090, 1, 393225, 131090, 1, 65546, 131090, 1, 131082, 131090, 1, 196618, 131090, 1, 262154, 131090, 1, 327690, 131090, 1, 393226, 131090, 1, 65547, 131090, 1, 131083, 131090, 1, 196619, 131090, 1, 262155, 131090, 1, 327691, 131090, 1, 393227, 131090, 1, 65536, 18, 1, 131072, 18, 1, 196608, 18, 1, 262144, 18, 1, 327680, 18, 1, 393216, 18, 1, 65548, 65554, 1, 131084, 65554, 1, 196620, 65554, 1, 262156, 65554, 1, 327692, 65554, 1, 393228, 65554, 1)
 
@@ -39,13 +39,13 @@ layer_0/tile_data = PackedInt32Array(262144, 0, 5, 327680, 131072, 3, 262145, 65
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_vyrmx")]
 
 [node name="madmax" parent="." instance=ExtResource("7_gou82")]
-position = Vector2(256, 1008)
+position = Vector2(192, 984)
 max_hp = 200
 
 [node name="horned_mouth" parent="." instance=ExtResource("8_r77le")]
-position = Vector2(-256, 1688)
+position = Vector2(88, 1512)
 max_hp = 200
 
 [node name="skull" parent="." instance=ExtResource("9_aqeae")]
-position = Vector2(-592, 1320)
+position = Vector2(-408, 1504)
 max_hp = 200

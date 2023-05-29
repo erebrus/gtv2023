@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://da6t2oxolyntp"]
+
+[ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_d1p5o"]
+[ext_resource type="TileSet" uid="uid://c6xvjlpepp3w1" path="res://src/world/castle_wall.tres" id="2_xwfjj"]
+[ext_resource type="PackedScene" uid="uid://bu8wshacdok4h" path="res://src/world/objects/entries_exits/exit.tscn" id="3_nhm5p"]
+[ext_resource type="PackedScene" uid="uid://dhfxt5rljo6ym" path="res://src/world/objects/void.tscn" id="4_svfdb"]
+[ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="5_0tbwh"]
+[ext_resource type="PackedScene" uid="uid://begnodro4vnqi" path="res://src/world/objects/dimension_platform.tscn" id="6_y3esr"]
+[ext_resource type="PackedScene" uid="uid://b4rp8kon01pxp" path="res://src/world/objects/elevator.tscn" id="7_vbicq"]
+[ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="8_kyloq"]
+[ext_resource type="PackedScene" uid="uid://dhcrxigf3bn17" path="res://src/world/objects/front_gate.tscn" id="9_33n2r"]
+[ext_resource type="PackedScene" uid="uid://b5t4kdlklyncl" path="res://src/world/objects/plate.tscn" id="10_u3ccx"]
+
+[node name="cemetery_3" instance=ExtResource("1_d1p5o")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6, 655357, 327680, 6, 655358, 327680, 6, 655359, 327680, 6, 589824, 327680, 6, 589825, 327680, 6, 589826, 327680, 6, 589827, 327680, 6, 589828, 327680, 6, 589829, 327680, 6, 589821, 327680, 5, 589822, 327680, 5, 589823, 327680, 5, 524288, 327680, 5, 524289, 327680, 5, 524290, 327680, 5, 524291, 327680, 5, 524292, 327680, 5, 524293, 327680, 5, 524294, 327680, 5, 589830, 327680, 6, 524295, 327680, 5, 589831, 327680, 6, 524296, 327680, 5, 589832, 327680, 6, 524297, 327680, 5, 589833, 327680, 6, 524298, 327680, 5, 589834, 327680, 6, 458756, 1, 131072, 458757, 1, 131072, 458758, 1, 131072, 458759, 1, 131072, 524299, 327680, 5, 393227, 131072, 65538, 327691, 131072, 4, 262155, 131072, 3, 196619, 131072, 3, 458762, 1, 131072, 458761, 1, 131072, 458760, 1, 131072, 393223, 131072, 0, 393224, 196608, 0, 393225, 393216, 0, 393230, 262144, 65538, 393228, 65536, 65541, 393229, 65536, 65541, 131083, 131072, 3, 65547, 131072, 3, 11, 131072, 2, 262156, 393216, 3, 262157, 458752, 3, 327692, 393216, 3, 327693, 458752, 3, 196620, 393216, 3, 196621, 458752, 3, 131084, 393216, 3, 131085, 458752, 3, 65548, 393216, 3, 65549, 458752, 3, 12, 196608, 2, 13, 196608, 2, 327694, 262144, 4, 262158, 262144, 4, 196622, 262144, 4, 131086, 262144, 4, 65550, 262144, 4, 14, 262144, 2, 589835, 327680, 6, 524300, 327680, 5, 589836, 327680, 6, 524301, 327680, 5, 589837, 720896, 6, 524302, 786432, 5, 589838, 786432, 6, 655374, 262144, 4, 720910, 262144, 4, 786446, 262144, 4, 655373, 458752, 2, 720909, 458752, 2, 786445, 458752, 2, 458763, 1, 131072, 458764, 1, 131072, 458765, 1, 131072, -131066, 131072, 2, -65530, 131072, 3, 6, 131072, 3, 65542, 131072, 3, 131078, 131072, 3, 196614, 131072, 4, 262150, 131072, 65538, -131065, 196608, 2, -65529, 393216, 3, 7, 393216, 3, 65543, 393216, 3, 131079, 393216, 3, 196615, 393216, 3, 262151, 65536, 65541, -131064, 196608, 2, -65528, 458752, 3, 8, 458752, 3, 65544, 458752, 3, 131080, 458752, 3, 196616, 458752, 3, 262152, 65536, 65541, -131063, 262144, 2, -65527, 262144, 4, 9, 262144, 4, 65545, 262144, 4, 131081, 262144, 4, 196617, 262144, 4, 262153, 262144, 65538, -65540, 131072, 2, -4, 131072, 3, 65532, 131072, 3, 131068, 131072, 3, 196604, 131072, 3, 262140, 131072, 4, 327676, 131072, 65538, -65539, 196608, 2, -3, 393216, 3, 65533, 393216, 3, 131069, 393216, 3, 196605, 393216, 3, 262141, 393216, 3, 327677, 65536, 65541, -65538, 196608, 2, -2, 458752, 3, 65534, 458752, 3, 131070, 458752, 3, 196606, 458752, 3, 262142, 458752, 3, 327678, 65536, 65541, -65537, 262144, 2, -1, 262144, 4, 65535, 262144, 4, 131071, 262144, 4, 196607, 262144, 4, 262143, 262144, 4, 327679, 262144, 65538, 262169, 131072, 0, 262170, 196608, 0, 262171, 393216, 0, 32, 131072, 2, 65568, 131072, 3, 33, 196608, 2, 65569, 393216, 3, 34, 327680, 5, 65570, 327680, 6, 131104, 131072, 3, 196640, 131072, 3, 262176, 131072, 3, 131105, 393216, 3, 196641, 393216, 3, 262177, 393216, 3, 35, 327680, 5, 65571, 327680, 6, 36, 327680, 5, 65572, 327680, 6, 37, 327680, 5, 65573, 720896, 6, 327712, 131072, 3, 393248, 131072, 3, 458784, 131072, 3, 327713, 393216, 3, 393249, 393216, 3, 458785, 393216, 3, 524320, 131072, 3, 589856, 131072, 3, 655392, 131072, 3, 524321, 393216, 3, 589857, 393216, 3, 655393, 393216, 3, 65574, 786432, 6, 38, 786432, 5, 131110, 262144, 4, 196646, 262144, 4, 262182, 262144, 4, 327718, 262144, 4, 393254, 262144, 5, 458790, 262144, 6, 393255, 327680, 5, 458791, 327680, 6, 393256, 327680, 5, 458792, 327680, 6, -65496, 131072, 3, 40, 131072, 3, 65576, 131072, 3, 131112, 131072, 3, 196648, 131072, 4, 262184, 131072, 65538, -65495, 393216, 3, 41, 393216, 3, 65577, 393216, 3, 131113, 393216, 3, 196649, 393216, 3, 262185, 65536, 65541, -65494, 458752, 3, 42, 458752, 3, 65578, 458752, 3, 131114, 458752, 3, 196650, 458752, 3, 262186, 65536, 65541, -65493, 262144, 4, 43, 262144, 4, 65579, 262144, 4, 131115, 262144, 4, 196651, 262144, 4, 262187, 262144, 65538, -131032, 131072, 2, -131031, 196608, 2, -131030, 196608, 2, -131029, 262144, 2, 393257, 327680, 5, 458793, 327680, 6, 393258, 327680, 5, 458794, 327680, 6, 393259, 327680, 5, 458795, 327680, 6, 393260, 327680, 5, 458796, 327680, 6, 393261, 327680, 5, 458797, 327680, 6, 393262, 327680, 5, 458798, 327680, 6, 393263, 327680, 5, 458799, 720896, 6, -131027, 131072, 2, -65491, 131072, 3, 45, 131072, 3, 65581, 131072, 3, 131117, 131072, 3, 196653, 131072, 4, 262189, 131072, 65538, -131026, 196608, 2, -65490, 393216, 3, 46, 393216, 3, 65582, 393216, 3, 131118, 393216, 3, 196654, 393216, 3, 262190, 65536, 65541, -131025, 196608, 2, -65489, 458752, 3, 47, 458752, 3, 65583, 458752, 3, 131119, 458752, 3, 196655, 458752, 3, 262191, 65536, 65541, -131024, 262144, 2, -65488, 262144, 4, 48, 262144, 4, 65584, 262144, 4, 131120, 262144, 4, 196656, 262144, 4, 262192, 262144, 65538, 393264, 786432, 5, 458800, 786432, 6, 327725, 1, 131072, 327726, 1, 131072, 327727, 1, 131072, -131016, 131072, 2, -65480, 131072, 3, 56, 131072, 3, 65592, 131072, 3, 131128, 131072, 3, 196664, 131072, 4, 262200, 131072, 4, 327736, 131072, 4, 393272, 131072, 4, 458808, 131072, 4, -131015, 196608, 2, -65479, 393216, 3, 57, 393216, 3, 65593, 393216, 3, 131129, 393216, 3, 196665, 393216, 3, 262201, 393216, 3, 327737, 393216, 3, 393273, 393216, 3, 458809, 393216, 3, 524344, 131072, 4, 524345, 393216, 3)
+
+[node name="TileMapCastle" type="TileMap" parent="." index="2"]
+tile_set = ExtResource("2_xwfjj")
+format = 2
+
+[node name="Camera2D" parent="player" index="12"]
+limit_top = -1024
+
+[node name="Exit" parent="." index="8" instance=ExtResource("3_nhm5p")]
+position = Vector2(-232, 872)
+next_level = "res://src/world/levels/cemetery_2.tscn"
+entry_point = "EntryC3"
+extents = Vector2(64, 128)
+
+[node name="void_root" type="Node2D" parent="." index="9"]
+position = Vector2(-232, 872)
+
+[node name="void" parent="void_root" index="0" instance=ExtResource("4_svfdb")]
+position = Vector2(2176, 479.66)
+
+[node name="void2" parent="void_root" index="1" instance=ExtResource("4_svfdb")]
+position = Vector2(2365.68, 472)
+
+[node name="void3" parent="void_root" index="2" instance=ExtResource("4_svfdb")]
+position = Vector2(2565.68, 472)
+
+[node name="void4" parent="void_root" index="3" instance=ExtResource("4_svfdb")]
+position = Vector2(2784, 471.66)
+
+[node name="void5" parent="void_root" index="4" instance=ExtResource("4_svfdb")]
+position = Vector2(2973.68, 464)
+
+[node name="void6" parent="void_root" index="5" instance=ExtResource("4_svfdb")]
+position = Vector2(3173.68, 464)
+
+[node name="void7" parent="void_root" index="6" instance=ExtResource("4_svfdb")]
+position = Vector2(3344, 463.66)
+
+[node name="void8" parent="void_root" index="7" instance=ExtResource("4_svfdb")]
+position = Vector2(3533.68, 456)
+
+[node name="void9" parent="void_root" index="8" instance=ExtResource("4_svfdb")]
+position = Vector2(3733.68, 456)
+
+[node name="void11" parent="void_root" index="9" instance=ExtResource("4_svfdb")]
+position = Vector2(3984, 456)
+
+[node name="void12" parent="void_root" index="10" instance=ExtResource("4_svfdb")]
+position = Vector2(4184, 456)
+
+[node name="DefaultEntryPoint" parent="." index="10"]
+position = Vector2(4488, 0)
+
+[node name="souls" type="Node2D" parent="." index="12"]
+position = Vector2(2856, -24)
+
+[node name="flying_soul3" parent="souls" index="0" instance=ExtResource("5_0tbwh")]
+position = Vector2(1464, -116.8)
+
+[node name="flying_soul2" parent="souls" index="1" instance=ExtResource("5_0tbwh")]
+position = Vector2(1562, -12.7999)
+
+[node name="flying_soul" parent="souls" index="2" instance=ExtResource("5_0tbwh")]
+position = Vector2(1758.8, -160)
+
+[node name="dimension_platform" parent="." index="13" instance=ExtResource("6_y3esr")]
+position = Vector2(3504, 856)
+dimension = 2
+
+[node name="dimension_platform2" parent="." index="14" instance=ExtResource("6_y3esr")]
+position = Vector2(3528, 88)
+dimension = 2
+
+[node name="elevator" parent="." index="15" instance=ExtResource("7_vbicq")]
+position = Vector2(2904, 1080)
+y_delta = 1336.0
+start_up = true
+
+[node name="lever" parent="." index="16" instance=ExtResource("8_kyloq")]
+position = Vector2(3424, 552)
+
+[node name="lever2" parent="." index="17" instance=ExtResource("8_kyloq")]
+position = Vector2(1720, 56)
+
+[node name="front_gate" parent="." index="18" instance=ExtResource("9_33n2r")]
+position = Vector2(7624, -208)
+flip_h = true
+
+[node name="plate" parent="front_gate" index="5" instance=ExtResource("10_u3ccx")]
+position = Vector2(-1592, 8)
+
+[node name="elevator2" parent="." index="19" instance=ExtResource("7_vbicq")]
+position = Vector2(6680, 840)
+y_delta = 1000.0
+
+[connection signal="body_entered" from="TileMap/spikes2" to="TileMap/spikes2" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134562" to="TileMap/@spikes2@134562" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134563" to="TileMap/@spikes2@134563" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134564" to="TileMap/@spikes2@134564" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134565" to="TileMap/@spikes2@134565" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134566" to="TileMap/@spikes2@134566" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134567" to="TileMap/@spikes2@134567" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134568" to="TileMap/@spikes2@134568" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134569" to="TileMap/@spikes2@134569" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@134570" to="TileMap/@spikes2@134570" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@139023" to="TileMap/@spikes2@139023" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@139024" to="TileMap/@spikes2@139024" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@139025" to="TileMap/@spikes2@139025" method="_on_body_entered" flags=18]
+[connection signal="switched" from="lever" to="elevator" method="_on_switched"]
+[connection signal="switched" from="lever2" to="elevator" method="_on_switched"]
+[connection signal="switched" from="front_gate/plate" to="elevator2" method="_on_switched"]

@@ -10,4 +10,4 @@ func _ready():
 		$CollisionShape2D.shape.extents=extents
 	
 func _on_body_entered(_body):
-	Events.change_level_requested.emit(next_level, entry_point)
+	Events.change_level_requested.emit(next_level, entry_point,_body.dimension, _body.energy)

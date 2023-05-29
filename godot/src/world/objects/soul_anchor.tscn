@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mlduv3a8ecdl"]
+
+[ext_resource type="Script" path="res://src/world/objects/soul_anchor.gd" id="1_8floy"]
+
+[node name="soul_anchor" type="Node2D" groups=["soul_anchor"]]
+script = ExtResource("1_8floy")

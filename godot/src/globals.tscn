@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyqkaxflkek3u"]
+[gd_scene load_steps=5 format=3 uid="uid://cyqkaxflkek3u"]
 
 [ext_resource type="Script" path="res://src/globals.gd" id="1_esr3s"]
 [ext_resource type="Script" path="res://src/level_manager.gd" id="2_lpboo"]
+[ext_resource type="AudioStream" uid="uid://vssx5euyxpkr" path="res://assets/sfx/Ambience_1.wav" id="3_xt04n"]
+[ext_resource type="AudioStream" uid="uid://dt80e43bxxjjf" path="res://assets/music/20230521_gamejam_-_theme.mp3" id="4_lir0i"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_esr3s")
@@ -9,4 +11,11 @@ script = ExtResource("1_esr3s")
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_lpboo")
 
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xt04n")
+volume_db = -25.0
+autoplay = true
+
 [node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lir0i")
+volume_db = -20.0

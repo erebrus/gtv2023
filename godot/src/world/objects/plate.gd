@@ -15,11 +15,12 @@ func _ready():
 	
 
 func _on_dimension_changed(dimension):
-	
+
 	if dimension != Events.Dimension.MATERIAL and value:
 		_trigger()
 	monitoring = dimension == Events.Dimension.MATERIAL
-	timer.paused = dimension == Events.Dimension.SPECTRAL
+	# freezing time disabled
+#	timer.paused = dimension == Events.Dimension.SPECTRAL
 		
 
 func _on_body_entered(body):

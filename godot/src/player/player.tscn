@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://q5ldrhlikm11"]
+[gd_scene load_steps=214 format=3 uid="uid://q5ldrhlikm11"]
 
 [ext_resource type="PackedScene" uid="uid://blj6bor2n7hyd" path="res://src/player/platform_controller.tscn" id="1_gtfn5"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_kqnht"]
@@ -124,18 +124,18 @@
 [ext_resource type="AudioStream" uid="uid://b5p1jf85utcvg" path="res://assets/sfx/player/skeleton/Skeleton_move_rock_4.wav" id="117_0tu6y"]
 [ext_resource type="Script" path="res://src/player/xsm/materialise.gd" id="117_vrq4i"]
 [ext_resource type="AudioStream" uid="uid://basxj3tyu01yc" path="res://assets/sfx/player/skeleton/Skeleton_jump_1.wav" id="118_20spo"]
-[ext_resource type="AudioStream" uid="uid://b565p30athert" path="res://assets/sfx/player/ghost/Ghost_move_1.wav" id="118_gdmqi"]
-[ext_resource type="AudioStream" uid="uid://ba5g03gcjgu7l" path="res://assets/sfx/player/ghost/Ghost_move_2.wav" id="119_3neyg"]
 [ext_resource type="AudioStream" uid="uid://btde5o4n1nvpn" path="res://assets/sfx/player/skeleton/Skeleton_jump_2.wav" id="119_fk2fk"]
 [ext_resource type="AudioStream" uid="uid://b310ghials81m" path="res://assets/sfx/player/skeleton/Skeleton_jump_3.wav" id="120_0dkrh"]
-[ext_resource type="AudioStream" uid="uid://byxgg2org10gd" path="res://assets/sfx/player/ghost/Ghost_move_3.wav" id="120_o1uu6"]
-[ext_resource type="AudioStream" uid="uid://ca2th5g7sqep1" path="res://assets/sfx/player/ghost/Ghost_move_4.wav" id="121_5cdgn"]
 [ext_resource type="AudioStream" uid="uid://bu8x2ipb48opb" path="res://assets/sfx/player/skeleton/Skeleton_jump_4.wav" id="121_q8so1"]
 [ext_resource type="AudioStream" uid="uid://b55lecp16igem" path="res://assets/sfx/player/skeleton/Skeleton_land_1.wav" id="122_1ktg7"]
 [ext_resource type="AudioStream" uid="uid://bi1dihjk2lwww" path="res://assets/sfx/player/skeleton/Skeleton_land_2.wav" id="123_xtapb"]
+[ext_resource type="AudioStream" uid="uid://v7kwpd707xun" path="res://assets/sfx/player/ghost/Ghost_move_1_faster.wav" id="123_yruaa"]
 [ext_resource type="AudioStream" uid="uid://crejeyhpuw5ps" path="res://assets/sfx/player/skeleton/Skeleton_land_3.wav" id="124_dr1er"]
+[ext_resource type="AudioStream" uid="uid://bmeyv6s6x535" path="res://assets/sfx/player/ghost/Ghost_move_2_faster.wav" id="124_j5tqa"]
+[ext_resource type="AudioStream" uid="uid://vrbv1i80gk5n" path="res://assets/sfx/player/ghost/Ghost_move_3_faster.wav" id="125_e6doh"]
 [ext_resource type="AudioStream" uid="uid://bpg3dwiojucp3" path="res://assets/sfx/player/skeleton/Skeleton_land_4.wav" id="125_vwyj2"]
 [ext_resource type="AudioStream" uid="uid://cxxrln6lygbe0" path="res://assets/sfx/player/skeleton/Skeleton_attack_1.wav" id="126_16emm"]
+[ext_resource type="AudioStream" uid="uid://7r6aex6k0oc1" path="res://assets/sfx/player/ghost/Ghost_move_4_faster.wav" id="126_a41hb"]
 [ext_resource type="AudioStream" uid="uid://4ceskvcncli4" path="res://assets/sfx/player/skeleton/Skeleton_attack_2.wav" id="127_h8ycc"]
 [ext_resource type="AudioStream" uid="uid://uw4a58ne5xpv" path="res://assets/sfx/player/skeleton/Skeleton_attack_3.wav" id="128_k4t7i"]
 [ext_resource type="AudioStream" uid="uid://16uobrgd7mlx" path="res://assets/sfx/player/skeleton/Skeleton_attack_4.wav" id="129_3bch5"]
@@ -173,6 +173,10 @@
 [ext_resource type="AudioStream" uid="uid://dgxvmiiko0o6h" path="res://assets/sfx/player/Transition_spectral_to_material_3.wav" id="160_g6e3w"]
 [ext_resource type="AudioStream" uid="uid://c3yyuo30hai" path="res://assets/sfx/player/skeleton/Skeleton_grad_loop_rockwall.wav" id="160_tdcwc"]
 [ext_resource type="AudioStream" uid="uid://e1nlklmd1qq7" path="res://assets/sfx/player/Transition_spectral_to_material_4.wav" id="161_pl3q0"]
+[ext_resource type="AudioStream" uid="uid://dkp8ro7wqty8s" path="res://assets/sfx/soul_meter_timing_decrease_1.wav" id="173_wobev"]
+[ext_resource type="AudioStream" uid="uid://bf36ehwdikid7" path="res://assets/sfx/soul_meter_timing_decrease_2.wav" id="174_as038"]
+[ext_resource type="AudioStream" uid="uid://tfwisqpb757n" path="res://assets/sfx/soul_meter_timing_decrease_3.wav" id="175_tj3w5"]
+[ext_resource type="AudioStream" uid="uid://bremu6r27uyc1" path="res://assets/sfx/soul_meter_timing_decrease_4.wav" id="176_m4qiq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iu2cq"]
 animations = [{
@@ -599,7 +603,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_spectral",
-"speed": 17.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cv33"]
@@ -1461,13 +1465,13 @@ stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6c03"]
 streams_count = 4
-stream_0/stream = ExtResource("118_gdmqi")
+stream_0/stream = ExtResource("123_yruaa")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("119_3neyg")
+stream_1/stream = ExtResource("124_j5tqa")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("120_o1uu6")
+stream_2/stream = ExtResource("125_e6doh")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("121_5cdgn")
+stream_3/stream = ExtResource("126_a41hb")
 stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n08ck"]
@@ -1605,6 +1609,17 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("161_pl3q0")
 stream_3/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jkgrs"]
+streams_count = 4
+stream_0/stream = ExtResource("173_wobev")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("174_as038")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("175_tj3w5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("176_m4qiq")
+stream_3/weight = 1.0
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
 script = ExtResource("1_kqnht")
@@ -1653,8 +1668,7 @@ xsm_path = NodePath("../xsm")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -72)
 sprite_frames = SubResource("SpriteFrames_iu2cq")
-animation = &"attack"
-frame = 3
+animation = &"move_spectral"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -79)
@@ -1852,57 +1866,99 @@ one_shot = true
 
 [node name="run" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_s86yt")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="run_rock" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_s86yt")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="run_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_t6c03")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="dash" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_n08ck")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_petmv")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="land" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_27s8q")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_ec4pi")
+volume_db = -5.0
+bus = &"sfx"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_5lard")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="hurt_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_1iyut")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_1eaww")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="attack_spectral" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_oq2sb")
+volume_db = -12.0
+bus = &"sfx"
 
 [node name="climb" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_3233t")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="crossing" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_6c0fq")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="materialise" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_asp7c")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="decay_forced" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_x700v")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="decay" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_0oswf")
+volume_db = -8.0
+bus = &"sfx"
 
 [node name="climb_slide" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("159_ta5ph")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="climb_slide_rock" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("160_tdcwc")
+volume_db = -10.0
+bus = &"sfx"
+
+[node name="energy_tick" type="AudioStreamPlayer" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_jkgrs")
+volume_db = -30.0
+pitch_scale = 0.5
+bus = &"sfx"
 
 [node name="climb_rc" type="RayCast2D" parent="."]
 position = Vector2(0, -56)

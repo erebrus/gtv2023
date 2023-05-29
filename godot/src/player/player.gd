@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+const  VOID_DEATH_Y:float =1080*2
 
 const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
 
@@ -9,6 +10,7 @@ signal fired
 signal jump_fired
 
 @export var max_energy:float = 100
+
 @export var energy_decay:float = 5
 @export var decay_threshold:float = 10
 @export  var disabled:bool = false
@@ -29,7 +31,7 @@ var floor_type:Map.FloorType = Map.FloorType.GRASS
 
 var can_attack := true
 var immune := false
-@onready var energy:float = max_energy:
+@export var energy:float:
 	set(_energy):
 		energy = _energy
 		Events.soul_meter_changed.emit(energy/max_energy)
@@ -95,7 +97,8 @@ func _ready():
 #	setup_debug(true)
 	xsm.change_state("idle")
 	Events.dimension_changed.connect(_on_dimension_changed)
-
+	await get_tree().process_frame
+	Events.soul_meter_changed.emit(energy/max_energy)
 #func setup_debug(val:bool):
 #	if val:
 #		HyperLog.log(self).text("global_position>%0.2f")
@@ -146,9 +149,10 @@ func shift(forced:=false):
 		else:
 			$sfx/decay.play()
 		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-	elif energy == max_energy or energy_override:
-		Events.dimension_changed.emit(Events.Dimension.MATERIAL)
-		$sfx/materialise.play()
+	elif energy == max_energy or energy_override or\
+		Globals.level_manager.current_dimension==Events.Dimension.MATERIAL:
+			Events.dimension_changed.emit(Events.Dimension.MATERIAL)
+			$sfx/materialise.play()
 
 func control(_delta:float) -> void:
 	if in_animation:
@@ -223,8 +227,12 @@ func on_landing(_last_vy:float):
 		sfx_landing.play()
 	
 func _process(delta: float) -> void:
+	if global_position.y > VOID_DEATH_Y:
+		Globals.level_manager.restore_checkpoint()
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
+		if not $sfx/energy_tick.playing:
+			$sfx/energy_tick.play()
 #	if is_on_floor() and xsm.is_active("can_dash"):
 #		controller.can_dash = true
 		
