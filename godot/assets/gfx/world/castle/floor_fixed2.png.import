@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfsp45fhlcybc"
-path="res://.godot/imported/floor .png-5567f405720217899dfde78e8168656a.ctex"
+uid="uid://dph6eb0k5h7sj"
+path="res://.godot/imported/floor_fixed2.png-afe671dd0c97e3fba3dfeaa63c2fca94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/castle/floor .png"
-dest_files=["res://.godot/imported/floor .png-5567f405720217899dfde78e8168656a.ctex"]
+source_file="res://assets/gfx/world/castle/floor_fixed2.png"
+dest_files=["res://.godot/imported/floor_fixed2.png-afe671dd0c97e3fba3dfeaa63c2fca94.ctex"]
 
 [params]
 
