@@ -61,6 +61,12 @@ func fade_out_audio(audio, period):
 	
 
 
+func end_menu_music()->void:
+	if $music.playing:
+		await fade_out_audio($music,.5)
+	if not $end_music.playing:
+		fade_in_audio($end_music, 1)
+		
 func start_menu_music()->void:
 	if $music.playing:
 		await fade_out_audio($music,.5)

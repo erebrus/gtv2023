@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var end:bool = false
 @export var next_scene:PackedScene
 @onready var text:=$CanvasLayer/ColorRect/MarginContainer/Label
 @onready var text_bg:= $CanvasLayer/ColorRect
@@ -9,8 +10,11 @@ var last_one:=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.start_ambience()
-	Globals.start_menu_music()
+	Globals.stop_ambience()
+	if not end:
+		Globals.start_menu_music()
+	else:
+		Globals.start_end_music()
 	last_one = $CanvasLayer/TextOverlay2.texture == null
 	$voice.play()
 	$AnimationPlayer.play("play")	

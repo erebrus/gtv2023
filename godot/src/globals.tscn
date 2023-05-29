@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyqkaxflkek3u"]
+[gd_scene load_steps=7 format=3 uid="uid://cyqkaxflkek3u"]
 
 [ext_resource type="Script" path="res://src/globals.gd" id="1_esr3s"]
 [ext_resource type="Script" path="res://src/level_manager.gd" id="2_lpboo"]
 [ext_resource type="AudioStream" uid="uid://vssx5euyxpkr" path="res://assets/sfx/Ambience_1.wav" id="3_xt04n"]
 [ext_resource type="AudioStream" uid="uid://dt80e43bxxjjf" path="res://assets/music/20230521_gamejam_-_theme.mp3" id="4_lir0i"]
-[ext_resource type="AudioStream" uid="uid://dxatftctwqwk4" path="res://assets/music/Music_Cutscene_intro.wav" id="5_yfj3i"]
+[ext_resource type="AudioStream" uid="uid://bwq14ji47jjs" path="res://assets/music/Music_Cutscene_intro.mp3" id="5_b3v7b"]
+[ext_resource type="AudioStream" uid="uid://b53ji6ndxgppj" path="res://assets/music/Music_Cutscene_outro.mp3" id="6_pqn4o"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_esr3s")
@@ -23,6 +24,11 @@ volume_db = -20.0
 bus = &"music"
 
 [node name="menu_music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_yfj3i")
+stream = ExtResource("5_b3v7b")
+volume_db = -10.0
+bus = &"music"
+
+[node name="end_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pqn4o")
 volume_db = -10.0
 bus = &"music"
