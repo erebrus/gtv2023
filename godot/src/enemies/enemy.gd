@@ -123,8 +123,8 @@ func check_direction():
 
 
 func _process(_delta: float) -> void:
-#	if off_dimension: #freezing time disabled
-#		return
+	if off_dimension: #freezing time disabled
+		return
 	var was_on_floor = is_on_floor_only()
 	if dead:
 		velocity.y+=g*_delta

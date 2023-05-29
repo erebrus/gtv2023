@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://clprbj8wniwr3" path="res://src/world/objects/cemetery_lamp.tscn" id="1_ac024"]
 [ext_resource type="Texture2D" uid="uid://3w8umy8etbdp" path="res://assets/gfx/world/objects/lamp-castle.png" id="2_7q6ka"]
 
-[node name="cemetery_lamp" instance=ExtResource("1_ac024")]
+[node name="castle_lamp" instance=ExtResource("1_ac024")]
+texture_scale = 3.0
+spectral_energy = 2.0
+spectral_scale = 3.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_7q6ka")
