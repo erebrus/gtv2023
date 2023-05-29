@@ -74,13 +74,13 @@ centered = false
 motion_scale = Vector2(0.95, 0.95)
 motion_mirroring = Vector2(3840, 0)
 
-[node name="Midground" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
-texture = ExtResource("4_qvkpf")
-centered = false
-
 [node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
 position = Vector2(488, -1064)
 texture = ExtResource("6_c7les")
+centered = false
+
+[node name="Midground" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
+texture = ExtResource("4_qvkpf")
 centered = false
 
 [node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
@@ -131,7 +131,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="Foreground" type="ParallaxBackground" parent="."]
-layer = 100
+layer = 30
 
 [node name="FenceLayer" type="ParallaxLayer" parent="Foreground"]
 motion_scale = Vector2(1.2, 0.8)
@@ -143,7 +143,7 @@ texture = ExtResource("14_rlyus")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 101
+layer = 40
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")
