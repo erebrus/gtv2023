@@ -74,13 +74,13 @@ centered = false
 motion_scale = Vector2(0.95, 0.95)
 motion_mirroring = Vector2(3840, 0)
 
-[node name="Midground" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
-texture = ExtResource("4_qvkpf")
-centered = false
-
 [node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
 position = Vector2(488, -1064)
 texture = ExtResource("6_c7les")
+centered = false
+
+[node name="Midground" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
+texture = ExtResource("4_qvkpf")
 centered = false
 
 [node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
