@@ -41,126 +41,61 @@ position = Vector2(5369, 154)
 [node name="cemetery_lamp5" parent="TileMap" index="5" instance=ExtResource("2_b43mo")]
 position = Vector2(2817, 931)
 
-[node name="player" parent="." index="3"]
-energy_decay = 2.0
-energy_override = false
+[node name="objects" type="Node2D" parent="." index="3"]
 
-[node name="Camera2D" parent="player" index="12"]
-limit_right = 5568
-
-[node name="DefaultEntryPoint" parent="." index="7"]
-position = Vector2(136, 1208)
-
-[node name="Exit" parent="." index="9" instance=ExtResource("2_1tvjm")]
+[node name="Exit" parent="objects" index="0" instance=ExtResource("2_1tvjm")]
 position = Vector2(-136, 1016)
 next_level = "res://src/world/levels/cemetery_1.tscn"
 entry_point = "EntryC2"
 extents = Vector2(128, 128)
 
-[node name="vanishing_platform" parent="." index="10" instance=ExtResource("3_26dmk")]
+[node name="vanishing_platform" parent="objects" index="1" instance=ExtResource("3_26dmk")]
 position = Vector2(1088, 688)
 
-[node name="lever" parent="." index="11" instance=ExtResource("4_g7t4p")]
+[node name="lever" parent="objects" index="2" instance=ExtResource("4_g7t4p")]
 position = Vector2(1784, 1216)
 
-[node name="void" parent="." index="12" instance=ExtResource("5_fe7fw")]
-position = Vector2(2202, 1423.66)
-
-[node name="void2" parent="." index="13" instance=ExtResource("5_fe7fw")]
-position = Vector2(2391.68, 1416)
-
-[node name="void3" parent="." index="14" instance=ExtResource("5_fe7fw")]
-position = Vector2(2591.68, 1416)
-
-[node name="void4" parent="." index="15" instance=ExtResource("5_fe7fw")]
-position = Vector2(4144, 1415.66)
-
-[node name="void5" parent="." index="16" instance=ExtResource("5_fe7fw")]
-position = Vector2(4333.68, 1408)
-
-[node name="void6" parent="." index="17" instance=ExtResource("5_fe7fw")]
-position = Vector2(4533.68, 1408)
-
-[node name="void7" parent="." index="18" instance=ExtResource("5_fe7fw")]
-position = Vector2(4720, 1407.66)
-
-[node name="void8" parent="." index="19" instance=ExtResource("5_fe7fw")]
-position = Vector2(4909.68, 1400)
-
-[node name="void9" parent="." index="20" instance=ExtResource("5_fe7fw")]
-position = Vector2(5109.68, 1400)
-
-[node name="vanishing_platform2" parent="." index="21" instance=ExtResource("3_26dmk")]
+[node name="vanishing_platform2" parent="objects" index="3" instance=ExtResource("3_26dmk")]
 position = Vector2(4784, 464)
 
-[node name="dimension_platform" parent="." index="22" instance=ExtResource("6_5ohjn")]
+[node name="dimension_platform" parent="objects" index="4" instance=ExtResource("6_5ohjn")]
 position = Vector2(4248, 704)
 dimension = 2
 
-[node name="plate" parent="." index="23" instance=ExtResource("7_ksiab")]
+[node name="plate" parent="objects" index="5" instance=ExtResource("7_ksiab")]
 position = Vector2(2416, 174)
 time = 5.0
 
-[node name="madmax" parent="." index="24" instance=ExtResource("8_0fkuf")]
-position = Vector2(2192, 154)
+[node name="voids" type="Node2D" parent="." index="4"]
 
-[node name="Exit2" parent="." index="25" instance=ExtResource("2_1tvjm")]
-position = Vector2(5728, 320)
-next_level = "res://src/world/levels/castle_entry.tscn"
-extents = Vector2(64, 376)
+[node name="void" parent="voids" index="0" instance=ExtResource("5_fe7fw")]
+position = Vector2(2202, 1423.66)
 
-[node name="madmax2" parent="." index="26" instance=ExtResource("8_0fkuf")]
-position = Vector2(1504, 1200)
+[node name="void2" parent="voids" index="1" instance=ExtResource("5_fe7fw")]
+position = Vector2(2391.68, 1416)
 
-[node name="EntryC3" parent="." index="27" instance=ExtResource("9_au7l8")]
-position = Vector2(5456, 328)
-initial_velocity = Vector2(-1, 0)
+[node name="void3" parent="voids" index="2" instance=ExtResource("5_fe7fw")]
+position = Vector2(2591.68, 1416)
 
-[node name="enemy_spawner2" parent="." index="28" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
-position = Vector2(2599.49, 96.6011)
-enemy_scene = ExtResource("8_0fkuf")
-current_enemy = NodePath("../madmax")
+[node name="void4" parent="voids" index="3" instance=ExtResource("5_fe7fw")]
+position = Vector2(4144, 1415.66)
 
-[node name="enemy_spawner3" parent="." index="29" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
-position = Vector2(3280, 1144)
-enemy_scene = ExtResource("11_towms")
-current_enemy = NodePath("../bone_bug")
+[node name="void5" parent="voids" index="4" instance=ExtResource("5_fe7fw")]
+position = Vector2(4333.68, 1408)
 
-[node name="enemy_spawner4" parent="." index="30" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
-position = Vector2(3536, 888)
-enemy_scene = ExtResource("11_towms")
-current_enemy = NodePath("bone_bug")
+[node name="void6" parent="voids" index="5" instance=ExtResource("5_fe7fw")]
+position = Vector2(4533.68, 1408)
 
-[node name="bone_bug" parent="enemy_spawner4" index="1" instance=ExtResource("11_towms")]
-position = Vector2(203.488, 28.6011)
+[node name="void7" parent="voids" index="6" instance=ExtResource("5_fe7fw")]
+position = Vector2(4720, 1407.66)
 
-[node name="enemy_spawner" parent="." index="31" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
-position = Vector2(1341.49, 1086.6)
-enemy_scene = ExtResource("8_0fkuf")
-current_enemy = NodePath("../madmax2")
+[node name="void8" parent="voids" index="7" instance=ExtResource("5_fe7fw")]
+position = Vector2(4909.68, 1400)
 
-[node name="bone_bug" parent="." index="32" instance=ExtResource("11_towms")]
-position = Vector2(3096, 1200)
+[node name="void9" parent="voids" index="8" instance=ExtResource("5_fe7fw")]
+position = Vector2(5109.68, 1400)
 
-[node name="flying_soul" parent="." index="33" instance=ExtResource("13_5ylh5")]
-position = Vector2(808, 437)
-
-[node name="flying_soul2" parent="." index="34" instance=ExtResource("13_5ylh5")]
-position = Vector2(1368, 480)
-
-[node name="flying_soul3" parent="." index="35" instance=ExtResource("13_5ylh5")]
-position = Vector2(3048, 944)
-
-[node name="flying_soul4" parent="." index="36" instance=ExtResource("13_5ylh5")]
-position = Vector2(3672, 504)
-
-[node name="Checkpoint" parent="." index="37" instance=ExtResource("14_brsmk")]
-position = Vector2(1713.29, 584.601)
-
-[node name="Checkpoint2" parent="." index="38" instance=ExtResource("14_brsmk")]
-position = Vector2(3216, 584)
-
-[node name="soul_anchors" type="Node2D" parent="." index="39"]
+[node name="soul_anchors" type="Node2D" parent="." index="5"]
 
 [node name="soul_spawner" parent="soul_anchors" index="0" instance=ExtResource("12_evmyq")]
 position = Vector2(568, 664)
@@ -230,5 +165,80 @@ position = Vector2(4256, 480)
 [node name="soul_anchor15" parent="soul_anchors" index="20" instance=ExtResource("15_d3nn6")]
 position = Vector2(4008, 832)
 
-[connection signal="switched" from="lever" to="vanishing_platform" method="_on_switched"]
-[connection signal="switched" from="plate" to="vanishing_platform2" method="_on_switched"]
+[node name="flying_soul" parent="soul_anchors" index="21" instance=ExtResource("13_5ylh5")]
+position = Vector2(808, 437)
+
+[node name="flying_soul2" parent="soul_anchors" index="22" instance=ExtResource("13_5ylh5")]
+position = Vector2(1368, 480)
+
+[node name="flying_soul3" parent="soul_anchors" index="23" instance=ExtResource("13_5ylh5")]
+position = Vector2(3048, 944)
+
+[node name="flying_soul4" parent="soul_anchors" index="24" instance=ExtResource("13_5ylh5")]
+position = Vector2(3672, 504)
+
+[node name="enemies" type="Node2D" parent="." index="6"]
+position = Vector2(3216, 584)
+
+[node name="madmax2" parent="enemies" index="0" instance=ExtResource("8_0fkuf")]
+position = Vector2(-1712, 616)
+
+[node name="enemy_spawner2" parent="enemies" index="1" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(-616.51, -487.399)
+enemy_scene = ExtResource("8_0fkuf")
+current_enemy = NodePath("../madmax")
+
+[node name="enemy_spawner3" parent="enemies" index="2" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(64, 560)
+enemy_scene = ExtResource("11_towms")
+current_enemy = NodePath("../bone_bug")
+
+[node name="enemy_spawner4" parent="enemies" index="3" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(320, 304)
+enemy_scene = ExtResource("11_towms")
+current_enemy = NodePath("bone_bug")
+
+[node name="bone_bug" parent="enemies/enemy_spawner4" index="1" instance=ExtResource("11_towms")]
+position = Vector2(203.488, 28.6011)
+
+[node name="enemy_spawner" parent="enemies" index="4" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
+position = Vector2(-1874.51, 502.6)
+enemy_scene = ExtResource("8_0fkuf")
+current_enemy = NodePath("../madmax2")
+
+[node name="bone_bug" parent="enemies" index="5" instance=ExtResource("11_towms")]
+position = Vector2(-120, 616)
+
+[node name="madmax" parent="enemies" index="6" instance=ExtResource("8_0fkuf")]
+position = Vector2(-1024, -430)
+
+[node name="player" parent="." index="7"]
+energy_decay = 2.0
+energy_override = false
+
+[node name="Camera2D" parent="player" index="12"]
+limit_right = 5568
+
+[node name="DefaultEntryPoint" parent="." index="11"]
+position = Vector2(136, 1208)
+
+[node name="Exit2" parent="." index="13" instance=ExtResource("2_1tvjm")]
+position = Vector2(5728, 320)
+next_level = "res://src/world/levels/castle_entry.tscn"
+extents = Vector2(64, 376)
+
+[node name="EntryC3" parent="." index="14" instance=ExtResource("9_au7l8")]
+position = Vector2(5456, 328)
+initial_velocity = Vector2(-1, 0)
+
+[node name="Checkpoint" parent="." index="15" instance=ExtResource("14_brsmk")]
+position = Vector2(1713.29, 584.601)
+
+[node name="Checkpoint3" parent="." index="16" instance=ExtResource("14_brsmk")]
+position = Vector2(2028, 1144)
+
+[node name="Checkpoint2" parent="." index="17" instance=ExtResource("14_brsmk")]
+position = Vector2(3216, 584)
+
+[connection signal="switched" from="objects/lever" to="objects/vanishing_platform" method="_on_switched"]
+[connection signal="switched" from="objects/plate" to="objects/vanishing_platform2" method="_on_switched"]

@@ -387,15 +387,6 @@ position = Vector2(4184, 456)
 [node name="DefaultEntryPoint" parent="." index="14"]
 position = Vector2(176, 1072)
 
-[connection signal="body_entered" from="TileMap/@spikes2@195710" to="TileMap/@spikes2@195710" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195711" to="TileMap/@spikes2@195711" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195712" to="TileMap/@spikes2@195712" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195713" to="TileMap/@spikes2@195713" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195714" to="TileMap/@spikes2@195714" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195715" to="TileMap/@spikes2@195715" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195716" to="TileMap/@spikes2@195716" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195717" to="TileMap/@spikes2@195717" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes2@195718" to="TileMap/@spikes2@195718" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/big_door" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/elevator" method="_on_switched"]
 [connection signal="switched" from="objects/lever2" to="objects/elevator" method="_on_switched"]
