@@ -373,7 +373,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 32)]
+"values": [Vector2(64, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -385,7 +385,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 0)]
+"values": [Vector2(64, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -449,7 +449,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-32, 32)]
+"values": [Vector2(-64, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -461,7 +461,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-32, 0)]
+"values": [Vector2(-64, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -525,7 +525,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 32)]
+"values": [Vector2(64, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -537,7 +537,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 0)]
+"values": [Vector2(64, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -789,11 +789,11 @@ wait_time = 0.3
 one_shot = true
 
 [node name="floor_rc" type="RayCast2D" parent="."]
-position = Vector2(0, -24)
-target_position = Vector2(32, 32)
+position = Vector2(0, -40)
+target_position = Vector2(64, 64)
 
 [node name="front_rc" type="RayCast2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -40)
 target_position = Vector2(32, 0)
 
 [node name="detection_box" type="Area2D" parent="."]
