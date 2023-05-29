@@ -1,20 +1,12 @@
 class_name LevelManager extends Node
 
-const START_GAME = 2
+const MAX_PLAYER_ENERGY = 100
+const START_PLAYER_ENERGY = MAX_PLAYER_ENERGY / 2
 
-var levels:Array[PackedScene] = [	
-	preload("res://src/cutscenes/intro_scene_1.tscn"),
-	preload("res://src/cutscenes/intro_scene_2.tscn"),
-	preload("res://src/cutscenes/intro_scene_3.tscn"),
-	preload("res://src/cutscenes/intro_scene_4.tscn"),
-	preload("res://src/world/levels/cemetery_1.tscn"),
-	
-]
-var current_level:int = 0
 var current_level_path: String
 var last_checkpoint: String
 var current_dimension:Events.Dimension = Events.Dimension.SPECTRAL
-var player_energy:=50
+var player_energy:=START_PLAYER_ENERGY
 
 const path="usr://game_conf.tres"
 
@@ -23,48 +15,24 @@ func _ready():
 	Events.change_level_requested.connect(change_level)
 	Events.checkpoint_entered.connect(save_checkpoint)
 	current_level_path = get_tree().current_scene.scene_file_path
-
-func is_last_level() -> bool:
-	return current_level >= levels.size() - 1
 	
 
-func is_tutorial() -> bool:
-	return current_level < START_GAME
+func reset_level() -> void:
+	change_level(Globals.MAIN_SCREEN, "", Events.Dimension.SPECTRAL, START_PLAYER_ENERGY)
 	
 
-func tutorial_level():
-	current_level = 0
-	
-
-func next_level():
-	current_level += 1
-	if current_level >= levels.size():
-		current_level = 0
-	
-
-func reset_level():
-	current_level = START_GAME
-	
-
-func get_current_level()->PackedScene:
-	return levels[current_level]
-	
-
-func get_next_level()->PackedScene:
-	current_level += 1
-	if current_level >= levels.size():
-		current_level = 0
-	return get_current_level()
+func has_checkpoint() -> bool:
+	return not last_checkpoint.is_empty()
 	
 
 func save_checkpoint(checkpoint_name: String) -> void:
 	last_checkpoint = checkpoint_name
-	Logger.info("Saved checkpoint: %s" %checkpoint_name)
+	Logger.info("Saved checkpoint: %s" % checkpoint_name)
 	
 
 func restore_checkpoint() -> void:
 	Logger.info("Restoring checkpoint: %s" % last_checkpoint)
-	change_level(current_level_path, last_checkpoint, current_dimension, 50)
+	change_level(current_level_path, last_checkpoint, current_dimension, START_PLAYER_ENERGY)
 	
 
 func change_level(next_level: String, entry_name: String, dimension:Events.Dimension, _player_energy:float) -> void:
@@ -73,6 +41,7 @@ func change_level(next_level: String, entry_name: String, dimension:Events.Dimen
 	current_level_path = next_level
 	var set_entry_point = func(scene):
 		scene.entry_name = entry_name
+	
 	SceneManager.change_scene(next_level, {"on_tree_enter": set_entry_point})
 	
 

@@ -101,7 +101,7 @@ position_smoothing_enabled = true
 script = ExtResource("13_h8je0")
 
 [node name="Foreground" type="ParallaxBackground" parent="."]
-layer = 100
+layer = 40
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
 motion_scale = Vector2(1.2, 0.8)
@@ -113,7 +113,7 @@ texture = ExtResource("9_sumg3")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 101
+layer = 50
 
 [node name="Tint" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8vrrl")

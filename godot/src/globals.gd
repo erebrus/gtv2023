@@ -16,10 +16,9 @@ var debug_build := false
 
 
 const MENU_SCREEN = "res://src/menu/menu.tscn"
-const MAIN_SCREEN = "res://src/main.tscn"
+const MAIN_SCREEN = "res://src/world/levels/cemetery_1.tscn"
 const GAMEOVER_SCREEN = "res://src/world/example.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
-const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
 const TRANSITION_COLOR = Color("#009aff")
 
@@ -38,10 +37,8 @@ var game_music_on := false
 func _ready():
 	_init_logger()
 	Logger.info("Init complete.")
-
-
 	
-	
+
 func fade_in_audio(audio, period):
 	if not audio:
 		Logger.warn("can't find audio")
@@ -83,15 +80,15 @@ func gameover():
 	
 
 func win():
-	SceneManager.change_scene(WIN_SCREEN, default_transition)
+	SceneManager.change_scene(WIN_SCREEN)
 	
 
 func menu():
-	SceneManager.change_scene(MENU_SCREEN, default_transition)
+	SceneManager.change_scene(MENU_SCREEN)
 	
 
 func can_continue() -> bool:
-	return level_manager.current_level > 0
+	return level_manager.has_checkpoint()
 	
 
 func tutorial():
@@ -101,37 +98,17 @@ func tutorial():
 
 func start():
 	level_manager.reset_level()
-	_main_screen()
 	
 
 func continue_game():
-	_main_screen()
-	
-
-func next_level():
-	if level_manager.is_last_level():
-		menu()
-	else:
-		level_manager.next_level()
-		
-		if level_manager.is_tutorial():
-			_main_screen()
-		else:
-			choose_piece()
+	level_manager.restore_checkpoint()
 	
 
 func _main_screen():
-	SceneManager.change_scene(MAIN_SCREEN, default_transition)
+	SceneManager.change_scene(MAIN_SCREEN)
 	start_game_music()
 	
 
-func choose_piece():
-	SceneManager.change_scene(CHOOSE_PIECE, {
-			"pattern_enter":"curtains", 
-			"wait_time":0, 
-			"color": TRANSITION_COLOR,
-		})
-	
 
 func _on_music_finished():
 	if game_music_on:

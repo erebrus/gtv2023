@@ -20,8 +20,12 @@ func _ready():
 	Globals.start_ambience()
 	Globals.start_game_music()
 	
-		
-		
+
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Globals.menu()
+	
+
 func place_player() -> void:
 	var entry: EntryPoint
 	if entry_name.is_empty() and default_entry != null:
