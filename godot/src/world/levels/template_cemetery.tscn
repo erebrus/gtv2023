@@ -110,6 +110,9 @@ position = Vector2(-154, 150)
 energy_decay = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+limit_left = 0
+limit_top = -512
+limit_bottom = 1408
 position_smoothing_enabled = true
 script = ExtResource("13_anuxj")
 

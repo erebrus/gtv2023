@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+const  VOID_DEATH_Y:float =1080*2
 
 const multi_state_anims = ["idle", "move", "jump", "fall", "hurt", "attack"]
 
@@ -226,6 +227,8 @@ func on_landing(_last_vy:float):
 		sfx_landing.play()
 	
 func _process(delta: float) -> void:
+	if global_position.y > VOID_DEATH_Y:
+		Globals.level_manager.restore_checkpoint()
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
 		if not $sfx/energy_tick.playing:

@@ -70,7 +70,9 @@ energy_decay = 5.0
 energy = 50.0
 
 [node name="Camera2D" parent="player" index="12"]
+limit_left = 0
 limit_right = 8960
+limit_bottom = 1408
 
 [node name="enemy_spawner" parent="." index="12" node_paths=PackedStringArray("current_enemy") instance=ExtResource("5_sm8hc")]
 position = Vector2(4856, 1016)
