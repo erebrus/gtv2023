@@ -32,9 +32,9 @@ func close(mute:=false):
 	collision_layer=1
 	door_closed.emit()
 	
-func _on_switched(val:bool)->void:
+func _on_switched(val:bool, muted:=false)->void:
 	if val: 
-		open()
+		open(muted)
 	else:
-		close()
+		close(muted)
 

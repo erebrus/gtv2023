@@ -1,6 +1,6 @@
 extends Area2D
 
-signal switched(value:bool)
+signal switched(value:bool, muted:bool)
 
 @export var value := false
 
@@ -16,7 +16,7 @@ func interact(mute:=false):
 	
 	value = not value
 	Logger.debug("%s switched . new value=%s" % [name, value])
-	switched.emit(value)
+	switched.emit(value, mute)
 	if value:
 		$sprite.play("on")
 		if not mute:

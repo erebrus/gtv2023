@@ -46,11 +46,11 @@ func close(force:=false, mute:=false):
 	$sprites/closed_sprite.visible = true
 	door_closed.emit()
 	
-func _on_switched(val:bool)->void:
+func _on_switched(val:bool, muted:=false)->void:
 	if val:
-		open()
+		open(muted)
 	else:
-		close()
+		close(muted)
 
 
 func _on_body_entered(body):

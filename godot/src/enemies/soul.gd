@@ -48,7 +48,7 @@ func set_target() -> bool:
 	if not targets.is_empty():
 		var t = RngUtils.array(targets, 1)[0]
 		target = t.global_position + Vector2(RngUtils.float_range(-64,64),RngUtils.float_range(-64,64))
-		Logger.debug("%s choosing target %s" % [name, target])
+		Logger.trace("%s choosing target %s" % [name, target])
 		if current_anchor:
 			current_anchor.soul = null
 		current_anchor=t

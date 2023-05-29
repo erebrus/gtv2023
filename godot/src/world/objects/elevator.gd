@@ -33,13 +33,13 @@ func _process(delta):
 		flip()
 	
 			
-func _on_switched(val:bool)->void:
+func _on_switched(val:bool,muted:=false)->void:
 	if in_animation:
 		pending=true
 	else:
-		flip()
+		flip(muted)
 	
-func flip():
+func flip(muted:=false):
 	direction*=-1
 	in_animation=true
 	
