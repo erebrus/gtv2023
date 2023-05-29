@@ -160,3 +160,7 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_co0p4")
+
+[node name="TutorialHints" type="CanvasLayer" parent="."]
+layer = 100
+follow_viewport_enabled = true
