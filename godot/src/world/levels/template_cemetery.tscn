@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dtvlqd24di6fi" path="res://assets/gfx/world/midground.png" id="4_qvkpf"]
 [ext_resource type="Texture2D" uid="uid://ct4h45eptll00" path="res://assets/gfx/world/midground-graves.png" id="6_b86ba"]
 [ext_resource type="Texture2D" uid="uid://bft3hct3reafd" path="res://assets/gfx/world/tree.png" id="6_c7les"]
-[ext_resource type="TileSet" uid="uid://5oxe38prtvdv" path="res://src/world/cemetery_tileset_material.tres" id="8_ar75v"]
+[ext_resource type="TileSet" uid="uid://bpdv7xbkxo4if" path="res://src/world/cemetery_tileset_spectral.tres" id="8_nkdya"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_p4ssk"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_anuxj"]
 [ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="14_pu7eq"]
@@ -96,7 +96,7 @@ offset_bottom = 3233.0
 color = Color(0.254902, 0.141176, 0.156863, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("8_ar75v")
+tile_set = ExtResource("8_nkdya")
 format = 2
 layer_0/tile_data = PackedInt32Array(458813, 327680, 5, 524349, 327680, 6, 458814, 327680, 5, 524350, 327680, 6, 458815, 327680, 5, 524351, 327680, 6, 458816, 327680, 5, 524352, 327680, 6, 458817, 327680, 5, 524353, 327680, 6, 458818, 327680, 5, 524354, 327680, 6, 458819, 327680, 5, 524355, 327680, 6, 458820, 327680, 5, 524356, 327680, 6, 458821, 327680, 5, 524357, 327680, 6, 458822, 327680, 5, 524358, 327680, 6, 458823, 327680, 5, 524359, 327680, 6, 458824, 327680, 5, 524360, 327680, 6)
 
