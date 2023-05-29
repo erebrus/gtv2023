@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4morsvhaxu8k"]
+[gd_scene load_steps=13 format=3 uid="uid://c4morsvhaxu8k"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_v3wsx"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="2_t6tj1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cr21m814ruqga" path="res://addons/ActionIcon/Keyboard/Blank.png" id="9_8fi7q"]
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="10_4m86l"]
 [ext_resource type="PackedScene" uid="uid://bkj8oux7gvc4k" path="res://src/world/objects/entries_exits/entry.tscn" id="11_m7vn1"]
+[ext_resource type="PackedScene" uid="uid://mlduv3a8ecdl" path="res://src/world/objects/soul_anchor.tscn" id="12_ttgi8"]
 
 [node name="cemetery_1" instance=ExtResource("1_v3wsx")]
 
@@ -52,7 +53,6 @@ position = Vector2(7576, 544)
 
 [node name="tutorial_flying_soul" parent="." index="2" instance=ExtResource("4_tbclh")]
 position = Vector2(3025, 969)
-travel_distance = Vector2(100, 100)
 
 [node name="flying_soul" parent="." index="3" instance=ExtResource("4_tbclh")]
 position = Vector2(5104, 673)
@@ -174,5 +174,46 @@ hint = "While in the spectre dimension, you can go through gates."
 [node name="EntryC2" parent="." index="18" instance=ExtResource("11_m7vn1")]
 position = Vector2(8888, 443)
 initial_velocity = Vector2(-1, 0)
+
+[node name="soul_anchors" type="Node2D" parent="." index="19"]
+
+[node name="soul_anchor" parent="soul_anchors" index="0" instance=ExtResource("12_ttgi8")]
+position = Vector2(2399.88, 444.8)
+
+[node name="soul_anchor2" parent="soul_anchors" index="1" instance=ExtResource("12_ttgi8")]
+position = Vector2(3080, 715)
+
+[node name="soul_anchor3" parent="soul_anchors" index="2" instance=ExtResource("12_ttgi8")]
+position = Vector2(3364, 715)
+
+[node name="soul_anchor4" parent="soul_anchors" index="3" instance=ExtResource("12_ttgi8")]
+position = Vector2(3776, 440)
+
+[node name="soul_anchor5" parent="soul_anchors" index="4" instance=ExtResource("12_ttgi8")]
+position = Vector2(4360, 432)
+
+[node name="soul_anchor6" parent="soul_anchors" index="5" instance=ExtResource("12_ttgi8")]
+position = Vector2(5216, 456)
+
+[node name="soul_anchor7" parent="soul_anchors" index="6" instance=ExtResource("12_ttgi8")]
+position = Vector2(4896, 840)
+
+[node name="soul_anchor8" parent="soul_anchors" index="7" instance=ExtResource("12_ttgi8")]
+position = Vector2(3680, 927)
+
+[node name="soul_anchor9" parent="soul_anchors" index="8" instance=ExtResource("12_ttgi8")]
+position = Vector2(4024, 832)
+
+[node name="soul_anchor10" parent="soul_anchors" index="9" instance=ExtResource("12_ttgi8")]
+position = Vector2(2864, 952)
+
+[node name="soul_anchor11" parent="soul_anchors" index="10" instance=ExtResource("12_ttgi8")]
+position = Vector2(5080, 436)
+
+[node name="soul_anchor12" parent="soul_anchors" index="11" instance=ExtResource("12_ttgi8")]
+position = Vector2(5312, 936)
+
+[node name="soul_anchor13" parent="soul_anchors" index="12" instance=ExtResource("12_ttgi8")]
+position = Vector2(4584, 848)
 
 [editable path="TutorialHints/DiagonalDashHint"]
