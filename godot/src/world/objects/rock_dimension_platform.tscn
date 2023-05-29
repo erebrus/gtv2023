@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc3kyorff6oxl"]
+
+[ext_resource type="PackedScene" uid="uid://begnodro4vnqi" path="res://src/world/objects/dimension_platform.tscn" id="1_g6g4n"]
+[ext_resource type="Texture2D" uid="uid://com52yemiu3sn" path="res://assets/gfx/world/castle/floor_new.png" id="2_o1kmw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqjeo"]
+radius = 24.0
+height = 530.0
+
+[node name="rock_dimension_platform" instance=ExtResource("1_g6g4n")]
+
+[node name="sprite" parent="." index="0"]
+texture = ExtResource("2_o1kmw")
+offset = Vector2(0, 8)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_nqjeo")

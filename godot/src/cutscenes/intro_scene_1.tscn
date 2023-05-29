@@ -7,5 +7,8 @@
 [node name="intro_scene1" instance=ExtResource("1_dt6hb")]
 next_scene = ExtResource("2_patby")
 
-[node name="TextOverlay" parent="CanvasLayer" index="3"]
+[node name="TextOverlay" parent="CanvasLayer" index="2"]
 texture = ExtResource("3_j88wv")
+
+[node name="FadeRect" parent="CanvasLayer" index="4"]
+visible = true

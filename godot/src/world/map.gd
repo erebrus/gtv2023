@@ -5,6 +5,7 @@ enum FloorType{GRASS, ROCK}
 
 const MATERIAL_TS = preload("res://src/world/cemetery_tileset_material.tres")
 const SPECTRAL_TS = preload("res://src/world/cemetery_tileset_spectral.tres")
+
 var dimension = Events.Dimension.SPECTRAL
 
 @export var floor_type:FloorType = FloorType.GRASS
@@ -61,13 +62,16 @@ func _on_dimension_changed(_dimension):
 	if dimension == _dimension:
 		return
 	dimension = _dimension
+	
 	if dimension == Events.Dimension.MATERIAL:
-		$TileMap.tile_set = MATERIAL_TS
+		if floor_type==FloorType.GRASS:
+			$TileMap.tile_set = MATERIAL_TS
 		$Fog.visible = false
 		$CanvasLayer/Tint.visible = false
 		$CanvasModulate.color=Color("777777")
 	else:
-		$TileMap.tile_set = SPECTRAL_TS
+		if floor_type==FloorType.GRASS:
+			$TileMap.tile_set = SPECTRAL_TS
 		$Fog.visible = true
 		$CanvasLayer/Tint.visible = true
 		$CanvasModulate.color=Color("aaaaaa")
