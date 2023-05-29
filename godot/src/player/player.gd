@@ -425,8 +425,11 @@ func interact():
 		
 func on_environment_damage(force:=false):
 	if dimension == Events.Dimension.MATERIAL or force:
-		Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
-		self.energy = clamp(energy-energy_decay, 0, max_energy)
+		self.energy = clamp(energy-10, 0, max_energy)
+		Events.soul_meter_changed.emit(energy/max_energy)
+		#Events.dimension_changed.emit(Events.Dimension.SPECTRAL)
+		shift(true)
+		
 	
 func set_attack_box_enabled(val:bool)->void:
 	#attack_box.monitoring = val	
