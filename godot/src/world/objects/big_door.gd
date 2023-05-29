@@ -65,7 +65,7 @@ func _on_body_exited(body):
 	if body.has_method("unset_object"):
 		body.unset_object(self)
 		
-	player = null
+	
 
 func interact():	
 	if not player:

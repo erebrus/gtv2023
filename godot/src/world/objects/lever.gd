@@ -8,7 +8,7 @@ var player
 
 func _ready():
 	if value:
-		interact(true)
+		$sprite.play("on")
 	Events.dimension_changed.connect(_on_dimension_changed)		
 
 

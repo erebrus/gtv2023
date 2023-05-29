@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var y_delta:float=128*10
 @export var speed:=100
+@export var start_up:bool = false
+
 var pending:=false
 var direction:=Vector2.DOWN
 var in_animation:=false
@@ -10,6 +12,9 @@ var ori_position:Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ori_position = global_position
+	if start_up:
+		direction=Vector2.UP
+		global_position = ori_position+Vector2.UP*y_delta
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

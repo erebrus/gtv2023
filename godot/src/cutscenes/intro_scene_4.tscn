@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pfxt7dy0gd5"]
+[gd_scene load_steps=5 format=3 uid="uid://pfxt7dy0gd5"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_exewi"]
 [ext_resource type="Texture2D" uid="uid://beqk6fgr8gtm6" path="res://assets/gfx/cutscenes/cutscenespectral2.png" id="2_khhh0"]
 [ext_resource type="PackedScene" uid="uid://c4morsvhaxu8k" path="res://src/world/levels/cemetery_1.tscn" id="2_nrssj"]
+[ext_resource type="Texture2D" uid="uid://d0vmv12nn48uh" path="res://assets/gfx/cutscenes/cutscene-text/text-5.png" id="4_lqww1"]
 
 [node name="intro_scene4" instance=ExtResource("1_exewi")]
 next_scene = ExtResource("2_nrssj")
@@ -12,3 +13,6 @@ texture = ExtResource("2_khhh0")
 
 [node name="Label" parent="CanvasLayer/MarginContainer" index="0"]
 text = "He who dared to attempt to bind me to his will shall pay."
+
+[node name="TextOverlay" parent="CanvasLayer" index="3"]
+texture = ExtResource("4_lqww1")

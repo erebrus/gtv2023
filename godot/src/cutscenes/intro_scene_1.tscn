@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6dqdkv3eqlub"]
+[gd_scene load_steps=4 format=3 uid="uid://b6dqdkv3eqlub"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_dt6hb"]
 [ext_resource type="PackedScene" uid="uid://c4x4c7j3msdyl" path="res://src/cutscenes/intro_scene_2.tscn" id="2_patby"]
+[ext_resource type="Texture2D" uid="uid://dm7qpbqjwofrv" path="res://assets/gfx/cutscenes/cutscene-text/text-1.png" id="3_j88wv"]
 
 [node name="intro_scene1" instance=ExtResource("1_dt6hb")]
 next_scene = ExtResource("2_patby")
+
+[node name="TextOverlay" parent="CanvasLayer" index="3"]
+texture = ExtResource("3_j88wv")

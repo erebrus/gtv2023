@@ -106,7 +106,7 @@ position = Vector2(2192, 154)
 
 [node name="Exit2" parent="." index="25" instance=ExtResource("2_1tvjm")]
 position = Vector2(5728, 320)
-next_level = "res://src/world/levels/cemetery_1.tscn"
+next_level = "res://src/world/levels/castle_entry.tscn"
 extents = Vector2(64, 376)
 
 [node name="madmax2" parent="." index="26" instance=ExtResource("8_0fkuf")]
@@ -114,6 +114,7 @@ position = Vector2(1504, 1200)
 
 [node name="EntryC3" parent="." index="27" instance=ExtResource("9_au7l8")]
 position = Vector2(5456, 328)
+initial_velocity = Vector2(-1, 0)
 
 [node name="enemy_spawner2" parent="." index="28" node_paths=PackedStringArray("current_enemy") instance=ExtResource("10_ynllm")]
 position = Vector2(2599.49, 96.6011)
