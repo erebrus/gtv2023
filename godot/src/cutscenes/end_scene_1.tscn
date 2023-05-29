@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmi3mtb07t0l4"]
+
+[ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_saqav"]
+[ext_resource type="Texture2D" uid="uid://cmcwhituqdbu0" path="res://assets/gfx/cutscenes/endscene1.png" id="2_78xs7"]
+[ext_resource type="PackedScene" uid="uid://bqaeh7u8ydda8" path="res://src/cutscenes/end_scene_2.tscn" id="2_l40l7"]
+[ext_resource type="Texture2D" uid="uid://bbpbwfq46egbw" path="res://assets/gfx/cutscenes/cutscene-text/endtext-1.png" id="3_dnwxg"]
+
+[node name="end_scene_1" instance=ExtResource("1_saqav")]
+next_scene = ExtResource("2_l40l7")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_78xs7")
+
+[node name="TextOverlay" parent="CanvasLayer" index="2"]
+texture = ExtResource("3_dnwxg")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqaeh7u8ydda8"]
+
+[ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_dxu3i"]
+[ext_resource type="PackedScene" uid="uid://caed7b11qplxa" path="res://src/cutscenes/end_scene_3.tscn" id="2_ja2re"]
+
+[node name="end_scene_2" instance=ExtResource("1_dxu3i")]
+next_scene = ExtResource("2_ja2re")

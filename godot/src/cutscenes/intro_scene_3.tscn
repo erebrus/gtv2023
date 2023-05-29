@@ -14,5 +14,8 @@ texture = ExtResource("2_la738")
 [node name="Label" parent="CanvasLayer/MarginContainer" index="0"]
 text = "I am but a remnant of the past, trapped between realms, summoned against my will. "
 
-[node name="TextOverlay" parent="CanvasLayer" index="3"]
+[node name="TextOverlay" parent="CanvasLayer" index="2"]
 texture = ExtResource("4_eae7c")
+
+[node name="FadeRect" parent="CanvasLayer" index="4"]
+visible = true
