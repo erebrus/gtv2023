@@ -49,7 +49,27 @@ func fade_in_audio(audio, period):
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).\
 		tween_property(audio, "volume_db", ori_volume, period)
 
+func fade_out_audio(audio, period):
+	if not audio:
+		Logger.warn("can't find audio")
+		return
+	var ori_volume = audio.volume_db	
+	await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).\
+		tween_property(audio, "volume_db", ori_volume, period).finished		
+	audio.stop()
+	audio.volume_db = ori_volume
+	
+
+
+func start_menu_music()->void:
+	if $music.playing:
+		await fade_out_audio($music,.5)
+	if not $menu_music.playing:
+		fade_in_audio($menu_music, 2)
+			
 func start_game_music()->void:
+	if $menu_music.playing:
+		await fade_out_audio($menu_music,.5)
 	if not $music.playing:
 		fade_in_audio($music, 2)
 

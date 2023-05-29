@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://caed7b11qplxa"]
+[gd_scene load_steps=5 format=3 uid="uid://caed7b11qplxa"]
 
 [ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_5ya3m"]
+[ext_resource type="PackedScene" uid="uid://c5hhvyp4tivlc" path="res://src/menu/menu.tscn" id="2_76ydk"]
 [ext_resource type="Texture2D" uid="uid://covntsvnhvjsi" path="res://assets/gfx/cutscenes/endscene3.png" id="2_nhr56"]
 [ext_resource type="Texture2D" uid="uid://2n6g4yw11yxy" path="res://assets/gfx/cutscenes/cutscene-text/endtext-3.png" id="3_xvsj1"]
 
 [node name="end_scene_3" instance=ExtResource("1_5ya3m")]
+next_scene = ExtResource("2_76ydk")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_nhr56")

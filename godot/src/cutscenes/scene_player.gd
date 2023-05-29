@@ -6,6 +6,8 @@ extends Node2D
 var last_one:=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.start_ambience()
+	Globals.start_menu_music()
 	last_one = $CanvasLayer/TextOverlay2.texture == null
 	$AnimationPlayer.play("play")	
 	await $AnimationPlayer.animation_finished
