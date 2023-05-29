@@ -40,7 +40,10 @@ func place_player() -> void:
 	
 	assert(entry != null)
 	Events.checkpoint_entered.emit(entry.name)
-	$player.position = entry.position
+	$player.global_position = entry.global_position
+	$player.velocity = entry.initial_velocity
+	if entry.initial_velocity.x<0:
+		$player/DirAnimationPlayer.play("left")
 	$player.floor_type = floor_type
 	var a = Globals.level_manager.current_dimension 
 	var b = $player.dimension
