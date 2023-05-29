@@ -70,6 +70,7 @@ dimension = 2
 position = Vector2(9392, -193)
 script = ExtResource("4_baumd")
 next_level = "res://src/world/levels/cemetery_1.tscn"
+cutsceen = false
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/big_door" index="5"]
 position = Vector2(-816, -336)

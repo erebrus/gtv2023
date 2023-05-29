@@ -5,7 +5,7 @@
 
 [node name="castle_lamp" instance=ExtResource("1_ac024")]
 texture_scale = 3.0
-spectral_energy = 2.0
+spectral_energy = 1.5
 spectral_scale = 3.0
 
 [node name="Sprite2D" parent="." index="0"]

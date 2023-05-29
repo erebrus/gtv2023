@@ -16,6 +16,3 @@ text = "The necromancer, in his hubris, summoned a power he could not tame and s
 
 [node name="TextOverlay" parent="CanvasLayer" index="2"]
 texture = ExtResource("4_0i86i")
-
-[node name="FadeRect" parent="CanvasLayer" index="4"]
-visible = true

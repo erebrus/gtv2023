@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlulwelp5mp6d"]
+[gd_scene load_steps=21 format=3 uid="uid://dlulwelp5mp6d"]
 
 [ext_resource type="PackedScene" uid="uid://bry7toqaayvgd" path="res://src/world/levels/template_castle.tscn" id="1_t4unv"]
 [ext_resource type="Texture2D" uid="uid://c0d42eerhk3ma" path="res://assets/gfx/world/castle/Castle dec1.png" id="2_j4uhq"]
@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bnrbpgdaqo4n6" path="res://src/world/objects/castle_lamp.tscn" id="6_lsei5"]
 [ext_resource type="PackedScene" uid="uid://mlduv3a8ecdl" path="res://src/world/objects/soul_anchor.tscn" id="7_plvnp"]
 [ext_resource type="PackedScene" uid="uid://nji168cpwlh0" path="res://src/enemies/soul.tscn" id="8_y3cu2"]
+[ext_resource type="PackedScene" uid="uid://dq225y4eolron" path="res://src/world/objects/big_door.tscn" id="10_72p7d"]
+[ext_resource type="Script" path="res://src/world/objects/castle_door.gd" id="11_pegch"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="12_2kugd"]
+[ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="12_miwlj"]
 
 [node name="castle_template" instance=ExtResource("1_t4unv")]
 
@@ -129,6 +132,16 @@ time = 8.0
 
 [node name="rock_vanishing_platform" parent="objects" index="4" instance=ExtResource("4_ack8e")]
 position = Vector2(4008, 1000)
+
+[node name="big_door" parent="objects" index="5" instance=ExtResource("10_72p7d")]
+position = Vector2(4064, -456)
+script = ExtResource("11_pegch")
+next_level = "res://src/cutscenes/end_scene_1.tscn"
+cutsceen = true
+
+[node name="lever" parent="objects" index="6" instance=ExtResource("12_miwlj")]
+position = Vector2(3580.81, -462.969)
+value = false
 
 [node name="void" type="Node2D" parent="." index="5"]
 
@@ -328,13 +341,7 @@ limit_right = 4352
 visible = true
 
 [node name="DefaultEntryPoint" parent="." index="11"]
-position = Vector2(296, 930)
+position = Vector2(3600, -512)
 
-[connection signal="body_entered" from="TileMap/spikes" to="TileMap/spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232650" to="TileMap/@spikes@232650" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232651" to="TileMap/@spikes@232651" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232652" to="TileMap/@spikes@232652" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232653" to="TileMap/@spikes@232653" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232654" to="TileMap/@spikes@232654" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@232655" to="TileMap/@spikes@232655" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/rock_vanishing_platform" method="_on_switched"]
+[connection signal="switched" from="objects/lever" to="objects/big_door" method="_on_switched"]

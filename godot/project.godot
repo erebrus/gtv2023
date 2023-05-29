@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gtv 2023"
-run/main_scene="res://src/menu/menu.tscn"
+run/main_scene="res://src/cutscenes/intro_scene_1.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
