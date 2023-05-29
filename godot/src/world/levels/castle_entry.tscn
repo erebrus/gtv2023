@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4b6vkmswhhfe"]
+[gd_scene load_steps=25 format=3 uid="uid://4b6vkmswhhfe"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_5sumo"]
 [ext_resource type="TileSet" uid="uid://c6xvjlpepp3w1" path="res://src/world/castle_wall.tres" id="2_fkts8"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://7hbrjsfhdb7d" path="res://assets/gfx/enemies/enemy_spawner.tscn" id="20_1qnmb"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="20_jeq1m"]
 [ext_resource type="PackedScene" uid="uid://clprbj8wniwr3" path="res://src/world/objects/cemetery_lamp.tscn" id="20_tptd0"]
+[ext_resource type="PackedScene" uid="uid://c6u2pkc3vdvj8" path="res://src/world/objects/tutorial/tutorial_hint.tscn" id="23_186p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymjv5"]
 size = Vector2(128, 1723.6)
@@ -396,6 +397,10 @@ position = Vector2(9764.7, -1889.6)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(27.3027, 851.799)
 shape = SubResource("RectangleShape2D_ymjv5")
+
+[node name="TutorialHint" parent="TutorialHints" index="0" instance=ExtResource("23_186p6")]
+position = Vector2(452, 599)
+hint = "Careful, spikes hurt your material form."
 
 [connection signal="switched" from="objects/plate" to="objects/big_door" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/elevator" method="_on_switched"]
