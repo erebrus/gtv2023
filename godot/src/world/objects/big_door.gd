@@ -15,30 +15,32 @@ var player
 
 func _ready():
 	if value:
-			open(true)
+			open(true, true)
 	else:
-			close(true)
+			close(true, true)
 
 
 func is_open():
 	return value
 	
-func open(force:=false):
+func open(force:=false, mute:=false):
 	if is_open() and not force:
 		return
 	value=true
 	Logger.debug("%s opening" % name)
-	$sfx_open.play()
+	if not mute:
+		$sfx_open.play()
 	$sprites/open_sprite_left.visible = true
 	$sprites/open_sprite_right.visible = true
 	$sprites/closed_sprite.visible = false
 	door_opened.emit()
 	
-func close(force:=false):
+func close(force:=false, mute:=false):
 	if not is_open():
 		return
 	value=false
-	$sfx_close.play()
+	if not mute:
+		$sfx_close.play()
 	$sprites/open_sprite_left.visible = false
 	$sprites/open_sprite_right.visible = false
 	$sprites/closed_sprite.visible = true
