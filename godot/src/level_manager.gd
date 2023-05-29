@@ -2,9 +2,12 @@ class_name LevelManager extends Node
 
 const START_GAME = 2
 
-var levels:Array[PackedScene] = [
-	preload("res://src/world/testmap.tscn"),
-	
+var levels:Array[PackedScene] = [	
+	preload("res://src/cutscenes/intro_scene_1.tscn"),
+	preload("res://src/cutscenes/intro_scene_2.tscn"),
+	preload("res://src/cutscenes/intro_scene_3.tscn"),
+	preload("res://src/cutscenes/intro_scene_4.tscn"),
+	preload("res://src/world/levels/cemetery_1.tscn"),
 	
 ]
 var current_level:int = 0

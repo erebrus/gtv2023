@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf8c0ted5b18f"]
+
+[ext_resource type="PackedScene" uid="uid://bi3eibkddxddm" path="res://src/cutscenes/scene_player.tscn" id="1_wqd7q"]
+[ext_resource type="Texture2D" uid="uid://cowu1uxp2eq5g" path="res://assets/gfx/cutscenes/cutscenespectral1.png" id="2_la738"]
+[ext_resource type="PackedScene" uid="uid://pfxt7dy0gd5" path="res://src/cutscenes/intro_scene_4.tscn" id="2_xmqha"]
+
+[node name="intro_scene3" instance=ExtResource("1_wqd7q")]
+next_scene = ExtResource("2_xmqha")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_la738")
+
+[node name="Label" parent="CanvasLayer/MarginContainer" index="0"]
+text = "I am but a remnant of the past, trapped between realms, summoned against my will. "
