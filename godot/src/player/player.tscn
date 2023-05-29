@@ -1881,7 +1881,7 @@ bus = &"sfx"
 
 [node name="dash" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_n08ck")
-volume_db = -10.0
+volume_db = -9.0
 bus = &"sfx"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="sfx"]

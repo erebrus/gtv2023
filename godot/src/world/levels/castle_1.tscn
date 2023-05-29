@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlulwelp5mp6d"]
+[gd_scene load_steps=22 format=3 uid="uid://dlulwelp5mp6d"]
 
 [ext_resource type="PackedScene" uid="uid://bry7toqaayvgd" path="res://src/world/levels/template_castle.tscn" id="1_t4unv"]
 [ext_resource type="Texture2D" uid="uid://c0d42eerhk3ma" path="res://assets/gfx/world/castle/Castle dec1.png" id="2_j4uhq"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://src/world/objects/castle_door.gd" id="11_pegch"]
 [ext_resource type="PackedScene" uid="uid://bh76ivmnj2otd" path="res://src/enemies/spectral_enemy1/spectral_enemy1.tscn" id="12_2kugd"]
 [ext_resource type="PackedScene" uid="uid://bn3r5p03inwby" path="res://src/world/objects/lever.tscn" id="12_miwlj"]
+[ext_resource type="PackedScene" uid="uid://bwvsijmudr5kj" path="res://src/world/objects/checkpoint/checkpoint.tscn" id="13_aomgj"]
 
 [node name="castle_template" instance=ExtResource("1_t4unv")]
 
@@ -142,6 +143,15 @@ cutsceen = true
 [node name="lever" parent="objects" index="6" instance=ExtResource("12_miwlj")]
 position = Vector2(3580.81, -462.969)
 value = false
+
+[node name="Checkpoint" parent="objects" index="7" instance=ExtResource("13_aomgj")]
+position = Vector2(1611.88, -272.79)
+
+[node name="Checkpoint2" parent="objects" index="8" instance=ExtResource("13_aomgj")]
+position = Vector2(2370, -28)
+
+[node name="Checkpoint3" parent="objects" index="9" instance=ExtResource("13_aomgj")]
+position = Vector2(3313, 352)
 
 [node name="void" type="Node2D" parent="." index="5"]
 
@@ -347,12 +357,12 @@ visible = true
 [node name="DefaultEntryPoint" parent="." index="11"]
 position = Vector2(3600, -512)
 
-[connection signal="body_entered" from="TileMap/@spikes@31454" to="TileMap/@spikes@31454" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31455" to="TileMap/@spikes@31455" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31456" to="TileMap/@spikes@31456" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31457" to="TileMap/@spikes@31457" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31458" to="TileMap/@spikes@31458" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31459" to="TileMap/@spikes@31459" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@31460" to="TileMap/@spikes@31460" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68321" to="TileMap/@spikes@68321" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68322" to="TileMap/@spikes@68322" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68323" to="TileMap/@spikes@68323" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68324" to="TileMap/@spikes@68324" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68325" to="TileMap/@spikes@68325" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68326" to="TileMap/@spikes@68326" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@68327" to="TileMap/@spikes@68327" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/rock_vanishing_platform" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/big_door" method="_on_switched"]

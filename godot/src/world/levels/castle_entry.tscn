@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://4b6vkmswhhfe"]
+[gd_scene load_steps=26 format=3 uid="uid://4b6vkmswhhfe"]
 
 [ext_resource type="PackedScene" uid="uid://bb3c7fosnhqvl" path="res://src/world/levels/template_cemetery.tscn" id="1_5sumo"]
 [ext_resource type="TileSet" uid="uid://c6xvjlpepp3w1" path="res://src/world/castle_wall.tres" id="2_fkts8"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b5t4kdlklyncl" path="res://src/world/objects/plate.tscn" id="10_7fsvd"]
 [ext_resource type="PackedScene" uid="uid://35nhdqwdy2oo" path="res://src/enemies/material_enemy1/material_enemy1.tscn" id="10_v440x"]
 [ext_resource type="PackedScene" uid="uid://nq706ehk3bgf" path="res://src/enemies/spectral_enemy2/spectral_enemy2.tscn" id="11_o5mwt"]
+[ext_resource type="PackedScene" uid="uid://bwvsijmudr5kj" path="res://src/world/objects/checkpoint/checkpoint.tscn" id="13_mmojo"]
 [ext_resource type="PackedScene" uid="uid://dq225y4eolron" path="res://src/world/objects/big_door.tscn" id="15_a3vux"]
 [ext_resource type="Texture2D" uid="uid://bw5u68w4nnb04" path="res://assets/gfx/world/castle/window.png" id="16_gkdhm"]
 [ext_resource type="Texture2D" uid="uid://cqmfrohujiskn" path="res://assets/gfx/world/castle/window3.png" id="17_0xja2"]
@@ -94,6 +95,15 @@ texture = ExtResource("17_0xja2")
 [node name="Sprite2D5" type="Sprite2D" parent="objects/big_door" index="9"]
 position = Vector2(0, -848)
 texture = ExtResource("18_hasws")
+
+[node name="Checkpoint" parent="objects" index="8" instance=ExtResource("13_mmojo")]
+position = Vector2(1586.8, 13.2011)
+
+[node name="Checkpoint2" parent="objects" index="9" instance=ExtResource("13_mmojo")]
+position = Vector2(4243, -13)
+
+[node name="Checkpoint3" parent="objects" index="10" instance=ExtResource("13_mmojo")]
+position = Vector2(6747, -277)
 
 [node name="souls" type="Node2D" parent="." index="5"]
 position = Vector2(2856, -24)
@@ -409,6 +419,15 @@ shape = SubResource("RectangleShape2D_ymjv5")
 position = Vector2(452, 599)
 hint = "Careful, spikes hurt your material form."
 
+[connection signal="body_entered" from="TileMap/spikes2" to="TileMap/spikes2" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64247" to="TileMap/@spikes2@64247" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64248" to="TileMap/@spikes2@64248" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64249" to="TileMap/@spikes2@64249" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64250" to="TileMap/@spikes2@64250" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64251" to="TileMap/@spikes2@64251" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64252" to="TileMap/@spikes2@64252" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64253" to="TileMap/@spikes2@64253" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@64254" to="TileMap/@spikes2@64254" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/big_door" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/elevator" method="_on_switched"]
 [connection signal="switched" from="objects/lever2" to="objects/elevator" method="_on_switched"]
