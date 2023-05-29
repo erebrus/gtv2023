@@ -93,7 +93,7 @@ extents = Vector2(256, 256)
 position = Vector2(168, 970)
 
 [node name="TutorialHints" type="CanvasLayer" parent="." index="17"]
-layer = 128
+layer = 100
 follow_viewport_enabled = true
 
 [node name="MoveHint" parent="TutorialHints" index="0" instance=ExtResource("8_3xjp0")]
