@@ -62,14 +62,20 @@ func _on_dimension_changed(_dimension):
 	if dimension == Events.Dimension.MATERIAL:
 		if floor_type==FloorType.GRASS:
 			$TileMap.tile_set = MATERIAL_TS
+			$CanvasModulate.color=Color("777777")
+		else:
+			$CanvasModulate.color=Color("333333")
 		$Fog.visible = false
 		$CanvasLayer/Tint.visible = false
-		$CanvasModulate.color=Color("777777")
+		
 	else:
 		if floor_type==FloorType.GRASS:
 			$TileMap.tile_set = SPECTRAL_TS
+			$CanvasModulate.color=Color("aaaaaa")
+		else:
+			$CanvasModulate.color=Color("000000")
 		$Fog.visible = true
 		$CanvasLayer/Tint.visible = true
-		$CanvasModulate.color=Color("aaaaaa")
+		
 	
 
