@@ -63,6 +63,7 @@ func save_checkpoint(checkpoint_name: String) -> void:
 	
 
 func restore_checkpoint() -> void:
+	Logger.info("Restoring checkpoint: %s" % last_checkpoint)
 	change_level(current_level_path, last_checkpoint, current_dimension, 50)
 	
 

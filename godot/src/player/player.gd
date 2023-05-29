@@ -31,6 +31,8 @@ var floor_type:Map.FloorType = Map.FloorType.GRASS
 
 var can_attack := true
 var immune := false
+var is_dead:= false
+
 @export var energy:float:
 	set(_energy):
 		energy = _energy
@@ -227,8 +229,9 @@ func on_landing(_last_vy:float):
 		sfx_landing.play()
 	
 func _process(delta: float) -> void:
-	if global_position.y > VOID_DEATH_Y:
-		Globals.level_manager.restore_checkpoint()
+	if not is_dead and global_position.y > VOID_DEATH_Y:
+		Globals.gameover()
+		is_dead = true
 	if dimension == Events.Dimension.MATERIAL:
 		self.energy = clamp(energy-energy_decay*delta, 0, max_energy)
 		if not $sfx/energy_tick.playing:
