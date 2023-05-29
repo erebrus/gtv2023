@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dq128lfllhqpo" path="res://assets/gfx/world/moon.png" id="3_5kk2p"]
 [ext_resource type="Texture2D" uid="uid://5xa7y7bnecv3" path="res://assets/gfx/world/background-hill.png" id="3_xeoqh"]
 [ext_resource type="Texture2D" uid="uid://dtvlqd24di6fi" path="res://assets/gfx/world/midground.png" id="4_qvkpf"]
-[ext_resource type="Texture2D" uid="uid://cu8bxbbqr48pb" path="res://assets/gfx/world/midground-bigtree.png" id="5_i028y"]
 [ext_resource type="Texture2D" uid="uid://ct4h45eptll00" path="res://assets/gfx/world/midground-graves.png" id="6_b86ba"]
+[ext_resource type="Texture2D" uid="uid://bft3hct3reafd" path="res://assets/gfx/world/tree.png" id="6_c7les"]
 [ext_resource type="TileSet" uid="uid://bpdv7xbkxo4if" path="res://src/world/cemetery_tileset_spectral.tres" id="7_86yo5"]
 [ext_resource type="PackedScene" uid="uid://q5ldrhlikm11" path="res://src/player/player.tscn" id="12_p4ssk"]
 [ext_resource type="Script" path="res://src/world/camera.gd" id="13_anuxj"]
@@ -79,7 +79,8 @@ texture = ExtResource("4_qvkpf")
 centered = false
 
 [node name="MidgroundBigTree" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
-texture = ExtResource("5_i028y")
+position = Vector2(488, -1064)
+texture = ExtResource("6_c7les")
 centered = false
 
 [node name="MidgroundGraves" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
