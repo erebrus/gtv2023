@@ -75,7 +75,7 @@ func _on_dimension_changed(_dimension):
 	else:
 		if floor_type==FloorType.GRASS:
 			$TileMap.tile_set = SPECTRAL_TS
-			$CanvasModulate.color=Color("aaaaaa")
+			$CanvasModulate.color=Color("444444")
 		else:
 			$CanvasModulate.color=Color("000000")
 		$Fog.visible = true

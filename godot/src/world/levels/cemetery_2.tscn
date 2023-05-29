@@ -55,6 +55,7 @@ position = Vector2(1088, 688)
 
 [node name="lever" parent="objects" index="2" instance=ExtResource("4_g7t4p")]
 position = Vector2(1784, 1216)
+value = false
 
 [node name="vanishing_platform2" parent="objects" index="3" instance=ExtResource("3_26dmk")]
 position = Vector2(4784, 464)

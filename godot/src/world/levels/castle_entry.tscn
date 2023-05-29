@@ -41,13 +41,15 @@ layer_0/tile_data = PackedInt32Array(-196543, 18, 0, -262079, 18, 1, -327615, 18
 
 [node name="plate" parent="objects" index="0" instance=ExtResource("10_7fsvd")]
 position = Vector2(6688, -200)
-time = 8.0
+time = 9.0
 
 [node name="lever" parent="objects" index="1" instance=ExtResource("7_51jtu")]
 position = Vector2(3424, 552)
+value = false
 
 [node name="lever2" parent="objects" index="2" instance=ExtResource("7_51jtu")]
 position = Vector2(1720, 56)
+value = false
 
 [node name="front_gate" parent="objects" index="3" instance=ExtResource("9_csln7")]
 position = Vector2(7624, -208)
@@ -342,6 +344,10 @@ position = Vector2(7928, -480)
 [node name="cemetery_lamp11" parent="lamps" index="10" instance=ExtResource("20_tptd0")]
 position = Vector2(8992, -472)
 
+[node name="player" parent="." index="8"]
+energy_decay = 2.0
+energy_override = false
+
 [node name="Camera2D" parent="player" index="12"]
 limit_top = -1024
 limit_right = 9728
@@ -398,6 +404,15 @@ position = Vector2(9764.7, -1889.6)
 position = Vector2(27.3027, 851.799)
 shape = SubResource("RectangleShape2D_ymjv5")
 
+[connection signal="body_entered" from="TileMap/spikes2" to="TileMap/spikes2" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32851" to="TileMap/@spikes2@32851" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32852" to="TileMap/@spikes2@32852" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32853" to="TileMap/@spikes2@32853" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32854" to="TileMap/@spikes2@32854" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32855" to="TileMap/@spikes2@32855" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32856" to="TileMap/@spikes2@32856" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32857" to="TileMap/@spikes2@32857" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes2@32858" to="TileMap/@spikes2@32858" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/big_door" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/elevator" method="_on_switched"]
 [connection signal="switched" from="objects/lever2" to="objects/elevator" method="_on_switched"]

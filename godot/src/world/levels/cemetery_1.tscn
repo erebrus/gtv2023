@@ -67,7 +67,8 @@ position = Vector2(4256, 256)
 position = Vector2(3600, 808)
 
 [node name="player" parent="." index="8"]
-energy_decay = 5.0
+energy_decay = 3.0
+energy_override = false
 energy = 50.0
 
 [node name="Camera2D" parent="player" index="12"]

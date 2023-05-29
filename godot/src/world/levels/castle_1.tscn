@@ -333,6 +333,10 @@ current_enemy = NodePath("horned_mouth")
 [node name="horned_mouth" parent="enemies/enemy_spawner4" index="1" instance=ExtResource("5_dd0fn")]
 position = Vector2(2, -4)
 
+[node name="player" parent="." index="8"]
+energy_decay = 2.0
+energy_override = false
+
 [node name="Camera2D" parent="player" index="12"]
 limit_top = -1024
 limit_right = 4352
@@ -343,5 +347,12 @@ visible = true
 [node name="DefaultEntryPoint" parent="." index="11"]
 position = Vector2(3600, -512)
 
+[connection signal="body_entered" from="TileMap/@spikes@31454" to="TileMap/@spikes@31454" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31455" to="TileMap/@spikes@31455" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31456" to="TileMap/@spikes@31456" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31457" to="TileMap/@spikes@31457" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31458" to="TileMap/@spikes@31458" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31459" to="TileMap/@spikes@31459" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@spikes@31460" to="TileMap/@spikes@31460" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/rock_vanishing_platform" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/big_door" method="_on_switched"]
