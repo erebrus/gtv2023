@@ -355,14 +355,7 @@ limit_right = 4352
 visible = true
 
 [node name="DefaultEntryPoint" parent="." index="11"]
-position = Vector2(3600, -512)
+position = Vector2(239, 934)
 
-[connection signal="body_entered" from="TileMap/@spikes@68321" to="TileMap/@spikes@68321" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68322" to="TileMap/@spikes@68322" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68323" to="TileMap/@spikes@68323" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68324" to="TileMap/@spikes@68324" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68325" to="TileMap/@spikes@68325" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68326" to="TileMap/@spikes@68326" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="TileMap/@spikes@68327" to="TileMap/@spikes@68327" method="_on_body_entered" flags=18]
 [connection signal="switched" from="objects/plate" to="objects/rock_vanishing_platform" method="_on_switched"]
 [connection signal="switched" from="objects/lever" to="objects/big_door" method="_on_switched"]
